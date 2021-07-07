@@ -9,11 +9,10 @@
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!-- 패키지 @controller 클래스를 스캔한다. -->
-	<context:component-scan
-		base-package="jejuguseok" />
+	  <context:component-scan base-package="jejuguseok_map" />
 
 	<!-- 객체 생성 -->
-	<bean id="mapdto" class="jejuguseok.mapDTO">
+	<bean id="mapdto" class="jejuguseok_map.mapDTO">
 		<property name="x" value="10" />
 	</bean>
 
