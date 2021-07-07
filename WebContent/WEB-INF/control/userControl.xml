@@ -9,8 +9,7 @@
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
    <!--  패키지 @controller 클래스를 스캔한다. -->
-  <context:component-scan base-package="jejuguseok" />
-  <context:component-scan base-package="pj.spring.bean" />
+  <context:component-scan base-package="userpage.main" />
   
  <!-- 자바로 따지면 Date day = new date() 객체생성 -->
      <!-- <jsp:useBean /> 같은 기능을 한다.  -->
