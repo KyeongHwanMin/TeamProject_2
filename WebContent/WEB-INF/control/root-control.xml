@@ -11,9 +11,23 @@
 	<!--  공통의 컨트롤 -->
 	<bean id="viewResolver" 
 	      class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="prefix" value="/WEB-INF/view" />		
+	</bean>	
 	
-		
+	<!--  커넥션 풀 -->
+	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource" destroy-method="close" 
+	p:driverClassName="oracle.jdbc.driver.OracleDriver"
+	p:url="jdbc:oracle:thin:@masternull.iptime.org:1521:orcl"
+	p:username="final05"
+	p:password="final"		/>	
+		<!--  my batis, 커넥션 풀 참조 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/mybatis/config.xml" />
+	</bean>
+	<!--  my sqlSession, my batis 참조 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
 </beans>

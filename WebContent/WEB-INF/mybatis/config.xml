@@ -6,15 +6,14 @@
 
 	<!-- mybatis의 컨트롤러 라 생각하면 됨. -->
 	
-	<typeAliases>
-		<typeAlias type="test.spring.bean.day3.TestDTO" alias="testDTO" />
 
-	</typeAliases>
 	
 	
 	<!-- SQL작성하는 공간(파일) mybatis에서 사용하는 Sql파일은 모두 나열한다. -->
 	<mappers>
-		<mapper resource="/resources/mappers/otoMapper.xml" />
+		<!--  <mapper resource="/resources/mappers/otoMapper.xml" />-->
+		<mapper resource="/mapsql/mapSQL.xml"/>
+		
 	</mappers>
 	
 </configuration>
