@@ -25,6 +25,7 @@
 	    <param-name>contextConfigLocation</param-name>
 		    <param-value>
 		      /WEB-INF/control/userControl.xml
+		      /WEB-INF/control/mapControl.xml
 		    </param-value>
 	  </init-param>
 	</servlet>

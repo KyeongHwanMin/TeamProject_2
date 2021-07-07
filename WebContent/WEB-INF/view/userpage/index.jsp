@@ -99,7 +99,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">sign-up / login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">login<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
@@ -112,7 +112,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">sign-up / login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">login<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">sign-up / login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="register.do">login<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
