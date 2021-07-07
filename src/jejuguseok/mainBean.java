@@ -17,8 +17,16 @@ public class mainBean {
 	@RequestMapping("index.do") 
 	public String index(){
 		
-		return "/WEB-INF/view/index.jsp";
+		return "/WEB-INF/view/userpage/index.jsp";
 	}
+	
+	
+	@RequestMapping("register.do") 
+	public String register(){
+		
+		return "/WEB-INF/view/userpage/register.jsp";
+	}
+	
 	
 }
 	
