@@ -18,6 +18,8 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
+  
+  <!--  컨트롤 추가 -->
 	<servlet>
 	  <servlet-name>spring</servlet-name>
 	  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -26,6 +28,7 @@
 		    <param-value>
 		      /WEB-INF/control/userControl.xml
 		      /WEB-INF/control/mapControl.xml
+		       /WEB-INF/control/root-control.xml
 		    </param-value>
 	  </init-param>
 	</servlet>

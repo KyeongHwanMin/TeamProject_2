@@ -8,13 +8,12 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- 패키지 @controller 클래스를 스캔한다. -->
-	  <context:component-scan base-package="jejuguseok.map" />
-
-	<!-- 객체 생성 -->
-	<bean id="mapdto" class="jejuguseok.map.mapDTO">
-		<property name="x" value="10" />
+	<!--  공통의 컨트롤 -->
+	<bean id="viewResolver" 
+	      class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/view/" />
+	
+		
 	</bean>
-
 
 </beans>

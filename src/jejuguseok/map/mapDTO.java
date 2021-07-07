@@ -1,4 +1,4 @@
-package jejuguseok_map;
+package jejuguseok.map;
 
 public class mapDTO {
 	private String place;
