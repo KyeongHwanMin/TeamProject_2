@@ -24,9 +24,14 @@ public class mainBean {
 	@RequestMapping("register.do") 
 	public String register(){
 		
-		return "/WEB-INF/view/userpage/register.jsp";
+		return "/WEB-INF/view/userpage/login/register.jsp";
 	}
 	
+	@RequestMapping("loginForm.do") 
+	public String loginForm(){
+		
+		return "/WEB-INF/view/userpage/login/loginForm.jsp";
+	}
 	
 }
 	
