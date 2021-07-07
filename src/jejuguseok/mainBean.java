@@ -27,6 +27,11 @@ public class mainBean {
 		return "/WEB-INF/view/userpage/register.jsp";
 	}
 	
+	@RequestMapping("attraction.do") 
+	public String attraction(){
+		
+		return "/WEB-INF/view/userpage/attraction.jsp";
+	}
 	
 }
 	
