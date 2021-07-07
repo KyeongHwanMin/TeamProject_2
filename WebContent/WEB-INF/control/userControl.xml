@@ -17,6 +17,9 @@
     
     
     
+     <bean id="userDAOImpl" class="userpage.main.userDAOImpl" />
+    
+    
   
 
 </beans>

@@ -88,9 +88,9 @@
 <br /> <br /> <br /> <br /> <br /> 
 <div id="loginForm" align="center">
 
-<br /> <br />
+<br /> <br /> 
 <main>
-  <form name="loginForm" action="loginPro.do" class="loginForm">
+  <form name="loginForm" action="/jejuguseok/loginPro.do" class="loginForm">
   <h1>로그인</h1>
     <hr>
     <br />
@@ -111,9 +111,11 @@
 	 <br />  
 	<input type="submit" value="Login" class="btn btn-danger" style="width:350px; height:60px; font-size:18pt; opacity: 0.9">
 			 <br /> <br />
-	<input align='center' type="button" value="회원가입" onclick="window.location='signUp.do'" class="btn btn-danger">
-	<input type="button" value="아이디 찾기" onclick="window.location='findId.do'" class="btn btn-warning"> 
-	<input type="button" value="비밀번호 찾기" onclick="window.location='findPw.do'" class="btn btn-warning">
+	<input align='center' type="button" value="회원가입" onclick="window.location='/jejuguseok/register.do'" class="btn btn-danger">
+	<%-- 
+	<input type="button" value="아이디 찾기" onclick="window.location='/jejuguseok/findId.do'" class="btn btn-warning"> 
+	<input type="button" value="비밀번호 찾기" onclick="window.location='/jejuguseok/findPw.do'" class="btn btn-warning">
+		 --%>
  </form>
 </main>
 

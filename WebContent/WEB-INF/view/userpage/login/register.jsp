@@ -42,15 +42,11 @@
             return false;
         }
        
-        if(!userinput.username.value) {
+        if(!userinput.name.value) {
             alert("사용자 이름을 입력하세요");
             return false;
         }
-        if(!userinput.jumin1.value  || !userinput.jumin2.value )
-        {
-            alert("주민등록번호를 입력하세요");
-            return false;
-        }
+      
     }
 
     // 아이디 중복 여부를 판단
@@ -60,8 +56,8 @@
             alert("아이디를 입력하세요");
             return;
         }
-        // url과 사용자 입력 id를 조합합니다.
-        url = "/userpage/login/confirmId.do?id="+userinput.id.value ;
+        // url과 사용자 입력 id를 조합
+        url = "/jejuguseok/confirmId.do?id="+userinput.id.value ;
         
         // 새로운 윈도우를 엽니다.
         open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
@@ -130,40 +126,40 @@
 
 <!-- 회원 가입 폼! -->
 
-<div>
-<div style=" width:50%;" >
+<div align="center">
+<div style=" width:40%;" >
 		
 	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 회원가입 </h2>
 
-<form  name="userinput"  action="/jejuguseok/userpage/login/registerPro.do" onSubmit="return checkIt()">
+<form  name="userinput"  action="/jejuguseok/registerPro.do" onSubmit="return checkIt()">
  <fieldset> 
     
      <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">이름</label>
-      <input type="text" class="form-control" id="name" placeholder="이름 입력 ">
+      <input type="text" name="name" class="form-control" id="name" placeholder="이름 입력 ">
     </div>
     
          <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">아이디</label>
-      <input type="text" class="form-control" id="id" placeholder="아이디 입력"> 
+      <input type="text" name="user_id" class="form-control" id="id" placeholder="아이디 입력"> 
       <input type="button" name="confirm_id" value="ID 중복확인" 
         							OnClick="openConfirmid(this.form)">
     </div>
          <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" name="pw" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
     
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
  
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">태어난 년도</label>
-      <select class="form-select" id="exampleSelect1">
+      <select class="form-select" name="year_birth" id="exampleSelect1">
         <option>1990</option><option>1991</option>
         <option>1992</option><option>1993</option><option>1994</option><option>1995</option>
         <option>1996</option><option>1997</option><option>1998</option> <option>1999</option>
@@ -176,13 +172,13 @@
       <legend class="mt-4"> 성별 </legend>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="male" value="male" checked="">
+          <input type="radio" class="form-check-input" name="gender" id="male" value="male" checked="">
           남성
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="female" value="female">
+          <input type="radio" class="form-check-input" name="gender" id="female" value="female">
           여성
         </label>
       </div>
@@ -190,17 +186,16 @@
     
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">거주 지역</label>
-      <select class="form-select" id="exampleSelect1">
+      <select class="form-select" name="address" id="exampleSelect1">
         <option>서울</option><option>경기</option>
         <option>인천</option><option>광주/전라</option><option>강원</option>
         <option>대전/충청/세종</option><option>부산/대구/경상</option>
       </select>
     </div>
     
-    
-    
    
-    <button type="submit" class="btn btn-primary">Submit</button>
+     <input type="submit" class="btn btn-primary" value="등록" />
+    
   </fieldset>
 </form> <br /> <br /> 	
 	
@@ -210,77 +205,6 @@
 
 
 
-
-<!-- 2  -->
-<form method="post" action="/spring/member/inputPro.do" name="userinput" onSubmit="return checkIt()">
-  <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
-    <tr> 
-    <td colspan="2" height="39" align="center" bgcolor="${value_c}" >
-       <font size="+1" ><b>회원가입</b></font></td>
-    </tr>
-    <tr> 
-      <td width="200" bgcolor="${value_c}"><b>아이디 입력</b></td>
-      <td width="400" bgcolor="${value_c}">&nbsp;</td>
-    </tr>  
-
-    <tr> 
-      <td width="200"> 사용자 ID</td>
-      <td width="400"> 
-        <input type="text" name="id" size="10" maxlength="12">
-        <input type="button" name="confirm_id" value="ID중복확인" 
-        							OnClick="openConfirmid(this.form)">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200"> 비밀번호</td>
-      <td width="400" > 
-        <input type="password" name="passwd" size="15" maxlength="12">
-      </td>
-    <tr>  
-      <td width="200">비밀번호 확인</td>
-      <td width="400"> 
-        <input type="password" name="passwd2" size="15" maxlength="12">
-      </td>
-    </tr>
-    
-    <tr> 
-      <td width="200" bgcolor="${value_c}"><b>개인정보 입력</b></td>
-      <td width="400" bgcolor="${value_c}">&nbsp;</td>
-    <tr>  
-    <tr> 
-      <td width="200">사용자 이름</td>
-      <td width="400"> 
-        <input type="text" name="name" size="15" maxlength="10">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200">주민등록번호</td>
-      <td width="400"> 
-        <input type="text" name="jumin1" size="7" maxlength="6">
-        -<input type="text" name="jumin2" size="7" maxlength="7">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200">E-Mail</td>
-      <td width="400"> 
-        <input type="text" name="email" size="40" maxlength="30">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200"> Blog</td>
-      <td width="400"> 
-        <input type="text" name="blog" size="60" maxlength="50">
-      </td>
-    </tr>
-    <tr> 
-      <td colspan="2" align="center" bgcolor="${value_c}"> 
-          <input type="submit" name="confirm" value="등   록" >
-          <input type="reset" name="reset" value="다시입력">
-          <input type="button" value="가입안함" onclick="javascript:window.location='/spring/member/main.do'">
-      </td>
-    </tr>
-  </table>
-</form>
 
 
 

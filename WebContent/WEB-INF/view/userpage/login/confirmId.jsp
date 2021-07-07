@@ -14,7 +14,7 @@
 <c:if test="${check == 1}">  
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr bgcolor="${title_c}"> 
-    <td height="39" >${id}이미 사용중인 아이디입니다.</td>
+    <td height="39" >${user_id}는 이미 사용중인 아이디입니다.</td>
   </tr>
 </table>
 <form name="checkForm" method="post" action="confirmId.jsp">
@@ -32,9 +32,9 @@
 
 <c:if test="${check != 1}">  
 <table width="270" border="0" cellspacing="0" cellpadding="5">
-  <tr bgcolor="${title_c}"> 
+  <tr> 
     <td align="center"> 
-      <p>입력하신 ${id} 는 사용하실 수 있는 ID입니다. </p>
+      <p>입력하신 ${user_id} 는 사용하실 수 있는 ID입니다. </p>
       <input type="button" value="닫기" onclick="setid()">
     </td>
   </tr>
