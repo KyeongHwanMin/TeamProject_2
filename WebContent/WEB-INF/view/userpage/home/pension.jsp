@@ -131,6 +131,57 @@
 			</div>
 		</div>
 
+
+		<form class="form-horizontal">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Form Name</legend>
+
+				<!-- Select Basic -->
+				<div class="form-group">
+					<label class="col-md-1 control-label" for="select_local">숙박
+						지역</label>
+					<div class="col-md-1">
+						<select id="select_local" name="select_local" class="form-control">
+							<option value="jejusi">제주시</option>
+							<option value="seogwiposi">서귀포시</option>
+							<option value="jungmun">중문</option>
+							<option value="jejuairport">제주국제공항</option>
+							<option value="aweol">애월/한림/협재</option>
+							<option value="pyoseon">표선/상산</option>
+							<option value="hamduk">함덕/김녕/세화</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- Select Multiple -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="select_home">숙소
+						유형</label>
+					<div class="col-md-4">
+						<select id="select_home" name="select_home" class="form-control"
+							multiple="multiple">
+							<option value="motel">모텔</option>
+							<option value="guest">게스트하우스</option>
+							<option value="pention">펜션</option>
+							<option value="hotel">호텔</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="숙소검색"> </label>
+					<div class="col-md-4">
+						<button id="숙소검색" name="숙소검색" class="btn btn-success">검색</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+
+
 		<!-- Intro -->
 
 		<div class="row">
@@ -144,24 +195,7 @@
 
 			<div class="offers">
 				<div class="container">
-					<div class="row">
-
-						<div class="col text-center">
-
-							<h2 class="section_title">#역사문화</h2>
-						</div>
-						<div class="col text-center">
-							<h2 class="section_title">#자연/경치</h2>
-						</div>
-						<div class="col text-center">
-							<h2 class="section_title">#레저/체험/학습</h2>
-						</div>
-
-						<div class="col text-center">
-							<h2 class="section_title">#휴식/힐링</h2>
-						</div>
-
-					</div>
+					<div class="row"></div>
 					<div class="row offers_items">
 
 						<!-- Offers Item -->
