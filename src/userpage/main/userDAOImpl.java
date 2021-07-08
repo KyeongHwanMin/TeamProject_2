@@ -1,5 +1,7 @@
 package userpage.main;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,19 @@ public class userDAOImpl implements userDAOInter{
 		return 0;
 	}
 
+
+	@Override
+	public boolean loginCheck(String user_id, String pw) {
+
+		boolean result=false;
+		
+		if(user_id.equals("admin")) {
+			result = true;
+		}
+		return result;
+	}
+
+		
 	
 
 }

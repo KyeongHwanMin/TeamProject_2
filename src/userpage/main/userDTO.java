@@ -10,7 +10,9 @@ public class userDTO {
 	private int year_birth;
 	private String email;
 	private String signupdate;
-	private String num;         // 유저 상태 표시.
+	private int num;         // 유저 상태 표시.
+	
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -59,12 +61,15 @@ public class userDTO {
 	public void setSignupdate(String signupdate) {
 		this.signupdate = signupdate;
 	}
-	public String getNum() {
+	public int getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
+
+	
+	
 	
 	
 	

@@ -10,7 +10,16 @@
 		insert into member(user_id, name, pw, address, gender, year_birth, email)
   values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
 	</insert>
-
+	
+	
+	<select id="all" resultType="userDTO">
+  	   select * from member
+  	</select>
+  	
+  	
+   	<select id="loginCheck" resultType="int" parameterType="userDTO">
+  	   select count(*) from member where user_id=#{user_id} and pw=#{pw}
+  	</select>
 
 
 </mapper>

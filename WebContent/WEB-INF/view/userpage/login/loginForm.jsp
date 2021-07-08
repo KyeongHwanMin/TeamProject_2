@@ -38,11 +38,11 @@
 				<div class="row">
 					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
 						<div class="logo_container">
-							<div class="logo"><a href="#"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
+							<div class="logo"><a href="index.do"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="#">home</a></li>
+								<li class="main_nav_item"><a href="index.do">home</a></li>
 								<li class="main_nav_item"><a href="about.html">여행일정 만들기</a></li>
 								<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
 								<li class="main_nav_item"><a href="blog.html">관광지</a></li>
@@ -68,19 +68,6 @@
 
 	</header>
 
-	<div class="menu trans_500">
-		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-			<div class="menu_close_container"><div class="menu_close"></div></div>
-			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
-			<ul>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
-			</ul>
-		</div>
-	</div>
 
 
 
@@ -89,8 +76,8 @@
 <div id="loginForm" align="center">
 
 <br /> <br /> 
-<main>
-  <form name="loginForm" action="/jejuguseok/loginPro.do" class="loginForm">
+<main>              
+  <form name="loginForm" action="loginPro.do" class="loginForm" method="post">
   <h1>로그인</h1>
     <hr>
     <br />
@@ -98,7 +85,7 @@
 	<tr>
 		<td align='center'width='150'> <b>아이디 </b></td>
        	<td colspan='2'>
-       		<input type="text" name="id" placeholder="아이디" required style="width:300px; height:50px; font-size:15px;">
+       		<input type="text" name="user_id" placeholder="아이디" required style="width:300px; height:50px; font-size:15px;">
        	</td>
 	</tr>
 	<tr>
@@ -109,13 +96,17 @@
 	</tr>
 </table>
 	 <br />  
-	<input type="submit" value="Login" class="btn btn-danger" style="width:350px; height:60px; font-size:18pt; opacity: 0.9">
+	<input type="submit" value="Login" class="btn btn-danger" style="width:250px; height:60px; font-size:18pt; opacity: 0.9">
 			 <br /> <br />
-	<input align='center' type="button" value="회원가입" onclick="window.location='/jejuguseok/register.do'" class="btn btn-danger">
-	<%-- 
-	<input type="button" value="아이디 찾기" onclick="window.location='/jejuguseok/findId.do'" class="btn btn-warning"> 
-	<input type="button" value="비밀번호 찾기" onclick="window.location='/jejuguseok/findPw.do'" class="btn btn-warning">
-		 --%>
+	<input align='center' type="button" value="회원가입" onclick="window.location='/jejuguseok/register.do'"
+	   class="btn btn-warning" >
+			     
+			     <%-- 
+			<input type="button" value="아이디 찾기" 
+			onclick="window.location='/jejuguseok/findId.do'" class="btn btn-warning"> 
+			<input type="button" value="비밀번호 찾기" 
+			onclick="window.location='/jejuguseok/findPw.do'" class="btn btn-warning">
+				 --%>
  </form>
 </main>
 

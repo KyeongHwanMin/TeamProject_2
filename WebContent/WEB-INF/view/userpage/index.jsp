@@ -67,19 +67,6 @@
 
 	</header>
 
-	<div class="menu trans_500">
-		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-			<div class="menu_close_container"><div class="menu_close"></div></div>
-			<div class="logo menu_logo"><a href="#"><img src="/jejuguseok/images/logo.png" alt=""></a></div>
-			<ul>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
-			</ul>
-		</div>
-	</div>
 
 	<!-- Home -->
 
@@ -100,9 +87,13 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
+							
+				<c:if test="${num != 0 }">
 							<div class="button home_slider_button"><div class="button_bcg"></div>
 							<a href="/jejuguseok/loginForm.do">login<span></span>
 							<span></span><span></span></a></div>
+				</c:if>			
+							
 						</div>
 					</div>
 				</div>
@@ -115,7 +106,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="/jejuguseok/loginForm.do">login<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
@@ -128,7 +119,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="register.do">login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="/jejuguseok/loginForm.do">login<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>

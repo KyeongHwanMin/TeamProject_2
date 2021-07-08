@@ -3,8 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
+
+
 <c:if test="${check == 1}">
-	<c:redirect url="/jejuguseok/startTrip.do" />
+	<c:redirect url="index.do" />
 		</c:if>
 		
 <c:if test="${check == 0}"> 

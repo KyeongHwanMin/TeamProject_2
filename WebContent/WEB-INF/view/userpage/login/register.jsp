@@ -78,13 +78,13 @@
 				<div class="row">
 					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
 						<div class="logo_container">
-							<div class="logo"><a href="#"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
+							<div class="logo"><a href="index.do"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="#">home</a></li>
+								<li class="main_nav_item"><a href="index.do">home</a></li>
 								<li class="main_nav_item"><a href="about.html">여행일정 만들기</a></li>
-								<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
+								<li class="main_nav_item"><a href="startTrip.do">나의 여행</a></li>
 								<li class="main_nav_item"><a href="blog.html">관광지</a></li>
 								<li class="main_nav_item"><a href="blog.html">숙박</a></li>
 								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
@@ -108,19 +108,6 @@
 
 	</header>
 
-	<div class="menu trans_500">
-		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-			<div class="menu_close_container"><div class="menu_close"></div></div>
-			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
-			<ul>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
-			</ul>
-		</div>
-	</div>
 
 
 
