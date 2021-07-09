@@ -22,6 +22,8 @@
 		<mapper resource="/mapsql/mapSQL.xml"/>
 		
 			<mapper resource="/userpageSQL/userSQL.xml"/>
+			
+			<mapper resource="/resources/mappers/otoMapper.xml" />
 	</mappers>
 	
 </configuration>
