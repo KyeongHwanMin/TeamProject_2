@@ -1,16 +1,18 @@
 package userpage.main;
 
-import java.util.Date;
-import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 
 //http://localhost:8080/jejuguseok/userpage/index.do
@@ -47,11 +49,7 @@ public class mainBean {
 	
 	@RequestMapping("registerPro.do") 
 	public String registerPro(userDTO dto, Model model, HttpSession session ) throws Exception{
-		
 		userDAO.insert(dto);
-		
-		
-		
 		return "/userpage/login/registerPro.jsp";
 	}
 
@@ -67,27 +65,35 @@ public class mainBean {
 	@RequestMapping(value="loginPro.do", method=RequestMethod.POST, params={"user_id" , "pw"}) 
 	public String loginPro(String user_id, String pw,  Model model, HttpSession session){
 		
-		
 		 try {
-		      boolean result = userDAO.loginCheck(user_id, pw);
-			       if(result) {
-					session.setAttribute("user_id", user_id);	// 세션  HttpSession session
+		      userDTO result = userDAO.loginCheck1(user_id, pw); 
+			       if(result != null) {
+					session.setAttribute("user_id", user_id);	
 				}
-				model.addAttribute("result", result);
+				model.addAttribute("result",result);  // result 이름으로 보내니깐... result로 view에서 비교해야.  
 		 
 		 }catch(Exception e) {
 		  e.printStackTrace();
 	  }
 		 
-		 
-		 
 		return "/userpage/login/loginPro.jsp";
 	}
 	
 
-	
-	
+/*
+	@RequestMapping("loginPro.do")
+	public String LoingPro(userDTO dto, HttpSession session, Model model) {
+		int count = (Integer)((SqlSessionTemplate) userDAO).selectOne("member.loginCheck",dto);
+		if(count == 1) {
+			 session.setAttribute("memId", dto.getUser_id());
+		}
+		model.addAttribute("count", count);
+		return "/0610/loginPro";
+	}
+*/
 
+	 
+	
 	
 }
 	

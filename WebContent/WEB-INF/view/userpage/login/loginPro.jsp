@@ -3,22 +3,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
+<%--ㅡmainBean 의 --%>
+
+<c:if test="${result != null}">
 
 
-<c:if test="${check == 1}">
-	<c:redirect url="index.do" />
-		</c:if>
+	로그인 성공! ${member.user_id}님, 반갑습니다
+   
+	<c:redirect url="index.do" /> 
+
+	
+</c:if>
 		
-<c:if test="${check == 0}"> 
+<c:if test="${result == null}"> 
 	<script> 
-	  alert("비밀번호가 맞지 않습니다.");
+	  alert("id/비밀번호가 맞지 않습니다.");
       history.go(-1);
 	</script>
 	</c:if>
 	
-<c:if test="${check != 1}"> 
-	<script>
-	  alert("아이디가 맞지 않습니다..");
-	  history.go(-1);
-	</script>
-	</c:if>

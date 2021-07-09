@@ -11,9 +11,9 @@
   values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
 	</insert>
 	
-	
-	<select id="all" resultType="userDTO">
-  	   select * from member
+	                     <!--  여기가 userDTO 로 리턴하면 daoimpl에서 dto로 받아줘야함 -->
+	<select id="login" resultType="userDTO">
+  	   select * from member where user_id=#{user_id}
   	</select>
   	
   	

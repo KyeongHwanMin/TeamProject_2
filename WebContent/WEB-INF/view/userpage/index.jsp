@@ -48,6 +48,12 @@
 								<li class="main_nav_item"><a href="blog.html">숙박</a></li>
 								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
 								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								
+								<%-- 
+								<c:if test="${member.num = 10}">
+								<li class="main_nav_item"><a href="/jejuguseok/admin.do">관리자 페이지</a></li>
+								</c:if>
+								--%>
 							</ul>
 						</div>
 						
@@ -88,7 +94,7 @@
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
 							
-				<c:if test="${num != 0 }">
+				<c:if test="${result.user_id == null}"> 
 							<div class="button home_slider_button"><div class="button_bcg"></div>
 							<a href="/jejuguseok/loginForm.do">login<span></span>
 							<span></span><span></span></a></div>
@@ -106,7 +112,9 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="/jejuguseok/loginForm.do">login<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div>
+							<a href="/jejuguseok/loginForm.do">login<span></span>
+							<span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
