@@ -19,7 +19,7 @@ public class homeBean {
 	@RequestMapping("search.do")
 	public String search() {
 
-		return "/WEB-INF/view//userpage/home/search.jsp";
+		return "/userpage/home/search.jsp";
 	}	
 
 

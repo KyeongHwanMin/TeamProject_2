@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,12 +55,12 @@
 							</div>
 							<div class="main_nav_container ml-auto">
 								<ul class="main_nav_list">
-									<li class="main_nav_item"><a href="#">home</a></li>
+									<li class="main_nav_item"><a href="/jejuguseok/WEB-INF/view/userpage/index.do">home</a></li>
 									<li class="main_nav_item"><a href="about.html">여행일정
 											만들기</a></li>
 									<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
-									<li class="main_nav_item"><a href="blog.html">관광지</a></li>
-									<li class="main_nav_item"><a href="blog.html">숙박</a></li>
+									<li class="main_nav_item"><a href="/userpage/attraction/healing.jsp">관광지</a></li>
+									<li class="main_nav_item"><a href="/userpage/home/search.jsp">숙박</a></li>
 									<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
 									<li class="main_nav_item"><a href="contact.html">contact</a></li>
 								</ul>
@@ -87,10 +88,8 @@
 
 		<div class="home">
 			<div class="home_background parallax-window" data-parallax="scroll"
-				data-image-src="images/about_background.jpg"></div>
-			<div class="home_content">
-				<div class="home_title">our offers</div>
-			</div>
+				data-image-src="images/background01.jpg"></div>
+
 		</div>
 
 		<!-- Offers -->

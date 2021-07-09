@@ -7,11 +7,13 @@
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
 
 	<!--  공통의 컨트롤 -->
 	<bean id="viewResolver" 
 	      class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="/WEB-INF/view" />		
+		<property name="prefix" value="/WEB-INF/view" />
 	</bean>	
 	
 	<!--  커넥션 풀 -->
