@@ -14,7 +14,7 @@
 	
 	<!-- 객체 생성 -->
 	<bean id="mapdto" class="jejuguseok.map.mapDTO">
-		<property name="x" value="10" />
+		
 	</bean>
 	<bean id="mapdao" class="jejuguseok.map.mapDAO">
 	</bean>

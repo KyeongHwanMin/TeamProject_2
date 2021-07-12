@@ -17,7 +17,7 @@ public class map {
 	
 	//컨트롤에서 생성한 객체 받기
 	@Autowired 
-	private mapDTO mapdto = null;
+	//private mapDTO mapdto = null;
 	@Autowired
 	private mapDAO mapdao = null;
 	@Autowired

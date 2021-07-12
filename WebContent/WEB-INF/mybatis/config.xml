@@ -22,6 +22,7 @@
 		<mapper resource="/mapsql/mapSQL.xml"/>
 		
 			<mapper resource="/userpageSQL/userSQL.xml"/>
+
 	</mappers>
 	
 </configuration>
