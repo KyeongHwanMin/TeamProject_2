@@ -25,20 +25,13 @@ public class userDAOImpl implements userDAOInter{
 	}
 
 
-	
-
-
-/**/
 	// //로그인 관련 메소드 (세션에 아이디와 비밀번호를 저장) 222
 	@Override
 	public userDTO loginCheck1(String user_id, String pw) {
 		
-						//	여기서 받을때 userDTO로 받아야되 
+						//	여기서 받을때 userDTO로 받아야함 
 		//String result = userDAO.selectOne("user.login",user_id);
 		userDTO dto = userDAO.selectOne("user.login",user_id);
-        
-	
-        
 		return dto;
 	}
 
@@ -47,19 +40,12 @@ public class userDAOImpl implements userDAOInter{
 	@Override
 	public userDTO login(String user_id,String pw, HttpSession session) throws Exception {
 		
-		
 		userDTO dto = userDAO.selectOne("user.login",user_id);
-        
 		
 		return dto;
-		
-		
 	}
 	
 	
-
-
-
 
 	@Override
 	public String find_idCheck(userDTO dto) {

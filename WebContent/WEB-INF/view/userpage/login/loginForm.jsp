@@ -25,48 +25,8 @@
 
 <body>
 
-<div class="super_container">
-	
-		<!-- Header -->
-
-	<header class="header">
-
-		<!-- Main Navigation -->
-
-		<nav class="main_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
-						<div class="logo_container">
-							<div class="logo"><a href="index.do"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
-						</div>
-						<div class="main_nav_container ml-auto">
-							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index.do">home</a></li>
-								<li class="main_nav_item"><a href="about.html">여행일정 만들기</a></li>
-								<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
-								<li class="main_nav_item"><a href="blog.html">관광지</a></li>
-								<li class="main_nav_item"><a href="blog.html">숙박</a></li>
-								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
-							</ul>
-						</div>
-						
-						
-						
-						<form id="search_form" class="search_form bez_1">
-							<input type="search" class="search_content_input bez_1">
-						</form>
-
-						<div class="hamburger">
-							<i class="fa fa-bars trans_200"></i>
-						</div>
-					</div>
-				</div>
-			</div>	
-		</nav>
-
-	</header>
+<!-- Header -->
+<%@ include file ="../header.jsp" %>
 
 
 

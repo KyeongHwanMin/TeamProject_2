@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Jeju Guseok Guseok</title>
+<title>프로필 변경</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -76,7 +76,7 @@
 <div align="center">
 <div style=" width:40%;" >
 		
-	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 회원가입 </h2>
+	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 프로필 변경 </h2>
 
 <form  name="userinput"  action="/jejuguseok/registerPro.do" onSubmit="return checkIt()">
  <fieldset> 
@@ -84,13 +84,12 @@
      <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">이름</label>
       <input type="text" name="name" class="form-control" id="name" placeholder="이름 입력 ">
+      ${name}
     </div>
     
          <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">아이디</label>
-      <input type="text" name="user_id" class="form-control" id="id" placeholder="아이디 입력"> 
-      <input type="button" name="confirm_id" value="ID 중복확인" 
-        							OnClick="openConfirmid(this.form)">
+      <label for="exampleInputPassword1" class="form-label mt-4">아이디 : </label>  ${user_id}
+   
     </div>
          <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
@@ -104,32 +103,8 @@
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
  
-    <div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4">태어난 년도</label>
-      <select class="form-select" name="year_birth" id="exampleSelect1">
-        <option>1990</option><option>1991</option>
-        <option>1992</option><option>1993</option><option>1994</option><option>1995</option>
-        <option>1996</option><option>1997</option><option>1998</option> <option>1999</option>
-        <option>2000</option><option>2001</option><option>2002</option><option>2003</option>
 
-      </select>
-    </div>
     
-      <fieldset class="form-group">
-      <legend class="mt-4"> 성별 </legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" id="male" value="male" checked="">
-          남성
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" id="female" value="female">
-          여성
-        </label>
-      </div>
-    </fieldset>
     
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">거주 지역</label>

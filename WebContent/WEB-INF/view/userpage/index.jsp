@@ -19,60 +19,16 @@
 <link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
+<!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 </head>
+	
+	<%@ include file ="header.jsp" %>
+
+
 
 <body>
 
 <div class="super_container">
-	
-	<!-- Header -->
-
-
-	<header class="header">
-
-		<!-- Main Navigation -->
-
-		<nav class="main_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
-						<div class="logo_container">
-							<div class="logo"><a href="#"><img src="/jejuguseok/images/logo_jeju3.png" alt=""></a></div>
-						</div>
-						<div class="main_nav_container ml-auto">
-							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="#">home</a></li>
-								<li class="main_nav_item"><a href="about.html">여행일정 만들기</a></li>
-								<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
-								<li class="main_nav_item"><a href="blog.html">관광지</a></li>
-								<li class="main_nav_item"><a href="blog.html">숙박</a></li>
-								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
-								
-								<%-- 
-								<c:if test="${member.num = 10}">
-								<li class="main_nav_item"><a href="/jejuguseok/admin.do">관리자 페이지</a></li>
-								</c:if>
-								--%>
-							</ul>
-						</div>
-						
-						
-						
-						<form id="search_form" class="search_form bez_1">
-							<input type="search" class="search_content_input bez_1">
-						</form>
-
-						<div class="hamburger">
-							<i class="fa fa-bars trans_200"></i>
-						</div>
-					</div>
-				</div>
-			</div>	
-		</nav>
-
-	</header>
-
 
 	<!-- Home -->
 
@@ -94,12 +50,16 @@
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
 							
-				<c:if test="${result.user_id == null}"> 
+				<c:if test="${user_id == null}"> 
 							<div class="button home_slider_button"><div class="button_bcg"></div>
 							<a href="/jejuguseok/loginForm.do">login<span></span>
 							<span></span><span></span></a></div>
-				</c:if>			
-							
+				</c:if>		
+				<c:if test="${user_id != null}"> 	
+							<div class="button home_slider_button"><div class="button_bcg"></div>
+							<a href="/jejuguseok/logout.do">logout<span></span>
+							<span></span><span></span></a></div>
+				</c:if>		
 						</div>
 					</div>
 				</div>
@@ -112,9 +72,16 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
+				<c:if test="${user_id == null}"> 
 							<div class="button home_slider_button"><div class="button_bcg"></div>
 							<a href="/jejuguseok/loginForm.do">login<span></span>
 							<span></span><span></span></a></div>
+				</c:if>		
+				<c:if test="${user_id != null}"> 	
+							<div class="button home_slider_button"><div class="button_bcg"></div>
+							<a href="/jejuguseok/logout.do">logout<span></span>
+							<span></span><span></span></a></div>
+				</c:if>	
 						</div>
 					</div>
 				</div>
@@ -127,7 +94,16 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h2> wandering </h2>
 							<h1>Jeju</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="/jejuguseok/loginForm.do">login<span></span><span></span><span></span></a></div>
+				<c:if test="${user_id == null}"> 
+							<div class="button home_slider_button"><div class="button_bcg"></div>
+							<a href="/jejuguseok/loginForm.do">login<span></span>
+							<span></span><span></span></a></div>
+				</c:if>		
+				<c:if test="${user_id != null}"> 	
+							<div class="button home_slider_button"><div class="button_bcg"></div>
+							<a href="/jejuguseok/logout.do">logout<span></span>
+							<span></span><span></span></a></div>
+				</c:if>	
 						</div>
 					</div>
 				</div>
@@ -219,8 +195,8 @@
 	
 
 
+ </div>
 </div>
-
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>

@@ -30,7 +30,6 @@ public class mainBean {
 	@Autowired
 	private userDAOInter userDAO = null;
 
-
 	
 	
 	@RequestMapping("index.do") 
@@ -71,27 +70,22 @@ public class mainBean {
 					session.setAttribute("user_id", user_id);	
 				}
 				model.addAttribute("result",result);  // result 이름으로 보내니깐... result로 view에서 비교해야.  
-		 
-		 }catch(Exception e) {
+		    }catch(Exception e) {
 		  e.printStackTrace();
-	  }
+		    }
+	     
 		 
 		return "/userpage/login/loginPro.jsp";
 	}
 	
+	
+	
 
-/*
-	@RequestMapping("loginPro.do")
-	public String LoingPro(userDTO dto, HttpSession session, Model model) {
-		int count = (Integer)((SqlSessionTemplate) userDAO).selectOne("member.loginCheck",dto);
-		if(count == 1) {
-			 session.setAttribute("memId", dto.getUser_id());
-		}
-		model.addAttribute("count", count);
-		return "/0610/loginPro";
+	@RequestMapping("logout.do")
+	public String memberLogout(HttpSession session) {
+		session.invalidate();
+		return "/userpage/index.jsp";
 	}
-*/
-
 	 
 	
 	

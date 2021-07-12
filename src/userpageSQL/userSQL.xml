@@ -16,11 +16,16 @@
   	   select * from member where user_id=#{user_id}
   	</select>
   	
-  	
    	<select id="loginCheck" resultType="int" parameterType="userDTO">
   	   select count(*) from member where user_id=#{user_id} and pw=#{pw}
   	</select>
 
+
+  <!--  프로필 변경  -->
+	<insert id="update" parameterType="userDTO">
+		insert into member(user_id, name, pw, address, gender, year_birth, email)
+  values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
+	</insert>
 
 </mapper>
 
