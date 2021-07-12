@@ -6,6 +6,8 @@ public class mapDTO {
 	private int y;
 	private String category;
 	private String address;
+	
+	
 	public String getPlace() {
 		return place;
 	}

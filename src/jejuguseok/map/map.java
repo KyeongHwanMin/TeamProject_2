@@ -26,12 +26,22 @@ public class map {
 
 	// LOTAION db에 있는 place 정보 가져오는 메서드
 	@RequestMapping("mybatis/place.do")
-	public String allplace(Model model) {
+	public String place(Model model) {
 		
 		List list = dao.selectList("map.place");
 		
 		model.addAttribute("list",list);
 		System.out.println(list);
+		return "/map/maptest.jsp";
+	}
+	@RequestMapping("mybatis/xy.do")
+	public String x(Model model) {
+		
+		List xy_list = dao.selectList("map.xy");
+		
+		model.addAttribute("xy_list",xy_list);
+		System.out.print(xy_list);
+		
 		return "/map/maptest.jsp";
 	}
 

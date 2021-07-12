@@ -7,3 +7,6 @@
 <c:forEach var="place" items="${list}">
 	<h1>place=${place}</h1>
 </c:forEach>
+<c:forEach var="xy" items="${xy_list}">
+	<h1>x좌표=${xy.x} y좌표=${xy.y}</h1>
+</c:forEach>

@@ -121,7 +121,7 @@
 						<!-- Offers Item -->
 						<div class="col-lg-6 offers_col">
 							<div class="offers_item">
-								<div class="row">
+								<div class="row"> 
 									<div class="col-lg-6">
 										<div class="offers_image_container">
 											<!-- Image by https://unsplash.com/@kensuarez -->
