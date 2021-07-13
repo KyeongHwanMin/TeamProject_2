@@ -18,7 +18,9 @@ public interface userDAOInter {
 	//회원 테이블에 이름,아이디,비번,이메일, 주소 ,성별 을 입력한다.   
 	public void insert(userDTO dto) throws Exception;  // 회원가입 관련 
 	
+	public int idChk(userDTO dto) throws Exception;  // 회원가입 관련 : 아이디 중복 체크 
 
+	
 	public userDTO loginCheck1(String user_id, String pw); ////로그인 관련22    
 	
 	
@@ -27,6 +29,8 @@ public interface userDAOInter {
 	
 	public String find_idCheck(userDTO dto);    //아이디 찾기 관련
 	public String find_passCheck(userDTO dto);    //비밀번호 찾기 관련
+
+
 
 	
 

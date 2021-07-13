@@ -61,6 +61,17 @@ public class userDAOImpl implements userDAOInter{
 		return null;
 	}
 
+    
+	// 회원가입 : 아이디 중복 체크 
+	@Override
+	public int idChk(userDTO dto) throws Exception {
+		int result = userDAO.selectOne("user.idChk", dto);
+		return result;
+	}
+
+
+
+
 
 
 

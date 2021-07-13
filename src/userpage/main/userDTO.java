@@ -1,5 +1,7 @@
 package userpage.main;
 
+import java.sql.Timestamp;
+
 public class userDTO {
 	
 	private String user_id;
@@ -9,7 +11,7 @@ public class userDTO {
 	private String gender;
 	private int year_birth;
 	private String email;
-	private String signupdate;
+	private Timestamp signupdate;
 	private int num;         // 유저 상태 표시.
 	
 	
@@ -55,10 +57,13 @@ public class userDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getSignupdate() {
+
+	
+	
+	public Timestamp getSignupdate() {
 		return signupdate;
 	}
-	public void setSignupdate(String signupdate) {
+	public void setSignupdate(Timestamp signupdate) {
 		this.signupdate = signupdate;
 	}
 	public int getNum() {

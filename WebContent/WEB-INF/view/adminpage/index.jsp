@@ -53,7 +53,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="/jejuguseok/userpage/index.do">
+                            <a class="nav-link" href="/jejuguseok/index.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 본 홈페이지로.. 
                             </a>
@@ -88,6 +88,10 @@
                     </div>
                 </nav>
             </div>
+            
+            
+ <%--     본문 !!!     --%>
+          
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -251,6 +255,9 @@
                 </footer>
             </div>
         </div>
+        
+        
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/jejuguseok/adminStyle/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

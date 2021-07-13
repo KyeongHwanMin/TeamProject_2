@@ -7,8 +7,8 @@
 	
 	
 	<insert id="insert" parameterType="userDTO">
-		insert into member(user_id, name, pw, address, gender, year_birth, email)
-  values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
+		insert into member(user_id, name, pw, address, gender, year_birth, email,SIGNUPDATE)
+  values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email},sysdate)
 	</insert>
 	
 	                     <!--  여기가 userDTO 로 리턴하면 daoimpl에서 dto로 받아줘야함 -->
@@ -20,12 +20,32 @@
   	   select count(*) from member where user_id=#{user_id} and pw=#{pw}
   	</select>
 
+	<!-- 아이디 중복 체크 -->
+<select id="idChk" resultType="int">
+	SELECT COUNT(*) FROM MEMBER WHERE USER_ID = #{user_id}
+</select>
 
-  <!--  프로필 변경  -->
+  <!-- 회원 정보 수정   -->
 	<insert id="update" parameterType="userDTO">
 		insert into member(user_id, name, pw, address, gender, year_birth, email)
   values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
 	</insert>
+	
+	<!--  회원 정보 수정 2-->
+		<update id="memberUpdate">
+		update member set 
+		NAME = #{NAME},
+		pw = #{pw},
+		ADDRESS = #{ADDRESS},
+		YEAR_BIRTH = #{YEAR_BIRTH},
+		EMAIL = #{EMAIL}
+		WHERE USER_ID = #{user_id}
+	</update>
+	
+	<select id="myinfo" resultType="userDTO" parameterType="String">
+  	   select * from member where user_id=#{user_id}
+  	</select>
+	
 
 </mapper>
 

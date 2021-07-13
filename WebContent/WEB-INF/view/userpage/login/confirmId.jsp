@@ -16,7 +16,7 @@
 </table>
 
 
-<form name="checkForm" method="post" action="confirmId.jsp">
+<form name="checkForm" method="post" action="confirmId.do">
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td  align="center"> 

@@ -68,30 +68,40 @@ public class mainBean {
 		      userDTO result = userDAO.loginCheck1(user_id, pw); 
 			       if(result != null) {
 					session.setAttribute("user_id", user_id);	
+					session.setAttribute("pw", pw);	
 				}
 				model.addAttribute("result",result);  // result 이름으로 보내니깐... result로 view에서 비교해야.  
 		    }catch(Exception e) {
 		  e.printStackTrace();
 		    }
-	     
+	     System.out.println(user_id);   
 		 
 		return "/userpage/login/loginPro.jsp";
 	}
 	
 	
-	
-
+   // 로그아웃 
 	@RequestMapping("logout.do")
 	public String memberLogout(HttpSession session) {
 		session.invalidate();
 		return "/userpage/index.jsp";
 	}
-	 
 	
-	@RequestMapping("confirmId..do")
-	public String confirmId() {
+	
+	//아이디 중복 확인 
+	@RequestMapping("confirmId.do")
+	public String confirmId() throws Exception{
 		
-		return "/userpage/login/confirmId.jsp";
+		
+		return "/jejuguseok/userpage/login/confirmId.jsp";
+	}
+	
+	
+	
+	@RequestMapping(value="confirmId.do", method = RequestMethod.POST) 
+	public int confirmId(userDTO dto) throws Exception{
+		int result = userDAO.idChk(dto);
+		return result;
 	}
 	 
 	

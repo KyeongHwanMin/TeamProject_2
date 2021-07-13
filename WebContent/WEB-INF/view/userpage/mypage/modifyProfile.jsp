@@ -21,16 +21,13 @@
 </head>
 
 
-<!-- 회원 가입 폼! -->
+<!-- 회원 정보 변경  -->
 
 <script language="JavaScript">
     
     function checkIt() {
         var userinput = eval("document.userinput");
-        if(!userinput.id.value) {
-            alert("ID를 입력하세요");
-            return false;
-        }
+   
         
         if(!userinput.passwd.value ) {
             alert("비밀번호를 입력하세요");
@@ -71,14 +68,14 @@
 
 
 
-<!-- 회원 가입 폼! -->
+<!-- 회원 정보 수정 폼  -->
 
 <div align="center">
 <div style=" width:40%;" >
 		
 	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 프로필 변경 </h2>
 
-<form  name="userinput"  action="/jejuguseok/registerPro.do" onSubmit="return checkIt()">
+<form  name="userinput"  action="modifyProfilePro.do" onSubmit="return checkIt()">
  <fieldset> 
     
      <div class="form-group">
