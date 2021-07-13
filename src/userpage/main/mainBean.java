@@ -88,6 +88,12 @@ public class mainBean {
 	}
 	 
 	
+	@RequestMapping("confirmId..do")
+	public String confirmId() {
+		
+		return "/userpage/login/confirmId.jsp";
+	}
+	 
 	
 }
 	

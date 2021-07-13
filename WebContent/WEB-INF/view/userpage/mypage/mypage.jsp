@@ -21,11 +21,10 @@
 <body>
 
 <div class="super_container">
-	
 
 <%@ include file ="../header.jsp" %>
 
-	<!-- Home -->
+	<!-- 아래는 본인들의 내용 작성하기 -->
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/blog_background.jpg"></div>

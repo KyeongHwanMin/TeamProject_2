@@ -48,6 +48,8 @@
 			</div>		
 		</div>
 	</c:if>
+	
+	
 		<!-- Main Navigation -->
 	
 				
@@ -67,6 +69,8 @@
 								<li class="main_nav_item"><a href="blog.html">숙박</a></li>
 								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
 								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+							
+								
 							</ul>
 						</div>
 						
