@@ -2,8 +2,8 @@ package jejuguseok.map;
 
 public class mapDTO {
 	private String place;
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 	private String category;
 	private String address;
 	
@@ -14,16 +14,19 @@ public class mapDTO {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	public int getX() {
+
+	
+	
+	public float getX() {
 		return x;
 	}
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
-	public int getY() {
+	public float getY() {
 		return y;
 	}
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	public String getCategory() {
