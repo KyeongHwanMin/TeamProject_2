@@ -52,7 +52,7 @@ public class attractionBean {
 		return "/userpage/attraction/ItemPro.jsp";
 	}
 	
-	@RequestMapping("ItemForm.do")
+	@RequestMapping("uploadForm.do")
 	public String ItemForm() {
 
 		return "/userpage/attraction/ItemFrom.jsp";
