@@ -51,18 +51,18 @@ public class attractionBean {
 
 		return "/userpage/attraction/ItemForm.jsp"; 
 	}
-	@RequestMapping("uploadPro.do")
-	public String pro(String place_name, String address, String category, String contet, String img, 
+	@RequestMapping("ItemPro.do")
+	public String pro(String place_name, String address, String category, String contet, 
 			MultipartHttpServletRequest ms) {
 
 		System.out.println("place"+place_name);
 		System.out.println("address"+address);
 		System.out.println("category"+category);
-		System.out.println("img"+img);
 		
-		MultipartFile mf = ms.getFile("save"); // 파일 원본
+		
+		MultipartFile mf = ms.getFile("img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
-		File f = new File("D://imgsave"+fileName); // 복사 위치
+		File f = new File("D://imgsave//"+fileName); // 복사 위치
 		
 		try {
 			mf.transferTo(f); // 복사
