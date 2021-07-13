@@ -13,10 +13,10 @@ public class otoBean {
 		@Autowired
 		private SqlSessionTemplate dao = null;
 		
-		@RequestMapping("/mybatis/list.do")
-		public String form() {
+		@RequestMapping("list.do")
+		public String list() {
 			
-			return "/board/list";
+			return "/WEB-INF/view/userpage/oto/otoUserList.jsp";
 		}
 	}
 

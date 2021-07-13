@@ -14,11 +14,27 @@
 					<p>(1:1 문의는 로그인 후 문의 가능합니다.)</p>
 					<!-- <p>문의 남겨주시면 고객님의 이메일 또는 휴대폰 번호로 빠르게 답변 드리겠습니다. </p> -->
 					<p>간단한 문의라면 문의주시기 전에 자주 묻는 질문을 먼저 체크해보세요.</p>
-<title>1:1문의페이지</title>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <title>1:1문의</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 </head>
+
+<body>
+
+<div class="super_container">
+
+<%@ include file ="../header.jsp" %>
+
 
 <center><h3>1:1문의(전체 글:${count})</h3>
 	<table width="700">
