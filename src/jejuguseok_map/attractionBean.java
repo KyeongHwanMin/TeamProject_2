@@ -46,19 +46,15 @@ public class attractionBean {
 	
 //	#관광지/숙소 DB 업로드
 	
-	@RequestMapping("ItemPro.do")
-	public String ItemPro() {
-
-		return "/userpage/attraction/ItemPro.jsp";
-	}
-	
 	@RequestMapping("uploadForm.do")
-	public String ItemForm() {
+	public String uploadForm() {
 
-		return "/userpage/attraction/ItemFrom.jsp";
+		return "/userpage/attraction/ItemForm.jsp"; 
 	}
 	@RequestMapping("uploadPro.do")
-	public String pro(String place_name, String address, String category, String contet, String img, MultipartHttpServletRequest ms) {
+	public String pro(String place_name, String address, String category, String contet, String img, 
+			MultipartHttpServletRequest ms) {
+
 		System.out.println("place"+place_name);
 		System.out.println("address"+address);
 		System.out.println("category"+category);

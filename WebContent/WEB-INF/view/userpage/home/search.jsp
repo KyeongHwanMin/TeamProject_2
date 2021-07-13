@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
-
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,79 +11,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css"
-	href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="styles/offers_responsive.css">
-	<link
-	href="/jejuguseok/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="/jejuguseok/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css"
-	href="/jejuguseok/styles/main_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="/jejuguseok/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap4/bootstrap.min.css">
+<link href="/jejuguseok/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
+<!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 </head>
 
 <body>
 
-	<div class="super_container">
+<div class="super_container">
 
-		<!-- Header -->
-
-		<header class="header">
-
-			<!-- Main Navigation -->
-
-			<nav class="main_nav">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
-							<div class="logo_container">
-								<div class="logo">
-									<a href="#"><img src="/jejuguseok/images/logo_jeju3.png"
-										alt=""></a>
-								</div>
-							</div>
-							<div class="main_nav_container ml-auto">
-								<ul class="main_nav_list">
-									<li class="main_nav_item"><a href="/jejuguseok/WEB-INF/view/userpage/index.do">home</a></li>
-									<li class="main_nav_item"><a href="about.html">여행일정
-											만들기</a></li>
-									<li class="main_nav_item"><a href="offers.html">나의 여행</a></li>
-									<li class="main_nav_item"><a href="/userpage/attraction/healing.jsp">관광지</a></li>
-									<li class="main_nav_item"><a href="/userpage/home/search.jsp">숙박</a></li>
-									<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
-									<li class="main_nav_item"><a href="contact.html">contact</a></li>
-								</ul>
-							</div>
-
-
-
-							<form id="search_form" class="search_form bez_1">
-								<input type="search" class="search_content_input bez_1">
-							</form>
-
-							<div class="hamburger">
-								<i class="fa fa-bars trans_200"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-
-		</header>
-
-
+<%@ include file ="/WEB-INF/view/userpage/header.jsp" %> 
 
 		<!-- Home -->
 
@@ -279,6 +221,9 @@
 								</div>
 							</div>
 						</div>
+</div>
+</div>
+</div>
 
 
 <script src="js/jquery-3.2.1.min.js"></script>
