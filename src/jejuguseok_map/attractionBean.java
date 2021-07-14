@@ -58,24 +58,45 @@ public class attractionBean {
 		return "/userpage/attraction/ItemForm.jsp"; 
 	}
 	@RequestMapping("ItemPro.do")
-	public String pro(ItemDTO dto,String place_name, String place_address, String place_content, String place_category, 
+	public String pro(String place_name, String place_address, String place_content, String place_category,
 			MultipartHttpServletRequest ms) {
-		dao.insert("item.insertAttraction",dto);
-	
+
+
+		
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
-		File f = new File("D://imgsave//"+fileName); // 복사 위치
+		File f = new File("D://"+fileName); // 복사 위치
 		
-			
 		try {
 			mf.transferTo(f); // 복사
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		ms.setAttribute("filename",fileName);
+		Object place_img1 = (Object)f;
+		String place_img = String.valueOf(place_img1);
+		
+		System.out.println("file경로"+place_img);
+		System.out.println("fileName"+fileName);
+		
+		ItemDTO itemdto = new ItemDTO();
+		itemdto.setPlace_name(place_name);
+		itemdto.setPlace_address(place_address);
+		itemdto.setPlace_content(place_content);
+		itemdto.setPlace_category(place_category);		
+		itemdto.setPlace_img(place_img);
+		
+	
 		
 		
+		System.out.println("place_name "+itemdto.getPlace_name());
+		System.out.println("place_address "+itemdto.getPlace_address());
+		System.out.println("place_content "+itemdto.getPlace_content());
+		System.out.println("place_category"+itemdto.getPlace_category());
+		System.out.println("place_img"+itemdto.getPlace_img());
 		
+		dao.insert("item.insertAttraction",itemdto);
+
 		return "/userpage/attraction/ItemPro.jsp";
 	}
 }

@@ -7,7 +7,7 @@ public class ItemDTO {
 	private String place_content;
 	private String place_category;
 	private String place_img;
-	
+
 //	숙소 정보 
 	private String home_name;
 	private String home_address;
@@ -15,8 +15,6 @@ public class ItemDTO {
 	private String home_local;
 	private String home_type;
 	private String home_img;
-	
-	
 	public String getPlace_name() {
 		return place_name;
 	}
@@ -86,4 +84,5 @@ public class ItemDTO {
 	
 	
 	
+
 }

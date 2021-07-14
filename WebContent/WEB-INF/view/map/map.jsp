@@ -84,6 +84,11 @@ var zoomControl = new kakao.maps.ZoomControl();
 // 지도의 우측에 확대 축소 컨트롤을 추가한다
 map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
 
+
+
+
+
+
 // 전체 위치 마커가 표시될 좌표 배열입니다
 var totalPositions=new Array();
 
@@ -152,10 +157,12 @@ function createtotalMarkers() {
         // 마커이미지와 마커를 생성합니다
         var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
             marker = createMarker(totalPositions[i], markerImage);  
-        
+        console.log('마커 위치'+totalPositions[i]);
         // 생성된 마커를 커피숍 마커 배열에 추가합니다
         totalMarkers.push(marker);
         
+       
+     
     }     
 }
 
@@ -181,7 +188,9 @@ function createtourMarkers() {
             marker = createMarker(tourPositions[i], markerImage);  
 
         // 생성된 마커를 편의점 마커 배열에 추가합니다
-        tourMarkers.push(marker);    
+        tourMarkers.push(marker);   
+        
+        
     }        
 }
 
@@ -240,6 +249,22 @@ function changeMarker(type){
         settourMarkers(null);
         setCarparkMarkers(null);
         
+        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+        var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+        // 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content : iwContent,
+            removable : iwRemoveable
+        });
+
+        // 마커에 클릭이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'click', function() {
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindow.open(map, marker);  
+        });
+        
     } else if (type === 'tour') { // 편의점 카테고리가 클릭됐을 때
     
         // 편의점 카테고리를 선택된 스타일로 변경하고
@@ -264,6 +289,9 @@ function changeMarker(type){
         settourMarkers(null);
         setCarparkMarkers(map);  
     }    
+
+  
+  
 
 } 
 </script>

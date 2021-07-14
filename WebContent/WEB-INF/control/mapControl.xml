@@ -19,8 +19,7 @@
 	<bean id="mapdao" class="jejuguseok.map.mapDAO">
 	</bean>
 	
-	 <bean id="ItemDTO" class="jejuguseok_map.ItemDTO" />
-	
+	 <bean id="ItemDTO" class="jejuguseok_map.ItemDTO" ></bean>
 	<!-- multipartResolver스캔 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="-1" />
