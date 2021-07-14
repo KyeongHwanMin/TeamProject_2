@@ -29,11 +29,9 @@ public class mypageDAOImpl implements mypageDAOInter {
 	
 	 //나의 정보 
 	@Override
-	public List getMyInfo(String user_id) throws Exception {
-		
-		List list = mypageDAO.selectList("user.myinfo", user_id); 
-		System.out.println("출력"+ list);
-		return list;
+	public userDTO getMyInfo(String user_id) throws Exception {
+
+		return mypageDAO.selectOne("user.myinfo", user_id); 
 		
 	}
 	

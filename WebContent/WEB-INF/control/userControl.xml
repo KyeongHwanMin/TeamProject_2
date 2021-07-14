@@ -19,7 +19,7 @@
     
     
      <bean id="userDAOImpl" class="userpage.main.userDAOImpl" />
-    
+    <bean id="userDTO" class="userpage.main.userDTO" />
     
   
 

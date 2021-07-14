@@ -63,8 +63,8 @@
 							<div class="blog_post_text">
 								<p>가고 싶은 장소와 루트를 한꺼번에 정리하실 수 있습니다. </p>
 								<p> 아이디 : ${user_id} </p>
-								<p>이름: ${name}</p>
-								<p> 이메일: ${list.email}  </p>
+								<p>이름: ${dto.name}</p>
+								<p> 이메일: ${dto.email}  </p>
 							</div>
 							
 						</div>

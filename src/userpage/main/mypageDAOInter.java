@@ -12,6 +12,6 @@ public interface mypageDAOInter { // "나의 여행"(마이페이지) 페이지
 	
 	
 	//내 정보
-	public List getMyInfo(String user_id) throws Exception;
+	public userDTO getMyInfo(String user_id) throws Exception;
 
 }

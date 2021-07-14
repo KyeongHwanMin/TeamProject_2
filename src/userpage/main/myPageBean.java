@@ -19,22 +19,20 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	
 	
 	@RequestMapping("mypage.do") 
-	public String mypage(String user_id, HttpSession session, Model model) throws Exception{
-		
+	public String mypage(String user_id, HttpSession session, Model model) throws Exception{	
 	
-		int count = (Integer)mypageDAO.getMyTripCount(user_id); 
-		 session.setAttribute("user_id", user_id);
-		 model.addAttribute("count", count);
-		 
+		String id = (String) session.getAttribute("user_id");
 		
-		 //list로 받아준다.
-		 List list = mypageDAO.getMyInfo(user_id);
-		 model.addAttribute("list", list);
-		 System.out.println("출력" + list);
-		 				    //userDTO dto = new userDTO();
-		 					//model.addAttribute("dto",dto);
-		 
-		 
+		//int count = (Integer)mypageDAO.getMyTripCount(id); 		 
+	//model.addAttribute("count", count);
+	
+		 userDTO dto = new userDTO();		 
+		 System.out.println("아이디"+id);
+		 dto = mypageDAO.getMyInfo(id);
+		 System.out.println("문제없음");
+		 model.addAttribute("dto", dto);
+		 System.out.println("출력" + dto);
+ 
 		return "/userpage/mypage/mypage.jsp";
 	}
 	

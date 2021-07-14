@@ -70,6 +70,7 @@ public class mainBean {
 					session.setAttribute("user_id", user_id);	
 					session.setAttribute("pw", pw);	
 				}
+			    model.addAttribute("user_id",user_id);
 				model.addAttribute("result",result);  // result 이름으로 보내니깐... result로 view에서 비교해야.  
 		    }catch(Exception e) {
 		  e.printStackTrace();

@@ -2,51 +2,126 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<div class="container px-5 my-5">
-    <form id="contactForm"  action="schedule_pro.do" method="post">>
-        <div class="form-floating mb-3">
-            <select class="form-select" id="방문일정" aria-label="방문 일정">
-                <option value="1박2일">1박2일</option>
-                <option value="2박3일">2박3일</option>
-                <option value="3박4일">3박4일</option>
-                <option value="4박5일">4박5일</option>
-                <option value="5박6일">5박6일</option>
-                <option value="6박7일">6박7일</option>
-            </select>
-            <label for="방문일정">방문 일정</label>
-        </div>
-        <div class="form-floating mb-3">
-            <select class="form-select" id="동반유형" aria-label="동반 유형">
-                <option value="혼자">혼자</option>
-                <option value="가족">가족</option>
-                <option value="커플">커플</option>
-                <option value="2~4명">2~4명</option>
-                <option value="5명이상">5명이상</option>
-            </select>
-            <label for="동반유형">동반 유형</label>
-        </div>
-        <div class="d-none" id="submitSuccessMessage">
-            <div class="text-center mb-3">
-                <div class="fw-bolder">Form submission successful!</div>
-                <p>To activate this form, sign up at</p>
-                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-            </div>
-        </div>
-        <div class="d-none" id="submitErrorMessage">
-            <div class="text-center text-danger mb-3">Error sending message!</div>
-        </div>
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">일정만들기</button>
-        </div>
-    </form>
-</div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<body >
+    <form action="schedule_pro.do" method="post" id="contactForm"  >
+  <fieldset>
+    <legend>일정 조회</legend>
+
+  <input type='date' name='userBirthday'/>
+  <fieldset class="form-group">
+      <legend class="mt-4">예상일정</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+          1박2일
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          2박3일
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+           3박4일
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          4박5일
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          5박6일
+        </label>
+      </div>
+       <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          6박7일
+        </label>
+      </div>
+      
+    </fieldset>
+    <fieldset class="form-group">
+      <legend class="mt-4">동반유형</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+          혼자
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          커플
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          가족
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          2~4명
+        </label>
+      </div>
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          5명 이상
+        </label>
+      </div>
+      
+    </fieldset>
+    <fieldset class="form-group">
+      <legend class="mt-4">여행목적</legend>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+         역사/문화
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+        <label class="form-check-label" for="flexCheckChecked">
+          자연/경치
+        </label>
+      </div>
+      <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+        <label class="form-check-label" for="flexCheckChecked">
+          레처/체험/학습
+        </label>
+        <div class="form-check">
+         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+        <label class="form-check-label" for="flexCheckChecked">
+        휴식/힐링
+        </label>
+      
+      </div>
+      
+      
+    </fieldset>
+    
+    <fieldset class="form-group">    
+    <button type="submit" class="btn btn-primary">일정 만들기</button>
+  </fieldset>
+</form>
+
 </body>
 </html>
