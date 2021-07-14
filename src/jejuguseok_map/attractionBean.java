@@ -4,6 +4,8 @@ import java.io.File;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.util.Date;
+
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class attractionBean {
 
+	@Autowired
+	private SqlSessionTemplate dao =null;
+	
+	
 	@Autowired
 //	1. 관광지: 역사문화
 	@RequestMapping("history.do")
@@ -44,7 +50,7 @@ public class attractionBean {
 		return "/userpage/attraction/healing.jsp";
 	}
 	
-//	#관광지/숙소 DB 업로드
+//	#관광지 DB 업로드
 	
 	@RequestMapping("uploadForm.do")
 	public String uploadForm() {
@@ -52,24 +58,23 @@ public class attractionBean {
 		return "/userpage/attraction/ItemForm.jsp"; 
 	}
 	@RequestMapping("ItemPro.do")
-	public String pro(String place_name, String address, String category, String contet, 
+	public String pro(String place_name, String place_address, String place_content, String place_category, 
 			MultipartHttpServletRequest ms) {
-
-		System.out.println("place"+place_name);
-		System.out.println("address"+address);
-		System.out.println("category"+category);
-		
-		
-		MultipartFile mf = ms.getFile("img"); // 파일 원본
+		dao.insert("item.insertAttraction");
+	
+		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
 		File f = new File("D://imgsave//"+fileName); // 복사 위치
 		
+			
 		try {
 			mf.transferTo(f); // 복사
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		ms.setAttribute("filename",fileName);
+		
+		
 		
 		return "/userpage/attraction/ItemPro.jsp";
 	}

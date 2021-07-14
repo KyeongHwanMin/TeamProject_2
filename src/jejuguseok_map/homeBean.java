@@ -1,9 +1,14 @@
 package jejuguseok_map;
 
+import java.io.File;
 import java.util.Date;
+
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /*
  * 숙소 Bean: 유형/지역별 분류 
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class homeBean {
 
 	@Autowired
+	private SqlSessionTemplate dao =null;
 	
 //	숙소 검색 
 	@RequestMapping("search.do")
@@ -22,5 +28,30 @@ public class homeBean {
 		return "/userpage/home/search.jsp";
 	}	
 
+//	숙소 DB 업로드
+	
+	@RequestMapping("homeForm.do")
+	public String uploadForm() {
+
+		return "/userpage/home/homeForm.jsp"; 
+	}
+	@RequestMapping("homePro.do")
+	public String homePro(String home_name, String home_address, String home_content, String home_local, String home_type,
+		MultipartHttpServletRequest ms) {
+		dao.insert("item.insertHome");
+		
+		MultipartFile mf = ms.getFile("home_img"); // 파일 원본
+		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
+		File f = new File("D://imgsave//"+fileName); // 복사 위치
+		
+		try {
+			mf.transferTo(f); // 복사
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		ms.setAttribute("filename",fileName);
+		
+		return "/userpage/home/homePro.jsp";
+	}	
 
 }
