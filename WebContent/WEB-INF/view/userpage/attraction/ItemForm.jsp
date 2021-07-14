@@ -11,8 +11,8 @@
 
 <form action="ItemPro.do" method="post" enctype="multipart/form-data">
 	장소명: <input type="text" name ="place_name" /> <br />	
-	주소: <input type="text" name ="address" /> <br />	
-	장소 정보: <textarea id="content" name ="content" rows="5" cols="20"> </textarea> <br />
+	주소: <input type="text" name ="place_address" /> <br />	
+	장소 정보: <textarea id="place_content" name ="place_content" rows="5" cols="20"> </textarea> <br />
 <div class="form-group">
   <label class="col-md-4 control-label" for="place_category">관광지 선택</label>
   <div class="col-md-4">

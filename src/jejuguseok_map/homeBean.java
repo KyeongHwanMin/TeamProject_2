@@ -36,9 +36,9 @@ public class homeBean {
 		return "/userpage/home/homeForm.jsp"; 
 	}
 	@RequestMapping("homePro.do")
-	public String homePro(String home_name, String home_address, String home_content, String home_local, String home_type,
+	public String homePro(ItemDTO dto, String home_name, String home_address, String home_content, String home_local, String home_type,
 		MultipartHttpServletRequest ms) {
-		dao.insert("item.insertHome");
+		dao.insert("item.insertHome",dto);
 		
 		MultipartFile mf = ms.getFile("home_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름

@@ -58,9 +58,9 @@ public class attractionBean {
 		return "/userpage/attraction/ItemForm.jsp"; 
 	}
 	@RequestMapping("ItemPro.do")
-	public String pro(String place_name, String place_address, String place_content, String place_category, 
+	public String pro(ItemDTO dto,String place_name, String place_address, String place_content, String place_category, 
 			MultipartHttpServletRequest ms) {
-		dao.insert("item.insertAttraction");
+		dao.insert("item.insertAttraction",dto);
 	
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
