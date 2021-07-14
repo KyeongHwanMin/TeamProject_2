@@ -28,12 +28,12 @@
 <link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 </head>
-
 <body>
 
 <div class="super_container">
 
 <%@ include file ="../header.jsp" %>
+
 
 
 <center><h3>1:1문의(전체 글:${count})</h3>
