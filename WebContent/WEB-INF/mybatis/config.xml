@@ -30,6 +30,8 @@
 		<mapper resource="/ItemSQL/attraction_homeSQL.xml"/>
 		
 		<mapper resource="/adminSQL/adminSQL.xml"/>
+		
+		<mapper resource="/userpageSQL/boardSQL.xml"/>
 	</mappers>
 	
 </configuration>
