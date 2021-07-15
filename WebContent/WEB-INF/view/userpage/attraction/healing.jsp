@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import = "jejuguseok_map.ItemDAO" %>
-<%@ page import = "jejuguseok_map.ItemDTO" %>
+<%@ page import = "jejuguseok_map.attractionDAO" %>
+<%@ page import = "jejuguseok_map.attractionDTO" %>
 
 <!DOCTYPE html>
 <html lang="en">
