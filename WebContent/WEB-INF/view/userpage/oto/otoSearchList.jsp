@@ -19,7 +19,7 @@
     			<a href="otoUserList.jsp">나의 작성글 목록</a>
     		</c:if>
     		<c:if test="${id == 0}">
-    			<a href="/badgudu/member/loginForm.jsp">로그인후 글쓰기</a>
+    			<a href="/badgudu/member/loginForm.jsp">로그인후 글쓰기</a> <!--  로그인 폼으로 수정할것 !! -->
     		</c:if>
     	</td>
     </tr>
@@ -60,7 +60,7 @@
 				<c:if test="${article.re_level == 0}">
 			  		<img src="images/level.gif" width="${article.re_level * 5}" height="16">
 			  	</c:if>
-	     		 <a href="content.jsp?num=${article.num$}&pageNum=${currentPage}">
+	     		 <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoContent.do?num=${article.num$}&pageNum=${currentPage}">
 	           		${article.subject}
 	           	 </a> 
 	           <c:if test="${article.readcount >= 20}">
@@ -89,19 +89,19 @@
    </c:if> 
           
    <c:if test="${startPage > 10}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="/mvc/board/list.nhn?pageNum=${i}">[${i}]</a>
+       <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage + 10}">[다음]</a>
+        <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
 
-		<form action="otoSearchList.jsp" method="post">
+		<form action="/jejuguseok/WEB-INF/view/userpage/oto/otoSearchList.do" method="post">
 			<select name="col">
 				<option value="subject">제목</option>
 				<option value="writer">작성자</option>

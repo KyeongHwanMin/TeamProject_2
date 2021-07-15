@@ -6,7 +6,7 @@
 
 
   	<c:if test="${check==1}">
-	  <meta http-equiv="Refresh" content="0;url=content.jsp?num=${num}&pageNum=${pageNum}" >
+	  <meta http-equiv="Refresh" content="0;url=/jejuguseok/WEB-INF/view/userpage/oto/otoContent.do?num=${num}&pageNum=${pageNum}" >
 	</c:if>
 	<c:if test="${check!=1}">
        <script language="JavaScript">         

@@ -15,7 +15,7 @@
  <input type="hidden" name="otonum" value=${num }/>
 <center><b>글수정</b>
 <br>
-<form method="post" name="writeform" action="otoUpdatePro.jsp?pageNum=${pageNum}" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/jejuguseok/WEB-INF/view/adminpage/oto/otoUpdatePro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
 <table width="400" border="1" cellspacing="0" cellpadding="0"  align="center">
   <tr>
     <td  width="70"  align="center">이 름</td>
@@ -60,7 +60,7 @@
      <input type="submit" value="글수정" >  
      <input type="reset" value="다시작성">
      <input type="button" value="목록보기" 
-       onclick="document.location.href='otoAdminList.jsp?pageNum=${pageNum}'">
+       onclick="document.location.href='/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${pageNum}'">
    </td>
  </tr>
  </table>

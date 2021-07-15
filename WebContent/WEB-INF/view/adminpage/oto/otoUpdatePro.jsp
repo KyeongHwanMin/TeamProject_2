@@ -5,7 +5,7 @@
 
 
 <c:if test="${check == 1}">
-	  <meta http-equiv="Refresh" content="0;url=/mvc/board/list.nhn?pageNum=${pageNum}" >
+	  <meta http-equiv="Refresh" content="0;url=/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${pageNum}" >
 </c:if>
 <c:if test="${check != 1}">
       <script language="JavaScript">      

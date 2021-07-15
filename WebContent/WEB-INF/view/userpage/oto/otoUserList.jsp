@@ -44,7 +44,7 @@
 	             <a href="otoWrite.jsp">1:1 문의하기</a>
 	             </c:if>
 	          <c:if test="${id == null }">
-	             <a href="/badgudu/userPage/user/LoginForm.jsp">로그인후 글쓰기</a>
+	             <a href="/badgudu/userPage/user/LoginForm.jsp">로그인후 글쓰기</a> <!--  로그인 폼 경로 바꿀것 -->
 	       </td>
 	    </tr>
 	</table>
@@ -82,7 +82,7 @@
 			  	</c:if>
 				<c:if test="${article.re_level == 0 }" >
 				</c:if>
-	     		 <a href="otoContent.jsp?num=${article.num}&pageNum=${currentPage}">
+	     		 <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoContent.do?num=${article.num}&pageNum=${currentPage}">
 	           		${article.subject}
 	           	 </a> 
 			</td>	
@@ -119,15 +119,15 @@
    </c:if> 
           
    <c:if test="${startPage > 10}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="/mvc/board/list.nhn?pageNum=${i}">[${i}]</a>
+       <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage + 10}">[다음]</a>
+        <a href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
 </center>

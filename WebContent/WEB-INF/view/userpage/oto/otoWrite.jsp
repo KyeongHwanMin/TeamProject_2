@@ -14,7 +14,7 @@
    
 <center><b>문의내용</b>
 <br>
-<form method="post" name="writeform" action="otoWritePro.jsp" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/jejuguseok/WEB-INF/view/userpage/oto/otoWritePro.do" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="${num}">
 <input type="hidden" name="ref" value="${ref}">
 <input type="hidden" name="re_step" value="${re_step}">
@@ -76,7 +76,7 @@
  <td colspan=2 align="center"> 
   <input type="submit" value="문의글쓰기" >  
   <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="window.location='otoUserList.jsp'">
+  <input type="button" value="목록보기" OnClick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do'">
 </td></tr></table>    
    
 </form>      

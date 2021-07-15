@@ -57,7 +57,7 @@
 		  	<c:if test="${article.re_level == 0 }">
 			</c:if>
 			
-     		 <a href="otoAdminContent.jsp?num=${article.num}&pageNum=${currentPage}">
+     		 <a href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminContent.do?num=${article.num}&pageNum=${currentPage}">
            		${article.subject}
            	 </a> 
 		</td>	
@@ -94,15 +94,15 @@
    </c:if> 
           
    <c:if test="${startPage > 10}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="/mvc/board/list.nhn?pageNum=${i}">[${i}]</a>
+       <a href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="/mvc/board/list.nhn?pageNum=${startPage + 10}">[다음]</a>
+        <a href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
 

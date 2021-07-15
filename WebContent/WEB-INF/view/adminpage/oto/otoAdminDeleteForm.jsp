@@ -23,7 +23,7 @@
 
 <center><b>글삭제</b>
 <br>
-<form method="POST" name="delForm"  action="otoDeletePro.jsp?num=${num}&otonum=${otonum}&pageNum=${pageNum}&level=${level}" onsubmit="return deleteSave()"> 
+<form method="POST" name="delForm"  action="/jejuguseok/WEB-INF/view/adminpage/oto/otoDeletePro.do?num=${num}&otonum=${otonum}&pageNum=${pageNum}&level=${level}" onsubmit="return deleteSave()"> 
 	<table border="1" align="center" cellspacing="0" cellpadding="0" width="360">
 		<tr height="30">
      		<td align=center ><b>비밀번호를 입력해 주세요.</b></td>

@@ -3,4 +3,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<c:redirect url="/userpage/oto/otoUserList.do" />
+<c:redirect url="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do" />
