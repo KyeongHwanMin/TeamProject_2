@@ -34,14 +34,15 @@
 	<!--  회원 정보 수정 2-->
 		<update id="memberUpdate">
 		update member set 
-		NAME = #{NAME},
-		pw = #{pw},
-		ADDRESS = #{ADDRESS},
-		YEAR_BIRTH = #{YEAR_BIRTH},
-		EMAIL = #{EMAIL}
-		WHERE USER_ID = #{user_id}
+		name = #{name, jdbcType=VARCHAR},
+		pw = #{pw,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		year_birth = #{year_birth,  jdbcType=INTEGER},
+		email = #{email,  jdbcType=VARCHAR}
+		WHERE user_id = #{user_id,  jdbcType=VARCHAR}
 	</update>
 	
+	<!--  회원 정보 불러오기!  -->
 	<select id="myinfo" resultType="userDTO" parameterType="String">
   	   select * from member where user_id=#{user_id}
   	</select>

@@ -18,6 +18,18 @@
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
 <!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
+
+
+ <!-- JS, Popper.js, and jQuery 년도 부트스트랩 추가 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 </head>
 
 
@@ -27,16 +39,18 @@
     
     function checkIt() {
         var userinput = eval("document.userinput");
+        
+        
         if(!userinput.id.value) {
             alert("ID를 입력하세요");
             return false;
         }
         
-        if(!userinput.passwd.value ) {
+        if(!userinput.pw.value ) {
             alert("비밀번호를 입력하세요");
             return false;
         }
-        if(userinput.passwd.value != userinput.passwd2.value)
+        if(userinput.pw.value != userinput.pwc.value)
         {
             alert("비밀번호를 동일하게 입력하세요");
             return false;
@@ -57,11 +71,34 @@
             return;
         }
         // url과 사용자 입력 id를 조합
-        url = "/jejuguseok/confirmId.do?id="+userinput.id.value ;
+        url = "/jejuguseok/confirmId.do?user_id="+userinput.id.value ;
         
         // 새로운 윈도우를 엽니다.
         open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
     }
+    
+ 
+
+    // 년도 select 
+    $(document).ready(function () {
+        setDateBox();
+      });
+
+      // select box 연도 
+      function setDateBox() {
+        var dt = new Date();
+        var year_birth = "";
+        var com_year = dt.getFullYear();
+
+        // 발행 뿌려주기
+        $("#year_birth").append("<option value=''>년도</option>");
+
+        // 올해 기준으로 -50년부터 +1년을 보여준다.
+        for (var y = (com_year - 80); y <= (com_year + 1); y++) {
+          $("#year_birth").append("<option value='" + y + "'>" + y + " 년" + "</option>");
+        }
+      }
+    
 </script>
 
 <body>
@@ -92,10 +129,17 @@
       <input type="button" name="confirm_id" value="ID 중복확인" 
         							OnClick="openConfirmid(this.form)">
     </div>
-         <div class="form-group">
+    
+    <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
       <input type="password" name="pw" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
+    
+   <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">비밀번호 확인</label>
+      <input type="password" name="pwc" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    
     
     
     <div class="form-group">
@@ -106,14 +150,12 @@
  
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">태어난 년도</label>
-      <select class="form-select" name="year_birth" id="exampleSelect1">
-        <option>1990</option><option>1991</option>
-        <option>1992</option><option>1993</option><option>1994</option><option>1995</option>
-        <option>1996</option><option>1997</option><option>1998</option> <option>1999</option>
-        <option>2000</option><option>2001</option><option>2002</option><option>2003</option>
-
-      </select>
+      <select name="year_birth" id="year_birth" title="년도" class="custom-select"> </select>
     </div>
+    <%-- <select class="form-select" name="year_birth" id="year_birth"><option>선택</option> --%>
+
+
+    
     
       <fieldset class="form-group">
       <legend class="mt-4"> 성별 </legend>
@@ -135,8 +177,10 @@
       <label for="exampleSelect1" class="form-label mt-4">거주 지역</label>
       <select class="form-select" name="address" id="exampleSelect1">
         <option>서울</option><option>경기</option>
-        <option>인천</option><option>광주/전라</option><option>강원</option>
-        <option>대전/충청/세종</option><option>부산/대구/경상</option>
+        <option>인천</option><option>광주</option><option>전라</option><option>강원</option>
+        <option>대전</option><option>충청/세종</option>
+        <option>경상</option> <option>대구</option> <option>부산</option><option>제주</option>
+        <option>해외</option>
       </select>
     </div>
     

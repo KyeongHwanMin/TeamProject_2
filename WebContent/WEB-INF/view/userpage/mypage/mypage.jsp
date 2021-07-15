@@ -61,20 +61,19 @@
 							</div>
 							<div class="blog_post_title"><a href="#">지금 나의 제주도 여행 일정을 만드세요! </a></div>
 							<div class="blog_post_text">
-								<p>가고 싶은 장소와 루트를 한꺼번에 정리하실 수 있습니다. </p>
-								<p> 아이디 : ${user_id} </p>
-								<p>이름: ${dto.name}</p>
-								<p> 이메일: ${dto.email}  </p>
+								
+								<p>이름:  ${dto.name}</p>
+								<p> 아이디 :  ${user_id} </p>
+								<p>출생년도:  ${dto.year_birth}</p>
+								<p>거주지:  ${dto.address}</p>
+								<p>이메일:  ${dto.email}  </p>
+								<p>가입날짜:  ${dto.signupdate}  </p>
 							</div>
-							
 						</div>
-
-						
-
 					</div>
-						
-					
 				</div>
+
+
 
 				<!-- Blog Sidebar -->
 

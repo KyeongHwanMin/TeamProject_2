@@ -27,6 +27,8 @@
 		<mapper resource="/userpageSQL/userSQL.xml"/>
 		
 		<mapper resource="/ItemSQL/attraction_homeSQL.xml"/>
+		
+		<mapper resource="/adminSQL/adminSQL.xml"/>
 	</mappers>
 	
 </configuration>

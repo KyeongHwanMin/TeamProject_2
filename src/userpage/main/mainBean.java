@@ -15,13 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
-//http://localhost:8080/jejuguseok/userpage/index.do
-//http://localhost:8080/jejuguseok/index.do
-
-	//Date day= null;
-	//private SqlSessionTemplate userDAO = null;
-	//private SnsDAOInter snsDao = null;
-
 
 @Controller  
 public class mainBean {
@@ -30,20 +23,21 @@ public class mainBean {
 	@Autowired
 	private userDAOInter userDAO = null;
 
-	
-	
+	// 메인페이지 : 첫화면. 
 	@RequestMapping("index.do") 
 	public String index(){
 		
 		return "/userpage/index.jsp";
 	}
 	
-	
+	// 회원가입
 	@RequestMapping("register.do") 
 	public String register(){
 		
 		return "/userpage/login/register.jsp";
 	}
+	
+
 	
 	
 	@RequestMapping("registerPro.do") 
@@ -52,7 +46,11 @@ public class mainBean {
 		return "/userpage/login/registerPro.jsp";
 	}
 
+		
+
 	
+	
+	//로그인
 	@RequestMapping("loginForm.do") 
 	public String loginForm(){
 		
@@ -88,23 +86,19 @@ public class mainBean {
 		return "/userpage/index.jsp";
 	}
 	
-	
-	//아이디 중복 확인 
-	@RequestMapping("confirmId.do")
-	public String confirmId() throws Exception{
-		
-		
-		return "/jejuguseok/userpage/login/confirmId.jsp";
-	}
-	
-	
-	
-	@RequestMapping(value="confirmId.do", method = RequestMethod.POST) 
-	public int confirmId(userDTO dto) throws Exception{
+/**/
+	 		//아이디 중복 확인 
+	@RequestMapping(value="confirmId.do", method = RequestMethod.GET ) 
+	public String confirmId(userDTO dto,  Model model) throws Exception{
 		int result = userDAO.idChk(dto);
-		return result;
+		model.addAttribute("result",result);
+		
+		if(result != 0) {
+			return "/userpage/login/confirmId.jsp"; 
+		}
+		return "/userpage/login/confirmId.jsp";
+	
 	}
-	 
 	
 }
 	

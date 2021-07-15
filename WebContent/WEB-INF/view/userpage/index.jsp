@@ -22,6 +22,14 @@
 <!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 </head>
 	
+<script language="JavaScript">
+function checkIt() {
+	alert("로그아웃 합니다");
+	response.sendRedirect("/jejuguseok/logout.do");
+
+}
+</script>
+	
 	<%@ include file ="header.jsp" %>
 
 

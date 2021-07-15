@@ -2,6 +2,7 @@ package userpage.main;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,10 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	public String mypage(String user_id, HttpSession session, Model model) throws Exception{	
 	
 		String id = (String) session.getAttribute("user_id");
-		
-		//int count = (Integer)mypageDAO.getMyTripCount(id); 		 
-	//model.addAttribute("count", count);
 	
 		 userDTO dto = new userDTO();		 
-		 System.out.println("아이디"+id);
 		 dto = mypageDAO.getMyInfo(id);
-		 System.out.println("문제없음");
 		 model.addAttribute("dto", dto);
-		 System.out.println("출력" + dto);
  
 		return "/userpage/mypage/mypage.jsp";
 	}
@@ -39,15 +34,36 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	
 	
 	@RequestMapping("modifyProfile.do") 
-	public String modifyProfile(){
+	public String modifyProfile(String user_id, HttpSession session, Model model) throws Exception{	
+		String id = (String) session.getAttribute("user_id");
+		userDTO dto = new userDTO();	
+		System.out.println("업-아이디" + id);
+		dto = mypageDAO.getMyInfo(id);
+		model.addAttribute("dto", dto);
+		
+		System.out.println("프로필변경페이지출력" + dto);
 		
 		return "/userpage/mypage/modifyProfile.jsp";
 	}
 
 	
 	@RequestMapping("modifyProfilePro.do") 
-	public String modifyProfile(userDTO dto, Model model, HttpSession session) throws Exception{
-		mypageDAO.memberUpdate(dto);
+	public String modifyProfilePro(userDTO dto ,HttpSession session, Model model) throws Exception{
+		String id = (String) session.getAttribute("user_id");
+		System.out.println("업데이트Pro출력-아이디" + id);
+		 
+		 System.out.println("업데이트출력" + dto);
+		 // modify Profile 페이지에 있는 name 들을 받아오기! 
+		 
+		 dto.setAddress(dto.getAddress());
+		 dto.setEmail(dto.getEmail());
+		 dto.setGender(dto.getGender());
+		 dto.setName(dto.getName());
+		 dto.setPw(dto.getPw());
+		 dto.setYear_birth(dto.getYear_birth());
+		 
+		 
+		  mypageDAO.memberUpdate(dto);  
 		return "/userpage/mypage/modifyProfilePro.jsp";
 	}
 	
