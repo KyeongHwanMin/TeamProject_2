@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!-- 
+숙소 번호: home_num(시퀀스 자동생성)
 숙소명: home_name
 숙소 주소: home_address
 숙소 정보: home_content

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!-- 
+관광지 번호: place_num(시퀀스 자동생성)
 장소: place_name
 주소: place_address
 장소 정보: place_content
@@ -9,7 +10,7 @@
 관광지 이미지: place_img
  -->
 
-<form action="ItemPro.do" method="post" enctype="multipart/form-data">
+<form action="attractionPro.do" method="post" enctype="multipart/form-data">
 	장소명: <input type="text" name="place_name" /> <br /> 주소: <input
 		type="text" name="place_address" /> <br /> 장소 정보:
 	<textarea id="content" name="place_content" rows="5" cols="20"> </textarea>

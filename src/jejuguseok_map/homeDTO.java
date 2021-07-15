@@ -1,49 +1,19 @@
 package jejuguseok_map;
 
-public class ItemDTO {
-//  관광지 정보
-	private String place_name;
-	private String place_address;
-	private String place_content;
-	private String place_category;
-	private String place_img;
+public class homeDTO {
 
-//	숙소 정보 
+	private String home_no; // 시퀀스
 	private String home_name;
 	private String home_address;
 	private String home_content;
 	private String home_local;
 	private String home_type;
 	private String home_img;
-	public String getPlace_name() {
-		return place_name;
+	public String getHome_no() {
+		return home_no;
 	}
-	public void setPlace_name(String place_name) {
-		this.place_name = place_name;
-	}
-	public String getPlace_address() {
-		return place_address;
-	}
-	public void setPlace_address(String place_address) {
-		this.place_address = place_address;
-	}
-	public String getPlace_content() {
-		return place_content;
-	}
-	public void setPlace_content(String place_content) {
-		this.place_content = place_content;
-	}
-	public String getPlace_category() {
-		return place_category;
-	}
-	public void setPlace_category(String place_category) {
-		this.place_category = place_category;
-	}
-	public String getPlace_img() {
-		return place_img;
-	}
-	public void setPlace_img(String place_img) {
-		this.place_img = place_img;
+	public void setHome_no(String home_no) {
+		this.home_no = home_no;
 	}
 	public String getHome_name() {
 		return home_name;
@@ -83,6 +53,4 @@ public class ItemDTO {
 	}
 	
 	
-	
-
 }

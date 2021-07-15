@@ -1,9 +1,16 @@
 package jejuguseok_map;
 
 import java.io.File;
+import java.io.IOException;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,19 +57,16 @@ public class attractionBean {
 		return "/userpage/attraction/healing.jsp";
 	}
 	
-//	#관광지 DB 업로드
+//	관광지 이미지파일 저장 및 DB 업로드
 	
-	@RequestMapping("uploadForm.do")
+	@RequestMapping("attractionForm.do")
 	public String uploadForm() {
 
-		return "/userpage/attraction/ItemForm.jsp"; 
+		return "/userpage/attraction/attractionForm.jsp"; 
 	}
-	@RequestMapping("ItemPro.do")
-	public String pro(String place_name, String place_address, String place_content, String place_category,
+	@RequestMapping("attractionPro.do")
+	public String pro(String place_no, String place_name, String place_address, String place_content, String place_category,
 			MultipartHttpServletRequest ms) {
-
-
-		
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
 		File f = new File("D://"+fileName); // 복사 위치
@@ -73,30 +77,28 @@ public class attractionBean {
 			e.printStackTrace();
 		}
 		ms.setAttribute("filename",fileName);
+		
 		Object place_img1 = (Object)f;
 		String place_img = String.valueOf(place_img1);
 		
-		System.out.println("file경로"+place_img);
-		System.out.println("fileName"+fileName);
-		
-		ItemDTO itemdto = new ItemDTO();
+		attractionDTO itemdto = new attractionDTO();
+		itemdto.setPlace_no(place_no);
 		itemdto.setPlace_name(place_name);
 		itemdto.setPlace_address(place_address);
 		itemdto.setPlace_content(place_content);
 		itemdto.setPlace_category(place_category);		
 		itemdto.setPlace_img(place_img);
 		
-	
-		
-		
-		System.out.println("place_name "+itemdto.getPlace_name());
-		System.out.println("place_address "+itemdto.getPlace_address());
-		System.out.println("place_content "+itemdto.getPlace_content());
-		System.out.println("place_category"+itemdto.getPlace_category());
-		System.out.println("place_img"+itemdto.getPlace_img());
-		
 		dao.insert("item.insertAttraction",itemdto);
 
-		return "/userpage/attraction/ItemPro.jsp";
+		return "/userpage/attraction/attractionPro.jsp";
+	}
+//	찜한 관광지 노출 (mypage에서) 	
+	@RequestMapping("myAttraction.do")
+	public String myAttraction(String place_name, String place_address, String place_category) {
+		
+		return "/userpage/attraction/myAttraction.jsp";
 	}
 }
+	
+

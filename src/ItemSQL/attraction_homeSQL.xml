@@ -5,13 +5,21 @@
   
   
   <mapper namespace="item">
-  	<insert id="insertAttraction" parameterType="ItemDTO">
-		insert into attraction(place_name, place_address, place_content, place_category, place_img)
-  values (#{place_name},#{place_address},#{place_content},#{place_category},#{place_img})
+  	<insert id="insertAttraction" parameterType="attractionDTO">
+		insert into attraction(place_no,place_name, place_address, place_content, place_category, place_img)
+  values (#{place_no},#{place_name},#{place_address},#{place_content},#{place_category},#{place_img})
 	</insert>
 	
-  	<insert id="insertHome" parameterType="ItemDTO">
-		insert into home(home_name, home_address, home_content, home_local, home_type, home_img)
-  values (#{home_name},#{home_address},#{home_content},#{home_local},#{home_type},#{home_img})
+  	<insert id="insertHome" parameterType="homeDTO">
+		insert into home(home_no, home_name, home_address, home_content, home_local, home_type, home_img)
+  values (#{home_no},#{home_name},#{home_address},#{home_content},#{home_local},#{home_type},#{home_img})
 	</insert>	
+	
+	<select id="myAttraction" resultType="attractionDTO">
+ 		select * from attraction
+ 	</select>
+	
+	<select id="myHome" resultType="homeDTO">
+ 		select * from Home
+ 	</select>
   </mapper>
