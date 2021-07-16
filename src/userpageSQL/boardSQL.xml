@@ -32,5 +32,6 @@
 	<select id="getArticlesNum" resultType="otoDTO" parameterType="int">
 		select * from otoboard where num=#{num}
 	</select>
-
+	
+	
 </mapper>

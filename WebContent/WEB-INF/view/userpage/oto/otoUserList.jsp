@@ -34,8 +34,8 @@
 </br>
 
 
-<center><main>
-								<h2>1:1문의</h2>
+<center>
+<main>
 								<p>궁금하신 점은 1:1 문의를 남겨주세요. 친절하게 답변 드리겠습니다.</p>
 								<p>평일 09:00 ~ 18:00/ 토요일 09:00 ~ 13:00 (일요일/공휴일 휴무)</p>
 								<p>궁금하신 점은 1:1 문의를 남겨주세요.</p>
@@ -51,10 +51,10 @@
 			<h3>1:1문의(전체 글:${count})</h3>
 			<table width="700">
 				<tr>
-					<td align="right"><c:if test="${id != null}">
-							<a href="otoWrite.jsp">1:1 문의하기</a>
-						</c:if> <c:if test="${id == null }">
-							<a href="/badgudu/userPage/user/LoginForm.jsp">로그인후 글쓰기</a>
+					<td align="right"><c:if test="${user_id != null}">
+							<a href="write.do">1:1 문의하기</a>
+						</c:if> <c:if test="${user_id == null }">
+							<a href="/jejuguseok/loginForm.do">로그인후 글쓰기</a>
 							<!--  로그인 폼 경로 바꿀것 --></td>
 				</tr>
 			</table>
