@@ -3,6 +3,7 @@ package jejuguseok.map;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 //http://localhost:8080/jejuguseok/main.do
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import jejuguseok_map.ItemDTO;
 
 // 컨트롤러에서 보낸걸 받아줌
 @Controller
@@ -23,28 +27,7 @@ public class map {
 	@Autowired
 	private SqlSessionTemplate dao = null;
 
-	// LOTAION db에 있는 place 정보 가져오는 메서드
-	@RequestMapping("mybatis/place.do")
-	public String place(Model model) {
 
-		List maplist = dao.selectList("map.location");
-
-		model.addAttribute("maplist", maplist);
-		System.out.println(maplist);
-		return "/map/maptest.jsp";
-	}
-
-	@RequestMapping("xy.do")
-	public String x(Model model) {
-
-		List maplist = dao.selectList("map.location");
-
-		model.addAttribute("maplist", maplist);
-		System.out.print(maplist);
-		System.out.println("실행");
-
-		return "/map/maptest.jsp";
-	}
 
 	@RequestMapping("map.do")
 	public String map(Model model) {
@@ -55,14 +38,33 @@ public class map {
 		model.addAttribute("maptourlist", maptourlist);
 		return "/map/map.jsp";
 	}
-	@RequestMapping("map/schedule.do")
+	@RequestMapping("schedule.do")
 	public String schedule(Model model) {
 			
 		return "/map/schedule.jsp";
 	}
-	@RequestMapping("map/schedule_pro.do")
-	public String schedule_pro(Model model) {
-			
+	@RequestMapping("schedule_pro.do")
+	public String schedule_pro(HttpSession session, String date, String day, String with, String travel, Model model) {
+		List maplist = dao.selectList("map.location");
+		List maptourlist = dao.selectList("map.tour");
+		model.addAttribute("maplist", maplist);
+		model.addAttribute("maptourlist", maptourlist);
+		
+		String id = (String) session.getAttribute("user_id");
+	
+		model.addAttribute("date",date);
+		model.addAttribute("day",day);
+		model.addAttribute("with",with);
+		model.addAttribute("travel",travel);
+		
+		scheduleDTO scheduledto = new scheduleDTO();
+		scheduledto.setDate1(date);
+		scheduledto.setDay1(day);
+		scheduledto.setId(id);
+		scheduledto.setWith1(with);
+		scheduledto.setTravel(travel);
+
+		dao.insert("schedule.insertsc" ,scheduledto);
 		return "/map/schedule_pro.jsp";
 	}
 
@@ -77,19 +79,9 @@ public class map {
 		request.setAttribute("id", id);
 		return "/map/map2.jsp";
 	}
+	
 
-	@RequestMapping("main.do")
-	public String main() {
-		System.out.println("main()");
-		return "/map/form.jsp";
-	}
 
-	@RequestMapping("formPro.do")
-	public String pro(String name, int age, Model model) {
-		System.out.println(name);
-		System.out.println(age);
-		model.addAttribute("name", name);
-		return "/map/formPro.jsp";
-	}
+
 
 }

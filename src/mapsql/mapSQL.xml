@@ -9,6 +9,7 @@
  	<select id="tour" resultType="mapDTO">
  		select * from location where CATEGORY = '관광/숙박'
  	</select>
+ 	
 
  </mapper>
 
