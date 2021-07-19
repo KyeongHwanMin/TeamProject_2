@@ -173,7 +173,8 @@ function makeOverListener(map, marker, infowindow) {
 
 <form name="sccedule_card" action="" method="post">
   <div class="form-group">
-  <input class="form-control form-control-lg" type="text" name="p_place" id="p_place" placeholder="갈곳">
+  <label for="exampleFormControlText">장소</label>
+  <input class="form-control form-control-lg" type="text" name="p_place" id="p_place" readonly style="background-color:#FFFFF0" placeholder="지도에서 일정 추가 버튼 누르기">
   </div>
  
   <div class="form-group">
