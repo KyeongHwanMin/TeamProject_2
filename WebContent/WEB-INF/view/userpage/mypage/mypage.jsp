@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog</title>
+<title>나의 여행 </title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -24,7 +24,7 @@
 
 <%@ include file ="../header.jsp" %>
 
-	<!-- 아래는 본인들의 내용 작성하기 -->
+	<!-- 본문 : 마이페이지 - 내 정보보기/ 수정 / 내가 찜한 장소 / 나으 여행 리스트  / -->
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/blog_background.jpg"></div>
@@ -33,8 +33,6 @@
 			 <div class="home_title"> 제주도 여행 </div>
 		</div>
 	</div>
-
-	<!-- 나의 여행 : 프로필 관리 , 유저가 저장해 놓은 제주도 루트.장소 를 볼 수 있음  -->
 
 	<div class="blog">
 		<div class="container">
@@ -73,15 +71,14 @@
 					</div>
 				</div>
 
-
-
 				<!-- Blog Sidebar -->
 
 				<div class="col-lg-4 sidebar_col">
 
-			
+
 					
-					<!-- 북마크  -->
+	<!--  내가 찜한 장소!! 예) 관광지 클릭시 내가 저장한 관광지 목록을 볼 수 잇다.     -->
+	
 					<div class="sidebar_archives">
 						<div class="sidebar_title">내가 찜한 장소 </div>
 						<div class="sidebar_list">
@@ -93,7 +90,9 @@
 						</div>
 					</div>
 					
-					<!-- 나의 여행 일정-->
+					
+					
+	<!--    나의 여행 일정  --!!!    -->
 					<div class="sidebar_categories">
 						<div class="sidebar_title"> 나의 여행 일정 리스트  </div>
 						<div class="sidebar_list">
@@ -109,7 +108,9 @@
 								</c:if>
 							</ul>
 						</div>
-					</div>
+					</div>  <!-- sidebar_categories 끝 -->
+
+
 
 
 			</div>

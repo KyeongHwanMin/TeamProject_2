@@ -1297,6 +1297,22 @@ section
 {
 	opacity: 0.8;
 }
+
+.book_buttonn
+{
+	background: rgb(255, 128, 0);
+}
+.book_buttonn a
+{
+	padding-left: 32px;
+	padding-right: 32px;
+}
+.book_buttonn:hover
+{
+	opacity: 0.8;
+}
+
+
 .hotel_map_link_container
 {
 	margin-top: 14px;

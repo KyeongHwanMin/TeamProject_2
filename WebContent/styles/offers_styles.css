@@ -318,12 +318,12 @@ section
 {
 	position: fixed;
 	width: 100%;
-	background: rgba(54, 19, 84, 0.6);
+	background: #fff8f5;
 	z-index: 12;
 }
 .header.scrolled
 {
-	background: rgba(54, 19, 84, 0.85);
+	background: #fff8f5;
 }
 
 /*********************************
@@ -1476,6 +1476,22 @@ section
 	transition: all 200ms ease;
 }
 .book_button:hover
+{
+	opacity: 0.8;
+}
+
+.book_buttonn
+{
+	background: #ff8030;
+	margin-top: 39px;
+	margin-bottom: -5px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.book_buttonn:hover
 {
 	opacity: 0.8;
 }

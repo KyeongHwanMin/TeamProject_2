@@ -306,7 +306,7 @@ section
 }
 
 /*********************************
-3. Header           background: rgba(54, 19, 84, 0.6);  #ffd9b3 수정 
+3. Header           background: rgba(54, 19, 84, 0.6);  #ffd9b3 수정  #f5ede1
 *********************************/
 
 .header
@@ -314,12 +314,12 @@ section
 	position: fixed;
 	width: 100%;
 	
-	background: #f5ede1;
+	background: #fff8f5;
 	z-index: 12;
 }
 .header.scrolled
 {
-	background: #f5ede1;
+	background: #fff8f5;
 }
 
 /*********************************
