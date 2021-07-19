@@ -6,13 +6,13 @@
   
   <mapper namespace="item">
   	<insert id="insertAttraction" parameterType="attractionDTO">
-		insert into attraction(place_no,place_name, place_address, place_content, place_category, place_img)
-  values (#{place_no},#{place_name},#{place_address},#{place_content},#{place_category},#{place_img})
+		insert into attraction(place_no, place_name, place_address, place_content, place_category, place_img)
+  values (place_no.nextval,#{place_name},#{place_address},#{place_content},#{place_category},#{place_img})
 	</insert>
 	
   	<insert id="insertHome" parameterType="homeDTO">
 		insert into home(home_no, home_name, home_address, home_content, home_local, home_type, home_img)
-  values (#{home_no},#{home_name},#{home_address},#{home_content},#{home_local},#{home_type},#{home_img})
+  values (home_no.nextval, #{home_name},#{home_address},#{home_content},#{home_local},#{home_type},#{home_img})
 	</insert>	
 	
 	<select id="myAttraction" resultType="attractionDTO">

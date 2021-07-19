@@ -2,16 +2,16 @@ package jejuguseok_map;
 
 public class attractionDTO {
 	
-	private String place_no; // 시퀀스
+	private int place_no; // 시퀀스
 	private String place_name;
 	private String place_address;
 	private String place_content;
 	private String place_category;
 	private String place_img;
-	public String getPlace_no() {
+	public int getPlace_no() {
 		return place_no;
 	}
-	public void setPlace_no(String place_no) {
+	public void setPlace_no(int place_no) {
 		this.place_no = place_no;
 	}
 	public String getPlace_name() {
@@ -44,6 +44,6 @@ public class attractionDTO {
 	public void setPlace_img(String place_img) {
 		this.place_img = place_img;
 	}
-	
+
 	
 }

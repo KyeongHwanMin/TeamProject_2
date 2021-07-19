@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- 
+<!-- 관리자용
 관광지 번호: place_num(시퀀스 자동생성)
 장소: place_name
 주소: place_address

@@ -65,11 +65,11 @@ public class attractionBean {
 		return "/userpage/attraction/attractionForm.jsp"; 
 	}
 	@RequestMapping("attractionPro.do")
-	public String pro(String place_no, String place_name, String place_address, String place_content, String place_category,
+	public String pro(String place_name, String place_address, String place_content, String place_category,
 			MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
-		File f = new File("D://"+fileName); // 복사 위치
+		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
 		
 		try {
 			mf.transferTo(f); // 복사
@@ -82,7 +82,6 @@ public class attractionBean {
 		String place_img = String.valueOf(place_img1);
 		
 		attractionDTO itemdto = new attractionDTO();
-		itemdto.setPlace_no(place_no);
 		itemdto.setPlace_name(place_name);
 		itemdto.setPlace_address(place_address);
 		itemdto.setPlace_content(place_content);
@@ -90,7 +89,7 @@ public class attractionBean {
 		itemdto.setPlace_img(place_img);
 		
 		dao.insert("item.insertAttraction",itemdto);
-
+		System.out.println(f);
 		return "/userpage/attraction/attractionPro.jsp";
 	}
 //	찜한 관광지 노출 (mypage에서) 	
