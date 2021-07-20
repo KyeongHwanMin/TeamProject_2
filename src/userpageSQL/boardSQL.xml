@@ -44,13 +44,13 @@
 	</select>
 	
 	<!-- 답글시 증가 -->
-	<select id="update" resultType="otoDTO">
+	<select id="update2" resultType="otoDTO">
 		update otoboard set re_step=re_step+1 where ref= #{ref} and re_step> #{re_step}
 	</select>
 	
 	<!-- 글쓰기 -->
 	
-	<select id="update" resultType="otoDTO">
+	<select id="update3" resultType="otoDTO">
 		insert into otoboard(num,writer,email,ph,subject,passwd,save,reg_date,
 		ref,re_step,re_level,content,ip,otonum) values(otoboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,otonum_seq.NEXTVAL)
 	</select>

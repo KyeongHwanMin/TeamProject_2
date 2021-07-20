@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import userpage.main.userDAOInter;
+
 /* 정현서 work. 
  * 
  * 숙소 Bean: 유형/지역별 분류 
@@ -23,11 +25,13 @@ public class accomBean {
 	@Autowired
 	private SqlSessionTemplate dao =null;
 	
+	@Autowired
+	private userDAOInter accomDAO = null;
 	
 	@RequestMapping("accom.do")
 	public String accom(Model model){
 		
-		List list3 = dao.selectList("item.myHome");
+		List list3 = dao.selectList("item.myHome"); // select * from Home
 		 
 		 model.addAttribute("list3",list3);
 		
@@ -55,6 +59,11 @@ public class accomBean {
 		}else if(se==7){
 			search="함덕/김녕/세화";
 		}
+		
+		//List list4 = accomDAO.searchLoca(search);
+		//흠.... 
+		List list4 = dao.selectList("item.homeLoca"); // itemsql에 있음 
+		 model.addAttribute("list4",list4);
 		
 		return "/userpage/home/accomLocal.jsp"; 
 	}

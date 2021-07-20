@@ -70,7 +70,7 @@
 								<li class="main_nav_item"><a href="/jejuguseok/history.do">관광지</a></li>
 								<li class="main_nav_item"><a href="accom.do">숙박</a></li>
 								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a href="list.do">contact</a></li>
 						</c:if>	
 								
 							</ul>

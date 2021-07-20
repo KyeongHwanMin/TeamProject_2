@@ -22,4 +22,9 @@
 	<select id="myHome" resultType="homeDTO">
  		select * from Home
  	</select>
+ 	
+ 	
+ 	<select id="homeLoca" resultType="homeDTO">
+ 		select * from Home where home_local = #{home_local}
+ 	</select>
   </mapper>
