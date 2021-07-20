@@ -2,5 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<jsp:useBean id="article" scope="page" class="userpage.board.otoDTO" />
+<jsp:setProperty name="article" property="*"/>
 
-<c:redirect url="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do" />
+<c:redirect url="/jejuguseok/list.do" />

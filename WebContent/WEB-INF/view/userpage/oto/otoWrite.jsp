@@ -41,7 +41,7 @@
 <center>
 	<b>문의내용</b> <br>
 	<form method="post" name="writeform"
-		action="/jejuguseok/WEB-INF/view/userpage/oto/otoWritePro.do"
+		action="/jejuguseok/writePro.do"
 		onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="${num}"> <input
 			type="hidden" name="ref" value="${ref}"> <input type="hidden"

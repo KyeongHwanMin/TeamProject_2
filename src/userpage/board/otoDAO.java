@@ -99,4 +99,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			return "/userpage/oto/otoWrite.jsp";
 		}
 		
+		@RequestMapping("writePro.do")
+		public String insert(Model model, otoDTO dto) {
+		    
+		    dao.selectList("insertArticles");
+			
+		    
+			return "/userpage/oto/otoWritePro.jsp";
+		}
 }

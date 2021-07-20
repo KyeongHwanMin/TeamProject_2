@@ -33,5 +33,10 @@
 		select * from otoboard where num=#{num}
 	</select>
 	
+	<!-- 게시물 작성 -->
+	<select id="insertArticles" resultType="otoDTO">
+		
+	</select>
+	
 	
 </mapper>
