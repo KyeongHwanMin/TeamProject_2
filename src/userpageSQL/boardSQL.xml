@@ -17,7 +17,7 @@
 		num,writer,email,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r
 		from (select
 		num,writer,email,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount
-		from otoboard A,(select otonum from otoboard where writer=?) B where
+		from otoboard A,(select otonum from otoboard where writer=#{id}) B where
 		A.otonum = B.otonum) order by ref asc, re_level asc) order by ref asc,
 		re_level asc ) 
 					<![CDATA[where r >= #{statRow} and r <= #{endRow}]]>
@@ -35,24 +35,23 @@
 	
 	<!-- max(num) 뽑기 -->
 	<select id="maxnum" resultType="otoDTO">
-		select max#{num} from otoboard
+		select max(num) from otoboard
 	</select>
 	
 	<!-- 업데이트 -->
-	<select id="update" resultType="otoDTO">
-		update otoboard set re_step=re_step+1 where ref=#{ref} and re_step> #{re_step}
-	</select>
+	<insert id="insertArticles" parameterType="otoDTO">
+		insert into otoboard(num,writer,email,ph,subject,passwd,save,reg_date,
+		ref,re_step,re_level,content,ip,otonum) values(otoboard_seq.NEXTVAL,#{writer},#{email},#{ph},#{subject},#{passwd},#{save},#{reg_date},#{ref},{#re_step},#{re_level},#{content},#{ip},otonum_seq.NEXTVAL)
+	</insert>
 	
 	<!-- 답글시 증가 -->
-	<select id="update2" resultType="otoDTO">
+	<update id="readCountUp" parameterType="otoDTO">
 		update otoboard set re_step=re_step+1 where ref= #{ref} and re_step> #{re_step}
-	</select>
+	</update>
 	
-	<!-- 글쓰기 -->
-	
-	<select id="update3" resultType="otoDTO">
-		insert into otoboard(num,writer,email,ph,subject,passwd,save,reg_date,
-		ref,re_step,re_level,content,ip,otonum) values(otoboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,otonum_seq.NEXTVAL)
+	<!-- user id에 따른 otonum 가져오기 -->
+	<select id="getOtonum" resultType="otoDTO">
+		select count(*) from otoboard A,(select otonum from otoboard where writer=#{id}) B where A.otonum = B.otonum
 	</select>
 	
 </mapper>

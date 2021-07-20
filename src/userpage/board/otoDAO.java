@@ -100,11 +100,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		}
 		
 		@RequestMapping("writePro.do")
-		public String insert(Model model, otoDTO dto) {
+		public String insert(int num, int ref , int re_step , int re_level ,Model model, otoDTO dto) {
 		    
-		    dao.selectList("insertArticles");
+
+		    dao.insert("insertArticles");
+		    
+		    model.addAttribute("num", num);
+			model.addAttribute("ref", ref);
+			model.addAttribute("re_step", re_step);
+			model.addAttribute("re_level", re_level);
+
 			
-		    
 			return "/userpage/oto/otoWritePro.jsp";
 		}
 }

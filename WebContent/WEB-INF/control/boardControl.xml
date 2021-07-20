@@ -17,6 +17,7 @@
     
     <bean id="otoDAO" class="userpage.board.otoDAO" />
     <bean id="otoDTO" class="userpage.board.otoDTO" />
-    	
+    <bean id="otoDAOImpl" class="userpage.board.otoDAOImpl" />
+    
 
 </beans>
