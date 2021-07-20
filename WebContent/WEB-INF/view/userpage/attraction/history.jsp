@@ -84,17 +84,17 @@
 			
 				<div class="col text-center">
 				
-					<h2 class="section_title"><a href="history.do">#역사문화</a></h2>
+					<h4 class="section_title"><a href="history.do">#역사문화</a></h4>
 				</div>
 				<div class="col text-center">
-					<h2 class="section_title"><a href="nature.do">#자연/경치</a></h2>
+					<h2 class="section_title"><a href="nature.do">#자연/경치</a></h4>
 				</div>
 				<div class="col text-center">
-					<h2 class="section_title"><a href="leisure.do">#레저/체험/학습</a></h2>
+					<h4 class="section_title" color="red"><a href="leisure.do">#레저/체험/학습</a></h4>
 				</div>
 				
 				<div class="col text-center">
-					<h2 class="section_title"><a href="healing.do">#휴식/힐링</a></h2>
+					<h4 class="section_title"><a href="healing.do">#휴식/힐링</a></h4>
 				</div>
 				
 			</div>
@@ -123,7 +123,7 @@
 											<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 										</ul>
 									</div>
-									<div class="offers_link"><a href="offers.html">찜하기</a></div>
+									<div class="offers_link"><a href="">찜하기</a></div>
 								</div>
 							</div>
 						</div>
@@ -136,7 +136,6 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="offers_image_container">
-									<!-- Image by https://unsplash.com/@kensuarez -->
 									<div class="offers_image_background" style="background-image:url(images/offer_1.jpg)"></div>
 									<div class="offer_name"><a href="#">성산일출봉</a></div>
 								</div>
@@ -153,7 +152,7 @@
 											<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 										</ul>
 									</div>
-									<div class="offers_link"><a href="offers.html">찜하기</a></div>
+									<div class="offers_link"><a href="">찜하기</a></div>
 								</div>
 							</div>
 						</div>
@@ -166,7 +165,6 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="offers_image_container">
-									<!-- Image by https://unsplash.com/@kensuarez -->
 									<div class="offers_image_background" style="background-image:url(images/offer_1.jpg)"></div>
 									<div class="offer_name"><a href="#">성산일출봉</a></div>
 								</div>
@@ -183,7 +181,7 @@
 											<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 										</ul>
 									</div>
-									<div class="offers_link"><a href="offers.html">찜하기</a></div>
+									<div class="offers_link"><a href="">찜하기</a></div>
 								</div>
 							</div>
 						</div>
@@ -196,7 +194,6 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="offers_image_container">
-									<!-- Image by https://unsplash.com/@kensuarez -->
 									<div class="offers_image_background" style="background-image:url(images/offer_1.jpg)"></div>
 									<div class="offer_name"><a href="#">성산일출봉</a></div>
 								</div>
@@ -213,7 +210,7 @@
 											<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 										</ul>
 									</div>
-									<div class="offers_link"><a href="offers.html">찜하기</a></div>
+									<div class="offers_link"><a href="">찜하기</a></div>
 								</div>
 							</div>
 						</div>
