@@ -33,9 +33,18 @@
 		select * from otoboard where num=#{num}
 	</select>
 	
-	<!-- 게시물 작성 -->
-	<select id="insertArticles" resultType="otoDTO">
-		
+	<!-- max(num) 뽑기 -->
+	<select id="maxnum" resultType="otoDTO">
+		select max#{num} from otoboard
+	</select>
+	
+	<!-- 업데이트 -->
+	<select id="update" resultType="otoDTO">
+		update otoboard set re_step=re_step+1 where ref=#{ref} and re_step> ${re_step}
+	</select>
+	
+	<select id="update" resultType="otoDTO">
+		update otoboard set re_step=re_step+1 where ref= ? and re_step> ?
 	</select>
 	
 	

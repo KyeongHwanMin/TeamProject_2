@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>문의글쓰기</title>
+<title>CONTACT</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -39,7 +39,7 @@
 </c:if>
 
 <center>
-	<b>문의내용</b> <br>
+	<b>CONTACT</b> <br>
 	<form method="post" name="writeform"
 		action="/jejuguseok/writePro.do"
 		onsubmit="return writeSave()">
@@ -73,8 +73,9 @@
 			</tr>
 			<tr>
 				<td width="70" align="center">Email</td>
-				<td width="330"><input type="text" size="40" maxlength="30"
-					name="email"></td>
+				<td width="330">${email}<input type="hidden"name="email"
+				name="email" value="${email}">
+				</td>
 			</tr>
 			<tr>
 				<td width="70" align="center">휴대폰번호</td>
