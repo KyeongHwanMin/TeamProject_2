@@ -31,4 +31,9 @@
 	<select id="searchAttraction" resultType="attractionDTO">
  		select * from attraction
  	</select>
+ 	
+	<select id="getAttractionList" resultType="attractionDTO">
+ 		select * from attraction
+ 	</select>
+ 	
   </mapper>

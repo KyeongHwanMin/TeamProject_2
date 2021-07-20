@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,16 +32,22 @@ public class attractionBean {
 //	1. 관광지 검색 (지역, 카테고리로 검색) 	
 	@RequestMapping("attractionSearchForm.do")
 	public String SearchForm() {
-
+		
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
 
 	@RequestMapping("attractionSearchPro.do")
-	public String SearchPro(String place_local, String place_category) {
+	public String SearchPro(attractionDTO dto) {
+		ArrayList<attractionDTO>list;
+
+		attractionDTO dto1 = new attractionDTO();
+		dto1.getPlace_name();
+
 		
-		System.out.println("지역:"+ place_local);
-		System.out.println("카테고리"+ place_category);
+
+		System.out.println("지역: "+dto1.getPlace_local());
+		System.out.println("카테고리: "+dto1.getPlace_category());		
 		return "/userpage/attraction/attractionSearchPro.jsp";
 	}
 
