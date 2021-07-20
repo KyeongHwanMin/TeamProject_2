@@ -81,7 +81,7 @@
 
 		<!-- 아래는 본인들의 내용 작성하기 -->
 
-		<div id="map" style="width: ; height: 87vh;"></div>
+		<div id="map" style="width: 1485; height: 87vh;"></div>
 
 		<script
 			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
@@ -166,32 +166,33 @@ function makeOverListener(map, marker, infowindow) {
  
  
 <br><br>
- <c:forEach var="dayCnt" begin="1" end="${day}" step="1">
- <button type="button" class="btn btn btn-danger" name="day_btn${dayCnt}" id="day_btn${ dayCnt}" onclick="location.reload()">  ${ dayCnt}일차  </button>
- 
+ <c:forEach var="dayCnt" begin="1" end="${day}" step="1" varStatus="status">
+ <button type="button" class="btn btn btn-danger" onclick="location.reload()">  ${status.count}일차  </button>
+  </c:forEach>
 
  
- <form name="sccedule_card${dayCnt}" action="" method="post">
+ <form name="sccedule_card" action="" method="post">
   <div class="form-group">
   <label for="exampleFormControlText">장소</label>
-  <input class="form-control form-control-lg" type="text" name="p_place${ dayCnt}" id="p_place${ dayCnt}" readonly style="background-color:#FFFFF0" placeholder="지도에서 일정 추가 버튼 누르기">
+  <input class="form-control form-control-lg" type="text" name="p_place" id="p_place" readonly style="background-color:#FFFFF0" placeholder="지도에서 일정 추가 버튼 누르기">
   </div>
  
   <div class="form-group">
     <label for="exampleFormControlTextarea1">메모</label>
-    <textarea class="form-control" name="p_context${ dayCnt}" id="p_context${ dayCnt}" rows="3"></textarea>
+    <textarea class="form-control" name="p_context" id="p_context" rows="3"></textarea>
   </div>
 
-  <button type="button" class="btn btn-warning" id="create${ dayCnt}" name="create${ dayCnt}"   value="create" onclick="create(${ dayCnt})" >  일정 넣기 </button> 
+  <button type="button" class="btn btn-warning"  value="create" onclick="create()" >  일정 넣기 </button> 
   
 
+ 
+
+   
   </form>
   <form action="sccedule_card.do" name="sccedule_card2" method="post">
- <div  id="field${ dayCnt}">${ dayCnt}</div><br><br>
+ <div  id="field"></div><br><br>
  <input type="submit" class="btn btn-info" value="저장"   style="float: right;"> 
- 
    </form>
-    </c:forEach>
    <h1>테스트</h1>
    <h1>${sessionScope.id}</h1>
  </div>
@@ -199,24 +200,11 @@ function makeOverListener(map, marker, infowindow) {
 
 <script type='text/javascript'>
     //  버튼 클릭시 실행 되는 함수 입니다.
-    function create(num) {
+    function create() {
+    	var sccedule_card = document.sccedule_card;
+    	var c_place = sccedule_card.p_place.value;
+    	var c_context = sccedule_card.p_context.value;
     	
-    	var sccedule_card = 'document.sccedule_card'+num;    	  	
-    	//var c_place = sccedule_card.p_place+num.value;  	
-    	console.log(typeof(sccedule_card));
-    	console.log(sccedule_card);
-    	  
-    	var c_place = sccedule_card.p_place+num;  	
-    	console.log(typeof(c_context));
-    	console.log(c_context);
-    	
-    	var c_context = sccedule_card.p_contex+num;  	
-    	//var c_context =  'document.sccedule_card'+num+'.p_contex'+num+'.value';
-    	console.log(typeof(c_context));
-    	console.log(c_context);
-    	// c_context = c_context.value;
-    	//console.log(typeof(c_context));
-     //	console.log(c_context);
         var addDiv = document.createElement('div');
         
         addDiv.innerHTML =  '<div id="card" class="card">'+
@@ -224,8 +212,8 @@ function makeOverListener(map, marker, infowindow) {
         ' <textarea class="form-control" name="c_context" id="c_context" rows="6">'+c_context+'</textarea></div>'+
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this)" />';   
         
-        document.getElementById('field'+num).appendChild(addDiv);
-        
+        document.getElementById('field').appendChild(addDiv);
+      
    } 
     function remove_div(obj){
     	document.getElementById('field').removeChild(obj.parentNode);

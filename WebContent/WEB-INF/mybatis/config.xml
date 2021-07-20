@@ -7,7 +7,7 @@
 	<typeAliases> <!--  자주 사용하는 DTO 를 이렇게 적어두는 방법 -->
 	  <typeAlias type="userpage.main.userDTO" alias="userDTO" />
 	  <typeAlias type="jejuguseok.map.mapDTO" alias="mapDTO" />
-	  <typeAlias type="userpage.board.otoDTO" alias="otoDTO" />
+	  
 	  <typeAlias type="jejuguseok_map.attractionDTO" alias="attractionDTO" />
 	  <typeAlias type="jejuguseok_map.homeDTO" alias="homeDTO" />
 	  <typeAlias type="jejuguseok.map.scheduleDTO" alias="scheduleDTO" />
@@ -32,7 +32,7 @@
 		
 		<mapper resource="/adminSQL/adminSQL.xml"/>
 		
-		<mapper resource="/userpageSQL/boardSQL.xml"/>
+	
 		
 		<mapper resource="/mapsql/scheduleSQL.xml"/>
 	</mappers>

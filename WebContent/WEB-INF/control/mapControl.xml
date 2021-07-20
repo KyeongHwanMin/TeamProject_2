@@ -13,11 +13,9 @@
 	  <context:component-scan base-package="jejuguseok_map" />
 	
 	<!-- 객체 생성 -->
-	<bean id="mapdto" class="jejuguseok.map.mapDTO">
-		
-	</bean>
-	<bean id="mapdao" class="jejuguseok.map.mapDAO">
-	</bean>
+	<bean id="mapdto" class="jejuguseok.map.mapDTO">	</bean>
+	<bean id="mapdao" class="jejuguseok.map.mapDAO"></bean>
+	<bean id="scheduleDTO" class="jejuguseok.map.scheduleDTO"></bean>
 	
 	 <bean id="attractionDTO" class="jejuguseok_map.attractionDTO" ></bean>
 	 <bean id="homeDTO" class="jejuguseok_map.homeDTO" ></bean>

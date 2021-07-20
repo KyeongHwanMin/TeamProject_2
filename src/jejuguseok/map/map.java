@@ -25,17 +25,21 @@ public class map {
 	@Autowired
 	private mapDAO mapdao = null;
 	@Autowired
+	private scheduleDTO scheduleDTO = null;
+	@Autowired
 	private SqlSessionTemplate dao = null;
 
 
 
 	@RequestMapping("map.do")
-	public String map(Model model) {
+	public String map(Model model , HttpSession session) {
 		
 		List maplist = dao.selectList("map.location");
 		List maptourlist = dao.selectList("map.tour");
 		model.addAttribute("maplist", maplist);
 		model.addAttribute("maptourlist", maptourlist);
+		String id = (String) session.getAttribute("user_id");
+		System.out.println("id0 "+id);
 		return "/map/map.jsp";
 	}
 	@RequestMapping("schedule.do")
@@ -51,6 +55,7 @@ public class map {
 		model.addAttribute("maptourlist", maptourlist);
 		
 		String id = (String) session.getAttribute("user_id");
+		System.out.println("id1 "+id);
 		session.setAttribute("id", id);
 		
 		model.addAttribute("date",date);
@@ -64,11 +69,22 @@ public class map {
 		scheduledto.setId(id);
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
-
+		System.out.println(date);
+		System.out.println(day);
+		System.out.println("id "+id);
+		System.out.println(with);
+		System.out.println(travel);
 		dao.insert("schedule.insertsc" ,scheduledto);
 		return "/map/schedule_pro.jsp";
 	}
-
+	@RequestMapping("sccedule_card.do")
+	public String schedule_card(String c_place, String c_context, Model model) {
+		System.out.println("c_place=="+c_place);
+		System.out.println("c_context=="+c_context);
+		model.addAttribute("c_place",c_place);
+		model.addAttribute("c_context",c_context);
+		return "/map/schedule2.jsp";
+	}
 	@RequestMapping("mapPro.do")
 	public String map2(String name, int age, mapDTO mapdto, HttpServletRequest request) {
 		System.out.println(name);
