@@ -71,6 +71,7 @@
 
 <body>
 
+
 <div class="fheader">
 <%@ include file="/WEB-INF/view/userpage/header.jsp"%>
 </div>
@@ -166,12 +167,11 @@ function makeOverListener(map, marker, infowindow) {
  
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${day}" step="1" varStatus="status">
- <button type="button" class="btn btn btn-danger" data-toggle="collapse" data-target="#collapseExample">  ${status.count}일차  </button>
+ <button type="button" class="btn btn btn-danger" onclick="next()">  ${status.count}일차  </button>
   </c:forEach>
- <div class="collapse" id="collapseExample"> <br/>
 
-
-<form name="sccedule_card" action="" method="post">
+ 
+ <form name="sccedule_card" action="" method="post">
   <div class="form-group">
   <label for="exampleFormControlText">장소</label>
   <input class="form-control form-control-lg" type="text" name="p_place" id="p_place" readonly style="background-color:#FFFFF0" placeholder="지도에서 일정 추가 버튼 누르기">
@@ -187,13 +187,14 @@ function makeOverListener(map, marker, infowindow) {
 
   </form>
   
- <div id="field">"field${dayCnt}"</div>
+ <div  id="field"></div>
  
- 
- </div> <!-- collapse 종료 -->
  <br><br>
 
    <input type="submit" class="btn btn-info"   style="float: right;"> 
+   
+   <h1>테스트</h1>
+   <h1>${sessionScope.id}</h1>
  </div>
 
 
@@ -213,11 +214,19 @@ function makeOverListener(map, marker, infowindow) {
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this)" />';   
         
         document.getElementById('field').appendChild(addDiv);
-       
+      
    } 
     function remove_div(obj){
     	document.getElementById('field').removeChild(obj.parentNode);
     	}
+    function next(){
+    	var id = '<%=(String)session.getAttribute("id")%>';
+    	
+    	 if(id!="null"){ 
+             alert(id);
+          }
+    	window.location.href = "schedule_pro.do"
+    }
 </script>
 
 

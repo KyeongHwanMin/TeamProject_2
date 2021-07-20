@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //http://localhost:8080/jejuguseok/main.do
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jejuguseok_map.ItemDTO;
+
 
 // 컨트롤러에서 보낸걸 받아줌
 @Controller
@@ -51,7 +51,8 @@ public class map {
 		model.addAttribute("maptourlist", maptourlist);
 		
 		String id = (String) session.getAttribute("user_id");
-	
+		session.setAttribute("id", id);
+		
 		model.addAttribute("date",date);
 		model.addAttribute("day",day);
 		model.addAttribute("with",with);
