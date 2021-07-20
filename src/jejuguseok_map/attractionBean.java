@@ -27,45 +27,31 @@ public class attractionBean {
 	private SqlSessionTemplate dao =null;
 	
 	
-	@Autowired
-//	1. 관광지: 역사문화
-	@RequestMapping("history.do")
-	public String history() {
+//	1. 관광지 검색 (지역, 카테고리로 검색) 	
+	@RequestMapping("attractionSearchForm.do")
+	public String SearchForm() {
 
-		return "/userpage/attraction/history.jsp";
-	}
-
-//	2. 관광지: 자연경치
-	@RequestMapping("nature.do")
-	public String nature() {
-
-		return "/userpage/attraction/nature.jsp";
-
-	}
-
-//	3. 관광지: 레저체험학습
-	@RequestMapping("leisure.do")
-	public String leisure() {
-
-		return "/userpage/attraction/leisure.jsp";
-	}
-
-//	4. 관광지: 휴식힐링
-	@RequestMapping("healing.do")
-	public String healing() {
-
-		return "/userpage/attraction/healing.jsp";
+		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-//	관광지 이미지파일 저장 및 DB 업로드
+
+	@RequestMapping("attractionSearchPro.do")
+	public String SearchPro(String place_local, String place_category) {
+		
+		System.out.println("지역:"+ place_local);
+		System.out.println("카테고리"+ place_category);
+		return "/userpage/attraction/attractionSearchPro.jsp";
+	}
+
+//	2. 관광지 이미지파일 저장 및 DB 업로드
 	
 	@RequestMapping("attractionForm.do")
 	public String uploadForm() {
 
-		return "/userpage/attraction/attractionForm.jsp"; 
+		return "/adminpage/upload/attractionForm.jsp"; 
 	}
 	@RequestMapping("attractionPro.do")
-	public String pro(String place_name, String place_address, String place_content, String place_category,
+	public String pro(String place_name, String place_address, String place_content, String place_local, String place_category,
 			MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
@@ -85,13 +71,16 @@ public class attractionBean {
 		itemdto.setPlace_name(place_name);
 		itemdto.setPlace_address(place_address);
 		itemdto.setPlace_content(place_content);
-		itemdto.setPlace_category(place_category);		
+		itemdto.setPlace_category(place_category);	
+		itemdto.setPlace_local(place_local);
 		itemdto.setPlace_img(place_img);
 		
 		dao.insert("item.insertAttraction",itemdto);
 		System.out.println(f);
-		return "/userpage/attraction/attractionPro.jsp";
+		return "/adminpage/upload/attractionPro.jsp";
 	}
+
+	
 //	찜한 관광지 노출 (mypage에서) 	
 	@RequestMapping("myAttraction.do")
 	public String myAttraction(String place_name, String place_address, String place_category) {

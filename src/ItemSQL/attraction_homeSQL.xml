@@ -6,8 +6,8 @@
   
   <mapper namespace="item">
   	<insert id="insertAttraction" parameterType="attractionDTO">
-		insert into attraction(place_no, place_name, place_address, place_content, place_category, place_img)
-  values (place_no.nextval,#{place_name},#{place_address},#{place_content},#{place_category},#{place_img})
+		insert into attraction(place_no, place_name, place_address, place_content, place_category,place_local, place_img)
+  values (place_no.nextval,#{place_name},#{place_address},#{place_content},#{place_category},#{place_local}, #{place_img})
 	</insert>
 	
   	<insert id="insertHome" parameterType="homeDTO">
@@ -26,5 +26,9 @@
  	
  	<select id="homeLoca" resultType="homeDTO">
  		select * from Home where home_local = #{home_local}
+ 	</select>
+ 	
+	<select id="searchAttraction" resultType="attractionDTO">
+ 		select * from attraction
  	</select>
   </mapper>

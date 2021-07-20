@@ -19,6 +19,10 @@
 <link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 </head>
 
@@ -80,24 +84,7 @@
 
 	<div class="offers">
 		<div class="container">
-			<div class="row">
-			
-				<div class="col text-center">
-				
-					<h4 class="section_title"><a href="history.do">#역사문화</a></h4>
-				</div>
-				<div class="col text-center">
-					<h2 class="section_title"><a href="nature.do">#자연/경치</a></h4>
-				</div>
-				<div class="col text-center">
-					<h4 class="section_title" color="red"><a href="leisure.do">#레저/체험/학습</a></h4>
-				</div>
-				
-				<div class="col text-center">
-					<h4 class="section_title"><a href="healing.do">#휴식/힐링</a></h4>
-				</div>
-				
-			</div>
+
 			<div class="row offers_items">
 
 				<!-- Offers Item -->
@@ -113,8 +100,8 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="offers_content">
-									<div class="offers_price"><h4>제주 서귀포시 성산읍 성산리 1</h4></div>
-									<p class="offers_text">그 탄생의 비밀] 푸른 바다 사이에 우뚝 솟은 성채와 같은 모양, 봉우리 정상에 있는 거대한 사발 모양의 분화구, 그리고 그 위에서 맞이하는 일출의 장관 때문에 성산일출봉은 많은 사람들의 감흥과 탄성을 자아낸다. </p>
+									<div class="offers_price"><h4>제주특별자치도 서귀포시 성산읍 신천리 114</h4></div>
+									<p class="offers_text">성산일출봉은 제주도의 다른 오름들과는 달리 마그마가 물속에서 분출하면서 만들어진 수성화산체다.  </p>
 									<div class="offers_icons">
 										<ul class="offers_icons_list">
 											<li class="offers_icons_item"><img src="images/post.png" alt=""></li>

@@ -7,6 +7,7 @@ public class attractionDTO {
 	private String place_address;
 	private String place_content;
 	private String place_category;
+	private String place_local;
 	private String place_img;
 	public int getPlace_no() {
 		return place_no;
@@ -38,12 +39,19 @@ public class attractionDTO {
 	public void setPlace_category(String place_category) {
 		this.place_category = place_category;
 	}
+	public String getPlace_local() {
+		return place_local;
+	}
+	public void setPlace_local(String place_local) {
+		this.place_local = place_local;
+	}
 	public String getPlace_img() {
 		return place_img;
 	}
 	public void setPlace_img(String place_img) {
 		this.place_img = place_img;
 	}
-
+	
+	
 	
 }
