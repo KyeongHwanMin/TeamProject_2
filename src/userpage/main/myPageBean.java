@@ -69,4 +69,7 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	
 	
 	
+	
+	
+	
 }

@@ -50,13 +50,13 @@
  
  <div class="button book_buttonn"><a href="accom.do">전체 지역</a></div> 
  
- <div class="button book_buttonn"><a href="accom.do?search=1">제주시</a></div>
- <div class="button book_buttonn"><a href="accom.do?search=2">서귀포시</a></div>
- <div class="button book_buttonn"><a href="#">중문</a></div>
- <div class="button book_buttonn"><a href="#">제주국제공항</a></div>
- <div class="button book_buttonn"><a href="#">애월/한림/협재</a></div>
- <div class="button book_buttonn"><a href="#">표선/상산</a></div>
- <div class="button book_buttonn"><a href="#">함덕/김녕/세화</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=1">제주시</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=2">서귀포시</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=3">중문</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=4">제주국제공항</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=5">애월/한림/협재</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=6">표선/성산</a></div>
+ <div class="button book_buttonn"><a href="accomLocal.do?search=7">함덕/김녕/세화</a></div>
  
   
   
@@ -102,9 +102,8 @@
 
 						<!-- Offers Item -->
 
-					<c:forEach var="homeDTO" items="${list4}">
-						
-						<div class="offers_item ${homeDTO.home_type}"> <!-- ${guesthouse}  -->
+					<c:forEach var="homeDTO" items="${slist}">
+						<div class="offers_item ${homeDTO.home_type}"> 
 						  
 							<div class="row">
 								<div class="col-lg-1 temp_col"></div>
