@@ -78,12 +78,27 @@ public class map {
 		return "/map/schedule_pro.jsp";
 	}
 	@RequestMapping("sccedule_card.do")
-	public String schedule_card(String id,String c_place1, String c_context1, Model model) {
-		System.out.println("id=="+id);
-		System.out.println("c_place=="+c_place1);
-		System.out.println("c_context=="+c_context1);
-		model.addAttribute("c_place",c_place1);
-		model.addAttribute("c_context",c_context1);
+	public String schedule_card(String c_place1,String c_place2,String c_place3,String c_place4,String h_place1,String h_context1,String h_place2,String h_context2,String h_place3,String h_context3,
+			String h_place4,String h_context4,String h_place5,String h_context5,String h_place6,String h_context6,HttpServletRequest request , Model model) {
+		System.out.println("c_place1=="+c_place1);
+		System.out.println("c_place2=="+c_place2);
+		System.out.println("c_place4=="+c_place3);
+		System.out.println("c_place3=="+c_place4);
+		
+		/*
+		System.out.println("h_place1"+h_place1);
+		System.out.println("h_context1"+h_context1);
+		System.out.println("h_place2"+h_place2);
+		System.out.println("h_context2"+h_context2);
+		System.out.println("h_place3"+h_place3);
+		System.out.println("h_context3"+h_context3);
+		System.out.println("h_place4"+h_place4);
+		System.out.println("h_context4"+h_context4);
+		System.out.println("h_place5"+h_place5);
+		System.out.println("h_context5"+h_context5);
+		System.out.println("h_place6"+h_place6);
+		System.out.println("h_context6"+h_context6);*/
+		
 		return "/map/schedule2.jsp";
 	}
 	@RequestMapping("mapPro.do")

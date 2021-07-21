@@ -81,7 +81,7 @@
 
 		<!-- 아래는 본인들의 내용 작성하기 -->
 
-		<div id="map" style="width: ; height: 87vh;"></div>
+		<div id="map" style="width:98% ; height: 87vh;"></div>
 
 		<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
 		<script>
@@ -123,7 +123,7 @@
         ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
         ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
         ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
         ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
 	    
 	    
@@ -165,6 +165,7 @@ function makeOverListener(map, marker, infowindow) {
 <input type="text" name="travel"  id="travel" value="${travel }"size="45">
  
 
+</script>
 </div>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${day}" step="1">
@@ -186,79 +187,135 @@ function makeOverListener(map, marker, infowindow) {
   <button type="button" class="btn btn-danger" id="create${dayCnt}" name="create${ dayCnt}"   value="create" onclick="create(${ dayCnt})" >  일정 넣기 </button> 
   </form>
   
-  <form action="sccedule_card.do" name="day_card" method="post">
-	 <div id="field${ dayCnt}">${ dayCnt}</div><br><br>
-	 <input type="submit" class="btn btn-info" id="save${dayCnt}" value="저장"   style="float: right;"> 
+  <form name="day_card"  method="post" action="sccedule_card.do">
+	 <div id="field${dayCnt}" style="border: 5pt groove #3f51b5"></div><br>
    </form>
-   
    </div>
    
     </c:forEach>
-    
-   <h1>테스트</h1>
-   <h1>${sessionScope.id}</h1>
+    <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="send1()" style="float: right" >  send1 </button>
+   <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="send()" style="float: right" >  저장2 </button>
+  <script>
+  function send1(){
+	  if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
+  		alert("1일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
+  		alert("2일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
+  		alert("3일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
+  		alert("4일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
+  		alert("5일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
+  		alert("6일차 장소를 선택하세요. ");
+  		return false;
+  	}else if(document.getElementById("p_place2") == null ){
+  		document.day_card.submit();
+	}else if(document.getElementById("p_place3") == null ){
+  		document.day_card.submit();
+	}
+  	else{
+	  alert("에러");
+		}
+	 
+  }
+  </script>
+<form name="card_test"  method="post" action="sccedule_card.do" >
+<textarea class="form-control" name="h_place1" id="h_place1" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context1" id="h_context1" rows="2"  ></textarea>
+<textarea class="form-control" name="h_place2" id="h_place2" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context2" id="h_context2" rows="2"  ></textarea>
+<textarea class="form-control" name="h_place3" id="h_place3" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context3" id="h_context3" rows="2"  ></textarea>
+<textarea class="form-control" name="h_place4" id="h_place4" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context4" id="h_context4" rows="2"  ></textarea>
+<textarea class="form-control" name="h_place5" id="h_place5" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context5" id="h_context5" rows="2"  ></textarea>
+<textarea class="form-control" name="h_place6" id="h_place6" rows="1"  ></textarea>
+<textarea class="form-control" name="h_context6" id="h_context6" rows="2"  ></textarea>
+</form>
  </div>
 
 
 <script type='text/javascript'>
     //  버튼 클릭시 실행 되는 함수 입니다.
+    function send(){   	
+    	if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
+    		alert("1일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
+    		alert("2일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
+    		alert("3일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
+    		alert("4일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
+    		alert("5일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
+    		alert("6일차 장소를 선택하세요. ");
+    		return false;
+    	}else if(document.getElementById("p_place2") == null ){
+    		var a = document.getElementById("c_place1").value;
+    		alert(a);
+    		 document.getElementById("h_place1").value = a;
+    		
+    		alert(a);
+    		alert(typeof(a));
+    		//document.getElementById("h_place1").value = document.getElementById("c_place1").value;
+    		//document.getElementById("h_context1").value = document.getElementById("c_context1").value;
+    		//document.card_test.h_place1.value = document.day_card1.c_place1.value;
+    		//document.card_test.h_context1.value = document.day_card1.c_context1.value;
+    		//document.card_test.submit();   
+    	}else if(document.getElementById("p_place3") == null){
+    		document.getElementById("h_place1").value = document.getElementById("c_place1").value;
+    		document.getElementById("h_context1").value = document.getElementById("p_context1").value;
+    		document.getElementById("h_place2").value = document.getElementById("p_place2").value;
+    		document.getElementById("h_place2").value = document.getElementById("p_place2").value;
+    		document.card_test.submit();  
+    	}
+    	else {
+			alert("에러");
+    		//document.card_test.submit();    		
+    	}
+    		
+    		
+    	
+    }
+    
     function create(num) {
     	
-    	if(num == 1){
-    		var sccedule_card = document.sccedule_card1;
-    		console.log(typeof(sccedule_card));
-    		console.log(sccedule_card);
-        	var c_place = sccedule_card1.p_place1.value;
-        	var c_context = sccedule_card1.p_context1.value;
-        	console.log(c_context);
-    	}
-    	if(num == 2){
-    		var sccedule_card = document.sccedule_card2;   	
-    		console.log(typeof(sccedule_card2));
-    		console.log(sccedule_card2);
-        	var c_place = sccedule_card2.p_place2.value;
-        	var c_context = sccedule_card2.p_context2.value;
-        	console.log(c_context);
-    	}
-    	if(num == 3){
-    		var sccedule_card = document.sccedule_card3;  
-    		console.log(typeof(sccedule_card));
-    		console.log(sccedule_card);
-        	var c_place = sccedule_card3.p_place3.value;
-        	var c_context = sccedule_card3.p_context3.value;
-        	console.log(c_context);
-    	}
-    	if(num == 4){
-    		var sccedule_card = document.sccedule_card4; 
-    		console.log(typeof(sccedule_card));
-        	var c_place = sccedule_card4.p_place4.value;
-        	var c_context = sccedule_card4.p_context4.value;
-        	
-    	}
-    	if(num == 5){
-    		var sccedule_card = document.sccedule_card5; 
-    		console.log(typeof(sccedule_card));
-        	var c_place = sccedule_card5.p_place5.value;
-        	var c_context = sccedule_card5.p_context5.value;
-        	
-    	}
-    	if(num == 6){
-    		var sccedule_card = document.sccedule_card6;  
-    		console.log(typeof(sccedule_card));
-        	var c_place = sccedule_card6.p_place6.value;
-        	var c_context = sccedule_card6.p_context6.value;
-        	
-    	}
-    	if(num == 7){
-    		var sccedule_card = document.sccedule_card7;   		
-        	var c_place = sccedule_card7.p_place7.value;
-        	var c_context = sccedule_card7.p_context7.value;
-        	
-    	}
-    	    	  	
-    	
-    	
-    	
+    	if(num == 1){    		 		
+        	var c_place = document.sccedule_card1.p_place1.value;
+        	var c_context = document.sccedule_card1.p_context1.value; }
+    	if(num == 2){		
+        	var c_place = document.sccedule_card2.p_place2.value;
+        	var c_context = document.sccedule_card2.p_context2.value; }
+    	if(num == 3){     		
+        	var c_place = document.sccedule_card3.p_place3.value;
+        	var c_context = document.sccedule_card3.p_context3.value;    	}
+    	if(num == 4){		
+        	var c_place = document.sccedule_card4.p_place4.value;
+        	var c_context = document.sccedule_card4.p_context4.value;}
+    	if(num == 5){ 		
+        	var c_place = document.sccedule_card5.p_place5.value;
+        	var c_context = document.sccedule_card5.p_context5.value;	}
+    	if(num == 6){    		
+        	var c_place = document.sccedule_card6.p_place6.value;
+        	var c_context = document.sccedule_card6.p_context6.value;}
+    	if(num == 7){   		
+        	var c_place = document.sccedule_card7.p_place7.value;
+        	var c_context = document.sccedule_card7.p_context7.value;	}
+	
         var addDiv = document.createElement('div');
         
         addDiv.innerHTML =  '<div id="card'+num+'" name="card'+num+'" class="card">'+
@@ -267,11 +324,10 @@ function makeOverListener(map, marker, infowindow) {
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this,'+num+')" />';   
         
         document.getElementById('field'+num).appendChild(addDiv);
-        console.log('field'+num);
+        
    } 
     function remove_div(obj,num){
-    	console.log(obj);
-    	console.log(num);
+    	
     	document.getElementById('field'+num).removeChild(obj.parentNode);
     	}
     

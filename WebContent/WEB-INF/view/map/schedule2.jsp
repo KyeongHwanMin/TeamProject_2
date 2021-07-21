@@ -10,8 +10,8 @@
 </head>
 <body >
     <h1>카드</h1>
-    <h1>c_place==${c_place}</h1>
-    <h1>${c_context}</h1>
+    <h1>h_place1==${h_place1}</h1>
+    <h1>h_context1==${h_context1}</h1>
 
 </body>
 </html>
