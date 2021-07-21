@@ -32,8 +32,8 @@
  		select * from attraction
  	</select>
  	
-	<select id="getAttractionList" resultType="attractionDTO">
- 		select * from attraction
+	<select id="getAttractionList" resultType="attractionDTO" parameterType="attractionDTO">
+ 		select * from attraction where place_local=#{jejusi} and place_category=#{history}
  	</select>
  	
   </mapper>

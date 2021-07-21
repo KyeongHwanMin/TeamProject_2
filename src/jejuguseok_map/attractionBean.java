@@ -2,32 +2,51 @@ package jejuguseok_map;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
+
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-
+import jejuguseok_map.attractionDTO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-/*http:/localhost:8080/jejuguseok/history.do
+/*
  * 관광지 Bean: 역사문화, 자연경치, 레저체험학습, 휴식힐링
  */
 @Controller
 public class attractionBean {
 
+	private Connection getConnection() throws Exception{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String user="final05";
+		String pass="final";
+		String url="jdbc:oracle:thin:@masternull.iptime.org:1521:orcl";
+		return DriverManager.getConnection(url,user, pass);
+	}	
+	
 	@Autowired
 	private SqlSessionTemplate dao =null;
-	
+
 	
 //	1. 관광지 검색 (지역, 카테고리로 검색) 	
 	@RequestMapping("attractionSearchForm.do")
@@ -36,20 +55,24 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-
+	// DB 저장된 정보 불러오기 (ID값) 
 	@RequestMapping("attractionSearchPro.do")
-	public String SearchPro(attractionDTO dto) {
-		ArrayList<attractionDTO>list;
-
-		attractionDTO dto1 = new attractionDTO();
-		dto1.getPlace_name();
-
+	public String attractionSearchPro(String place_local, String place_category, Model model) throws IOException {
 		
-
-		System.out.println("지역: "+dto1.getPlace_local());
-		System.out.println("카테고리: "+dto1.getPlace_category());		
-		return "/userpage/attraction/attractionSearchPro.jsp";
+		attractionDTO dto = new attractionDTO();
+		dto.setPlace_local(place_local);
+		dto.setPlace_category(place_category);
+		
+		System.out.println(dto.getPlace_category());
+		System.out.println(dto.getPlace_local());
+		
+		List list = dao.selectList("item.getAttractionList", dto); //불러오기 
+		
+		model.addAttribute("list", list); //출력하기
+		
+	 return "/userpage/attraction/attractionSearchPro.jsp";
 	}
+	
 
 //	2. 관광지 이미지파일 저장 및 DB 업로드
 	

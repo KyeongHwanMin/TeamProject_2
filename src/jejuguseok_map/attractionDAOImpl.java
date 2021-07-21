@@ -1,5 +1,11 @@
 package jejuguseok_map;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,13 +27,21 @@ public class attractionDAOImpl implements attractionDAOInter {
 	
 // 	관광지DB 불러오기 
 	@Override
-	public void getList(attractionDTO dto) throws Exception{
-		attractionDTO dto1 = attractionDAO.selectOne("item.getAttractionList",dto);
-	}
+	public List getAttraction(int start, int end, String place_name, String place_address, String place_category, String Place_local,
+		String place_no) throws Exception {
+		
+		
+		
+	return null;
+}	
+
+
 	
 //	찜한 관광지 리스트(mypage에서 조회)
 	@Override
 	public void myAttraction(attractionDTO dto) throws Exception {
 	}
+
+
 }
 

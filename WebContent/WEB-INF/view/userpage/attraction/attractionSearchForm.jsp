@@ -80,24 +80,24 @@
             </div>
             <ul>
               <li>
-                <input type="radio" id="histroy" value="histroy" name="place_category">
+                <input type="radio" id="place_category" value="histroy" name="place_category">
                 <label for="place_histroy" >역사/문화</label>
                 <div class="check"></div>
               </li>
               
               <li>
-                <input type="radio" id="nature" value="nature" name="place_category">
+                <input type="radio" id="place_category" value="nature" name="place_category">
                 <label for="place_nature" >자연/경치</label>
                 <div class="check"></div>
               </li>
               
               <li>
-                <input type="radio" id="leisure" value="leisure" name="place_category">
+                <input type="radio" id="place_category" value="leisure" name="place_category">
                 <label for="place_leisure" >레저/체험/학습</label>
                 <div class="check"></div>
               </li>
               <li>
-                <input type="radio" id="healing" value="healing" name="place_category">
+                <input type="radio" id="place_category" value="healing" name="place_category">
                 <label for="place_healing" >휴식/힐링</label>
                 <div class="check"></div>
               </li>
@@ -111,38 +111,38 @@
                 </div>
             <ul>
                  <li>
-                <input type="radio" id="jejusi" value="jejusi" name="place_local">
+                <input type="radio" id="place_local" value="jejusi" name="place_local">
                 <label for="jejusi">제주시</label>
                 <div class="check"></div>
               </li>
                  <li>
-                <input type="radio" id="seogwiposi" value="seogwiposi" name="place_local">
+                <input type="radio" id="place_local" value="seogwiposi" name="place_local">
                 <label for="seogwiposi">서귀포시</label>
                 <div class="check"></div>
               </li>
               <li>
-                <input type="radio" id="jungmun" value="jungmun" name="place_local">
+                <input type="radio" id="place_local" value="jungmun" name="place_local">
                 <label for="jungmun">중문</label>
                 <div class="check"></div>
               </li>
               <li>
-                <input type="radio" id="jejuairport" value="jejuairport" name="place_local">
+                <input type="radio" id="place_local" value="jejuairport" name="place_local">
                 <label for="jejuairport">제주국제공항</label>
                 <div class="check"></div>
               </li>
               
               <li>
-                <input type="radio" id="aweol" value="aweol" name="place_local">
+                <input type="radio" id="place_local" value="aweol" name="place_local">
                 <label for="aweol">애월/한림/협재</label>
                 <div class="check"></div>
               </li>
               <li>
-                <input type="radio" id="pyoseon" value="pyoseon" name="place_local">
+                <input type="radio" id="place_local" value="pyoseon" name="place_local">
                 <label for="pyoseon">표선/성산</label>
                 <div class="check"></div>
               </li>     
               <li>
-                <input type="radio" id="hamduk" value="hamduk" name="place_local">
+                <input type="radio" id="place_local" value="hamduk" name="place_local">
                 <label for="hamduk">함덕/김녕/세화</label>
                 <div class="check"></div>
               </li>         
