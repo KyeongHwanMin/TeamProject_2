@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class otoDAOimpl implements otoDAOInter{
+public class otoDAOImpl implements otoDAOInter{
 	
 	@Autowired
 	private SqlSessionTemplate otoDAO = null;

@@ -29,7 +29,7 @@
 		      /WEB-INF/control/userControl.xml
 		      /WEB-INF/control/mapControl.xml
 		       /WEB-INF/control/root-control.xml
-		    
+		      /WEB-INF/control/boardControl.xml
 		    </param-value>
 	  </init-param>
 	</servlet>
