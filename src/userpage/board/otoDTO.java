@@ -6,7 +6,6 @@ public class otoDTO {
 	private int num; 
     private String writer;
     private String subject;
-    private String email;
     private String ph;
     private String content;
     private String passwd;
@@ -27,9 +26,6 @@ public class otoDTO {
     }
     public void setSubject (String subject) {
         this.subject = subject;
-    }
-    public void setEmail (String email) {
-        this.email = email;
     }
     public void setContent (String content) {
         this.content = content;
@@ -67,9 +63,6 @@ public class otoDTO {
     }
     public String getSubject () {
         return subject;
-    }
-    public String getEmail () {
-        return email;
     }
     public String getContent () {
         return content;

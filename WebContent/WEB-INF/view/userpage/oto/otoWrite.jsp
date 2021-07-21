@@ -60,6 +60,12 @@
 					value="${user_id}">
 				</td>
 			</tr>
+						<tr>
+				<td width="70" align="center">Email</td>
+				<td width="330">${userDTO.email}<input type="hidden" name="email"
+				value="${userDTO.email}">
+				</td>
+			</tr>
 			<tr>
 				<td width="70" align="center">제 목</td>
 				<td width="330">
@@ -70,12 +76,6 @@
 					<input type="text" size="40" maxlength="50" name="subject"
 						value="[답변]">
 				</c:if>
-			</tr>
-			<tr>
-				<td width="70" align="center">Email</td>
-				<td width="330">${email}<input type="hidden"name="email"
-				name="email" value="${email}">
-				</td>
 			</tr>
 			<tr>
 				<td width="70" align="center">휴대폰번호</td>

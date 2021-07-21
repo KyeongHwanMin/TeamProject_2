@@ -5,22 +5,18 @@
 <mapper namespace="board">
 
 	<!-- 전체 게시물 카운트 -->
-	<select id="getArticleCount" resultType="int">
-		select count(*) from otoboard
+	<select id="userGetArticleCount" resultType="int" parameterType="String">
+		select count(*) from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum
 	</select>
 
 	<!-- 전체 게시물 조회 -->
-	<select id="getArticles" resultType="otoDTO" parameterType="int">
-		select
-		num,writer,email,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r
-		from (select
-		num,writer,email,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r
-		from (select
-		num,writer,email,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount
-		from otoboard A,(select otonum from otoboard where writer=#{id}) B where
-		A.otonum = B.otonum) order by ref asc, re_level asc) order by ref asc,
-		re_level asc ) 
-					<![CDATA[where r >= #{statRow} and r <= #{endRow}]]>
+	<select id="userGetArticles" resultType="otoDTO" parameterType="HashMap">
+		select num,writer,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r 
+					from (select num,writer,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r 
+					from (select num,writer,ph,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount 
+					from (select * 
+					from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum) order by ref asc, re_level asc) order by ref asc, re_level asc ) 
+					<![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
 	</select>
 
 	<!-- 게시물 조회수 증가 -->

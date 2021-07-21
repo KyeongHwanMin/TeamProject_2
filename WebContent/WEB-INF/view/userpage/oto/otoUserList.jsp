@@ -88,7 +88,7 @@
 									<img src="images/re.gif">
 								</c:if> <c:if test="${article.re_level == 0 }">
 								</c:if> <a
-								href="/jejuguseok/WEB-INF/view/userpage/oto/otoContent.do?num=${article.num}&pageNum=${currentPage}">
+								href="/jejuguseok/content.do?num=${article.num}&pageNum=${currentPage}">
 									${article.subject} </a></td>
 							<td align="center" width="100">${article.writer}</a>
 							</td>
@@ -123,17 +123,17 @@
 
 				<c:if test="${startPage > 10}">
 					<a
-						href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage - 10 }">[이전]</a>
+						href="/jejuguseok/list.do?pageNum=${startPage - 10 }">[이전]</a>
 				</c:if>
 
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<a
-						href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${i}">[${i}]</a>
+						href="/jejuguseok/list.do?pageNum=${i}">[${i}]</a>
 				</c:forEach>
 
 				<c:if test="${endPage < pageCount}">
 					<a
-						href="/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${startPage + 10}">[다음]</a>
+						href="/jejuguseok/list.do?pageNum=${startPage + 10}">[다음]</a>
 				</c:if>
 			</c:if>
 		</center>

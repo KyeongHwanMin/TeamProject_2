@@ -55,11 +55,11 @@
 				<tr height="30">
 					<td colspan="4" align="right"><input type="button"
 						value="문의수정"
-						onclick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoUpdateForm.do?num=${article.num}&pageNum=${pageNum}'">
+						onclick="document.location.href='/jejuguseok/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
 						<input type="button" value="문의삭제"
-						onclick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoDeleteForm.do?num=${article.num}&otonum=${article.otonum}&pagenum=${pageNum}&re_level=${article.re_level}'">
+						onclick="document.location.href='/jejuguseok/deleteForm.do?num=${article.num}&otonum=${article.otonum}&pagenum=${pageNum}&re_level=${article.re_level}'">
 						<input type="button" value="문의목록"
-						onclick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${pageNum}'">
+						onclick="document.location.href='/jejuguseok/list.do?pageNum=${pageNum}'">
 					</td>
 				</tr>
 			</table>

@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import userpage.main.userDTO;
 
 	@Controller
 	public class otoDAO {
@@ -25,11 +28,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		
 		// 리스트 페이지 비교및 파라미터 가져오기 dao 에 있는 getArticles 가져오기
 		@RequestMapping("list.do")
-		public String list(String pageNum, Model model, HttpServletRequest request) {	
+		public String list(String pageNum, Model model, HttpServletRequest request, otoDTO dto, userDTO userdto,  HttpSession session) {	
 	
-			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("memId");
-	
+			String id = (String) session.getAttribute("user_id");
+	        
 			int pageSize = 10;
 	
 			if (pageNum == null) {
@@ -42,14 +44,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			int number=0;
 			List articleList = null;
 			HashMap Row = new HashMap();
-			Row.put("startTow", startRow);
+			Row.put("user_id", id);
+			Row.put("startRow", startRow);
 			Row.put("endRow", endRow);
+			
+			System.out.println("id=" + id);
 	
-			count = dao.selectOne("getArticleCount");
-			if(count > 0) {
-				articleList = dao.selectList("getArticles", Row);
+			count = dao.selectOne("board.userGetArticleCount" , id);
+			if(count > 0) {                         
+				articleList = dao.selectList("board.userGetArticles", Row);
 			}
-	
+			
 			number=count-(currentPage-1)*pageSize;
 	
 			model.addAttribute("currentPage", currentPage);
@@ -60,8 +65,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			model.addAttribute("number", number);
 			model.addAttribute("articleList", articleList);
 			model.addAttribute("pageNum", pageNum);
-	
+			
+
+			
 			return "/userpage/oto/otoUserList.jsp";
+			
 		}
 		
 		
@@ -84,10 +92,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		}
 		
 		@RequestMapping("write.do")
-		public String write(String num, String ref , String re_step , String re_level , Model model, HttpServletRequest request) {
+		public String write(String num, String ref , String re_step , String re_level , Model model, HttpSession session) {
 			
-			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("memId");
+			String id = (String) session.getAttribute("user_id");
 			
 			if( num != null ){
 				model.addAttribute("num", num);
@@ -102,15 +109,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		@RequestMapping("writePro.do")
 		public String insert(int num, int ref , int re_step , int re_level ,Model model, otoDTO dto) {
 		    
-
-		    dao.insert("insertArticles");
-		    
-		    model.addAttribute("num", num);
-			model.addAttribute("ref", ref);
-			model.addAttribute("re_step", re_step);
-			model.addAttribute("re_level", re_level);
-
 			
+		    
+		    
 			return "/userpage/oto/otoWritePro.jsp";
 		}
 }
