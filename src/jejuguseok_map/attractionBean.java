@@ -55,19 +55,23 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-	// DB 저장된 정보 불러오기 (ID값) 
+//	DB 저장된 정보 불러오기 (Form에서 ID값 통일시키기) 
 	@RequestMapping("attractionSearchPro.do")
+//									  		관광지_지역,			관광지 유형	으로 관광지 DB 	매개변수 설정 	
 	public String attractionSearchPro(String place_local, String place_category, Model model) throws IOException {
 		
+//		DTO 객체 생성 후 set으로 저장 
 		attractionDTO dto = new attractionDTO();
 		dto.setPlace_local(place_local);
 		dto.setPlace_category(place_category);
 		
 		System.out.println(dto.getPlace_category());
 		System.out.println(dto.getPlace_local());
-		
-		List list = dao.selectList("item.getAttractionList", dto); //불러오기 
-		
+
+/*		set으로 저장한 DTO를 List 저
+ * 		sql: mapper namespace="item" + id="getAttractionList" + 생성된 dto로 불러오기 
+*/		
+		List list = dao.selectList("item.getAttractionList", dto); 
 		model.addAttribute("list", list); //출력하기
 		
 	 return "/userpage/attraction/attractionSearchPro.jsp";
