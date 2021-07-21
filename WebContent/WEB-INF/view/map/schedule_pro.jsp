@@ -83,8 +83,7 @@
 
 		<div id="map" style="width: ; height: 87vh;"></div>
 
-		<script
-			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
+		<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
 		<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
@@ -120,8 +119,12 @@
         '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
 		'				<div>&nbsp	${maplist.address} </div>' +		
         '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-        ' 				<button type="button" id="${maplist.place}"  class="btn btn-success" onclick="add(this.id)" title="일정추가">일정추가</button>'+
-        '                <div>&nbsp</div>';
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.place}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
 	    
 	    
 	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
@@ -136,10 +139,8 @@
 	</c:forEach>
 	//============================
 // 일정 추가 버튼 메서드
-function add(id) {
-	
-	document.getElementById("p_place").value = id;
-	
+function add(id,n) {	
+	document.getElementById("p_place"+n).value = id;	
 }
 	
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 		
@@ -152,10 +153,9 @@ function makeOverListener(map, marker, infowindow) {
 </div>
 <div class="right">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <div class="container mt-3">
 <input type="text" name="title" id="title" placeholder="계획 제목을 입력하세요."  size="45"><br>
@@ -164,17 +164,18 @@ function makeOverListener(map, marker, infowindow) {
 <input type="text" name="with"  id="with" value="${with }"size="3">
 <input type="text" name="travel"  id="travel" value="${travel }"size="45">
  
- 
+
+</div>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${day}" step="1">
- <button type="button" class="btn btn btn-danger" name="day_btn${dayCnt}" id="day_btn${ dayCnt}" onclick="location.reload()">  ${ dayCnt}일차  </button>
- 
+ <button type="button" class="btn btn-success" name="day_btn${dayCnt}" id="day_btn${dayCnt}" data-toggle="collapse" data-target="#col${dayCnt}">  ${ dayCnt}일차  </button>
 
- 
+<div id="col${dayCnt}" class="collapse in">
+<br/>
  <form name="sccedule_card${dayCnt}" action="" method="post">
   <div class="form-group">
   <label for="exampleFormControlText">장소</label>
-  <input class="form-control form-control-lg" type="text" name="p_place${ dayCnt}" id="p_place${ dayCnt}" readonly style="background-color:#FFFFF0" placeholder="지도에서 일정 추가 버튼 누르기">
+  <input class="form-control form-control-lg" type="text" name="p_place${ dayCnt}" id="p_place${ dayCnt}" readonly style="background-color:#FFFFF0" placeholder='지도에서 "${ dayCnt}일차" 버튼 누르기'>
   </div>
  
   <div class="form-group">
@@ -182,16 +183,18 @@ function makeOverListener(map, marker, infowindow) {
     <textarea class="form-control" name="p_context${ dayCnt}" id="p_context${ dayCnt}" rows="3"></textarea>
   </div>
 
-  <button type="button" class="btn btn-warning" id="create${ dayCnt}" name="create${ dayCnt}"   value="create" onclick="create(${ dayCnt})" >  일정 넣기 </button> 
-  
-
+  <button type="button" class="btn btn-danger" id="create${dayCnt}" name="create${ dayCnt}"   value="create" onclick="create(${ dayCnt})" >  일정 넣기 </button> 
   </form>
-  <form action="sccedule_card.do" name="sccedule_card2" method="post">
- <div  id="field${ dayCnt}">${ dayCnt}</div><br><br>
- <input type="submit" class="btn btn-info" value="저장"   style="float: right;"> 
- 
+  
+  <form action="sccedule_card.do" name="day_card" method="post">
+	 <div id="field${ dayCnt}">${ dayCnt}</div><br><br>
+	 <input type="submit" class="btn btn-info" id="save${dayCnt}" value="저장"   style="float: right;"> 
    </form>
+   
+   </div>
+   
     </c:forEach>
+    
    <h1>테스트</h1>
    <h1>${sessionScope.id}</h1>
  </div>
@@ -201,34 +204,75 @@ function makeOverListener(map, marker, infowindow) {
     //  버튼 클릭시 실행 되는 함수 입니다.
     function create(num) {
     	
-    	var sccedule_card = 'document.sccedule_card'+num;    	  	
-    	//var c_place = sccedule_card.p_place+num.value;  	
-    	console.log(typeof(sccedule_card));
-    	console.log(sccedule_card);
-    	  
-    	var c_place = sccedule_card.p_place+num;  	
-    	console.log(typeof(c_context));
-    	console.log(c_context);
+    	if(num == 1){
+    		var sccedule_card = document.sccedule_card1;
+    		console.log(typeof(sccedule_card));
+    		console.log(sccedule_card);
+        	var c_place = sccedule_card1.p_place1.value;
+        	var c_context = sccedule_card1.p_context1.value;
+        	console.log(c_context);
+    	}
+    	if(num == 2){
+    		var sccedule_card = document.sccedule_card2;   	
+    		console.log(typeof(sccedule_card2));
+    		console.log(sccedule_card2);
+        	var c_place = sccedule_card2.p_place2.value;
+        	var c_context = sccedule_card2.p_context2.value;
+        	console.log(c_context);
+    	}
+    	if(num == 3){
+    		var sccedule_card = document.sccedule_card3;  
+    		console.log(typeof(sccedule_card));
+    		console.log(sccedule_card);
+        	var c_place = sccedule_card3.p_place3.value;
+        	var c_context = sccedule_card3.p_context3.value;
+        	console.log(c_context);
+    	}
+    	if(num == 4){
+    		var sccedule_card = document.sccedule_card4; 
+    		console.log(typeof(sccedule_card));
+        	var c_place = sccedule_card4.p_place4.value;
+        	var c_context = sccedule_card4.p_context4.value;
+        	
+    	}
+    	if(num == 5){
+    		var sccedule_card = document.sccedule_card5; 
+    		console.log(typeof(sccedule_card));
+        	var c_place = sccedule_card5.p_place5.value;
+        	var c_context = sccedule_card5.p_context5.value;
+        	
+    	}
+    	if(num == 6){
+    		var sccedule_card = document.sccedule_card6;  
+    		console.log(typeof(sccedule_card));
+        	var c_place = sccedule_card6.p_place6.value;
+        	var c_context = sccedule_card6.p_context6.value;
+        	
+    	}
+    	if(num == 7){
+    		var sccedule_card = document.sccedule_card7;   		
+        	var c_place = sccedule_card7.p_place7.value;
+        	var c_context = sccedule_card7.p_context7.value;
+        	
+    	}
+    	    	  	
     	
-    	var c_context = sccedule_card.p_contex+num;  	
-    	//var c_context =  'document.sccedule_card'+num+'.p_contex'+num+'.value';
-    	console.log(typeof(c_context));
-    	console.log(c_context);
-    	// c_context = c_context.value;
-    	//console.log(typeof(c_context));
-     //	console.log(c_context);
+    	
+    	
         var addDiv = document.createElement('div');
         
-        addDiv.innerHTML =  '<div id="card" class="card">'+
-        ' <textarea class="form-control" name="c_place" id="c_place" rows="1">'+c_place+'</textarea>'+
-        ' <textarea class="form-control" name="c_context" id="c_context" rows="6">'+c_context+'</textarea></div>'+
-        '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this)" />';   
+        addDiv.innerHTML =  '<div id="card'+num+'" name="card'+num+'" class="card">'+
+        ' <textarea class="form-control" name="c_place'+num+'" id="c_place'+num+'" rows="1">'+c_place+'</textarea>'+
+        ' <textarea class="form-control" name="c_context'+num+'" id="c_context'+num+'" rows="6">'+c_context+'</textarea></div>'+
+        '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this,'+num+')" />';   
         
         document.getElementById('field'+num).appendChild(addDiv);
-        
+        console.log('field'+num);
    } 
-    function remove_div(obj){
-    	document.getElementById('field').removeChild(obj.parentNode);
+    function remove_div(obj,num){
+    	console.log(obj);
+    	console.log(num);
+    	document.getElementById('field'+num).removeChild(obj.parentNode);
     	}
     
 </script>

@@ -73,7 +73,7 @@
 
 		<!-- 아래는 본인들의 내용 작성하기 -->
 
-		<div id="map" style="width: 1485; height: 87vh;"></div>
+		<div id="map" style="width: ; height: 87vh;"></div>
 
 		<script
 			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>

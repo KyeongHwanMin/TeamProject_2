@@ -78,11 +78,12 @@ public class map {
 		return "/map/schedule_pro.jsp";
 	}
 	@RequestMapping("sccedule_card.do")
-	public String schedule_card(String c_place, String c_context, Model model) {
-		System.out.println("c_place=="+c_place);
-		System.out.println("c_context=="+c_context);
-		model.addAttribute("c_place",c_place);
-		model.addAttribute("c_context",c_context);
+	public String schedule_card(String id,String c_place1, String c_context1, Model model) {
+		System.out.println("id=="+id);
+		System.out.println("c_place=="+c_place1);
+		System.out.println("c_context=="+c_context1);
+		model.addAttribute("c_place",c_place1);
+		model.addAttribute("c_context",c_context1);
 		return "/map/schedule2.jsp";
 	}
 	@RequestMapping("mapPro.do")
