@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  <mapper namespace="attraction">
+   <!--  관광지 지역  -->
+    <!--  서귀포에 있는 숙소 찾기 -->
+  <select id="jejusi" resultType="attractionDTO">   
+  	select * from attraction where place_local='jejusi'
+  </select>
+  
+  
+  <!--  서귀포에 있는 숙소 찾기 -->
+  <select id="seoquiposi" resultType="attractionDTO">   
+  	select * from attraction where place_local='seoquiposi'
+  </select>
+  
+   <!--  중문에 있는 숙소 찾기 -->
+   <select id="jungmun" resultType="attractionDTO">  
+  	select * from attraction where place_local='jungmun'
+  </select>
+  
+   <!--  제주공항에 있는 숙소 찾기 -->
+    <select id="jejuairport" resultType="attractionDTO"> 
+  	select * from attraction where place_local='jejuairport'
+  </select>
+  
+     <!--  애월/한림/협재에 있는 숙소 찾기 -->
+    <select id="aweol" resultType="attractionDTO"> 
+  	select * from attraction where place_local='aweol'
+  </select>
+  
+     <!--  표선/성산에 있는 숙소 찾기 -->
+   <select id="pyoseon" resultType="attractionDTO"> 
+  	select * from attraction where place_local='pyoseon'
+  </select>
+  
+  <!-- "hamduk">함덕/김녕/세화 -->
+	<select id="hamduk" resultType="attractionDTO"> 
+  	select * from attraction where place_local='hamduk'
+  </select>
+  
+  <!--  관광지 유형  -->
+  
+  <!--  역사/문화  -->
+  <select id="history" resultType="attractionDTO">
+  select * from attraction where place_category='history'
+  </select>
+  
+    <!--  자연  -->
+  <select id="nature" resultType="attractionDTO">
+  select * from attraction where place_category='nature'
+  </select>
+  
+    <!--  레저/체험  -->
+  <select id="leisure" resultType="attractionDTO">
+  select * from attraction where place_category='leisure'
+  </select>
+  
+    <!--  힐링  -->
+  <select id="healing" resultType="attractionDTO">
+  select * from attraction where place_category='healing'
+  </select>
+  </mapper>
+  

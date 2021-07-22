@@ -36,13 +36,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class attractionBean {
 
-	private Connection getConnection() throws Exception{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String user="final05";
-		String pass="final";
-		String url="jdbc:oracle:thin:@masternull.iptime.org:1521:orcl";
-		return DriverManager.getConnection(url,user, pass);
-	}	
 	
 	@Autowired
 	private SqlSessionTemplate dao =null;
@@ -58,24 +51,24 @@ public class attractionBean {
 //	DB 저장된 정보 불러오기 (Form에서 ID값 통일시키기) 
 	@RequestMapping("attractionSearchPro.do")
 //									  		관광지_지역,			관광지 유형	으로 관광지 DB 	매개변수 설정 	
-	public String attractionSearchPro(String place_local, String place_category, Model model) throws IOException {
+	public String attractionSearchPro(attractionDTO dto, Model model, 
+			HttpServletRequest request) throws IOException {
 		
-//		DTO 객체 생성 후 set으로 저장 
-		attractionDTO dto = new attractionDTO();
-		dto.setPlace_local(place_local);
-		dto.setPlace_category(place_category);
-		
+//		 dto에 들어갈 값을 메개변수로 선언하면 이름에 맞춰서 들어감
 		System.out.println(dto.getPlace_category());
 		System.out.println(dto.getPlace_local());
 
-/*		set으로 저장한 DTO를 List 저
+/*		set으로 저장한 DTO를 List 저장
  * 		sql: mapper namespace="item" + id="getAttractionList" + 생성된 dto로 불러오기 
-*/		
+*/			
 		List list = dao.selectList("item.getAttractionList", dto); 
 		model.addAttribute("list", list); //출력하기
+		System.out.println(list.size());  // 결과 몇개 나오는지 확인
+	
 		
-	 return "/userpage/attraction/attractionSearchPro.jsp";
-	}
+		return "/userpage/attraction/attractionSearchForm.jsp"; 
+		}
+
 	
 
 //	2. 관광지 이미지파일 저장 및 DB 업로드
