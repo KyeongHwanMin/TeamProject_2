@@ -43,9 +43,9 @@
   </select>
   
   
-  <!-- count!  -->
-  <select id="count" resultType="int" parameterType="accomBookMKdto">
-  	   select count(*) from myaccomk where user_id=#{user_id} and home_type=#{home_type}
+  <!-- 숙소 마음 함 count!  -->
+  <select id="count" resultType="int" parameterType="String">
+  	   select count(*) from myaccomk where user_id=#{user_id}
   	</select>
   
   

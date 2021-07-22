@@ -73,17 +73,27 @@
 				</div>
 
 
+			<c:if test="${count == 0}"> 
+				<div class="col-lg-12">
+					<div class="offers_grid">
+				 	
+				 	<p align="center"> 선택한 찜하기가 없습니다.</p>
+				
+					 </div>
+				 </div>
+				
+			</c:if>
 
 			<div class="col-lg-12">
 				
 					<!-- Offers Grid : 숙소 리스트  -->
 
 					<div class="offers_grid">
-
-
+				
+				
 
 					<!-- Offers Item -->
-				
+				<c:if test="${count > 0}"> 
 					<c:forEach var="homeDTO" items="${myAccomList}">
 						
 						<div class="offers_item ${homeDTO.home_type}"> <!-- ${guesthouse}  -->
@@ -135,7 +145,7 @@
 						
 						<br /> <br />
 					</c:forEach> 
-			
+			  </c:if>
 						
 						
 					</div>

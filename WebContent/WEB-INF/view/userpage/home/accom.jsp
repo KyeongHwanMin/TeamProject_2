@@ -23,7 +23,11 @@
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
 	
-	
+	<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
 	
 
 	<!-- 숙소 소개 페이지  -->
@@ -148,7 +152,7 @@
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>
