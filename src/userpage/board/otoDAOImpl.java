@@ -102,7 +102,7 @@ public class otoDAOImpl implements otoDAOInter{
 	@Override
 	public List getArticles(String id, int start, int end) throws Exception {
 		List articleList = null;
-		
+			
 		return articleList;
 	}
 	

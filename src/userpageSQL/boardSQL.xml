@@ -30,7 +30,7 @@
 	</select>
 	
 	<!-- max(num) 뽑기 -->
-	<select id="maxnum" resultType="otoDTO">
+	<select id="maxnum" parameterType="HashMap">
 		select max(num) from otoboard
 	</select>
 	
@@ -47,7 +47,7 @@
 	
 	<!-- user id에 따른 otonum 가져오기 -->
 	<select id="getOtonum" resultType="otoDTO">
-		select count(*) from otoboard A,(select otonum from otoboard where writer=#{id}) B where A.otonum = B.otonum
+		select count(*) from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum
 	</select>
 	
 </mapper>

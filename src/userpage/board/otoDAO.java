@@ -1,5 +1,6 @@
 package userpage.board;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -92,26 +94,50 @@ import userpage.main.userDTO;
 		}
 		
 		@RequestMapping("write.do")
-		public String write(String num, String ref , String re_step , String re_level , Model model, HttpSession session) {
+		public String write(Model model, HttpSession session) {
 			
 			String id = (String) session.getAttribute("user_id");
 			
-			if( num != null ){
+			int num=0,ref=1,re_step=0,re_level=0;
+			
+			if( num != 0 ){
 				model.addAttribute("num", num);
 				model.addAttribute("ref", ref);
 				model.addAttribute("re_step", re_step);
 				model.addAttribute("re_level", re_level);
 			}
+			System.out.println("num = " + num);
+			System.out.println("ref = " + ref);
+			System.out.println("re_step = " + re_step);
+			System.out.println("re_level = " + re_level);
 			
 			return "/userpage/oto/otoWrite.jsp";
 		}
 		
 		@RequestMapping("writePro.do")
-		public String insert(int num, int ref , int re_step , int re_level ,Model model, otoDTO dto) {
-		    
+		public String insert(otoDTO dto,BindingResult result, Model model, int num, int re_level, int re_step, int ref) {
 			
-		    
-		    
+			System.out.println("num = " + num);
+			System.out.println("re_level = " + re_level);
+			System.out.println("re_step = " + re_step);
+			System.out.println("ref = " + ref);
+			
+			HashMap mr = new HashMap();
+			
+			mr.put("maxnum", dto);
+			mr.put("readCountUp", dto);
+			
+			
+			dao.insert("insertArticles", mr);
+			
+			model.addAttribute("num", num);
+			model.addAttribute("ref", ref);
+			model.addAttribute("re_step", re_step);
+			model.addAttribute("re_level", re_level);
+			
+			
+		
+			
 			return "/userpage/oto/otoWritePro.jsp";
 		}
 }

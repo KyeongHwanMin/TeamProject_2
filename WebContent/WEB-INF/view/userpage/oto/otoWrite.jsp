@@ -69,10 +69,10 @@
 			<tr>
 				<td width="70" align="center">제 목</td>
 				<td width="330">
-				<c:if test="${num == null}">
+				<c:if test="${num != 0}">
 						<input type="text" size="40" maxlength="50" name="subject"></td>
 				</c:if>
-				<c:if test="${num != null}">
+				<c:if test="${num == 0}">
 					<input type="text" size="40" maxlength="50" name="subject"
 						value="[답변]">
 				</c:if>
