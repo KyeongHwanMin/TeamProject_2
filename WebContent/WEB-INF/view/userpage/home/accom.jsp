@@ -40,7 +40,7 @@
 	<div class="offers">
 
 		<!-- 설명 -->
-
+	
 		<h3 align="center"> 호텔부터 펜션까지 다양한 종류의 숙소  </h3> <br/> 
 		<p align="center"> 제주도 숙박시설에는 호텔 , 펜션  , 게스트 하우스 , 모텔까지 다양한 종류의 숙소가 있다. <br/>
 		여행을 함께 하는 구성원 그리고 여행의 목적, 체류기간에 맞춰 숙소를 결정하면 된다. 가족, 연인을 위한 아늑하고 낭만적인 호텔이나 친구와 여행하기에 좀더 편한 펜션이 있고  <br/>
@@ -66,15 +66,16 @@
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
+					
 					<!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">location</span>
+								<span class="sorting_text">이름순</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>default</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>alphabetical</span></li>
+									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
 								</ul>
 							</li>
 							<li>
@@ -88,14 +89,15 @@
 									<li class="filter_btn" data-filter=".hotel"><span>호텔</span></li>
 								</ul>
 							</li>
-						</ul>
+							
+						</ul><h6 align="right"> <a href="myAccom.do"> 내가 찜한 숙소 보러가기</a> </h6>
 					</div>
 				</div>
 
 				<div class="col-lg-12">
 				
 				
-					<!-- Offers Grid : 숙소 리스트  -->
+		<!-- Offers Grid : 숙소 리스트  -->
 
 					<div class="offers_grid">
 
@@ -110,8 +112,22 @@
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
-										<div class="offers_image_background" style="background-image:url(save/${home_img})"></div>
-										<div class="offer_name"><a href="single_listing.html">${homeDTO.home_name}</a></div>
+										
+									<c:if test="${homeDTO.home_type == 'hotel'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_type == 'motel'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
+									</c:if>		
+									<c:if test="${homeDTO.home_type == 'guesthouse'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_type == 'pention'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
+									</c:if>	
+									
+										
+										<div class="offer_name"><a href="#">${homeDTO.home_name}</a></div>
 									</div>
 								</div>
 								<div class="col-lg-8">
@@ -131,7 +147,8 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
+										
+										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>

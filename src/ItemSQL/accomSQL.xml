@@ -42,4 +42,32 @@
   	select * from home where home_local='hamduk'
   </select>
   
+  
+  <!-- count!  -->
+  <select id="count" resultType="int" parameterType="accomBookMKdto">
+  	   select count(*) from myaccomk where user_id=#{user_id} and home_type=#{home_type}
+  	</select>
+  
+  
+  
+   <!--  숙소 불러오기  -->
+   <select id="selecthome" resultType="homeDTO"  parameterType="String"> 
+  select * from home where home_no= #{home_no}
+   </select>
+  
+  
+  <!--  숙소 찜하기 (db 넣기)  -->
+  <insert id="insertMK" parameterType="accomBookMKdto">
+  	   insert into myaccomk(MYACCODE, USER_ID, HOME_NO, HOME_NAME,HOME_CONTENT, HOME_TYPE, HOME_LOCAL, HOME_IMG , HOME_ADDRESS) 
+  	   values(myaccomk_seq.NEXTVAL, #{user_id, jdbcType=VARCHAR}, #{home_no, jdbcType=VARCHAR}, #{home_name, jdbcType=VARCHAR}, #{home_content, jdbcType=VARCHAR}, #{home_type, jdbcType=VARCHAR}, #{home_local, jdbcType=VARCHAR}, #{home_img, jdbcType=VARCHAR}, #{home_address, jdbcType=VARCHAR})
+  	</insert>
+  
+  
+  <!--  내가 찜한 숙소 페이지 -->
+	<select id="myAccom" resultType="accomBookMKdto" parameterType="String">
+  	   select * from myaccomk where user_id=#{user_id}
+  	   
+  	</select>
+  
+  
   </mapper>

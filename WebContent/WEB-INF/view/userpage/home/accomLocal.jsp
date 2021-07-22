@@ -70,12 +70,11 @@
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">location</span>
+								<span class="sorting_text">이름순</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>default</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>alphabetical</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>alphabetical</span></li>
+									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
 								</ul>
 							</li>
 							<li>
@@ -110,8 +109,20 @@
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
-										<div class="offers_image_background" style="background-image:url(save/${home_img})"></div>
-										<div class="offer_name"><a href="single_listing.html">${homeDTO.home_name}</a></div>
+										<c:if test="${homeDTO.home_type == 'hotel'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_type == 'motel'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
+									</c:if>		
+									<c:if test="${homeDTO.home_type == 'guesthouse'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_type == 'pention'}">	
+										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
+									</c:if>	
+										
+										<div class="offer_name"><a href="#">${homeDTO.home_name}</a></div>
 									</div>
 								</div>
 								<div class="col-lg-8">
@@ -131,7 +142,7 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>

@@ -84,7 +84,7 @@
 						<div class="sidebar_list">
 							<ul>
 								<li><a href="#">관광지</a></li>
-								<li><a href="#">숙소</a></li>
+								<li><a href="myAccom.do">숙소</a></li>
 								
 							</ul>
 						</div>

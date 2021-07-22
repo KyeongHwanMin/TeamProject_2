@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import userpage.main.userDAOInter;
+import userpage.main.userDTO;
 
 /* 정현서 work. 
  * 
@@ -25,9 +26,9 @@ public class accomBean {
 	@Autowired
 	private SqlSessionTemplate dao =null;
 	
-	//@Autowired
-	//private accomDAOInter accomDAO = null;
 	
+	
+	// 숙박 페이지
 	@RequestMapping("accom.do")
 	public String accom(Model model){
 		
@@ -39,6 +40,7 @@ public class accomBean {
 	}
 	
 	
+	// 숙박 페이지 지역 구분하기 페이지
 	@RequestMapping("accomLocal.do")
 	public String accomLocal(Model model, HttpServletRequest request){
 		
@@ -90,9 +92,6 @@ public class accomBean {
 			 return "/userpage/home/accomLocal.jsp"; 
 		}
 		
-		//List list4 = accomDAO.searchLoca(search);
-		//List list4 = dao.selectList("item.homeLoca"); // itemsql에 있음 
-		// model.addAttribute("list4",list4);
 		
 		List slist = dao.selectList("home.jejusi"); 
 		 model.addAttribute("slist",slist);
@@ -101,14 +100,59 @@ public class accomBean {
 	}
 	
 	
+	//숙박 찜하기 버튼 누를때 가는 페이지. 일종의 pro 
+	// accom.do에서 찜하기 누르면 스크립트가 뜨고 본 페이지(accom.do)로 돌아온다 (찜하기가 등록되었습니다! [확인] ) 
+	@RequestMapping("accomBookMK.do")  //accomBookMKdto 
+	public String accomBookMK(homeDTO dto , String home_no, HttpSession session,Model model, HttpServletRequest request)  throws Exception{
+		
+		String id = (String) session.getAttribute("user_id");
+		
+		//String home_no = request.getParameter(home_no);
+		
+		homeDTO DD = new homeDTO();
+		accomBookMKdto mkdto = new accomBookMKdto();
+		
+		
+		DD = dao.selectOne("home.selecthome", home_no); 
+
+		System.out.println("이름~~~======"+DD.getHome_name());
+		
+		
+		mkdto.setUser_id(id);
+		mkdto.setHome_no(DD.getHome_no());
+		mkdto.setHome_name(DD.getHome_name());
+		mkdto.setHome_content(DD.getHome_content());
+		mkdto.setHome_type(DD.getHome_type());
+		mkdto.setHome_local(DD.getHome_local());
+		mkdto.setHome_img(DD.getHome_img());
+		mkdto.setHome_address(DD.getHome_address());
+		
+		dao.insert("home.insertMK", mkdto);
+		
+	
+		return "/userpage/home/accomBookMK.jsp"; 
+	}
+	
+	
+	//내가 찜한 숙박 리스트
 	@RequestMapping("myAccom.do")
-	public String myAccom(Model model){
+	public String myAccom(String user_id, Model model, HttpSession session){
 		
-		List myAccomList = dao.selectList("item.myHome"); // select * from Home where 
-		 
+		String id = (String) session.getAttribute("user_id");
+		System.out.println("아이디 ==="+id);
+		
+		//int count = dao.delete(i
+		accomBookMKdto dto = new accomBookMKdto();
+		//int count = (Integer)dao.selectOne("home.count", dto);
+		System.out.println("카운ㅌ ㅡ~~~"+dto);
+		
+		List myAccomList = dao.selectList("home.myAccom", id); // 
+		
 		 model.addAttribute("myAccomList",myAccomList);
+		 
+		 
 		
-		return "/userpage/home/accom.jsp"; 
+		return "/userpage/mypage/myAccom.jsp"; 
 	}
 	
 	

@@ -29,7 +29,7 @@
 	<insert id="update" parameterType="userDTO">
 		insert into member(user_id, name, pw, address, gender, year_birth, email)
   values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email})
-	</insert>
+	</insert> 
 	
 	<!--  회원 정보 수정 2-->
 		<update id="memberUpdate">
