@@ -67,7 +67,7 @@
 						<c:if test="${user_id != null}">		
 								<li class="main_nav_item"><a href="map.do">여행일정 만들기</a></li>
 								<li class="main_nav_item"><a href="mypage.do">나의 여행</a></li>
-								<li class="main_nav_item"><a href="/jejuguseok/history.do">관광지</a></li>
+								<li class="main_nav_item"><a href="attractionSearchForm.do">관광지</a></li>
 								<li class="main_nav_item"><a href="accom.do">숙박</a></li>
 								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
 								<li class="main_nav_item"><a href="list.do">contact</a></li>

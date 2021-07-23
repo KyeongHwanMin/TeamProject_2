@@ -20,6 +20,16 @@
 </head>
 
 <body>
+<style>
+.image-container{
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+        }
+</style>
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
 
@@ -46,9 +56,6 @@
 
 
 		<!-- 지역 선택  -->
- 
- <div class="button book_buttonn"><a href="attractionSearchPro.do">전체 관광지 </a></div> 
- 
  <div class="button book_buttonn"><a href="attractionSearchPro.do?search1=1">제주시</a></div>
  <div class="button book_buttonn"><a href="attractionSearchPro.do?search1=2">서귀포시</a></div>
  <div class="button book_buttonn"><a href="attractionSearchPro.do?search1=3">중문</a></div>
@@ -80,10 +87,10 @@
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="filter_btn" data-filter="*"><span>관광지 전체</span></li>
-									<li class="filter_btn" data-filter=".histroy"><span>#역사/문화</span></li>
-									<li class="filter_btn" data-filter=".leisure"><span>#레저/체험/학습</span></li>
-									<li class="filter_btn" data-filter=".nature"><span>#자연/경치</span></li>
-									<li class="filter_btn" data-filter=".healing"><span>#휴식/힐링</span></li>
+									<li class="filter_btn" data-filter=".histroy" ><span >역사/문화</span></li>
+									<li class="filter_btn" data-filter=".leisure" ><span>레저/체험/학습</span></li>
+									<li class="filter_btn" data-filter=".nature" ><span>자연/경치</span></li>
+									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
 								</ul>
 							</li>
 						</ul>
@@ -99,7 +106,7 @@
 
 						<!-- Offers Item -->
 
-					<c:forEach var="homeDTO" items="${list}">
+					<c:forEach var="attractionDTO" items="${list1}">
 						<div class="offers_item ${attractionDTO.place_category}"> 
 						  
 							<div class="row">
@@ -108,30 +115,49 @@
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
 										<c:if test="${attractionDTO.place_category == 'history'}">	
-										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
+										 <div class="image-container"><img src="../history.jpg"></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_category == 'leisure'}">	
-										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
+										<div class="offers_image_background" src="/userpage/save/leisure.jpg"></div>
 									</c:if>		
 									<c:if test="${attractionDTO.place_category == 'nature'}">	
-										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
+										<div class="offers_image_background" src="/userpage/save/nature.jpg"></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_category == 'healing'}">	
-										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
+										<div class="offers_image_background" src="/userpage/save/healing.png"></div>
 									</c:if>	
 										
-										<div class="offer_name"><a href="#">${attractionDTO.place_name}</a></div>
+									<c:if test="${attractionDTO.place_local == 'jejusi'}">	
+										<div class="offer_name"><a href="#">제주시</a></div>
+									</c:if>
+									<c:if test="${attractionDTO.place_local == 'seogwiposi'}">	
+										<div class="offer_name"><a href="#">서귀포시</a></div>
+									</c:if>
+									<c:if test="${attractionDTO.place_local == 'jungmun'}">	
+										<div class="offer_name"><a href="#">중문</a></div>
+									</c:if>
+									<c:if test="${attractionDTO.place_local == 'jejuairport'}">	
+										<div class="offer_name"><a href="#">제주국제공항</a></div>
+									</c:if>
+									<c:if test="${attractionDTO.place_local == 'aweol'}">	
+										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
+									</c:if>	
+									<c:if test="${attractionDTO.place_local == 'pyoseon'}">	
+										<div class="offer_name"><a href="#">표선/성산</a></div>
+									</c:if>	
+									<c:if test="${attractionDTO.place_local == 'hamduk'}">	
+										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
+									</c:if>	
 									</div>
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_local} </span></div>
+										<div class="offers_price">${attractionDTO.place_name} </div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
-											관광지 유형 : ${attractionDTO.place_category}
 										</div>
 								
-										<p class="offers_text"> ${attractionDTO.place_content} </p>
-										<p class="offers_text"> ${attractionDTO.place_address} </p>
+										<p class="offers_text"> 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 주소: ${attractionDTO.place_address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -140,7 +166,8 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="">찜하기<span></span><span></span><span></span></a></div>
+										
+										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>
@@ -149,7 +176,6 @@
 						
 						<br /> <br />
 					</c:forEach> 
-			
 						
 					</div>
 				</div>
