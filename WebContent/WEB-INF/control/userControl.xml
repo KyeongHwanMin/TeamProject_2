@@ -17,8 +17,8 @@
     <bean id="d" class="java.util.Date" /> 
     
     
-    
-     <bean id="userDAOImpl" class="userpage.main.userDAOImpl" />
+    <!-- <bean id="userDAOImpl" class="userpage.main.userDAOImpl" /> -->
+     
     <bean id="userDTO" class="userpage.main.userDTO" />
     
   

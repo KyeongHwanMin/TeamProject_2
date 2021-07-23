@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import userpage.main.userDAOInter;
 import userpage.main.userDTO;
 
 /* 정현서 work. 

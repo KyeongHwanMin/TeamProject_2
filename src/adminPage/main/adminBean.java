@@ -8,13 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import userpage.main.userDAOInter;
 
 @Controller  
 public class adminBean {
 	
-	@Autowired
-	private userDAOInter userDAO = null;
+	
 
 	@Autowired
 	private SqlSessionTemplate daosql =null;

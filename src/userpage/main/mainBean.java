@@ -20,8 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class mainBean {
 	
 	
-	@Autowired
-	private userDAOInter userDAO = null;
+	//@Autowired
+	//private userDAOInter userDAO = null;
 	
 	@Autowired
 	private SqlSessionTemplate sql = null;
@@ -44,9 +44,12 @@ public class mainBean {
 
 	
 	
-	@RequestMapping("registerPro.do") 
+	@RequestMapping("registerPro.do") 	//userDAO.insert(dto);
 	public String registerPro(userDTO dto, Model model, HttpSession session ) throws Exception{
-		userDAO.insert(dto);
+	
+		
+		sql.insert("user.insert",dto);
+		
 		return "/userpage/login/registerPro.jsp";
 	}
 
@@ -89,7 +92,10 @@ public class mainBean {
 	 		//아이디 중복 확인 
 	@RequestMapping(value="confirmId.do", method = RequestMethod.GET ) 
 	public String confirmId(userDTO dto,  Model model) throws Exception{
-		int result = userDAO.idChk(dto);
+		
+		//int result = userDAO.idChk(dto);
+		int result = sql.selectOne("user.idChk", dto);
+		
 		model.addAttribute("result",result);
 		
 		if(result != 0) {
