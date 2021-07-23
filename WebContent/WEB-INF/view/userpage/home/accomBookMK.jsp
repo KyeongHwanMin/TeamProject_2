@@ -8,4 +8,5 @@
 	<script> 
 	  alert("내 찜하기에 넣었습니다! ");
       history.go(-1);
+      
 	</script>

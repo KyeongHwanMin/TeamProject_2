@@ -88,7 +88,7 @@
 									<li class="filter_btn" data-filter=".hotel"><span>호텔</span></li>
 								</ul>
 							</li>
-						</ul>
+						</ul> <h6 align="right"> <a href="myAccom.do"> 내가 찜한 숙소 보러가기</a> </h6>
 					</div>
 				</div>
 
@@ -122,7 +122,27 @@
 										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
 									</c:if>	
 										
-										<div class="offer_name"><a href="#">${homeDTO.home_name}</a></div>
+										<c:if test="${homeDTO.home_local == 'jejusi'}">	
+										<div class="offer_name"><a href="#">제주시</a></div>
+									</c:if>
+									<c:if test="${homeDTO.home_local == 'seogwiposi'}">	
+										<div class="offer_name"><a href="#">서귀포시</a></div>
+									</c:if>
+									<c:if test="${homeDTO.home_local == 'jungmun'}">	
+										<div class="offer_name"><a href="#">중문</a></div>
+									</c:if>
+									<c:if test="${homeDTO.home_local == 'jejuairport'}">	
+										<div class="offer_name"><a href="#">제주국제공항</a></div>
+									</c:if>
+									<c:if test="${homeDTO.home_local == 'aweol'}">	
+										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_local == 'pyoseon'}">	
+										<div class="offer_name"><a href="#">표선/성산</a></div>
+									</c:if>	
+									<c:if test="${homeDTO.home_local == 'hamduk'}">	
+										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
+									</c:if>	
 									</div>
 								</div>
 								<div class="col-lg-8">

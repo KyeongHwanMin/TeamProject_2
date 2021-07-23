@@ -35,14 +35,7 @@ public class userDAOImpl implements userDAOInter{
 		return dto;
 	}
 	
-	@Override
-	public String pwcheck(String user_id,  HttpSession session) throws Exception {
-		
-		userDAO.selectOne("user.pwcheck", user_id);
-		
-		return user_id;
-	}
-	
+
 
 	@Override
 	public userDTO login(String user_id,String pw, HttpSession session) throws Exception {
@@ -54,21 +47,7 @@ public class userDAOImpl implements userDAOInter{
 	
 	
 
-	@Override
-	public String find_idCheck(userDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-
-
-	@Override
-	public String find_passCheck(userDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-    
 	// 회원가입 : 아이디 중복 체크 
 	@Override
 	public int idChk(userDTO dto) throws Exception {
@@ -77,12 +56,7 @@ public class userDAOImpl implements userDAOInter{
 	}
 
 
-	@Override
-	public String pwcheck(String user_id) {
-userDAO.selectOne("user.pwcheck", user_id);
-		
-		return user_id;
-	}
+
 
 
 
