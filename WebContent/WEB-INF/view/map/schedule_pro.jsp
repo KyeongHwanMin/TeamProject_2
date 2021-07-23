@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <title>Blog</title>
@@ -20,27 +19,24 @@
 <link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
  <style>
   div.fheader {
         width: 100%;
          height:13%;
         display: flex;
-        box-sizing: border-box;
-      
-       
+        box-sizing: border-box;   
       }
        div.r {
         width: 100%;
          height:87%;
-        display: flex;
-       
+        display: flex;     
       }
       div.left {
      	width:70%;
@@ -49,15 +45,13 @@
         box-sizing: border-box;
         background: #ece6cc;
       }
-      div.right {
-      	
+      div.right {   	
      	width:30%;
      	height:100%;
         float: right;
         box-sizing: border-box;
         background: #ece6cc;
-        overflow:auto;
-      
+        overflow:auto;  
       }
       div.card {
       margin:5px;
@@ -152,20 +146,12 @@ function makeOverListener(map, marker, infowindow) {
 	</script>
 </div>
 <div class="right">
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
 <div class="container mt-3">
-<input type="text" name="title" id="title" placeholder="계획 제목을 입력하세요."  size="45"><br>
+<input type="text" name="subject" id="subject" value="${subject }" size="45"><br>
  <input type="text" name="date" id="date" value="${date }" size="8">
 <input type="text" name="day"  id="day" value="${day }일" size="2">
 <input type="text" name="with"  id="with" value="${with }"size="3">
 <input type="text" name="travel"  id="travel" value="${travel }"size="45">
- 
-
-</script>
 </div>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${day}" step="1">
@@ -175,151 +161,164 @@ function makeOverListener(map, marker, infowindow) {
 <br/>
  <form name="sccedule_card${dayCnt}" action="" method="post">
   <div class="form-group">
-  <label for="exampleFormControlText">장소</label>
+  <label for="exampleFormControlText1">장소</label>
   <input class="form-control form-control-lg" type="text" name="p_place${ dayCnt}" id="p_place${ dayCnt}" readonly style="background-color:#FFFFF0" placeholder='지도에서 "${ dayCnt}일차" 버튼 누르기'>
   </div>
- 
+ <div class="form-group">
+  <label for="exampleFormControlText2">시간</label>
+  <input class="form-control form-control-lg" type="time" name="p_time${ dayCnt}" id="p_time${ dayCnt}" value="00:00:00">
+  </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">메모</label>
+    <label for="exampleFormControlTextarea3">메모</label>
     <textarea class="form-control" name="p_context${ dayCnt}" id="p_context${ dayCnt}" rows="3"></textarea>
   </div>
 
-  <button type="button" class="btn btn-danger" id="create${dayCnt}" name="create${ dayCnt}"   value="create" onclick="create(${ dayCnt})" >  일정 넣기 </button> 
+  <button type="button" class="btn btn-danger" id="create${dayCnt}" name="create${dayCnt}"   value="create" onclick="create(${dayCnt})" >  일정 넣기 </button> 
   </form>
   
-  <form name="day_card"  method="post" action="sccedule_card.do">
-	 <div id="field${dayCnt}" style="border: 5pt groove #3f51b5"></div><br>
+  <form name="day_card${dayCnt}" id="day_card${dayCnt}"  method="post" action="sccedule_card.do">
+	 <div id="field${dayCnt}"></div><br>
+	 <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="clkBtn(${dayCnt})" style="float: right" >  ${dayCnt}일차 저장 </button>
    </form>
    </div>
    
     </c:forEach>
-    <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="send1()" style="float: right" >  send1 </button>
-   <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="send()" style="float: right" >  저장2 </button>
+    </div>
   <script>
-  function send1(){
-	  if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
-  		alert("1일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
-  		alert("2일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
-  		alert("3일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
-  		alert("4일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
-  		alert("5일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
-  		alert("6일차 장소를 선택하세요. ");
-  		return false;
-  	}else if(document.getElementById("p_place2") == null ){
-  		document.day_card.submit();
-	}else if(document.getElementById("p_place3") == null ){
-  		document.day_card.submit();
-	}
-  	else{
-	  alert("에러");
-		}
-	 
+  function clkBtn(num){
+	/*  if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
+	  		alert("1일차 장소를 선택하세요. ");
+	  		return false;
+	  	}else if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
+	  		alert("2일차 장소를 선택하세요. ");
+	  		return false;
+	  	}else if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
+	  		alert("3일차 장소를 선택하세요. ");
+	  		return false;
+	  	}else if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
+	  		alert("4일차 장소를 선택하세요. ");
+	  		return false;
+	  	}else if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
+	  		alert("5일차 장소를 선택하세요. ");
+	  		return false;
+	  	}else if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
+	  		alert("6일차 장소를 선택하세요. ");
+	  		return false;
+	  	}*/
+	  	 if(document.getElementById("c_place1")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  	}else if(document.getElementById("c_place2")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  	}else if(document.getElementById("c_place3")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  	}else if(document.getElementById("c_place4")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  	}else if(document.getElementById("c_place5")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  	}else if(document.getElementById("c_place6")){
+	  		 var form = $('#day_card'+num)[0];  
+	  		  var data = new FormData(form);	  
+	  		  $.ajax({
+	  			 type:"POST",
+	  			 url:'sccedule_card.do',
+	  			 data : data,
+	  			 processData: false,
+	  			contentType: false,
+	  			cache: false,  			
+	  		  });
+	  		 alert(num+"일차 저장 되었습니다.");
+	  		 }
   }
+ 
   </script>
-<form name="card_test"  method="post" action="sccedule_card.do" >
-<textarea class="form-control" name="h_place1" id="h_place1" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context1" id="h_context1" rows="2"  ></textarea>
-<textarea class="form-control" name="h_place2" id="h_place2" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context2" id="h_context2" rows="2"  ></textarea>
-<textarea class="form-control" name="h_place3" id="h_place3" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context3" id="h_context3" rows="2"  ></textarea>
-<textarea class="form-control" name="h_place4" id="h_place4" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context4" id="h_context4" rows="2"  ></textarea>
-<textarea class="form-control" name="h_place5" id="h_place5" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context5" id="h_context5" rows="2"  ></textarea>
-<textarea class="form-control" name="h_place6" id="h_place6" rows="1"  ></textarea>
-<textarea class="form-control" name="h_context6" id="h_context6" rows="2"  ></textarea>
-</form>
- </div>
 
 
-<script type='text/javascript'>
-    //  버튼 클릭시 실행 되는 함수 입니다.
-    function send(){   	
-    	if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
-    		alert("1일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
-    		alert("2일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
-    		alert("3일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
-    		alert("4일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
-    		alert("5일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
-    		alert("6일차 장소를 선택하세요. ");
-    		return false;
-    	}else if(document.getElementById("p_place2") == null ){
-    		var a = document.getElementById("c_place1").value;
-    		alert(a);
-    		 document.getElementById("h_place1").value = a;
-    		
-    		alert(a);
-    		alert(typeof(a));
-    		//document.getElementById("h_place1").value = document.getElementById("c_place1").value;
-    		//document.getElementById("h_context1").value = document.getElementById("c_context1").value;
-    		//document.card_test.h_place1.value = document.day_card1.c_place1.value;
-    		//document.card_test.h_context1.value = document.day_card1.c_context1.value;
-    		//document.card_test.submit();   
-    	}else if(document.getElementById("p_place3") == null){
-    		document.getElementById("h_place1").value = document.getElementById("c_place1").value;
-    		document.getElementById("h_context1").value = document.getElementById("p_context1").value;
-    		document.getElementById("h_place2").value = document.getElementById("p_place2").value;
-    		document.getElementById("h_place2").value = document.getElementById("p_place2").value;
-    		document.card_test.submit();  
-    	}
-    	else {
-			alert("에러");
-    		//document.card_test.submit();    		
-    	}
-    		
-    		
-    	
-    }
-    
-    function create(num) {
-    	
+<script type='text/javascript'>  
+    function create(num) {  	
     	if(num == 1){    		 		
         	var c_place = document.sccedule_card1.p_place1.value;
-        	var c_context = document.sccedule_card1.p_context1.value; }
+        	var c_context = document.sccedule_card1.p_context1.value; 
+        	var c_time = document.sccedule_card1.p_time1.value;}
     	if(num == 2){		
         	var c_place = document.sccedule_card2.p_place2.value;
-        	var c_context = document.sccedule_card2.p_context2.value; }
+        	var c_context = document.sccedule_card2.p_context2.value;
+        	var c_time = document.sccedule_card2.p_time2.value;}
     	if(num == 3){     		
         	var c_place = document.sccedule_card3.p_place3.value;
-        	var c_context = document.sccedule_card3.p_context3.value;    	}
+        	var c_context = document.sccedule_card3.p_context3.value;    	
+        	var c_time = document.sccedule_card3.p_time3.value;}
     	if(num == 4){		
         	var c_place = document.sccedule_card4.p_place4.value;
-        	var c_context = document.sccedule_card4.p_context4.value;}
+        	var c_context = document.sccedule_card4.p_context4.value;
+        	var c_time = document.sccedule_card4.p_time4.value;}
     	if(num == 5){ 		
         	var c_place = document.sccedule_card5.p_place5.value;
-        	var c_context = document.sccedule_card5.p_context5.value;	}
+        	var c_context = document.sccedule_card5.p_context5.value;	
+        	var c_time = document.sccedule_card5.p_time5.value;}
     	if(num == 6){    		
         	var c_place = document.sccedule_card6.p_place6.value;
-        	var c_context = document.sccedule_card6.p_context6.value;}
+        	var c_context = document.sccedule_card6.p_context6.value;
+        	var c_time = document.sccedule_card6.p_time6.value;}
     	if(num == 7){   		
         	var c_place = document.sccedule_card7.p_place7.value;
-        	var c_context = document.sccedule_card7.p_context7.value;	}
+        	var c_context = document.sccedule_card7.p_context7.value;	
+        	var c_time = document.sccedule_card7.p_time7.value;}
 	
         var addDiv = document.createElement('div');
         
         addDiv.innerHTML =  '<div id="card'+num+'" name="card'+num+'" class="card">'+
         ' <textarea class="form-control" name="c_place'+num+'" id="c_place'+num+'" rows="1">'+c_place+'</textarea>'+
+        ' <textarea class="form-control" name="c_time'+num+'" id="c_time'+num+'" rows="1">'+c_time+'</textarea>'+
         ' <textarea class="form-control" name="c_context'+num+'" id="c_context'+num+'" rows="6">'+c_context+'</textarea></div>'+
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this,'+num+')" />';   
         
@@ -333,10 +332,7 @@ function makeOverListener(map, marker, infowindow) {
     
 </script>
 
-
-
-
 </div>		
-</div>
+
 </body>
 </html>

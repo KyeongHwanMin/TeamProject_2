@@ -20,12 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class map {
 
 	// 컨트롤에서 생성한 객체 받기
+	
 	@Autowired
-	private mapDTO mapdto = null;
-	@Autowired
-	private mapDAO mapdao = null;
-	@Autowired
-	private scheduleDTO scheduleDTO = null;
+	private scheduleDTO scheduledto = null;
 	@Autowired
 	private SqlSessionTemplate dao = null;
 
@@ -48,7 +45,7 @@ public class map {
 		return "/map/schedule.jsp";
 	}
 	@RequestMapping("schedule_pro.do")
-	public String schedule_pro(HttpSession session, String date, String day, String with, String travel, Model model) {
+	public String schedule_pro(HttpSession session,String subject, String date, String day, String with, String travel, Model model) {
 		List maplist = dao.selectList("map.location");
 		List maptourlist = dao.selectList("map.tour");
 		model.addAttribute("maplist", maplist);
@@ -56,50 +53,62 @@ public class map {
 		
 		String id = (String) session.getAttribute("user_id");
 		System.out.println("id1 "+id);
-		session.setAttribute("id", id);
 		
+		model.addAttribute("subject",subject);
 		model.addAttribute("date",date);
 		model.addAttribute("day",day);
 		model.addAttribute("with",with);
 		model.addAttribute("travel",travel);
 		
-		scheduleDTO scheduledto = new scheduleDTO();
+		scheduledto.setSubject(subject);
 		scheduledto.setDate1(date);
 		scheduledto.setDay1(day);
 		scheduledto.setId(id);
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
-		System.out.println(date);
-		System.out.println(day);
-		System.out.println("id "+id);
-		System.out.println(with);
-		System.out.println(travel);
+		
 		dao.insert("schedule.insertsc" ,scheduledto);
 		return "/map/schedule_pro.jsp";
 	}
 	@RequestMapping("sccedule_card.do")
-	public String schedule_card(String c_place1,String c_place2,String c_place3,String c_place4,String h_place1,String h_context1,String h_place2,String h_context2,String h_place3,String h_context3,
-			String h_place4,String h_context4,String h_place5,String h_context5,String h_place6,String h_context6,HttpServletRequest request , Model model) {
-		System.out.println("c_place1=="+c_place1);
-		System.out.println("c_place2=="+c_place2);
-		System.out.println("c_place4=="+c_place3);
-		System.out.println("c_place3=="+c_place4);
+	public String schedule_card(String c_place1,String c_place2,String c_place3,String c_place4,String c_place5,String c_place6,String c_context1,String c_context2,String c_context3,
+			String c_context4,String c_context5,String c_context6,String c_time1,String c_time2,String c_time3,String c_time4,String c_time5,String c_time6,Model model,HttpSession session) {		
 		
-		/*
-		System.out.println("h_place1"+h_place1);
-		System.out.println("h_context1"+h_context1);
-		System.out.println("h_place2"+h_place2);
-		System.out.println("h_context2"+h_context2);
-		System.out.println("h_place3"+h_place3);
-		System.out.println("h_context3"+h_context3);
-		System.out.println("h_place4"+h_place4);
-		System.out.println("h_context4"+h_context4);
-		System.out.println("h_place5"+h_place5);
-		System.out.println("h_context5"+h_context5);
-		System.out.println("h_place6"+h_place6);
-		System.out.println("h_context6"+h_context6);*/
+		//String id = (String) session.getAttribute("user_id");
 		
-		return "/map/schedule2.jsp";
+		if(c_place1 != null) {
+		scheduledto.setC_place1(c_place1);
+		scheduledto.setC_context1(c_context1);
+		scheduledto.setC_time1(c_time1);		
+		dao.update("schedule.updatesc",scheduledto);
+		}if(c_place2 != null) {
+		scheduledto.setC_place2(c_place2);
+		scheduledto.setC_context2(c_context2);
+		scheduledto.setC_time2(c_time2);
+		dao.update("schedule.updatesc2",scheduledto);
+		}if(c_place3 != null) {
+		scheduledto.setC_place3(c_place3);
+		scheduledto.setC_context3(c_context3);
+		scheduledto.setC_time3(c_time3);
+		dao.update("schedule.updatesc3",scheduledto);
+		}if(c_place4 != null) {
+		scheduledto.setC_place4(c_place4);
+		scheduledto.setC_context4(c_context4);
+		scheduledto.setC_time4(c_time4);
+		dao.update("schedule.updatesc4",scheduledto);
+		}if(c_place5 != null) {
+		scheduledto.setC_place5(c_place5);
+		scheduledto.setC_context5(c_context5);
+		scheduledto.setC_time5(c_time5);
+		dao.update("schedule.updatesc5",scheduledto);
+		}if(c_place6 != null) {
+			scheduledto.setC_place6(c_place6);
+			scheduledto.setC_context6(c_context6);
+			scheduledto.setC_time6(c_time6);
+			dao.update("schedule.updatesc6",scheduledto);
+		}
+	
+		return "";
 	}
 	@RequestMapping("mapPro.do")
 	public String map2(String name, int age, mapDTO mapdto, HttpServletRequest request) {

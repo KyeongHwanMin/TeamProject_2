@@ -142,9 +142,11 @@ function makeOverListener(map, marker, infowindow) {
 </div>
 <div class="right">
 <form action="schedule_pro.do" method="post" id="contactForm"  >
-
+	<br/>
+	<legend>계획 제목</legend>
+<input type="text" name="subject" id="subject" placeholder="계획 제목을 입력하세요."  size="45"/>
     <legend>일정 조회</legend>
-
+    <br/>
   <input type='date' name='date'/>
   <fieldset class="form-group">
       <legend class="mt-4">예상일정</legend>
