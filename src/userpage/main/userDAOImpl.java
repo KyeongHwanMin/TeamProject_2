@@ -34,7 +34,14 @@ public class userDAOImpl implements userDAOInter{
 		userDTO dto = userDAO.selectOne("user.login",user_id);
 		return dto;
 	}
-
+	
+	@Override
+	public String pwcheck(String user_id,  HttpSession session) throws Exception {
+		
+		userDAO.selectOne("user.pwcheck", user_id);
+		
+		return user_id;
+	}
 	
 
 	@Override
@@ -67,6 +74,14 @@ public class userDAOImpl implements userDAOInter{
 	public int idChk(userDTO dto) throws Exception {
 		int result = userDAO.selectOne("user.idChk", dto);
 		return result;
+	}
+
+
+	@Override
+	public String pwcheck(String user_id) {
+userDAO.selectOne("user.pwcheck", user_id);
+		
+		return user_id;
 	}
 
 

@@ -23,7 +23,7 @@
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
 	
-	<script>
+<script>
 function myFunction() {
   document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }

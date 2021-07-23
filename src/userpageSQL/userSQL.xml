@@ -11,15 +11,24 @@
   values (#{user_id},#{name},#{pw},#{address},#{gender},#{year_birth},#{email},sysdate)
 	</insert>
 	
-	                     <!--  여기가 userDTO 로 리턴하면 daoimpl에서 dto로 받아줘야함 -->
-	<select id="login" resultType="userDTO">
+	
+	<!--  로그인 유효성 검사 -->
+	                  
+	<select id="login" resultType="userDTO">   <!--  여기가 userDTO 로 리턴하면 daoimpl에서 dto로 받아줘야함 -->
   	   select * from member where user_id=#{user_id}
   	</select>
   	
    	<select id="loginCheck" resultType="int" parameterType="userDTO">
   	   select count(*) from member where user_id=#{user_id} and pw=#{pw}
   	</select>
-
+  	
+  	<select id="pwcheck" resultType="String" parameterType="String">
+  	   select pw from member where user_id= #{user_id}
+  	</select>
+  	
+  	
+  	
+    <!--      회원가입           -->
 	<!-- 아이디 중복 체크 -->
 <select id="idChk" resultType="int">
 	SELECT COUNT(*) FROM MEMBER WHERE USER_ID = #{user_id}

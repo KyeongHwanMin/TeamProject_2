@@ -70,4 +70,11 @@
   	</select>
   
   
+  <!-- 찜풀기 -->
+  <delete id="deleteMK" parameterType="String">
+ 	 delete from MYACCOMK where home_no = #{home_no}
+  </delete>
+  
+  
+  
   </mapper>

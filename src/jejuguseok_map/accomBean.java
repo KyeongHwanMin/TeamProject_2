@@ -112,11 +112,7 @@ public class accomBean {
 		homeDTO DD = new homeDTO();
 		accomBookMKdto mkdto = new accomBookMKdto();
 		
-		
 		DD = dao.selectOne("home.selecthome", home_no); 
-
-		System.out.println("이름~~~======"+DD.getHome_name());
-		
 		
 		mkdto.setUser_id(id);
 		mkdto.setHome_no(DD.getHome_no());
@@ -156,6 +152,16 @@ public class accomBean {
 		return "/userpage/mypage/myAccom.jsp"; 
 	}
 	
+	
+	//찜하기 풀기 
+	@RequestMapping("myAccomDeletePro.do")  //myAccomDeletePro
+	public String myAccomDeletePro( String home_no, HttpSession session,HttpServletRequest request)  throws Exception{
+		
+		dao.delete("home.deleteMK", home_no);
+		
+		
+		return "/userpage/mypage/myAccomDeletePro.jsp"; 
+	}
 	
 	
 }

@@ -22,13 +22,21 @@ public interface userDAOInter {
 
 	
 	public userDTO loginCheck1(String user_id, String pw); ////로그인 관련22    
-	
+
+	 
+	public String pwcheck(String user_id);
+
 	
 	public userDTO login(String user_id ,String pw, HttpSession session) throws Exception;    
 	
 	
+	
 	public String find_idCheck(userDTO dto);    //아이디 찾기 관련
 	public String find_passCheck(userDTO dto);    //비밀번호 찾기 관련
+
+	String pwcheck(String user_id, HttpSession session) throws Exception;
+
+	
 
 
 

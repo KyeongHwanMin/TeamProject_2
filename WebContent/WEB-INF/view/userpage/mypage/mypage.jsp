@@ -29,7 +29,7 @@
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/blog_background.jpg"></div>
 		<div class="home_content">
-			<div class="home_title"> ${user_id}님의 </div>
+			<div class="home_title"> ${dto.name}님의 </div>
 			 <div class="home_title"> 제주도 여행 </div>
 		</div>
 	</div>

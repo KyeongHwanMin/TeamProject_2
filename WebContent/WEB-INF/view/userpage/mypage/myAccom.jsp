@@ -136,7 +136,7 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_buttonn"><a href="myAccomDeletePro.do?home_no=${homeDTO.home_no}"> 찜하기 취소 <span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>
