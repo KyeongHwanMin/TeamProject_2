@@ -5,33 +5,28 @@
 <mapper namespace="schedule">
  	
  	<insert id="insertsc" parameterType="scheduleDTO">
- 	insert into schedule(id, date1, day1, with1, travel, subject)
-  						values (#{id},#{date1},#{day1},#{with1},#{travel},#{subject})
+ 	insert into schedule(subject, id, date1, day1, with1, travel,c_place1,c_time1,c_context1)
+  				values (#{subject},#{id},#{date1},#{day1},#{with1},#{travel},#{c_place1}, #{c_time1},#{c_context1})
  	</insert>
- 	 
- 	 <update id="updatesc"  parameterType="scheduleDTO">
-  		update schedule set c_place1 = #{c_place1},c_time1 = #{c_time1},c_context1 = #{c_context1} 												 										   										   										   										 
-  		where id=#{id}
-  	</update>
-  	<update id="updatesc2"  parameterType="scheduleDTO">
+ 		<update id="updatesc2"  parameterType="scheduleDTO">
   		update schedule set c_place2 = #{c_place2},c_time2 = #{c_time2},c_context2 = #{c_context2} 												 										   										   										   										 
-  		where id=#{id}
-  	</update>
+  		where subject=#{subject}
+  	</update>	
   	<update id="updatesc3"  parameterType="scheduleDTO">
   		update schedule set c_place3 = #{c_place3},c_time3 = #{c_time3},c_context3 = #{c_context3} 												 										   										   										   										 
-  		where id=#{id}
+  		where subject=#{subject}
   	</update>
   	<update id="updatesc4"  parameterType="scheduleDTO">
   		update schedule set c_place4 = #{c_place4},c_time4 = #{c_time4},c_context4 = #{c_context4} 												 										   										   										   										 
-  		where id=#{id}
+  		where subject=#{subject}
   	</update>
   	<update id="updatesc5"  parameterType="scheduleDTO">
   		update schedule set c_place5 = #{c_place5},c_time5 = #{c_time5},c_context5 = #{c_context5} 												 										   										   										   										 
-  		where id=#{id}
+  		where subject=#{subject}
   	</update>
   	<update id="updatesc6"  parameterType="scheduleDTO">
   		update schedule set c_place6 = #{c_place6},c_time6 = #{c_time6},c_context6 = #{c_context6} 												 										   										   										   										 
-  		where id=#{id}
+  		where subject=#{subject}
   	</update>
   	
  	

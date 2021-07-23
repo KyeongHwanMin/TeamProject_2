@@ -67,7 +67,7 @@ public class map {
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
 		
-		dao.insert("schedule.insertsc" ,scheduledto);
+		//dao.insert("schedule.insertsc" ,scheduledto);
 		return "/map/schedule_pro.jsp";
 	}
 	@RequestMapping("sccedule_card.do")
@@ -80,8 +80,8 @@ public class map {
 		scheduledto.setC_place1(c_place1);
 		scheduledto.setC_context1(c_context1);
 		scheduledto.setC_time1(c_time1);		
-		dao.update("schedule.updatesc",scheduledto);
-		}if(c_place2 != null) {
+		dao.insert("schedule.insertsc" ,scheduledto);
+		}if(c_place2 != null) {	
 		scheduledto.setC_place2(c_place2);
 		scheduledto.setC_context2(c_context2);
 		scheduledto.setC_time2(c_time2);

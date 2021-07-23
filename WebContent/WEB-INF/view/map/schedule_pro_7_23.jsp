@@ -136,7 +136,7 @@
 function add(id,n) {
 		var id = id.split(',');
 	document.getElementById("p_place"+n).value = id[0];
-	
+	alert("id=="+id[1]);
 }
 	
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 		
@@ -157,7 +157,6 @@ function makeOverListener(map, marker, infowindow) {
 </div>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${day}" step="1">
- 
  <button type="button" class="btn btn-success" name="day_btn${dayCnt}" id="day_btn${dayCnt}" data-toggle="collapse" data-target="#col${dayCnt}">  ${ dayCnt}일차  </button>
 
 <div id="col${dayCnt}" class="collapse in">
@@ -180,9 +179,8 @@ function makeOverListener(map, marker, infowindow) {
   </form>
   
   <form name="day_card${dayCnt}" id="day_card${dayCnt}"  method="post" action="sccedule_card.do">
-	 <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="clkBtn(${dayCnt})" style="float: right; width:40%" >  ${dayCnt}일차 저장 </button>
-	 <div id="field${dayCnt}"></div><br><br><br><br><br>
-	 
+	 <div id="field${dayCnt}"></div><br>
+	 <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="clkBtn(${dayCnt})" style="float: right" >  ${dayCnt}일차 저장 </button>
    </form>
    </div>
    

@@ -73,7 +73,7 @@
 
 		<!-- 아래는 본인들의 내용 작성하기 -->
 
-		<div id="map" style="width: 98%; height: 100%;"></div>
+		<div id="map" style="width: 98%; height: 87vh;"></div>
 
 		<script
 			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
@@ -138,23 +138,10 @@ function makeOverListener(map, marker, infowindow) {
         infowindow.open(map, marker);
     };
 }
-function check(){
-	var chk = document.contactForm;
-	var checked = document.contactForm.travel.value;
-	if(chk.subject.value == ""){
-		alert("제목을 입력하세요.");
-		return false;
-	}
-	if(chk.day.value =="여행 일수"){
-		alert("여행 일수를 선택 하세요.");
-		return false;
-	}
-	
-}
 	</script>
 </div>
 <div class="right">
-<form action="schedule_pro.do" method="post" id="contactForm" name="contactForm" onsubmit="return check()" >
+<form action="schedule_pro.do" method="post" id="contactForm"  >
 	<br/>
 	<legend>계획 제목</legend>
 <input type="text" name="subject" id="subject" placeholder="계획 제목을 입력하세요."  size="45"/>
@@ -239,6 +226,13 @@ function check(){
   </form>
  </div> 
  </div>
+
+
+
+
+
+
+
 
 
 </body>
