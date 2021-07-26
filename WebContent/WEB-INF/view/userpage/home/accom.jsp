@@ -111,7 +111,7 @@ function myFunction() {
 						
 						<div class="offers_item ${homeDTO.home_type}"> <!-- ${guesthouse}  -->
 						  
-							<div class="row">
+							<div class="row"> 
 								<div class="col-lg-1 temp_col"></div>
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
@@ -175,6 +175,13 @@ function myFunction() {
 										
 										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
+									<!-- 관리자  -->
+										<c:if test="${user_id == 'admin'}">      
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?home_no=${homeDTO.home_no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?home_no=${homeDTO.home_no}"> 삭제 </a></button> 
+										</c:if>
+									<!-- 관리자  -->	
+									
 									</div>
 								</div>
 							</div>
@@ -184,88 +191,7 @@ function myFunction() {
 					</c:forEach> 
 			</c:if>
 			
-			
-						<!-- Offers Item  예시 -->
-
-						<div class="offers_item hotel">
-							<div class="row">
-								<div class="col-lg-1 temp_col"></div>
-								<div class="col-lg-3 col-1680-4">
-									<div class="offers_image_container">
-										<!-- Image by https://unsplash.com/@thoughtcatalog -->
-										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
-										<div class="offer_name"><a href="single_listing.html">eurostar hotel</a></div>
-									</div>
-								</div>
-								<div class="col-lg-8">
-									<div class="offers_content">
-										<div class="offers_price">$50<span>per night</span></div>
-										<div class="rating_r rating_r_3 offers_rating" data-rating="3">
-											호텔 예시!!!!!!!
-										</div>
-										<p class="offers_text">숙소 주소 ~ 제주도 서귀포시 어쩌구 ...et.</p>
-										<div class="offers_icons">
-											<ul class="offers_icons_list">
-												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-											</ul>
-										</div>
-										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
-										<div class="offer_reviews">
-											<div class="offer_reviews_content">
-												<div class="offer_reviews_title">very good</div>
-												<div class="offer_reviews_subtitle">100 reviews</div>
-											</div>
-											<div class="offer_reviews_rating text-center">8.1</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Offers Item 예시  -->
-
-						<div class="offers_item pention">
-							<div class="row">
-								<div class="col-lg-1 temp_col"></div>
-								<div class="col-lg-3 col-1680-4">
-									<div class="offers_image_container">
-										<!-- Image by https://unsplash.com/@mindaugas -->
-										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
-										<div class="offer_name"><a href="single_listing.html">grand castle</a></div>
-									</div>
-								</div>
-								<div class="col-lg-8">
-									<div class="offers_content">
-										<div class="offers_price">$110<span>per night</span></div>
-										<div class="rating_r rating_r_5 offers_rating"  data-rating="5">
-											카테고리 : 펜션 예시!!!
-										</div>
-										<p class="offers_text">숙소 주소 ~ 제주도 서귀포시 어쩌구 ...t amet.</p>
-										<div class="offers_icons">
-											<ul class="offers_icons_list">
-												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-											</ul>
-										</div>
-										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
-										<div class="offer_reviews">
-											<div class="offer_reviews_content">
-												<div class="offer_reviews_title">very good</div>
-												<div class="offer_reviews_subtitle">100 reviews</div>
-											</div>
-											<div class="offer_reviews_rating text-center">8.1</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> 
-			
-					</div>
+	</div>
 				
 				<%-- 
 					<div>
@@ -309,7 +235,7 @@ function myFunction() {
 				<ul class="pagination" >           
 				   <c:if test="${startPage > 10}">
 				      <li class="page-item">
-				        <a href="accom.do?pageNum=${startPage - 10 }">[이전]</a>
+				        <a class="page-link" href="accom.do?pageNum=${startPage - 10 }">&laquo;</a>
 				        </li>
 				   </c:if>
 				
@@ -324,7 +250,7 @@ function myFunction() {
 				
 				   <c:if test="${endPage < pageCount}">
 				   <li class="page-item">
-				        <a href="accom.do?pageNum=${startPage + 10}">[다음]</a>
+				        <a class="page-link" href="accom.do?pageNum=${startPage + 10}">&raquo;</a>
 				       </li>  
 				   </c:if>
 				</ul> 
