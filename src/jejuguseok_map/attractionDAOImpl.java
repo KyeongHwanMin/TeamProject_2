@@ -25,13 +25,11 @@ public class attractionDAOImpl implements attractionDAOInter {
 		attractionDAO.insert("item.insertAttraciton",dto);
 }
 	
-// 	관광지DB 불러오기 
+// 	관광지DB 불러오기
 	@Override
 	public List getAttraction(int start, int end, String place_name, String place_address, String place_category, String Place_local,
 		String place_no) throws Exception {
-		
-		
-		
+
 	return null;
 }	
 

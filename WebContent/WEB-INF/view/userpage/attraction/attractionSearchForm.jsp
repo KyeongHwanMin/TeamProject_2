@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>관광지 찾기</title>
+<title>Offers</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -20,18 +20,14 @@
 </head>
 
 <body>
-<style>
-.image-container{
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 300px;
-            height: 300px;
-        }
-</style>
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
+	
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
 
 	<!-- 관광지 소개/선택  -->
 
@@ -71,11 +67,12 @@
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
+					
 					<!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">관광지 이름순</span>
+								<span class="sorting_text">관광지명</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>기본</span></li>
@@ -83,7 +80,7 @@
 								</ul>
 							</li>
 							<li>
-								<span class="sorting_text">관광지 유형</span>
+								<span class="sorting_text">관광지 선택</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="filter_btn" data-filter="*"><span>관광지 전체</span></li>
@@ -93,20 +90,21 @@
 									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
 								</ul>
 							</li>
-						</ul>
+						</ul> <h6 align="right"> <a href="myAttraction.do"> 내가 찜한 관광지 </a> </h6>
 					</div>
 				</div>
 
 				<div class="col-lg-12">
 				
 				
-					<!-- Offers Grid : 관광지 리스트  -->
+		<!-- Offers Grid : 숙소 리스트  -->
 
 					<div class="offers_grid">
 
 						<!-- Offers Item -->
 
 					<c:forEach var="attractionDTO" items="${list1}">
+						
 						<div class="offers_item ${attractionDTO.place_category}"> 
 						  
 							<div class="row">
@@ -114,23 +112,24 @@
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
-										<c:if test="${attractionDTO.place_category == 'history'}">	
-										 <div class="image-container"><img src="../history.jpg"></div>
+										
+									<c:if test="${attractionDTO.place_category == 'history'}">	
+										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_category == 'leisure'}">	
-										<div class="offers_image_background" src="/userpage/save/leisure.jpg"></div>
+										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
 									</c:if>		
 									<c:if test="${attractionDTO.place_category == 'nature'}">	
-										<div class="offers_image_background" src="/userpage/save/nature.jpg"></div>
+										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_category == 'healing'}">	
-										<div class="offers_image_background" src="/userpage/save/healing.png"></div>
+										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
-										
+									
 									<c:if test="${attractionDTO.place_local == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${attractionDTO.place_local == 'seogwiposi'}">	
+									<c:if test="${attractionDTO.place_local == 'seoquiposi'}">	
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
 									<c:if test="${attractionDTO.place_local == 'jungmun'}">	
@@ -142,22 +141,24 @@
 									<c:if test="${attractionDTO.place_local == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${attractionDTO.place_local == 'pyoseon'}">	
+									<c:if test="${hattractionDTO.place_local == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_local == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
+										
+										
 									</div>
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${attractionDTO.place_name} </div>
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 										</div>
 								
-										<p class="offers_text"> 소개: ${attractionDTO.place_content} </p>
-										<p class="offers_text"> 주소: ${attractionDTO.place_address} </p>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -167,7 +168,7 @@
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="#=${attractionDTO.place_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>
@@ -176,6 +177,142 @@
 						
 						<br /> <br />
 					</c:forEach> 
+
+						<!-- Offers Item  예시 -->
+
+						<div class="offers_item history">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@thoughtcatalog -->
+										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
+										<div class="offer_name"><a href="single_listing.html">eurostar hotel</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
+										<div class="rating_r rating_r_3 offers_rating" data-rating="3">
+											역사
+										</div>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
+										<div class="offers_icons">
+											<ul class="offers_icons_list">
+												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+											</ul>
+										</div>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Offers Item 예시  -->
+
+						<div class="offers_item leisure">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@mindaugas -->
+										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
+										<div class="offer_name"><a href="single_listing.html">grand castle</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
+										<div class="rating_r rating_r_5 offers_rating"  data-rating="5">
+											레져
+										</div>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
+										<div class="offers_icons">
+											<ul class="offers_icons_list">
+												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+											</ul>
+										</div>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+									</div>
+								</div>
+							</div>
+						</div> 
+					<!-- Offers Item 예시  -->
+
+						<div class="offers_item nature">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@mindaugas -->
+										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
+										<div class="offer_name"><a href="single_listing.html">grand castle</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
+										<div class="rating_r rating_r_5 offers_rating"  data-rating="5">
+											자연
+										</div>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
+										<div class="offers_icons">
+											<ul class="offers_icons_list">
+												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+											</ul>
+										</div>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+									</div>
+								</div>
+							</div>
+						</div> 
+				<!-- Offers Item 예시  -->
+
+						<div class="offers_item healing">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@mindaugas -->
+										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
+										<div class="offer_name"><a href="single_listing.html">grand castle</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
+										<div class="rating_r rating_r_5 offers_rating"  data-rating="5">
+											힐링
+										</div>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
+										<div class="offers_icons">
+											<ul class="offers_icons_list">
+												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+											</ul>
+										</div>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+
+									</div>
+								</div>
+							</div>
+						</div> 						
+						
 						
 					</div>
 				</div>

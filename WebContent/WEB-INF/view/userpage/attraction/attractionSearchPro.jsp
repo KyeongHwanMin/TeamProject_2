@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Offers</title>
+<title>관광지 검색</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -20,15 +20,18 @@
 </head>
 
 <body>
+<style>
+.image-container{
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+        }
+</style>
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
-	
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-}
-</script>
-	
 
 	<!-- 관광지 소개/선택  -->
 
@@ -61,24 +64,26 @@ function myFunction() {
  <div class="button book_buttonn"><a href="attractionSearchPro.do?search1=6">표선/성산</a></div>
  <div class="button book_buttonn"><a href="attractionSearchPro.do?search1=7">함덕/김녕/세화</a></div>
  
+  
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
 					<!-- Offers Sorting 카테고리 선택  -->
-					<div class="offers_sorting_container">
+						<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">관광지 이름순</span>
+								<span class="sorting_text">관광지명</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>기본</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
+									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>초성순</span></li>
 								</ul>
 							</li>
 							<li>
-								<span class="sorting_text">관광지 유형</span>
+								<span class="sorting_text">관광지 선택</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="filter_btn" data-filter="*"><span>관광지 전체</span></li>
@@ -88,38 +93,38 @@ function myFunction() {
 									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
 								</ul>
 							</li>
-						</ul>
+						</ul> <h6 align="right"> <a href="myAttraction.do"> 내가 찜한 관광지 </a> </h6>
 					</div>
 				</div>
 
 				<div class="col-lg-12">
 				
 				
-<!-- Offers Grid : 관광지 리스트  -->
+					<!-- Offers Grid : 관광지 리스트  -->
 
 					<div class="offers_grid">
 
 						<!-- Offers Item -->
 
-					<c:forEach var="attractionDTO" items="${list1}">
+					<c:forEach var="attractionDTO" items="${list2}">
 						<div class="offers_item ${attractionDTO.place_category}"> 
 						  
 							<div class="row">
 								<div class="col-lg-1 temp_col"></div>
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
-										<!-- Image by https://unsplash.com/@kensuarez -->
+										<!-- 테마별 이미지: images 폴더 -->
 										<c:if test="${attractionDTO.place_category == 'history'}">	
-										<div class="offers_image_background" src="/userpage/save/history.jpg"></div>
+										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
 									</c:if>	
 									<c:if test="${attractionDTO.place_category == 'leisure'}">	
-										<div class="offers_image_background" src="/userpage/save/leisure.jpg"></div>
+										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
 									</c:if>		
 									<c:if test="${attractionDTO.place_category == 'nature'}">	
-										<div class="offers_image_background" src="/userpage/save/nature.jpg"></div>
+										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
 									</c:if>	
-									<c:if test="${attractionDTO.place_category == 'healing'}">	
-										<div class="offers_image_background" src="/userpage/save/healing.png"></div>
+									<c:if test="${attractionDTO.place_category== 'healing'}">	
+										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
 										
 									<c:if test="${attractionDTO.place_local == 'jejusi'}">	
@@ -147,12 +152,12 @@ function myFunction() {
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${attractionDTO.place_name} <span> 테마:${attractionDTO.place_category} </span></div>
+										<div class="offers_price">${attractionDTO.place_name} <span> ${attractionDTO.place_category} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 										</div>
 								
-										<p class="offers_text"> 소개: ${attractionDTO.place_content} </p>
-										<p class="offers_text"> 주소: ${attractionDTO.place_address} </p>
+										<p class="offers_text"> 관광지 소개: ${attractionDTO.place_content} </p>
+										<p class="offers_text"> 관광지 정보: ${attractionDTO.place_address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -162,7 +167,7 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="#">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="#=${attractionDTO.place_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									</div>
 								</div>

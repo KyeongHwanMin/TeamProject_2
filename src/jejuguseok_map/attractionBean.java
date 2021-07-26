@@ -58,7 +58,6 @@ public class attractionBean {
 			HttpServletRequest request) throws IOException {
 	
 		int sea1 = Integer.parseInt(request.getParameter("search1"));
-		System.out.println("관광지 지역: "+sea1);
 		String search1="제주시";
 		
 		if(sea1 == 2){
@@ -117,7 +116,7 @@ public class attractionBean {
 		return "/adminpage/upload/attractionForm.jsp"; 
 	}
 	@RequestMapping("attractionPro.do")
-	public String pro(String place_name, String place_address, String place_content, String place_local, String place_category,
+	public String pro(String place_name, String place_address, String x, String y, String place_content, String place_local, String place_category,
 			MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("place_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
@@ -136,6 +135,8 @@ public class attractionBean {
 		attractionDTO itemdto = new attractionDTO();
 		itemdto.setPlace_name(place_name);
 		itemdto.setPlace_address(place_address);
+		itemdto.setX(x);		
+		itemdto.setY(y);
 		itemdto.setPlace_content(place_content);
 		itemdto.setPlace_category(place_category);	
 		itemdto.setPlace_local(place_local);

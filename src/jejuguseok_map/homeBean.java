@@ -33,10 +33,10 @@ public class homeBean {
 	@RequestMapping("homeForm.do")
 	public String uploadForm() {
 
-		return "/userpage/home/homeForm.jsp"; 
+		return "/adminpage/upload/homeForm.jsp"; 
 	}
 	@RequestMapping("homePro.do")
-	public String homePro(String home_name, String home_address, String home_content, String home_local, 
+	public String homePro(String home_name, String home_address,String x, String y, String home_content, String home_local, 
 			String home_type, MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("home_img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
@@ -55,6 +55,8 @@ public class homeBean {
 		homeDTO itemdto = new homeDTO();
 		itemdto.setHome_name(home_name);		
 		itemdto.setHome_address(home_address);
+		itemdto.setX(x);		
+		itemdto.setY(y);
 		itemdto.setHome_content(home_content);
 		itemdto.setHome_local(home_local);
 		itemdto.setHome_type(home_type);
@@ -62,7 +64,7 @@ public class homeBean {
 	
 		dao.insert("item.insertHome",itemdto);
 		System.out.println(f);
-		return "/userpage/home/homePro.jsp";
+		return "/adminpage/upload/homePro.jsp";
 	}	
 //	찜한 숙소 노출 (mypage에서) 		
 	@RequestMapping("myHome.do")

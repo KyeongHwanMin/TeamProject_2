@@ -9,6 +9,8 @@ public class homeDTO {
 	private String home_local;
 	private String home_type;
 	private String home_img;
+	private String x;
+	private String y;
 	public String getHome_no() {
 		return home_no;
 	}
@@ -51,6 +53,21 @@ public class homeDTO {
 	public void setHome_img(String home_img) {
 		this.home_img = home_img;
 	}
+	public String getX() {
+		return x;
+	}
+	public void setX(String x) {
+		this.x = x;
+	}
+	public String getY() {
+		return y;
+	}
+	public void setY(String y) {
+		this.y = y;
+	}
+	
+	
+	
 	
 	
 }
