@@ -19,6 +19,14 @@
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
 <!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
+<style>
+div.fheader {
+        width: 100%;
+         height:13%;
+        display: flex;
+        box-sizing: border-box;     
+      }
+</style>
 </head>
 
 <body>
@@ -26,7 +34,7 @@
 	
 	<!-- Header -->
 
-
+<div class="fheader">
 	<header class="header">
 		
 		
@@ -86,3 +94,4 @@
 		</nav>
 
 	</header>
+	</div>

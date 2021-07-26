@@ -1,6 +1,7 @@
 package jejuguseok.map;
 
 public class scheduleDTO {
+	private int num1;
 	private String id;
 	private String date1;
 	private String day1;
@@ -10,23 +11,113 @@ public class scheduleDTO {
 	private String c_place1;
 	private String c_time1;
 	private String c_context1;
+	private float c_y1;
+	private float c_x1;
 	private String c_place2;
 	private String c_time2;
 	private String c_context2;
+	private float c_y2;
+	private float c_x2;
 	private String c_place3;
 	private String c_time3;
 	private String c_context3;
+	private float c_y3;
+	private float c_x3;
 	private String c_place4;
 	private String c_time4;
 	private String c_context4;
+	private float c_y4;
+	private float c_x4;
 	private String c_place5;
 	private String c_time5;
 	private String c_context5;
+	private float c_y5;
+	private float c_x5;
 	private String c_place6;
 	private String c_time6;
 	private String c_context6;
+	private float c_y6;
+	private float c_x6;
 	
 	
+	public float getC_y1() {
+		return c_y1;
+	}
+	public void setC_y1(float c_y1) {
+		this.c_y1 = c_y1;
+	}
+	public float getC_x1() {
+		return c_x1;
+	}
+	public void setC_x1(float c_x1) {
+		this.c_x1 = c_x1;
+	}
+	public float getC_y2() {
+		return c_y2;
+	}
+	public void setC_y2(float c_y2) {
+		this.c_y2 = c_y2;
+	}
+	public float getC_x2() {
+		return c_x2;
+	}
+	public void setC_x2(float c_x2) {
+		this.c_x2 = c_x2;
+	}
+	public float getC_y3() {
+		return c_y3;
+	}
+	public void setC_y3(float c_y3) {
+		this.c_y3 = c_y3;
+	}
+	public float getC_x3() {
+		return c_x3;
+	}
+	public void setC_x3(float c_x3) {
+		this.c_x3 = c_x3;
+	}
+	public float getC_y4() {
+		return c_y4;
+	}
+	public void setC_y4(float c_y4) {
+		this.c_y4 = c_y4;
+	}
+	public float getC_x4() {
+		return c_x4;
+	}
+	public void setC_x4(float c_x4) {
+		this.c_x4 = c_x4;
+	}
+	public float getC_y5() {
+		return c_y5;
+	}
+	public void setC_y5(float c_y5) {
+		this.c_y5 = c_y5;
+	}
+	public float getC_x5() {
+		return c_x5;
+	}
+	public void setC_x5(float c_x5) {
+		this.c_x5 = c_x5;
+	}
+	public float getC_y6() {
+		return c_y6;
+	}
+	public void setC_y6(float c_y6) {
+		this.c_y6 = c_y6;
+	}
+	public float getC_x6() {
+		return c_x6;
+	}
+	public void setC_x6(float c_x6) {
+		this.c_x6 = c_x6;
+	}
+	public int getNum1() {
+		return num1;
+	}
+	public void setNum1(int num1) {
+		this.num1 = num1;
+	}
 	public String getSubject() {
 		return subject;
 	}
