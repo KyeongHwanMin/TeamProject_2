@@ -32,7 +32,7 @@
     crossorigin="anonymous"></script>
 </head>
 
-
+ 
 <!-- 회원 가입 폼! -->
 
 <script language="JavaScript">
@@ -91,8 +91,9 @@
         var com_year = dt.getFullYear();
 
         // 발행 뿌려주기
-        $("#year_birth").append("<option value=''>년도</option>");
-
+        //$("#year_birth").append("<option value=''>년도</option>");
+        $("#year_birth").append("<option value='${dto.year_birth}'>${dto.year_birth} </option>");
+        
         // 올해 기준으로 -50년부터 +1년을 보여준다.
         for (var y = (com_year - 80); y <= (com_year + 1); y++) {
           $("#year_birth").append("<option value='" + y + "'>" + y + " 년" + "</option>");
@@ -110,10 +111,13 @@
 
 <!-- 회원 정보 수정  -->
 
+
 <div align="center">
 <div style=" width:40%;" >
 		
-	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 정보 수정 </h2>
+		<br /> <br />  
+		
+	 <br /> <br /> <br /> <br /> <br /> <br /> <h2> 정보 수정  </h2>
 
 <form  name="userinput"  action="modifyProfilePro.do" onSubmit="return checkIt()">
  <fieldset> 
@@ -130,7 +134,7 @@
     </div>
     
     <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
+      <label for="exampleInputPassword1" class="form-label mt-4">비밀번호 </label>
       <input type="password" name="pw" class="form-control" id="exampleInputPassword1" value="${dto.pw}">
     </div>
     
@@ -173,7 +177,7 @@
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">거주 지역</label>
       <select class="form-select" name="address" id="exampleSelect1">
-        <option>서울</option><option>경기</option>
+        <option>${dto.address}</option><option>서울</option><option>경기</option>
         <option>인천</option><option>광주</option><option>전라</option><option>강원</option>
         <option>대전</option><option>충청/세종</option>
         <option>경상</option> <option>대구</option> <option>부산</option><option>제주</option>

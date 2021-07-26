@@ -1,5 +1,6 @@
 package jejuguseok_map;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,10 +30,54 @@ public class accomBean {
 	
 	// 숙박 페이지
 	@RequestMapping("accom.do")
-	public String accom(Model model){
+	public String accom(Model model, HttpServletRequest request){
 		
-		List list3 = dao.selectList("item.myHome"); // select * from Home
-		 
+		int pageSize = 10;	// 한 페이지에 보여질 게시물 수 
+		
+		//페이지 링크를 클릭한 번호 즉 현재 페이지 
+		String pageNum = request.getParameter("pageNum");	// 리스트에서 페이지 번호를 클릭 시 받을 수 있다.(페이지를 처음에 클릭하지 않는다.)
+		if (pageNum == null) {	// 페이지를 입력 안하면 1페이지.. 입력하면 null이 아니므로 if문 동작하지않는다.
+		    pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);		// 1.. 문자(string)타입으로 들어오니 변환
+
+		int startRow = (currentPage - 1) * pageSize + 1;	// (1-1) * 10 + 1 = 1
+		int endRow = currentPage * pageSize;				// 1 * 10 = 10
+		int count = 0;	// 전체 게시물 수
+		int number= 0;	// 화면에 보이는 게시물 번호. 입력한 번호와 다르다 삭제 시 시퀀스는 빈 번호를 채우지 않는다 즉, 내장된 번호가 아닌 보이는 번호
+		
+		List articleList = null;
+		count = dao.selectOne("home.homecount");
+		
+		System.out.println("카운트~~~"+count);
+		
+		HashMap Row = new HashMap();  // sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
+		Row.put("startRow", startRow);
+		Row.put("endRow", endRow);
+
+		
+		if (count > 0) {
+			articleList = dao.selectList("home.articleList", Row);
+			
+		}
+		
+		System.out.println("articleList========="+articleList);
+		
+		number=count-(currentPage-1)*pageSize;	// 전체 게시물 수 - (페이지 - 1) * 10  = 
+			
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("endRow", endRow);
+		model.addAttribute("count", count);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("number", number);
+		model.addAttribute("articleList", articleList); //list3 역할 
+		model.addAttribute("pageNum", pageNum);
+
+		
+		 List list3 = dao.selectList("item.myHome"); // select * from Home
+		
+		//List list3 = dao.selectList("item.articleList");
 		 model.addAttribute("list3",list3);
 		
 		return "/userpage/home/accom.jsp"; 

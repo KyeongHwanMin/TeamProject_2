@@ -6,6 +6,23 @@
   <!--  숙소 지역  -->
   <mapper namespace="home">
   
+  
+   <select id="homecount" resultType="int">
+  	   select count(*) from home 
+  	</select>
+  
+  
+  
+  <select id="articleList" resultType="homeDTO" parameterType="hashmap" >
+  	   select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y , r 
+from ( select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y , rownum r 
+from ( select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y 
+from home)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+  	
+   </select>
+  
+  
+  
     <!--  서귀포에 있는 숙소 찾기 -->
   <select id="jejusi" resultType="homeDTO">   
   	select * from home where home_local='jejusi'

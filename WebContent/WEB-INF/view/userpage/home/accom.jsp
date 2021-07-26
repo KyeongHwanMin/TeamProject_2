@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <title>Offers</title>
-<meta charset="utf-8">
+<meta charset="utf-8"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,8 +106,8 @@ function myFunction() {
 					<div class="offers_grid">
 
 						<!-- Offers Item -->
-
-					<c:forEach var="homeDTO" items="${list3}">
+			<c:if test="${count > 0}"> 
+					<c:forEach var="homeDTO" items="${articleList}">
 						
 						<div class="offers_item ${homeDTO.home_type}"> <!-- ${guesthouse}  -->
 						  
@@ -182,7 +182,9 @@ function myFunction() {
 						
 						<br /> <br />
 					</c:forEach> 
-
+			</c:if>
+			
+			
 						<!-- Offers Item  예시 -->
 
 						<div class="offers_item hotel">
@@ -262,10 +264,76 @@ function myFunction() {
 								</div>
 							</div>
 						</div> 
-						
-						
-						
+			
 					</div>
+				
+				<%-- 
+					<div>
+					  <ul class="pagination">
+					    <li class="page-item disabled">
+					      <a class="page-link" href="#">&laquo;</a>
+					    </li>
+					    <li class="page-item active">
+					      <a class="page-link" href="#">1</a>
+					    </li>
+					    <li class="page-item">
+					      <a class="page-link" href="#">2</a>
+					    </li>
+					    <li class="page-item">
+					      <a class="page-link" href="#">3</a>
+					    </li>
+					    <li class="page-item">
+					      <a class="page-link" href="#">&raquo;</a>
+					    </li>
+					  </ul>
+					</div>
+				--%>	
+					
+					
+			<!--  페이징 처리    -->
+					
+					<br /> <br />
+					
+					<div align="center">  
+				<c:if test="${count > 0}">
+				   <c:set  var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+				   <c:set var="pageBlock" value="${10}"/>
+				   <fmt:parseNumber var="result" value="${currentPage / 10}" integerOnly="true" />
+				   <c:set var="startPage" value="${result * 10 + 1}" />
+				   <c:set var="endPage" value="${startPage + pageBlock-1}"/>
+				   <c:if test="${endPage > pageCount}">
+				        <c:set var="endPage" value="${pageCount}"/>
+				   </c:if> 
+				   
+				 
+				<ul class="pagination" >           
+				   <c:if test="${startPage > 10}">
+				      <li class="page-item">
+				        <a href="accom.do?pageNum=${startPage - 10 }">[이전]</a>
+				        </li>
+				   </c:if>
+				
+				
+				   <c:forEach var="i" begin="${startPage}" end="${endPage}">
+				      
+				      <li class="page-item">
+				       <a class="page-link" href="accom.do?pageNum=${i}"> ${i} </a>
+				       </li>
+				       
+				   </c:forEach>
+				
+				   <c:if test="${endPage < pageCount}">
+				   <li class="page-item">
+				        <a href="accom.do?pageNum=${startPage + 10}">[다음]</a>
+				       </li>  
+				   </c:if>
+				</ul> 
+				
+			</c:if>
+					</div>
+					
+					
+					
 				</div>
 			</div>
 		</div>		

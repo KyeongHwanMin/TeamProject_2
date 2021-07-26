@@ -54,14 +54,15 @@ public class myPageBean {    //" 나의 여행 " 페이지
 		 
 		 System.out.println("업데이트출력" + dto);
 		 // modify Profile 페이지에 있는 name 들을 받아오기! 
-		 
-		 dto.setAddress(dto.getAddress());
-		 dto.setEmail(dto.getEmail());
-		 dto.setGender(dto.getGender());
 		 dto.setName(dto.getName());
 		 dto.setPw(dto.getPw());
-		 dto.setYear_birth(dto.getYear_birth());
+		 dto.setAddress(dto.getAddress());
+		 dto.setGender(dto.getGender());
+		  dto.setYear_birth(dto.getYear_birth());
+		  System.out.println("생일 출력 ~~==========" + dto.getYear_birth());
+		 dto.setEmail(dto.getEmail());
 		 
+
 		 
 		  mypageDAO.memberUpdate(dto);  
 		return "/userpage/mypage/modifyProfilePro.jsp";

@@ -41,7 +41,7 @@
 	</insert> 
 	
 	<!--  회원 정보 수정 2-->
-		<update id="memberUpdate">
+	<update id="memberUpdate">
 		update member set 
 		name = #{name, jdbcType=VARCHAR},
 		pw = #{pw,jdbcType=VARCHAR},
