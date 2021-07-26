@@ -97,7 +97,7 @@
 						<div class="sidebar_title"> 나의 여행 일정 리스트  </div>
 						<div class="sidebar_list">
 							<ul>
-								<li><a href="#">list1</a></li>
+								<li><a href="schedule_table.do">내 여행 일정 보기</a></li>
 								<li><a href="#">여행 만들기때 이름을 지정해야00</a></li>
 								
 								<c:if test="${count == 0}">
