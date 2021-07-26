@@ -32,27 +32,75 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
  * 관광지 Bean: 역사문화, 자연경치, 레저체험학습, 휴식힐링
+ * list1: 관광지 메인(form) 페이지
+ * list2: 관광지 pro 페이지 
  */
 @Controller
 public class attractionBean {
 
 	
 	@Autowired
-	private SqlSessionTemplate dao =null;
-
+	private SqlSessionTemplate dao =null;	
 	
-//	1. 관광지 검색 (지역, 카테고리로 검색) 	
-	@RequestMapping("attractionSearchForm.do")
-	public String SearchForm(Model model) {
+//	관광지 검색 (지역, 카테고리로 검색) + 페이징 
+	@RequestMapping("attForm.do")
+	public String SearchForm(Model model, HttpServletRequest request) {
 		
+		int pageSize = 10;	// 한 페이지에 보여질 게시물 수
+		
+		//현재 페이지(current page = 클릭한 페이지) 
+		String pageNum = request.getParameter("pageNum");	// 첫 페이지 1(1~10 해당 페이지 받기) 
+		if (pageNum == null) {	// 페이지 입력 x >  1페이지, 입력 시 null=if문 동작 안함 
+		    pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);		
+// 		1:String으로 입력 후 변환
+
+		int startRow = (currentPage - 1) * pageSize + 1;	
+// 		(1-1) * 10 + 1 = 1
+		int endRow = currentPage * pageSize;				
+// 		1 * 10 = 10
+		
+		int count = 0;	// 전체 관광지 수
+		int number= 0;	// 화면에 보이는 게시물 번호. 
+//		입력된 번호가 아니며 삭제되면 시퀀스는 emty 번호를 체크하지 않는다 즉, 입력된 번호가 아닌 게시물 등록할 떄만 보이는 번호		
+
+		List articleList = null;
+		count = dao.selectOne("attraction.attcount");
+		
+		System.out.println("페이징 체크: "+count);
+		
+		HashMap Row = new HashMap();  
+// 		sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
+		Row.put("startRow", startRow);
+		Row.put("endRow", endRow);
+
+		
+		if (count > 0) {
+			articleList = dao.selectList("attraction.attList", Row);
+		}
+		
+		System.out.println("관광지 리스트: "+articleList);
+		number=count-(currentPage-1)*pageSize;	
+// 		전체 게시물 수 - (현재 페이지 - 1) * 10  			
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("endRow", endRow);
+		model.addAttribute("count", count);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("number", number);
+		model.addAttribute("articleList", articleList); //list1 상태
+		model.addAttribute("pageNum", pageNum);
+
 		List list1 = dao.selectList("item.searchAttraction"); 
-		 
-		 model.addAttribute("list1",list1);
+		
+//		List list1 = dao.selectList("attraction.attList");
+		model.addAttribute("list1",list1);	
 
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-//  2. 관광지 DB 
+//  관광지 DB 불러오기 
 	@RequestMapping("attractionSearchPro.do")								  		
 	public String attractionSearch_local(Model model, 
 			HttpServletRequest request) throws IOException {
@@ -108,7 +156,7 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchPro.jsp";
 	}
 	
-//	3. 관광지 이미지파일 저장 및 DB 업로드
+//	관광지 이미지파일 저장 및 DB 업로드
 	
 	@RequestMapping("attractionForm.do")
 	public String uploadForm() {

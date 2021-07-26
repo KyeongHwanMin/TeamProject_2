@@ -3,8 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  
+ 
   <mapper namespace="attraction">
+  <!-- 관광지 메인페이지(attractionSearchForm) 페이징 -->
+	<select id="attcount" resultType="int">
+  	   select count(*) from attraction 
+  	</select>
+	
+	<select id="attList" resultType="attractionDTO" parameterType="hashmap" >
+  	   select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y , r 
+	from ( select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y , rownum r 
+	from ( select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y 
+	from attraction)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+   </select>
+ 
    <!--  관광지 지역  -->
   <select id="jejusi" resultType="attractionDTO">   
   	select * from attraction where place_local='jejusi'
