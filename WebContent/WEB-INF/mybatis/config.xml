@@ -9,6 +9,7 @@
 	  <typeAlias type="jejuguseok.map.mapDTO" alias="mapDTO" />
 	  <typeAlias type="userpage.board.otoDTO" alias="otoDTO" />
 	  <typeAlias type="jejuguseok_map.attractionDTO" alias="attractionDTO" />
+	  <typeAlias type="jejuguseok_map.attBookMarkDTO" alias="attBookMarkDTO" />
 	  <typeAlias type="jejuguseok_map.homeDTO" alias="homeDTO" />
 	  <typeAlias type="jejuguseok_map.accomBookMKdto" alias="accomBookMKdto" />
 	  <typeAlias type="jejuguseok.map.scheduleDTO" alias="scheduleDTO" />

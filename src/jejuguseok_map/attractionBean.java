@@ -195,48 +195,6 @@ public class attractionBean {
 		return "/adminpage/upload/attractionPro.jsp";
 	}
 
-
-	
-
-	
-/*	5. 관광지 유형 검색 
-	@RequestMapping("attractionSearchPro2.do")  		
-	public String attractionSearch_category(Model model, 
-			HttpServletRequest request) throws IOException {
-	
-		int sea2 = Integer.parseInt(request.getParameter("search2"));
-		System.out.println("관광지 유형: "+sea2);
-		String search2="역사/문화";
-		
-		if(sea2 == 8){
-			search2="자연/경치";
-			List sea2list = dao.selectList("attraction.nature"); 
-			 model.addAttribute("sea2list",sea2list);
-			
-			 return "/userpage/attraction/attractionSearchPro.jsp";
-		
-		}else if(sea2==9){
-			search2="레저/체험/학습";
-			List sea2list = dao.selectList("attraction.leisure"); 
-			 model.addAttribute("sea2list",sea2list);
-			
-			 return "/userpage/attraction/attractionSearchPro.jsp";
-			 
-		}else if(sea2==10){
-			search2="휴식/힐링";
-			List sea2list = dao.selectList("attraction.healing"); 
-			 model.addAttribute("sea2list",sea2list);
-			
-			 return "/userpage/attraction/attractionSearchPro.jsp";
-			
-		}
-		List sea2list = dao.selectList("attraction.jejusi"); 
-		model.addAttribute("sea2list",sea2list);
-		
-		return "/userpage/attraction/attractionSearchPro.jsp";
-	}		
- 
-*/	
 //	6. 찜한 관광지 노출 (mypage에서) 	
 	@RequestMapping("myAttraction.do")
 	public String myAttraction(String place_name, String place_address, String place_category) {

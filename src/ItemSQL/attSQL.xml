@@ -5,6 +5,37 @@
   
  
   <mapper namespace="attraction">
+  
+  <!-- 관광지 찜하기 관련 내용 -->
+  
+    <!-- 관광지 찜하기 count  -->
+  <select id="attCount" resultType="int" parameterType="String">
+  	   select count(*) from myAttraction where user_id=#{user_id}
+  	</select>
+
+  <!--  관광지 불러오기  -->
+   <select id="selectAtt" resultType="attractionDTO"  parameterType="String"> 
+  select * from attraction where place_no= #{place_no}
+   </select> 
+  
+  <!--  관광지 찜해서 insert  -->
+	<insert id="insertAtt" parameterType="attBookMarkDTO">
+  	   insert into myAttraction(MYATT, USER_ID, place_no, place_name, place_address, place_content, place_category, place_local, place_img) 
+  	   values(MYATT_seq.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_address}, 
+  	   		#{place_content}, #{place_category}, #{place_local}, #{place_img)
+  	</insert>
+   
+  <!--  찜한 관광지 노출 -->
+	<select id="myAtt" resultType="attBookMarkDTO" parameterType="String">
+  	   select * from myAttraction where user_id=#{user_id}
+  	</select>  
+  
+  <!-- 마이페이지에서 찜한 관광지 삭제)-->
+  <delete id="deleteMyAtt" parameterType="String">
+ 	 delete from myAttraction where place_no = #{place_no}
+  </delete>
+  
+  
   <!-- 관광지 메인페이지(attractionSearchForm) 페이징 -->
 	<select id="attcount" resultType="int">
   	   select count(*) from attraction 

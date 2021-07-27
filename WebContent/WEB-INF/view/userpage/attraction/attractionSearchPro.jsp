@@ -130,7 +130,7 @@
 									<c:if test="${attractionDTO.place_local == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${attractionDTO.place_local == 'seogwiposi'}">	
+									<c:if test="${attractionDTO.place_local == 'seoquiposi'}">	
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
 									<c:if test="${attractionDTO.place_local == 'jungmun'}">	
