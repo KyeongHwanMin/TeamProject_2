@@ -2,10 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<html>
-<head>
-<title>게시판</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+
+		
 <script language="JavaScript">      
   function deleteSave(){	
 	if(document.delForm.passwd.value==''){
@@ -37,7 +35,7 @@
 			<tr height="30">
 				<td align=center><input type="submit" value="비밀번호 확인">
 					<input type="button" value="글목록"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${pageNum}'">
+					onclick="document.location.href='/jejuguseok/list.do?pageNum=${pageNum}'">
 				</td>
 			</tr>
 		</table>
