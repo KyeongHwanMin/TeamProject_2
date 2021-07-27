@@ -93,5 +93,30 @@ from home)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
   </delete>
   
   
+  <!--  숙소 수정하기 위해 해당 숙소 불러오는거  -->
+   <select id="homeInfo" resultType="homeDTO" parameterType="String">
+     select * from home where home_no = #{home_no}
+   </select>
+   
+  <!-- 숙소 수정  -->
+  <update id="homeUpdate" parameterType="String">
+  	update home set 
+  	 home_name = #{home_name, jdbcType=VARCHAR},
+  	 home_address = #{home_address, jdbcType=VARCHAR},
+  	 home_content = #{home_content, jdbcType=VARCHAR},
+  	 x = #{x , jdbcType=VARCHAR},
+  	 y = #{y, jdbcType=VARCHAR},
+  	 home_type= #{home_type, jdbcType=VARCHAR},
+  	 home_local= #{home_local, jdbcType=VARCHAR}
+  	where home_no= #{home_no}
+  </update>
+  
+  
+  
+  <!-- 숙소 삭제 -->
+  <delete id="deletehome" parameterType="String">
+  		delete from home where home_no= #{home_no}
+  </delete>
+  
   
   </mapper>

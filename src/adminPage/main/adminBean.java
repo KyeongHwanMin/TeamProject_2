@@ -37,4 +37,11 @@ public class adminBean {
 		return "/adminpage/userManage.jsp";
 	}
 	
+	@RequestMapping("chartPage.do") 
+	public String chartPage(){
+		
+		return "/adminpage/chartPage.jsp";
+	}
+	
+	
 }

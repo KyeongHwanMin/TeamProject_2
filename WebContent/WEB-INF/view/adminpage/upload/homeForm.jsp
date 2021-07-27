@@ -19,8 +19,8 @@
 	숙소명: <input type="text" name ="home_name" /> <br />	
 	숙소 주소: <input type="text" name ="home_address" /> <br />	
 	숙소 정보: <textarea id="home_content" name ="home_content" rows="5" cols="20"> </textarea> <br />
-	위도: <input type="text" id="x" name="x" placeholder="GoogleMap 33.~"><br/>
-	경도: <input type="text" id="y" name="y" placeholder="GoogleMap 126.~"><br/>
+	위도: <input type="text" id="x" name="x" value="GoogleMap 33.~"><br/>
+	경도: <input type="text" id="y" name="y" value="GoogleMap 126.~"><br/>
 <!-- 숙소 지역 선택 -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="home_local">지역 선택</label>

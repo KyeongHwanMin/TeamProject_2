@@ -11,5 +11,12 @@
 </head>
 <body>
 
+
+  <script>
+ 	alert("삭제 완료");
+ 	window.location="accom.do";
+ </script>
+ 
+ 
 </body>
 </html>
