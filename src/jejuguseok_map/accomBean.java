@@ -32,7 +32,7 @@ public class accomBean {
 	@RequestMapping("accom.do")
 	public String accom(Model model, HttpServletRequest request){
 		
-		int pageSize = 10;	// 한 페이지에 보여질 게시물 수 
+		int pageSize = 5;	// 한 페이지에 보여질 게시물 수 
 		
 		//페이지 링크를 클릭한 번호 즉 현재 페이지 
 		String pageNum = request.getParameter("pageNum");	// 리스트에서 페이지 번호를 클릭 시 받을 수 있다.(페이지를 처음에 클릭하지 않는다.)

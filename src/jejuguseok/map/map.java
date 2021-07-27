@@ -1,5 +1,7 @@
 package jejuguseok.map;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,7 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class map {
 
 	// 컨트롤에서 생성한 객체 받기
-	
+	@Autowired
+	private scheduleDTO myscheduledto = null;
 	@Autowired
 	private scheduleDTO scheduledto = null;
 	@Autowired
@@ -77,20 +80,48 @@ public class map {
 		return "/map/schedule_table.jsp";
 	}
 	@RequestMapping("schedule_table_content.do")
-	public String content(int num1, int pageNum, Model model) {
-		System.out.println("num1==="+num1);
-		System.out.println("pageNum==="+pageNum);
-		     /*
-		      BoardDataBean article =null ;
-		      //dao.update("updateNum", num);
-		    	  article =  dao.selectOne("getArticlesNum",num);
-		    
-		      
-		     model.addAttribute("num", num);
-		     model.addAttribute("pageNum", pageNum);
-		     model.addAttribute("article", article);
-		     */
-		      
+	public String content(int num1, int pageNum,Model model) {
+		  
+		//String id = (String) session.getAttribute("user_id");
+		
+		scheduledto=dao.selectOne("schedule.mylocation",num1);		
+		model.addAttribute("scheduledto", scheduledto);		
+		
+		myscheduledto = dao.selectOne("schedule.mylocation",num1);
+		
+		if(myscheduledto.getC_y1() !=null) {List<String> y_list1 = Arrays.asList(myscheduledto.getC_y1().split(","));
+		model.addAttribute("y_list1",y_list1);}
+		if(myscheduledto.getC_x1() !=null) {List<String> x_list1 = Arrays.asList(myscheduledto.getC_x1().split(","));
+		model.addAttribute("x_list1",x_list1);}
+		if(myscheduledto.getC_y2() !=null) {List<String> y_list2 = Arrays.asList(myscheduledto.getC_y2().split(","));
+		model.addAttribute("y_list2",y_list2);}
+		if(myscheduledto.getC_x2() !=null) {List<String> x_list2 = Arrays.asList(myscheduledto.getC_x2().split(","));
+		model.addAttribute("x_list2",x_list2);}
+		if(myscheduledto.getC_y3() !=null) {List<String> y_list3 = Arrays.asList(myscheduledto.getC_y3().split(","));
+		model.addAttribute("y_list3",y_list3);}
+		if(myscheduledto.getC_x3() !=null) {List<String> x_list3 = Arrays.asList(myscheduledto.getC_x3().split(","));
+		model.addAttribute("x_list3",x_list3);}
+		if(myscheduledto.getC_y4() !=null) {List<String> y_list4 = Arrays.asList(myscheduledto.getC_y4().split(","));
+		model.addAttribute("y_list4",y_list4);}
+		if(myscheduledto.getC_x4() !=null) {List<String> x_list4 = Arrays.asList(myscheduledto.getC_x4().split(","));
+		model.addAttribute("x_list4",x_list4);}
+		if(myscheduledto.getC_y5() !=null) {List<String> y_list5 = Arrays.asList(myscheduledto.getC_y5().split(","));
+		model.addAttribute("y_list5",y_list5);}
+		if(myscheduledto.getC_x5() !=null) {List<String> x_list5 = Arrays.asList(myscheduledto.getC_x5().split(","));
+		model.addAttribute("x_list5",x_list5);}
+		if(myscheduledto.getC_y6() !=null) {List<String> y_list6 = Arrays.asList(myscheduledto.getC_y6().split(","));
+		model.addAttribute("y_list6",y_list6);}
+		if(myscheduledto.getC_x6() !=null) {List<String> x_list6 = Arrays.asList(myscheduledto.getC_x6().split(","));
+		model.addAttribute("x_list6",x_list6);}
+		
+		
+		
+		
+			model.addAttribute("myscheduledto",myscheduledto);
+		  
+		  
+		
+	
 		return "/map/schedule_table_content.jsp";
 	}
 	
@@ -126,51 +157,48 @@ public class map {
 			String c_y1,String c_x1,String c_y2,String c_x2,String c_y3,String c_x3,String c_y4,String c_x4,String c_y5,String c_x5,String c_y6,String c_x6,
 			Model model,HttpSession session) {		
 		
-		//String id = (String) session.getAttribute("user_id");
 		
 		if(c_place1 != null) {
 		scheduledto.setC_place1(c_place1);
 		scheduledto.setC_context1(c_context1);
 		scheduledto.setC_time1(c_time1);	
-		scheduledto.setC_y1(Float.parseFloat(c_y1));
-		scheduledto.setC_x1(Float.parseFloat(c_x1));	
+		scheduledto.setC_y1(c_y1);
+		scheduledto.setC_x1(c_x1);
 		dao.insert("schedule.insertsc" ,scheduledto);
 		}if(c_place2 != null) {	
 		scheduledto.setC_place2(c_place2);
 		scheduledto.setC_context2(c_context2);
 		scheduledto.setC_time2(c_time2);	
-		scheduledto.setC_y2(Float.parseFloat(c_y2));
-		scheduledto.setC_x2(Float.parseFloat(c_x2));	
-		System.out.println("c_y2"+c_y2);
-		System.out.println("c_x2"+c_x2);
+		scheduledto.setC_y2(c_y2);
+		scheduledto.setC_x2(c_x2);		
 		dao.update("schedule.updatesc2",scheduledto);
 		}if(c_place3 != null) {
 		scheduledto.setC_place3(c_place3);
 		scheduledto.setC_context3(c_context3);
 		scheduledto.setC_time3(c_time3);
-		scheduledto.setC_y3(Float.parseFloat(c_y3));
-		scheduledto.setC_x3(Float.parseFloat(c_x3));	
+		scheduledto.setC_y3(c_y3);
+		scheduledto.setC_x3(c_x3);	
 		dao.update("schedule.updatesc3",scheduledto);
 		}if(c_place4 != null) {
 		scheduledto.setC_place4(c_place4);
 		scheduledto.setC_context4(c_context4);
 		scheduledto.setC_time4(c_time4);
-		scheduledto.setC_y4(Float.parseFloat(c_y4));
-		scheduledto.setC_x4(Float.parseFloat(c_x4));	
+		scheduledto.setC_y4(c_y4);
+		scheduledto.setC_x4(c_x4);
 		dao.update("schedule.updatesc4",scheduledto);
 		}if(c_place5 != null) {
 		scheduledto.setC_place5(c_place5);
 		scheduledto.setC_context5(c_context5);
 		scheduledto.setC_time5(c_time5);
-		scheduledto.setC_y5(Float.parseFloat(c_y5));
-		scheduledto.setC_x5(Float.parseFloat(c_x5));	
+		scheduledto.setC_y5(c_y5);
+		scheduledto.setC_x5(c_x5);
 		dao.update("schedule.updatesc5",scheduledto);
 		}if(c_place6 != null) {
 			scheduledto.setC_place6(c_place6);
 			scheduledto.setC_context6(c_context6);
 			scheduledto.setC_time6(c_time6);
-			scheduledto.setC_y6(Float.parseFloat(c_y6));
-			scheduledto.setC_x6(Float.parseFloat(c_x6));	
+			scheduledto.setC_y6(c_y6);
+			scheduledto.setC_x6(c_x6);
 			dao.update("schedule.updatesc6",scheduledto);
 		}
 	
