@@ -156,7 +156,7 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchPro.jsp";
 	}
 	
-//	관광지 이미지파일 저장 및 DB 업로드
+//	관광지 이미지파일 저장 및 Db 업로드 
 	
 	@RequestMapping("attractionForm.do")
 	public String uploadForm() {
