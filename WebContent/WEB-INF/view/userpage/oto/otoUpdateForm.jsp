@@ -3,15 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<html>
-<head>
-<title>게시판</title>
-</head>
+
+
 
 
 
 <center>
-	<b>글수정</b> <br>
+	<b>CONTACT</b> <br>
 	<form method="post" name="writeform"
 		action="/jejuguseok/WEB-INF/view/userpage/oto/otoUpdatePro.do?pageNum=${pageNum}"
 		onsubmit="return writeSave()">
@@ -57,7 +55,7 @@
 				<td colspan=2 align="center"><input type="submit" value="글수정">
 					<input type="reset" value="다시작성"> <input type="button"
 					value="목록보기"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/userpage/oto/otoUserList.do?pageNum=${pageNum}'">
+					onclick="document.location.href='/jejuguseok/list.do'">
 				</td>
 			</tr>
 		</table>

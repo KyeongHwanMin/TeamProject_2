@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
 
-	<!-- 전체 게시물 카운트 -->
+	<!-- id 가 같은 게시물 카운트 -->
 	<select id="userGetArticleCount" resultType="int" parameterType="String">
 		select count(*) from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum
 	</select>
@@ -36,8 +36,8 @@
 	
 	<!-- 업데이트 -->
 	<insert id="insertArticles" parameterType="otoDTO">
-		insert into otoboard(num,writer,email,ph,subject,passwd,save,reg_date,
-		ref,re_step,re_level,content,ip,otonum) values(otoboard_seq.NEXTVAL,#{writer},#{email},#{ph},#{subject},#{passwd},#{save},#{reg_date},#{ref},{#re_step},#{re_level},#{content},#{ip},otonum_seq.NEXTVAL)
+		insert into otoboard(num,writer,ph,subject,passwd,save,reg_date,
+		ref,re_step,re_level,content,ip,otonum) values(otoboard_seq.NEXTVAL,#{writer},#{ph},#{subject},#{passwd},#{save},#{reg_date},#{ref},{#re_step},#{re_level},#{content},#{ip},otonum_seq.NEXTVAL)
 	</insert>
 	
 	<!-- 답글시 증가 -->
@@ -48,6 +48,16 @@
 	<!-- user id에 따른 otonum 가져오기 -->
 	<select id="getOtonum" resultType="otoDTO">
 		select count(*) from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum
+	</select>
+	
+	<!-- 수정 폼 페이지 -->
+	<select id="updateGetArticle" parameterType="int" resultType="otoDTO">
+		select * from otoboard where num = #{num}
+	</select>
+	
+
+	<select id="passwd" parameterType="int" resultType="otoDTO">
+	select * from otoboard where num = #{num}
 	</select>
 	
 </mapper>

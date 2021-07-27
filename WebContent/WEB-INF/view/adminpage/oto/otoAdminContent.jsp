@@ -57,13 +57,13 @@
 			<tr height="30">
 				<td colspan="4" align="right"><input type="button"
 					value="문의수정"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/adminpage/oto/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+					onclick="document.location.href='/jejuguseok/adminpage/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
 					<input type="button" value="문의삭제"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminDeleteForm.do?num=${article.getNum()%>&otonum=<%=article.otonum}&pageNum=${pageNum}&re_level=${article.re_level}'">
+					onclick="document.location.href='/jejuguseok/adminpage/deleteForm.do?num=${num}&otonum=${article.otonum}&pageNum=${pageNum}&re_level=${article.re_level}'">
 					<input type="button" value="답변쓰기"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminWrite.do?num=${num}&ref=${ref}&re_step=${re_step}&re_level=${re_level}'">
+					onclick="document.location.href='/jejuguseok/adminpage/write.do?num=${num}&ref=${ref}&re_step=${re_step}&re_level=${re_level}'">
 					<input type="button" value="문의목록"
-					onclick="document.location.href='/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${pageNum}'">
+					onclick="document.location.href='/jejuguseok/adminpage/list.do?pageNum=${pageNum}'">
 				</td>
 			</tr>
 		</table>

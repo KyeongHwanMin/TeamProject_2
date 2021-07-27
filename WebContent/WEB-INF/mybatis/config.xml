@@ -38,6 +38,8 @@
 		<mapper resource="/userpageSQL/boardSQL.xml"/>
 		
 		<mapper resource="/mapsql/scheduleSQL.xml"/>
+		
+		<mapper resource="/adminSQL/boardAdSQL.xml"/>
 	</mappers>
 	
 </configuration>

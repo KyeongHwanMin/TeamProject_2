@@ -5,7 +5,31 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CONTACT</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
+</head>
+	<div id="layoutSidenav_content">
+
+
+		<%@ include file="../adminHeader.jsp"%>
+
 <main>
+<div class="container-fluid px-4" align="center">
+<div class="card mb-4" align="center">
 
 	<h2>1:1문의</h2>
 	<p>궁금하신 점은 1:1 문의를 남겨주세요. 친절하게 답변 드리겠습니다.</p>
@@ -16,6 +40,7 @@
 	<p>간단한 문의라면 문의주시기 전에 자주 묻는 질문을 먼저 체크해보세요.</p>
 
 	<html>
+
 <head>
 <title>1:1문의게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -53,7 +78,7 @@
 								<img src="images/re.gif">
 							</c:if> <c:if test="${article.re_level == 0 }">
 							</c:if> <a
-							href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminContent.do?num=${article.num}&pageNum=${currentPage}">
+							href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
 								${article.subject} </a></td>
 						<td align="center" width="100">${article.writer}</a>
 						</td>
@@ -88,17 +113,17 @@
 
 			<c:if test="${startPage > 10}">
 				<a
-					href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${startPage - 10 }">[이전]</a>
+					href="/jejuguseok/adminpage/list.do?pageNum=${startPage - 10 }">[이전]</a>
 			</c:if>
 
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
 				<a
-					href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${i}">[${i}]</a>
+					href="/jejuguseok/adminpage/list.do?pageNum=${i}">[${i}]</a>
 			</c:forEach>
 
 			<c:if test="${endPage < pageCount}">
 				<a
-					href="/jejuguseok/WEB-INF/view/adminpage/oto/otoAdminList.do?pageNum=${startPage + 10}">[다음]</a>
+					href="/jejuguseok/adminpage/list.do?pageNum=${startPage + 10}">[다음]</a>
 			</c:if>
 		</c:if>
 

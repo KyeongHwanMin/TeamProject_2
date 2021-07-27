@@ -48,11 +48,11 @@
 
 
 		<center>
-			<h3>1:1문의(전체 글:${count})</h3>
+			<h3>CONTACT(전체 글:${count})</h3>
 			<table width="700">
 				<tr>
 					<td align="right"><c:if test="${user_id != null}">
-							<a href="write.do">1:1 문의하기</a>
+							<a href="write.do">CONTACT</a>
 						</c:if> <c:if test="${user_id == null }">
 							<a href="/jejuguseok/loginForm.do">로그인후 글쓰기</a>
 							<!--  로그인 폼 경로 바꿀것 --></td>

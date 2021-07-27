@@ -10,12 +10,13 @@
 
    <!--  패키지 @controller 클래스를 스캔한다. -->
   <context:component-scan base-package="userpage.board" />
+  <context:component-scan base-package="adminPage.board" />
   
  <!-- 자바로 따지면 Date day = new date() 객체생성 -->
      <!-- <jsp:useBean /> 같은 기능을 한다.  -->
     
     <bean id="otoDTO" class="userpage.board.otoDTO" />
     <bean id="otoDAO" class="userpage.board.otoDAO" />
-  
+    <bean id="otoAdDAO" class="adminPage.board.otoAdDAO" />
 
 </beans>

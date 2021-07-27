@@ -3,15 +3,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>게시판</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<title>CONTACT</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 </head>
+	<div class="super_container">
+
+		<%@ include file="../header.jsp"%>
 
 <body>
 	<center>
-		<b>글목록(전체 글:${count})</b>
+		<b>CONTACT(전체 글:${count})</b>
 		<table width="700">
 			<tr>
 				<td align="right"><c:if test="${id != 0}">
