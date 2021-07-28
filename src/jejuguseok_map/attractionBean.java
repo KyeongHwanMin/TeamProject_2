@@ -31,9 +31,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
- * 관광지 Bean: 역사문화, 자연경치, 레저체험학습, 휴식힐링
- * list1: 관광지 메인(form) 페이지
- * list2: 관광지 pro 페이지 
+관광지 Bean: 역사문화, 자연경치, 레저체험학습, 휴식힐링
+list1: 관광지 메인(form) 페이지
+list2: 관광지 pro 페이지 
+
+ * 페이징 요약 
+- 현재 페이지(current page = 클릭한 페이지) 
+- String pageNum ~ : 첫 페이지 1(1~10 해당 페이지 받기) 
+- if (pageNum == null) ~:  페이지 입력 x >  1페이지, 입력 시 null=if문 동작 안함 
+- int startRow ~:  (1-1) * 10 + 1 = 1
+- int endRow ~: 1 * 10 = 10
+- int count = 0; 전체 관광지 수
+- int number= 0; 화면에 보이는 게시물 번호. 
+  입력된 번호가 아니며 삭제되면 시퀀스는 emty 번호를 체크하지 않는다 즉, 입력된 번호가 아닌 게시물 등록할 떄만 보이는 번호	
+- HashMap Row = new HashMap(); : sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
  */
 @Controller
 public class attractionBean {
@@ -42,28 +53,51 @@ public class attractionBean {
 	@Autowired
 	private SqlSessionTemplate dao =null;	
 	
+	
+//	관광지 북마크: attform에서 찜하기 클릭 시 해당 페이지 이동 후 복귀(알럿기능) 
+	@RequestMapping("attbook.do") 
+	public String attbook(Model model, attractionDTO dto, String place_no,  
+			HttpSession session, HttpServletRequest request)  throws Exception{
+		
+		String id =(String)session.getAttribute("user_id");
+		
+		attractionDTO att = new attractionDTO();
+		attBookMarkDTO bm = new attBookMarkDTO();
+		
+		att = dao.selectOne("attraction.selectAtt", place_no);
+		bm.setUser_id(id);
+		bm.setPlace_address(att.getPlace_address());
+		bm.setPlace_category(att.getPlace_category());
+		bm.setPlace_content(att.getPlace_content());
+		bm.setPlace_img(att.getPlace_img());
+		bm.setPlace_local(att.getPlace_local());
+		bm.setPlace_name(att.getPlace_name());
+		bm.setPlace_no(att.getPlace_no());
+		
+		
+		return "/userpage/attraction/attBookMark.jsp";
+	}
+	
+	
+	
+	
+	
+	
 //	관광지 검색 (지역, 카테고리로 검색) + 페이징 
 	@RequestMapping("attForm.do")
 	public String SearchForm(Model model, HttpServletRequest request) {
 		
-		int pageSize = 10;	// 한 페이지에 보여질 게시물 수
+		int pageSize = 10;	
 		
-		//현재 페이지(current page = 클릭한 페이지) 
-		String pageNum = request.getParameter("pageNum");	// 첫 페이지 1(1~10 해당 페이지 받기) 
-		if (pageNum == null) {	// 페이지 입력 x >  1페이지, 입력 시 null=if문 동작 안함 
+		String pageNum = request.getParameter("pageNum");	
+		if (pageNum == null) { 
 		    pageNum = "1";
 		}
 		int currentPage = Integer.parseInt(pageNum);		
-// 		1:String으로 입력 후 변환
-
 		int startRow = (currentPage - 1) * pageSize + 1;	
-// 		(1-1) * 10 + 1 = 1
 		int endRow = currentPage * pageSize;				
-// 		1 * 10 = 10
-		
-		int count = 0;	// 전체 관광지 수
-		int number= 0;	// 화면에 보이는 게시물 번호. 
-//		입력된 번호가 아니며 삭제되면 시퀀스는 emty 번호를 체크하지 않는다 즉, 입력된 번호가 아닌 게시물 등록할 떄만 보이는 번호		
+		int count = 0;	
+		int number= 0;
 
 		List articleList = null;
 		count = dao.selectOne("attraction.attcount");
@@ -71,30 +105,25 @@ public class attractionBean {
 		System.out.println("페이징 체크: "+count);
 		
 		HashMap Row = new HashMap();  
-// 		sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
 		Row.put("startRow", startRow);
 		Row.put("endRow", endRow);
 
-		
 		if (count > 0) {
 			articleList = dao.selectList("attraction.attList", Row);
 		}
 		
 		System.out.println("관광지 리스트: "+articleList);
-		number=count-(currentPage-1)*pageSize;	
-// 		전체 게시물 수 - (현재 페이지 - 1) * 10  			
+		number=count-(currentPage-1)*pageSize;			
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("startRow", startRow);
 		model.addAttribute("endRow", endRow);
 		model.addAttribute("count", count);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("number", number);
-		model.addAttribute("articleList", articleList); //list1 상태
+		model.addAttribute("articleList", articleList); 
 		model.addAttribute("pageNum", pageNum);
 
 		List list1 = dao.selectList("item.searchAttraction"); 
-		
-//		List list1 = dao.selectList("attraction.attList");
 		model.addAttribute("list1",list1);	
 
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
