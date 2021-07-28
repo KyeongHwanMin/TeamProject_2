@@ -11,6 +11,7 @@
     <!-- 관광지 찜하기 count  -->
   <select id="attCount" resultType="int" parameterType="String">
   	   select count(*) from myAttraction where user_id=#{user_id}
+  	   
   	</select>
 
   <!--  관광지 불러오기  -->
