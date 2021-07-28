@@ -8,5 +8,4 @@
 	<script> 
 	  alert("${place_name}을 찜하였습니다");
       history.go(-1);
-      
 	</script>
