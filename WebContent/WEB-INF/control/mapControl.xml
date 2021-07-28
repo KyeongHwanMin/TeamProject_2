@@ -19,6 +19,7 @@
 	<bean id="attBookMarkDTO" class="jejuguseok_map.attBookMarkDTO"></bean>
 	 <bean id="attractionDTO" class="jejuguseok_map.attractionDTO" ></bean>
 	 <bean id="locationDTO" class="jejuguseok_map.locationDTO" ></bean>
+	
 	 <bean id="homeDTO" class="jejuguseok_map.homeDTO" ></bean>
 	<!-- multipartResolver스캔 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
