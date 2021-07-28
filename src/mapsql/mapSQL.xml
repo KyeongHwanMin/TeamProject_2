@@ -7,7 +7,10 @@
  		select * from location
  	</select>
  	<select id="tour" resultType="mapDTO">
- 		select * from location where CATEGORY = '관광/숙박'
+ 		select * from location where type = 'attraction'
+ 	</select>
+ 	<select id="home" resultType="mapDTO">
+ 		select * from location where type = 'home'
  	</select>
  	
 
