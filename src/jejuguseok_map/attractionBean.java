@@ -74,7 +74,6 @@ public class attractionBean {
 		bm.setPlace_name(att.getPlace_name());
 		bm.setPlace_no(att.getPlace_no());
 		
-		
 		return "/userpage/attraction/attBookMark.jsp";
 	}
 	
