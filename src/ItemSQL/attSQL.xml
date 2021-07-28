@@ -27,12 +27,12 @@
    
   <!--  찜한 관광지 노출 -->
 	<select id="myAtt" resultType="attBookMarkDTO" parameterType="String">
-  	   select * from myAttraction where user_id=#{user_id}
+  	   select * from myattraction where user_id=#{user_id}
   	</select>  
   
   <!-- 마이페이지에서 찜한 관광지 삭제)-->
   <delete id="deleteMyAtt" parameterType="String">
- 	 delete from myAttraction where place_no = #{place_no}
+ 	 delete from myattraction where place_no = #{place_no}
   </delete>
   
   
