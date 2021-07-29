@@ -42,6 +42,18 @@ public class map {
 		System.out.println("id0 "+id);
 		return "/map/map.jsp";
 	}
+	@RequestMapping("map1.do")
+	public String map1(Model model , HttpSession session) {		
+		List maplist = dao.selectList("map.location");
+		List maptourlist = dao.selectList("map.tour");
+		List maphomelist = dao.selectList("map.home");
+		model.addAttribute("maplist", maplist);
+		model.addAttribute("maptourlist", maptourlist);
+		model.addAttribute("maphomelist", maphomelist);
+		String id = (String) session.getAttribute("user_id");
+		System.out.println("id0 "+id);
+		return "/map/map1.jsp";
+	}
 	@RequestMapping("schedule_pro.do")
 	public String schedule_pro(HttpSession session,String subject, String date, String day, String with, String travel, Model model) {
 		List maplist = dao.selectList("map.location");
@@ -108,7 +120,7 @@ public class map {
 	public String content(int num1, int pageNum,Model model) {
 		  
 		//String id = (String) session.getAttribute("user_id");
-	
+		
 		scheduledto=dao.selectOne("schedule.mylocation",num1);		
 		model.addAttribute("scheduledto", scheduledto);		
 		myscheduledto = dao.selectOne("schedule.mylocation",num1);

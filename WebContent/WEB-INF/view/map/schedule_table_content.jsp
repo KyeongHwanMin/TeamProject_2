@@ -60,70 +60,6 @@
      backgroundColor="white";
       box-sizing: border-box;
       }
-      #mapwrap {
-	position: relative;
-	overflow: hidden;
-}
-
-.category, .category * {
-	margin: 0;
-	padding: 0;
-	color: #000;
-}
-
-.category {
-	position: absolute;
-	overflow: hidden;
-	top: 20px;
-	left: 10px;
-	width: 150px;
-	height: 50px;
-	z-index: 10;
-	border: 1px solid black;
-	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
-	font-size: 12px;
-	text-align: center;
-	background-color: #fff;
-}
-
-.category .menu_selected {
-	background: #FF5F4A;
-	color: #fff;
-	border-left: 1px solid #915B2F;
-	border-right: 1px solid #915B2F;
-	margin: 0 -1px;
-}
-
-.category li {
-	list-style: none;
-	float: left;
-	width: 50px;
-	height: 45px;
-	padding-top: 5px;
-	cursor: pointer;
-}
-
-.category .ico_comm {
-	display: block;
-	margin: 0 auto 2px;
-	width: 22px;
-	height: 26px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png')
-		no-repeat;
-}
-
-.category .ico_total {
-	background-position: -10px 0;
-}
-
-.category .ico_tour {
-	background-position: -10px -36px;
-}
-
-.category .ico_home {
-	background-position: -10px -72px;
-}
     </style>
 </head>
 
@@ -135,384 +71,284 @@
 </div>
 <div class="r">
       <div class="left">
+		
 
 		<!-- 아래는 본인들의 내용 작성하기 -->
 
-		<div id="mapwrap">
-				<!-- 지도가 표시될 div -->
-				<div id="map" style="width: 98%; height: 100%;"></div>
-				<!-- 지도 위에 표시될 마커 카테고리 -->
-				<div class="category">
-					<ul>
-						<li id="totalMenu" onclick="changeMarker('total')"><span
-							class="ico_comm ico_total"></span> 전체</li>
-						<li id="tourMenu" onclick="changeMarker('tour')"><span
-							class="ico_comm ico_tour"></span> 관광지</li>
-						<li id="homeMenu" onclick="changeMarker('home')"><span
-							class="ico_comm ico_home"></span> 숙박</li>
-					</ul>
-				</div>
-			</div>
+		<div id="map" style="width:98% ; height: 87vh;"></div>
 
-			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
-			<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-    mapOption = { 
-	 center: new kakao.maps.LatLng(33.403421435965604, 126.51971115454302), // 지도의 중심좌표
-        level: 9 // 지도의 확대 레벨 
-        
-    }; 
+		<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a95cadba8f57feb150276e9f4194f8aa"></script>
+		<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.433421435965604, 126.51971115454302), // 지도의 중심좌표
+		        level: 9, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+		
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		
+		// 지도에 확대 축소 컨트롤을 생성한다
+		var zoomControl = new kakao.maps.ZoomControl();
 
-// 지도에 확대 축소 컨트롤을 생성한다
-var zoomControl = new kakao.maps.ZoomControl();
+		// 지도의 우측에 확대 축소 컨트롤을 추가한다
+		map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+		
+		// 데이터
+		
+			
+	
+		 <c:forEach var="mylist"  items="${place1}" varStatus="status">
+		// 마커 생성 표시
+		var marker =  new kakao.maps.Marker({
+			position:new kakao.maps.LatLng(${y_list1.get(status.index)}, ${x_list1.get(status.index)}),
+			map:map
+			});
+		
+		// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+		var iwContent =
+        '          <div> &nbsp ${place1[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	    
+	    
+	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	     
+	    content : iwContent, 
+	    removable : iwRemoveable
+	});
+	kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-// 지도의 우측에 확대 축소 컨트롤을 추가한다
-map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
-
-
-
-//마커이미지의 주소입니다. 스프라이트 이미지 입니다
-var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  
-    totalMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
-    tourMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
-    homeMarkers = []; // 주차장 마커 객체를 가지고 있을 배열입니다
-
-    var iwContent = new Array(); 
- // 전체 위치, 1일차 마커가 표시될 좌표 배열입니다
-    var totalPositions=new Array();
-    <c:forEach var="mylist"  items="${place1}" varStatus="status">
-    var totalPositions2 = [   new kakao.maps.LatLng(${y_list1.get(status.index)}, ${x_list1.get(status.index)})   ];  
-    totalPositions = totalPositions.concat(totalPositions2); 
-    </c:forEach>
-    createtotalMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-    
-   // 전체 위치, 2일차 마커가 표시될 좌표 배열입니다
-<c:if test="${place2 != null}">
-<c:forEach var="mylist"  items="${place2}" varStatus="status">
-var totalPositions2 = [   new kakao.maps.LatLng(${y_list2.get(status.index)}, ${x_list2.get(status.index)})   ];  
-totalPositions = totalPositions.concat(totalPositions2);
-</c:forEach>
-createtotalMarkers2();
-</c:if>
-// 전체 위치, 3일차 마커가 표시될 좌표 배열입니다
-<c:if test="${place3 != null}">
-<c:forEach var="mylist"  items="${place3}" varStatus="status">
-var totalPositions2 = [   new kakao.maps.LatLng(${y_list3.get(status.index)}, ${x_list3.get(status.index)})   ];  
-totalPositions = totalPositions.concat(totalPositions2);
-</c:forEach>
-createtotalMarkers3();
-</c:if>
-    	
-    //관광지 위치 마커가 표시될 좌표 배열입니다
-    var tourPositions=new Array();
-    <c:forEach var="maptourlist" items="${maptourlist}" varStatus="status">
-    var tourPositions2 = [    new kakao.maps.LatLng(${maptourlist.y}, ${maptourlist.x})             ];
-        tourPositions = tourPositions.concat(tourPositions2);
-    </c:forEach>
-
-    //숙소 위치 마커가 표시될 좌표 배열입니다
-    var homePositions=new Array();
-    <c:forEach var="maphomelist" items="${maphomelist}" varStatus="status">
-    var homePositions2 = [   new kakao.maps.LatLng(${maphomelist.y}, ${maphomelist.x})   ];
-    homePositions = homePositions.concat(homePositions2);
-    </c:forEach>
-    
-
-createtourMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
-createhomeMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
-
-changeMarker('total'); // 지도에 커피숍 마커가 보이도록 설정합니다    
-
-
-// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
-function createMarkerImage(src, size, options) {
-    var markerImage = new kakao.maps.MarkerImage(src, size, options);
-    return markerImage;            
-}
-
-// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
-function createMarker(position, image) {
-    var marker = new kakao.maps.Marker({
-        position: position,
-        image: image
-    });
-    
-    return marker;  
-}   
-
-// total 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
-function createtotalMarkers() {
-	<c:forEach var="mylist"  items="${place1}" varStatus="status">
-	 iwContent[${status.index}] = 
-		 '          <div> &nbsp ${place1[status.index]}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maplist.address} </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';		    
-	     </c:forEach>	 
-    for (var i = 0; i < totalPositions.length; i++) {  
-    	//console.log('마커출력'+i);
-        var imageSize = new kakao.maps.Size(22, 26),
-            imageOptions = {  
-                spriteOrigin: new kakao.maps.Point(10, 0),    
-                spriteSize: new kakao.maps.Size(36, 98)  
-            };     
-       
-        // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(totalPositions[i], markerImage);  
-        //console.log('마커 위치'+totalPositions[i]);
-        // 생성된 마커를 커피숍 마커 배열에 추가합니다
-        //console.log('iwContent'+iwContent[10]);
-        totalMarkers.push(marker);
-        //console.log('토탈마커'+"data: " + JSON.stringify(totalMarkers[1]));
-        
-       //===================================================================
-       
-        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-       
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({    	
-    	content : iwContent[i],
-        removable : iwRemoveable       
-    });
-   
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));     
- // 일정 추가 버튼 메서드
+	// 일정 추가 버튼 메서드
 	function add1(id,n) {		
 			var id = id.split(',');
 		document.getElementById("p_place"+n).value = id[0];
 		document.getElementById("p_y"+n).value = id[1];
 		document.getElementById("p_x"+n).value = id[2];				
-			}
-        // 1111111111111111111111111111111111111111
- 
-    }  //for       
-}//createmarker()
-function createtotalMarkers2() {
+	}
+	</c:forEach>
+// 1111111111111111111111111111111111111111111111
 <c:forEach var="mylist"  items="${place2}" varStatus="status">
-	 iwContent[${status.index}] = 
-		 '          <div> &nbsp ${place2[status.index]}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maplist.address} </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';		    
-	     </c:forEach>	 
-    for (var i = 0; i < totalPositions.length; i++) {  
-    	//console.log('마커출력'+i);
-        var imageSize = new kakao.maps.Size(22, 26),
-            imageOptions = {  
-                spriteOrigin: new kakao.maps.Point(10, 0),    
-                spriteSize: new kakao.maps.Size(36, 98)  
-            };           
-        // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(totalPositions[i], markerImage, iwContent[i] );  
-        // 생성된 마커를 커피숍 마커 배열에 추가합니다
-        totalMarkers.push(marker);
- 
-        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-       
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({    	
-    	content : iwContent[i],
-        removable : iwRemoveable       
-    }); 
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));     
- // 일정 추가 버튼 메서드
+		// 마커 생성 표시
+		var marker =  new kakao.maps.Marker({
+			position:new kakao.maps.LatLng(${y_list2.get(status.index)}, ${x_list2.get(status.index)}),
+			map:map
+			});
+		
+		// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+		var iwContent =
+        '          <div> &nbsp ${place2[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	    
+	    
+	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	     
+	    content : iwContent, 
+	    removable : iwRemoveable
+	});
+	kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+
+	// 일정 추가 버튼 메서드
 	function add1(id,n) {		
 			var id = id.split(',');
 		document.getElementById("p_place"+n).value = id[0];
 		document.getElementById("p_y"+n).value = id[1];
 		document.getElementById("p_x"+n).value = id[2];				
-			}
-    }  //for       
-}//createmarker2()
-
-
-// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
-function settotalMarkers(map) {        
-    for (var i = 0; i < totalMarkers.length; i++) {  
-        totalMarkers[i].setMap(map);
-    }        
-}
-
-// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
-function createtourMarkers() {
-	<c:forEach var="maptourlist" items="${maptourlist}" varStatus="status">
-	 iwContent[${status.index}] = 
-		  '          <div> &nbsp ${maptourlist.name}</div>' + 
+	}
+	</c:forEach>
+	// 22222222222222222222222222222222222222222222222222
+	<c:forEach var="mylist"  items="${place3}" varStatus="status">
+			// 마커 생성 표시
+			var marker =  new kakao.maps.Marker({
+				position:new kakao.maps.LatLng(${y_list3.get(status.index)}, ${x_list3.get(status.index)}),
+				map:map
+				});
+			
+			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			var iwContent =
+	        '          <div> &nbsp ${place3[status.index] }</div>' + 
 	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maptourlist.address} </div>' +		
+			'				<div>&nbsp	 </div>' +	
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
 		    
-	     </c:forEach>	 
-    for (var i = 0; i < tourPositions.length; i++) {
-        
-        var imageSize = new kakao.maps.Size(22, 26),
-            imageOptions = {   
-                spriteOrigin: new kakao.maps.Point(10, 36),    
-                spriteSize: new kakao.maps.Size(36, 98)  
-            };       
-     
-        // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(tourPositions[i], markerImage);  
+		    
+		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		     
+		    content : iwContent, 
+		    removable : iwRemoveable
+		});
+		kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-        // 생성된 마커를 편의점 마커 배열에 추가합니다
-        tourMarkers.push(marker);   
-        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-        
-        // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({    	
-        	content : iwContent[i],
-            removable : iwRemoveable
-        });
-
-        // 마커에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));      
-        
-    }        
-}
-
-// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
-function settourMarkers(map) {        
-    for (var i = 0; i < tourMarkers.length; i++) {  
-        tourMarkers[i].setMap(map);
-    }        
-}
-
-// 주차장 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
-function createhomeMarkers() {
-	<c:forEach var="maphomelist" items="${maphomelist}" varStatus="status">
-	 iwContent[${status.index}] = 
-		  '          <div> &nbsp ${maphomelist.name}</div>' + 
+		// 일정 추가 버튼 메서드
+		function add1(id,n) {		
+				var id = id.split(',');
+			document.getElementById("p_place"+n).value = id[0];
+			document.getElementById("p_y"+n).value = id[1];
+			document.getElementById("p_x"+n).value = id[2];				
+		}
+		</c:forEach>
+//3333333333333333333333333333333333333333333333333
+<c:forEach var="mylist"  items="${place4}" varStatus="status">
+			// 마커 생성 표시
+			var marker =  new kakao.maps.Marker({
+				position:new kakao.maps.LatLng(${y_list4.get(status.index)}, ${x_list4.get(status.index)}),
+				map:map
+				});
+			
+			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			var iwContent =
+	        '          <div> &nbsp ${place4[status.index] }</div>' + 
 	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maphomelist.address} </div>' +		
+			'				<div>&nbsp	 </div>' +	
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
 		    
-	     </c:forEach>
-    for (var i = 0; i < homePositions.length; i++) {
-        
-        var imageSize = new kakao.maps.Size(22, 26),
-            imageOptions = {   
-                spriteOrigin: new kakao.maps.Point(10, 72),    
-                spriteSize: new kakao.maps.Size(36, 98)  
-            };       
-     
-        // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(homePositions[i], markerImage,iwContent[i]);  
+		    
+		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		     
+		    content : iwContent, 
+		    removable : iwRemoveable
+		});
+		kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-        // 생성된 마커를 주차장 마커 배열에 추가합니다
-        homeMarkers.push(marker);     
-        
-iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-        
-        // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({    	
-        	content : iwContent[i],
-            removable : iwRemoveable
-        });
+		// 일정 추가 버튼 메서드
+		function add1(id,n) {		
+				var id = id.split(',');
+			document.getElementById("p_place"+n).value = id[0];
+			document.getElementById("p_y"+n).value = id[1];
+			document.getElementById("p_x"+n).value = id[2];				
+		}
+		</c:forEach>
+//444444444444444444444444444444444444444444444444444
+<c:forEach var="mylist"  items="${place5}" varStatus="status">
+			// 마커 생성 표시
+			var marker =  new kakao.maps.Marker({
+				position:new kakao.maps.LatLng(${y_list5.get(status.index)}, ${x_list5.get(status.index)}),
+				map:map
+				});
+			
+			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			var iwContent =
+	        '          <div> &nbsp ${place5[status.index] }</div>' + 
+	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+			'				<div>&nbsp	 </div>' +	
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		    
+		    
+		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		     
+		    content : iwContent, 
+		    removable : iwRemoveable
+		});
+		kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-        // 마커에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));      
-    }                
-}
+		// 일정 추가 버튼 메서드
+		function add1(id,n) {		
+				var id = id.split(',');
+			document.getElementById("p_place"+n).value = id[0];
+			document.getElementById("p_y"+n).value = id[1];
+			document.getElementById("p_x"+n).value = id[2];				
+		}
+		</c:forEach>
+//55555555555555555555555555555555555555555555555555
+<c:forEach var="mylist"  items="${place6}" varStatus="status">
+			// 마커 생성 표시
+			var marker =  new kakao.maps.Marker({
+				position:new kakao.maps.LatLng(${y_list6.get(status.index)}, ${x_list6.get(status.index)}),
+				map:map
+				});
+			
+			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			var iwContent =
+	        '          <div> &nbsp ${place6[status.index] }</div>' + 
+	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+			'				<div>&nbsp	 </div>' +	
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		    
+		    
+		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		     
+		    content : iwContent, 
+		    removable : iwRemoveable
+		});
+		kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-// 주차장 마커들의 지도 표시 여부를 설정하는 함수입니다
-function sethomeMarkers(map) {        
-    for (var i = 0; i < homeMarkers.length; i++) {  
-        homeMarkers[i].setMap(map);
-    }        
-}
-
-// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
-function changeMarker(type){
-    
-    var totalMenu = document.getElementById('totalMenu');
-    var tourMenu = document.getElementById('tourMenu');
-    var homeMenu = document.getElementById('homeMenu');
-    
-    // 커피숍 카테고리가 클릭됐을 때
-    if (type === 'total') {
-    
-        // 커피숍 카테고리를 선택된 스타일로 변경하고
-        totalMenu.className = 'menu_selected';
-        
-        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
-        tourMenu.className = '';
-        homeMenu.className = '';
-        
-        // 커피숍 마커들만 지도에 표시하도록 설정합니다
-        settotalMarkers(map);
-        settourMarkers(null);
-        sethomeMarkers(null);
-        
-        
-        
-    } else if (type === 'tour') { // 편의점 카테고리가 클릭됐을 때
-    
-        // 편의점 카테고리를 선택된 스타일로 변경하고
-        totalMenu.className = '';
-        tourMenu.className = 'menu_selected';
-        homeMenu.className = '';
-        
-        // 편의점 마커들만 지도에 표시하도록 설정합니다
-        settotalMarkers(null);
-        settourMarkers(map);
-        sethomeMarkers(null);
-        
-    } else if (type === 'home') { // 주차장 카테고리가 클릭됐을 때
-     
-        // 주차장 카테고리를 선택된 스타일로 변경하고
-        totalMenu.className = '';
-        tourMenu.className = '';
-        homeMenu.className = 'menu_selected';
-        
-        // 주차장 마커들만 지도에 표시하도록 설정합니다
-        settotalMarkers(null);
-        settourMarkers(null);
-        sethomeMarkers(map);  
-    }    
-} 
-
-//인포윈도우를 표시하는 클로저를 만드는 함수입니다 		
+		// 일정 추가 버튼 메서드
+		function add1(id,n) {		
+				var id = id.split(',');
+			document.getElementById("p_place"+n).value = id[0];
+			document.getElementById("p_y"+n).value = id[1];
+			document.getElementById("p_x"+n).value = id[2];				
+		}
+		</c:forEach>
+//66666666666666666666666666666666666666666666666666666666666666666666666666666666
+// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 		
 function makeOverListener(map, marker, infowindow) {
     return function() {
-        infowindow.open(map, marker,infowindow );
+        infowindow.open(map, marker);
     };
 }
-
 	</script>
-		</div>
+</div>
 <div class="right">
 <br>
 <div class="container mt-3">
@@ -522,6 +358,8 @@ function makeOverListener(map, marker, infowindow) {
 <input type="text" name="with"  id="with" value="${scheduledto.getWith1() }"size="3">
 <input type="text" name="travel"  id="travel" value="${myscheduledto.getTravel() }"size="45">
 </div>
+<br><br>
+<button type="button" class="btn btn-danger" name="upload" id="upload" style="width:60%" onclick="upload()"> 수정</button>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${scheduledto.getDay1()}" step="1">
  
@@ -626,12 +464,19 @@ function makeOverListener(map, marker, infowindow) {
 <br><br><br><br><br>
 	
 
-  
+  </div>
    
-   
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+  <script type="text/javascript">
+ 
+
+  </script>
     
   <script>
- 
+  function upload(){
+	  alert("upload");
+		 $(".left").load("map1.do");
+	 }
   function clkBtn(num){
 	/*  if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
 	  		alert("1일차 장소를 선택하세요. ");
