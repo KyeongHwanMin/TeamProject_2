@@ -5,4 +5,4 @@
 <jsp:useBean id="article" scope="page" class="userpage.board.otoDTO" />
 <jsp:setProperty name="article" property="*"/>
 
-<c:redirect url="/jejuguseok/list.do" />
+<c:redirect url="/list.do" />

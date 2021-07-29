@@ -3,18 +3,15 @@ package userpage.board;
 import java.sql.Timestamp;
 
 public class otoDTO {
-	private int num; 
+	private int num;
     private String writer;
     private String subject;
     private String ph;
     private String content;
-    private String passwd;
-    private String save;
     private Timestamp reg_date;
     private int readcount;
-    private String ip;
     private int ref;
-    private int re_step;	
+    private int re_step;
     private int re_level;
     private int otonum;
     
@@ -30,18 +27,12 @@ public class otoDTO {
     public void setContent (String content) {
         this.content = content;
     }
-    public void setPasswd (String passwd) {
-        this.passwd = passwd;
-    }
     public void setReg_date (Timestamp reg_date) {
         this.reg_date = reg_date;
     }
 	public void setReadcount(int readcount){
 	  	this.readcount=readcount;
 	}
-    public void setIp (String ip) {
-        this.ip = ip;
-    }
 	public void setRef (int ref) {
         this.ref = ref;
     }
@@ -67,14 +58,8 @@ public class otoDTO {
     public String getContent () {
         return content;
     }
-    public String getPasswd () {
-        return passwd;
-    }
     public Timestamp getReg_date () {
         return reg_date;
-    }
-    public String getIp () {
-        return ip;
     }
     public int getRef () {
         return ref;
@@ -90,12 +75,6 @@ public class otoDTO {
 	}
 	public void setPh(String ph) {
 		this.ph = ph;
-	}
-	public String getSave() {
-		return save;
-	}
-	public void setSave(String save) {
-		this.save = save;
 	}
 	public int getOtonum() {
 		return otonum;
