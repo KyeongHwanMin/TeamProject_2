@@ -68,12 +68,6 @@
 					<td align="center" width="125">문의내용</td>
 					<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 				</tr>
-				<tr>
-					<td align="center" width="125">첨부파일</td>
-					<td align="left" width="375" colspan="3"><pre> <img
-								src="/jejuguseok/save/${article.save}" /> <br />
-		  </pre></td>
-				</tr>
 				<tr height="30">
 					<td colspan="4" align="right"><input type="button"
 						value="문의수정"

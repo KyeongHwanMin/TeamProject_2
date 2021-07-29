@@ -15,6 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import jejuguseok_map.accomBookMKdto;
+import jejuguseok_map.homeDTO;
 import userpage.main.userDTO;
 
 	@Controller
@@ -100,12 +102,11 @@ import userpage.main.userDTO;
 			
 			int num=0,ref=1,re_step=0,re_level=0;
 			
-			if( num != 0 ){
 				model.addAttribute("num", num);
 				model.addAttribute("ref", ref);
 				model.addAttribute("re_step", re_step);
 				model.addAttribute("re_level", re_level);
-			}
+
 			System.out.println("num = " + num);
 			System.out.println("ref = " + ref);
 			System.out.println("re_step = " + re_step);
@@ -115,33 +116,41 @@ import userpage.main.userDTO;
 		}
 		
 		@RequestMapping("writePro.do")
-		public String insert(Model model, String num, String re_level, String re_step, String ref, userDTO udto) {
+		public String insert(Model model, otoDTO dto, int num, int ref, int re_step, int re_level) throws Exception{
 			
+
+			int number=0;
 			
-			System.out.println("num = " + num);
-			System.out.println("re_level = " + re_level);
-			System.out.println("re_step = " + re_step);
-			System.out.println("ref = " + ref);
+			System.out.println(dto.getNum());
+			System.out.println(dto.getPh());
 			
-			otoDTO dto = new otoDTO();
-			int re_s = dto.getRe_step();
-			int re_l = dto.getRe_level();
-			re_s=re_s+1;
-			re_l=re_l+1;
+			number = (Integer)dao.selectOne("board.maxNum");
 			
-			dao.update("readCountUp", dto);
+			number += 1;
 			
-			dao.insert("insertArticles", dto);
+			if(num!=0) {
+				dao.update("board.readCountUp");
+				re_step=re_step+1;
+				re_level=re_level+1;
+			}else {
+				ref=number;
+				re_step=0;
+				re_level=0;
+			}
 			
-			model.addAttribute("num", num);
-			model.addAttribute("ref", ref);
-			model.addAttribute("re_step", re_step);
-			model.addAttribute("re_level", re_level);
-			model.addAttribute("writer", dto);
-			model.addAttribute("user_id", udto);
+			otoDTO.setWriter(dto.getWriter());
+			otoDTO.setPh(dto.getPh());
+			otoDTO.setSubject(dto.getSubject());
+			otoDTO.setReg_date(dto.getReg_date());
+			otoDTO.setRef(ref);
+			otoDTO.setRe_step(re_step);
+			otoDTO.setRe_level(re_level);
+			otoDTO.setContent(dto.getContent());
+			otoDTO.setOtonum(dto.getOtonum());
 			
+			dao.insert("board.insertArticles", dto);
 			
-		
+			System.out.println(dto.getWriter());
 			
 			return "/userpage/oto/otoWritePro.jsp";
 		}
@@ -151,7 +160,7 @@ import userpage.main.userDTO;
 			
 
 			List article = null;
-			//dao.update("updateNum", num);
+
 			article =  dao.selectList("updateGetArticle", num);
 			
 			model.addAttribute("pagenum", pagenum);
@@ -160,21 +169,40 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoUpdateForm.jsp";
 		}
 		
-		@RequestMapping("passwdForm.do")
-		public String passwd(otoDTO dto, String pagenum, int num, Model model) {
+		@RequestMapping("deletePro.do")
+		public String passwd(otoDTO dto, String pagenum, int num , int otonum , int level) {
 			
-			model.addAttribute("pagenum", pagenum);
-			model.addAttribute("num", num);
+			  int check = 0;
+			  
+
 			
-			return "/userpage/oto/otoPasswdForm.jsp";
+			return "/userpage/oto/otoDeletePro.jsp";
 		}
 		
 		@RequestMapping("deleteForm.do")
 		public String delete(otoDTO dto, String pagenum, int num, int re_level, int otonum, Model model) {
 			
+			
+			dao.selectOne("updateGetArticle", num);
+			
+			dto.setNum(dto.getNum());
+			dto.setWriter(dto.getWriter());
+			dto.setPh(dto.getPh());
+			dto.setSubject(dto.getSubject());
+			dto.setReg_date(dto.getReg_date());
+			dto.setReadcount(dto.getReadcount());
+			dto.setRef(dto.getRef());
+			dto.setRe_step(dto.getRe_step());
+			dto.setRe_level(dto.getRe_level());
+			dto.setContent(dto.getContent());
+			dto.setOtonum(dto.getOtonum());
+			
 			model.addAttribute("pagenum", pagenum);
 			model.addAttribute("num", num);
+			model.addAttribute("re_level", re_level);
+			model.addAttribute("otonum", otonum);
 			
 			return "/userpage/oto/otoDeleteForm.jsp";
 		}
+		
 }
