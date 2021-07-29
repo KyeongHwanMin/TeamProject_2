@@ -3,7 +3,6 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,9 +106,9 @@ function myFunction() {
 
 						<!-- Offers Item -->
 			<c:if test="${count > 0}"> 
-					<c:forEach var="homeDTO" items="${articleList}">
+					<c:forEach var="locationDTO" items="${articleList}">
 						
-						<div class="offers_item ${homeDTO.home_type}"> <!-- ${guesthouse}  -->
+						<div class="offers_item ${locationDTO.category}"> <!-- ${guesthouse}  -->
 						  
 							<div class="row"> 
 								<div class="col-lg-1 temp_col"></div>
@@ -117,38 +116,38 @@ function myFunction() {
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
 										
-									<c:if test="${homeDTO.home_type == 'hotel'}">	
+									<c:if test="${locationDTO.category == 'hotel'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_type == 'motel'}">	
+									<c:if test="${locationDTO.category == 'motel'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
 									</c:if>		
-									<c:if test="${homeDTO.home_type == 'guesthouse'}">	
+									<c:if test="${locationDTO.category == 'guesthouse'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_type == 'pention'}">	
+									<c:if test="${locationDTO.category == 'pention'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
 									</c:if>	
 									
-									<c:if test="${homeDTO.home_local == 'jejusi'}">	
+									<c:if test="${locationDTO.home_local == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'seogwiposi'}">	
+									<c:if test="${locationDTO.home_local == 'seogwiposi'}">	
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'jungmun'}">	
+									<c:if test="${locationDTO.home_local == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'jejuairport'}">	
+									<c:if test="${locationDTO.home_local == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'aweol'}">	
+									<c:if test="${locationDTO.home_local == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_local == 'pyoseon'}">	
+									<c:if test="${locationDTO.home_local == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_local == 'hamduk'}">	
+									<c:if test="${locationDTO.home_local == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
@@ -157,13 +156,13 @@ function myFunction() {
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${homeDTO.home_name} <span> ${homeDTO.home_local} </span></div>
+										<div class="offers_price">${locationDTO.home_name} <span> ${locationDTO.home_local} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
-											숙소 종류 : ${homeDTO.home_type}
+											숙소 종류 : ${locationDTO.category}
 										</div>
 								
-										<p class="offers_text"> ${homeDTO.home_content} </p>
-										<p class="offers_text"> ${homeDTO.home_address} </p>
+										<p class="offers_text"> ${locationDTO.content} </p>
+										<p class="offers_text"> ${locationDTO.address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -173,12 +172,12 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="accomBookMK.do?home_no=${locationDTO.home_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      
-											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?home_no=${homeDTO.home_no}"> 수정 </a></button>
-											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?home_no=${homeDTO.home_no}"> 삭제 </a></button> 
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?home_no=${locationDTO.home_no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?home_no=${locationDTO.home_no}"> 삭제 </a></button> 
 										</c:if>
 									<!-- 관리자  -->	
 									
