@@ -181,17 +181,16 @@ public class accomBean {
 		String id = (String) session.getAttribute("user_id");
 		System.out.println("아이디 ==="+id);
 		
-		//int count = dao.delete(i
 		accomBookMKdto dto = new accomBookMKdto();
 		int count = 0;
 		count =dao.selectOne("home.count", id);
 		System.out.println("카운ㅌ ㅡ~~~"+count);
+		
+		
 		model.addAttribute("count",count);
-		List myAccomList = dao.selectList("home.myAccom", id); // 
+		List myAccomList = dao.selectList("home.myAccom", id); 
 		
 		 model.addAttribute("myAccomList",myAccomList);
-		 
-		
 		
 		return "/userpage/mypage/myAccom.jsp"; 
 	}
