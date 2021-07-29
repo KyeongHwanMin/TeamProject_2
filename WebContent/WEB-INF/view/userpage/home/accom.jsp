@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Offers</title>
+<title>Offers</title> 
 <meta charset="utf-8"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<%@ include file ="../header.jsp" %>	<!-- Header -->
+<%@ include file ="../header.jsp" %>	<!-- Header --> 
 <div class="super_container">
 	
 <script>
@@ -29,7 +29,7 @@ function myFunction() {
 </script>
 	
 
-	<!-- 숙소 소개 페이지  -->
+	<!-- 숙소 소개 페이지  --> 
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/제주숙소.jpg"></div>
@@ -129,25 +129,25 @@ function myFunction() {
 										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
 									</c:if>	
 									
-									<c:if test="${locationDTO.home_local == 'jejusi'}">	
+									<c:if test="${locationDTO.location == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${locationDTO.home_local == 'seogwiposi'}">	
+									<c:if test="${locationDTO.location == 'seoquiposi'}">	  <!-- seogwiposi  -->
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${locationDTO.home_local == 'jungmun'}">	
+									<c:if test="${locationDTO.location == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
-									</c:if>
-									<c:if test="${locationDTO.home_local == 'jejuairport'}">	
+									</c:if> 
+									<c:if test="${locationDTO.location == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${locationDTO.home_local == 'aweol'}">	
+									<c:if test="${locationDTO.location == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${locationDTO.home_local == 'pyoseon'}">	
+									<c:if test="${locationDTO.location == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${locationDTO.home_local == 'hamduk'}">	
+									<c:if test="${locationDTO.location == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
@@ -156,11 +156,11 @@ function myFunction() {
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${locationDTO.home_name} <span> ${locationDTO.home_local} </span></div>
+										<div class="offers_price">${locationDTO.name} <span> ${locationDTO.location} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 											숙소 종류 : ${locationDTO.category}
 										</div>
-								
+								 
 										<p class="offers_text"> ${locationDTO.content} </p>
 										<p class="offers_text"> ${locationDTO.address} </p>
 										<div class="offers_icons">
@@ -172,12 +172,12 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="accomBookMK.do?home_no=${locationDTO.home_no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="accomBookMK.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      
-											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?home_no=${locationDTO.home_no}"> 수정 </a></button>
-											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?home_no=${locationDTO.home_no}"> 삭제 </a></button> 
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?no=${locationDTO.no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
 										</c:if>
 									<!-- 관리자  -->	
 									

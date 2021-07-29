@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import userpage.main.userDTO;
 
 /* 정현서 work. 
- * 
+ *  
  * 숙소 Bean: 유형/지역별 분류 
  * 1 유형: 모텔, 게스트하우스, 펜션, 호텔
- * 2 지역: 제주시, 서귀포시, 중문, 제주국제공항, 애월/한림/협재, 표선/상산, 함덕/김녕/세화
+ * 2 지역: 제주시, 서귀포시, 중문, 제주국제공항, 애월/한림/협재, 표선/상산, 함덕/김녕/세화 
  */
 @Controller
 public class accomBean {
@@ -84,7 +84,7 @@ public class accomBean {
 	}
 	
 	
-	// 숙박 페이지 지역 구분하기 페이지
+	// 숙박 페이지 - 지역 구분하기 페이지 
 	@RequestMapping("accomLocal.do")
 	public String accomLocal(Model model, HttpServletRequest request){
 		
@@ -147,13 +147,13 @@ public class accomBean {
 	//숙박 찜하기 버튼 누를때 가는 페이지. 일종의 pro 
 	// accom.do에서 찜하기 누르면 스크립트가 뜨고 본 페이지(accom.do)로 돌아온다 (찜하기가 등록되었습니다! [확인] ) 
 	@RequestMapping("accomBookMK.do")  //accomBookMKdto 
-	public String accomBookMK(homeDTO dto , String home_no, HttpSession session,Model model, HttpServletRequest request)  throws Exception{
+	public String accomBookMK(locationDTO dto , String home_no, HttpSession session,Model model, HttpServletRequest request)  throws Exception{
 		
 		String id = (String) session.getAttribute("user_id");
 		
 		//String home_no = request.getParameter(home_no);
 		
-		homeDTO DD = new homeDTO();
+		locationDTO DD = new locationDTO();
 		accomBookMKdto mkdto = new accomBookMKdto();
 		
 		DD = dao.selectOne("home.selecthome", home_no); 

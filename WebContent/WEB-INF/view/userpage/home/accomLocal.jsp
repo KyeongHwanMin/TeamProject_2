@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
 <title>Offers</title>
 <meta charset="utf-8">
@@ -18,8 +18,8 @@
 <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/offers_responsive.css">
 <!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 </head>
-
-<body>
+ 
+<body> 
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
 	
@@ -29,7 +29,7 @@
 	<!-- 숙소 소개 페이지  -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/제주숙소.jpg"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/제주숙소.jpg"></div> 
 		<div class="home_content">
 			<div class="home_title">  </div>
 		</div>
@@ -38,7 +38,7 @@
 	<!-- Offers -->
 
 	<div class="offers">
-
+ 
 		<!-- 설명 -->
 
 		<h3 align="center"> 호텔부터 펜션까지 다양한 종류의 숙소  </h3> <br/> 
@@ -101,59 +101,59 @@
 
 						<!-- Offers Item -->
 
-					<c:forEach var="homeDTO" items="${slist}">
-						<div class="offers_item ${homeDTO.home_type}"> 
+					<c:forEach var="locationDTO" items="${slist}">
+						<div class="offers_item ${locationDTO.category}"> 
 						  
 							<div class="row">
 								<div class="col-lg-1 temp_col"></div>
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
-										<c:if test="${homeDTO.home_type == 'hotel'}">	
+										<c:if test="${locationDTO.category == 'hotel'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_type == 'motel'}">	
+									<c:if test="${locationDTO.category == 'motel'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
 									</c:if>		
-									<c:if test="${homeDTO.home_type == 'guesthouse'}">	
+									<c:if test="${locationDTO.category == 'guesthouse'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_type == 'pention'}">	
+									<c:if test="${locationDTO.category == 'pention'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
 									</c:if>	
 										
-										<c:if test="${homeDTO.home_local == 'jejusi'}">	
+										<c:if test="${locationDTO.location == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'seogwiposi'}">	
+									<c:if test="${locationDTO.location == 'seoquiposi'}">	
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'jungmun'}">	
+									<c:if test="${locationDTO.location == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'jejuairport'}">	
+									<c:if test="${locationDTO.location == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${homeDTO.home_local == 'aweol'}">	
+									<c:if test="${locationDTO.location == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_local == 'pyoseon'}">	
+									<c:if test="${locationDTO.location == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${homeDTO.home_local == 'hamduk'}">	
+									<c:if test="${locationDTO.location == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 									</div>
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${homeDTO.home_name} <span> ${homeDTO.home_local} </span></div>
+										<div class="offers_price">${locationDTO.name} <span> ${locationDTO.location} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
-											숙소 종류 : ${homeDTO.home_type}
+											숙소 종류 : ${locationDTO.category}
 										</div>
 								
-										<p class="offers_text"> ${homeDTO.home_content} </p>
-										<p class="offers_text"> ${homeDTO.home_address} </p>
+										<p class="offers_text"> ${locationDTO.content} </p>
+										<p class="offers_text"> ${locationDTO.address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -162,8 +162,13 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="accomBookMK.do?home_no=${homeDTO.home_no}">찜하기<span></span><span></span><span></span></a></div>
-										
+										<div class="button book_button"><a href="accomBookMK.do?no=${locationDTO.no}">찜하기<span></span><span></span><span></span></a></div>
+										<!-- 관리자  -->
+										<c:if test="${user_id == 'admin'}">      
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?no=${locationDTO.no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
+										</c:if>
+									<!-- 관리자  -->	
 									</div>
 								</div>
 							</div>

@@ -8,56 +8,57 @@
   
   
    <select id="homecount" resultType="int">
-  	   select count(*) from home 
+  	     select count(*) from location where type='home'
   	</select>
   
   
   
-  <select id="articleList" resultType="homeDTO" parameterType="hashmap" >
-  	   select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y , r 
-from ( select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y , rownum r 
-from ( select home_no, home_name, home_address, home_content, home_type, home_local, home_img, x, y 
-from home)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
-  	
+  <select id="articleList" resultType="locationDTO" parameterType="hashmap" >
+                select no, name, x, y, category,  address, content, location, img,  r 
+from(  select no, name, x, y, category,  address, content, location, img, rownum r 
+from(  select no, name, x, y, category,  address, content, location, img 
+from location where type='home')) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
    </select>
-  
+    
   
   
     <!--  서귀포에 있는 숙소 찾기 -->
-  <select id="jejusi" resultType="homeDTO">   
-  	select * from home where home_local='jejusi'
+  <select id="jejusi" resultType="locationDTO">   
+  	select * from location where location='jejusi' and type='home'
   </select>
   
   
   <!--  서귀포에 있는 숙소 찾기 -->
-  <select id="seoquiposi" resultType="homeDTO">   
-  	select * from home where home_local='seoquiposi'
+  <select id="seoquiposi" resultType="locationDTO">   
+  	select * from location where location='seoquiposi' and type='home'
   </select>
   
    <!--  중문에 있는 숙소 찾기 -->
-   <select id="jungmun" resultType="homeDTO">  
-  	select * from home where home_local='jungmun'
+   <select id="jungmun" resultType="locationDTO">  
+  	select * from location where location='jungmun' and type='home'
   </select>
   
    <!--  제주공항에 있는 숙소 찾기 -->
-    <select id="jejuairport" resultType="homeDTO"> 
-  	select * from home where home_local='jejuairport'
+    <select id="jejuairport" resultType="locationDTO"> 
+  	select * from location where location='jejuairport' and type='home'
   </select>
   
      <!--  애월/한림/협재에 있는 숙소 찾기 -->
-    <select id="aweol" resultType="homeDTO"> 
-  	select * from home where home_local='aweol'
+    <select id="aweol" resultType="locationDTO"> 
+  	select * from location where location='aweol' and type='home'
   </select>
   
      <!--  표선/상산에 있는 숙소 찾기 -->
-   <select id="pyoseon" resultType="homeDTO"> 
-  	select * from home where home_local='pyoseon'
+   <select id="pyoseon" resultType="locationDTO"> 
+  	select * from location where location='pyoseon' and type='home'
   </select>
   
   <!-- "hamduk">함덕/김녕/세화 -->
-     <select id="hamduk" resultType="homeDTO"> 
-  	select * from home where home_local='hamduk'
+   <select id="hamduk" resultType="locationDTO"> 
+  	select * from location where location='hamduk' and type='home'
   </select>
+  
+  
   
   
   <!-- 숙소 마음 함 count!  -->
