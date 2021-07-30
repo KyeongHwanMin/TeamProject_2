@@ -20,8 +20,6 @@
 <link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet"
@@ -29,7 +27,14 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap4/bootstrap.min.css">
+<link href="/jejuguseok/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="/jejuguseok/styles/responsive.css">
+<!-- 추가 css --> <link rel="stylesheet" type="text/css" href="/jejuguseok/styles/bootstrap.min.css">
 
 <style>
 div.fheader {
@@ -131,11 +136,8 @@ div.right {
 
 <body>
 
-	<div class="fheader">
-		<%@ include file="/WEB-INF/view/userpage/header.jsp"%>
-	</div>
-	<div class="r">
-		<div class="left">
+	
+
 
 			<!-- 아래는 본인들의 내용 작성하기 -->
 
@@ -464,107 +466,12 @@ function makeOverListener(map, marker, infowindow) {
     };
 }
 	</script>
-		</div>
-		<div class="right">
-			<form action="schedule_pro.do" method="post" id="contactForm"
-				name="contactForm" onsubmit="return check()">
-				<br />
-				<legend>계획 제목</legend>
-				<input type="text" name="subject" id="subject"
-					placeholder="계획 제목을 입력하세요." size="45" />
-				<legend>일정 조회</legend>
-				<br /> <input type='date' name='date' />
-				<fieldset class="form-group">
-					<legend class="mt-4">예상일정</legend>
-					<select class="form-select" aria-label="Default select example"
-						id="day" name="day">
-						<option selected>여행 일수</option>
-						<option value="1">1박2일</option>
-						<option value="2">2박3일</option>
-						<option value="3">3박4일</option>
-						<option value="4">4박5일</option>
-						<option value="5">5박6일</option>
-						<option value="6">6박7일</option>
-					</select>
-				</fieldset>
-
-				<fieldset class="form-group">
-					<legend class="mt-4">동반유형</legend>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="혼자"
-							checked=""> 혼자
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="커플">
-							커플
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="가족">
-							가족
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="2~4명">
-							2~4명
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="5명 이상">
-							5명 이상
-						</label>
-					</div>
-
-				</fieldset>
-
-				<fieldset class="form-group">
-					<legend class="mt-4">여행목적</legend>
-					<div class="form-check">
-						<input class="form-check-input" id="역사문화" type="checkbox"
-							name="travel" value="역사/문화" /> <label class="form-check-label"
-							for="역사문화">역사/문화</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" id="자연경치" type="checkbox"
-							name="travel" value="자연/경치" /> <label class="form-check-label"
-							for="자연경치">자연/경치</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" id="레처체험학습" type="checkbox"
-							name="travel" value="레처/체험/학습" /> <label
-							class="form-check-label" for="레처체험학습">레처/체험/학습</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" id="휴식힐링" type="checkbox"
-							name="travel" value="휴식/힐링" /> <label class="form-check-label"
-							for="휴식힐링">휴식/힐링</label>
-					</div>
-				</fieldset>
+	
 
 
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-					crossorigin="anonymous"></script>
-				<script
-					src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-					integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-					crossorigin="anonymous"></script>
-				<script
-					src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-					integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-					crossorigin="anonymous"></script>
 
 
-				<input type="submit" value="저장 하기">
-			</form>
-		</div>
-	</div>
+			
 
 
 </body>

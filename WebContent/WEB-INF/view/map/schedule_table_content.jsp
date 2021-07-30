@@ -359,7 +359,8 @@ function makeOverListener(map, marker, infowindow) {
 <input type="text" name="travel"  id="travel" value="${myscheduledto.getTravel() }"size="45">
 </div>
 <br><br>
-<button type="button" class="btn btn-danger" name="upload" id="upload" style="width:60%" onclick="upload()"> 수정</button>
+<button type="button" class="btn btn-danger" name="upload" id="upload" style="width:40%" onclick="upload()"> 관광지/숙박 보기</button>
+<button type="button" class="btn btn-primary" name="reload" id="reload" style="width:40%" onclick="location.reload();" style="float: right" > 내 일정 보기</button>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${scheduledto.getDay1()}" step="1">
  
@@ -367,7 +368,7 @@ function makeOverListener(map, marker, infowindow) {
 
 <div id="col${dayCnt}" class="collapse in">
 <br/>
-<button type="button" class="btn btn-danger" name="add_btn${dayCnt}" id="add_btn${dayCnt}" data-toggle="collapse" data-target="#col1${dayCnt}">  ${ dayCnt}일차 추가  </button>
+<button type="button" class="btn btn-dark" name="add_btn${dayCnt}" id="add_btn${dayCnt}" data-toggle="collapse" data-target="#col1${dayCnt}">  ${ dayCnt}일차 추가  </button>
 <div id="col1${dayCnt}" class="collapse in">
  <form name="sccedule_card${dayCnt}" action="" method="post">
   <div class="form-group">
@@ -397,64 +398,77 @@ function makeOverListener(map, marker, infowindow) {
 	 <div id="field${dayCnt}">
 	 <c:if test="${dayCnt == 1}">	 
 	 <c:forEach var="myinfo"  items="${place1}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place1${dayCnt}-${status.index}" id="place1${dayCnt}-${status.index}" rows="1">${place1[status.index] }</textarea>
-        <textarea class="form-control" name="time1${dayCnt}-${status.index}" id="time1${dayCnt}-${status.index}" rows="1">${time1[status.index] }</textarea>
-        <textarea class="form-control" name="context1${dayCnt}-${status.index}" id="context1${dayCnt}-${status.index}" rows="6">${context1[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+	 	<div id="card${dayCnt}_${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place1" id="c_place1" rows="1">${place1[status.index] }</textarea>
+        <textarea class="form-control" name="c_time1" id="c_time1" rows="1">${time1[status.index] }</textarea>
+        <textarea class="form-control" name="c_y1" id="c_y1" rows="1" style="display:none">${ y_list1[status.index] }</textarea>
+        <textarea class="form-control" name="c_x1" id="c_x1" rows="1" style="display:none">${ x_list1[status.index] }</textarea>
+        <textarea class="form-control" name="c_context1" id="c_context1" rows="6">${context1[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
-         <c:if test="${dayCnt == 2}">
-        <c:forEach var="myinfo"  items="${place2}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place2${dayCnt}-${status.index}" id="place2${dayCnt}-${status.index}" rows="1">${place2[status.index] }</textarea>
-        <textarea class="form-control" name="time2${dayCnt}-${status.index}" id="time2${dayCnt}-${status.index}" rows="1">${time2[status.index] }</textarea>
-        <textarea class="form-control" name="context2${dayCnt}-${status.index}" id="context2${dayCnt}-${status.index}" rows="6">${context2[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+        <c:if test="${dayCnt == 2}">	 
+	 <c:forEach var="myinfo"  items="${place2}" varStatus="status">
+	 	<div id="card${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place2" id="c_place2" rows="1">${place2[status.index] }</textarea>
+        <textarea class="form-control" name="c_time2" id="c_time2" rows="1">${time2[status.index] }</textarea>
+        <textarea class="form-control" name="c_y2" id="c_y2" rows="1" style="display:none">${ y_list2[status.index] }</textarea>
+        <textarea class="form-control" name="c_x2" id="c_x2" rows="1" style="display:none">${ x_list2[status.index] }</textarea>
+        <textarea class="form-control" name="c_context2" id="c_context2" rows="6">${context2[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
         </div>    
         </c:forEach>
         </c:if>
-        <c:if test="${dayCnt == 3}">
-        <c:forEach var="myinfo"  items="${place3}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place3${dayCnt}-${status.index}" id="place3${dayCnt}-${status.index}" rows="1">${place3[status.index] }</textarea>
-        <textarea class="form-control" name="time3${dayCnt}-${status.index}" id="time3${dayCnt}-${status.index}" rows="1">${time3[status.index] }</textarea>
-        <textarea class="form-control" name="context3${dayCnt}-${status.index}" id="context3${dayCnt}-${status.index}" rows="6">${context3[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+        <c:if test="${dayCnt == 3}">	 
+	 <c:forEach var="myinfo"  items="${place2}" varStatus="status">
+	 	<div id="card${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place3" id="c_place3" rows="1">${place3[status.index] }</textarea>
+        <textarea class="form-control" name="c_time3" id="c_time3" rows="1">${time3[status.index] }</textarea>
+        <textarea class="form-control" name="c_y3" id="c_y3" rows="1" style="display:none">${ y_list3[status.index] }</textarea>
+        <textarea class="form-control" name="c_x3" id="c_x3" rows="1" style="display:none">${ x_list3[status.index] }</textarea>
+        <textarea class="form-control" name="c_context3" id="c_context3" rows="6">${context3[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
         </div>    
         </c:forEach>
         </c:if>
-        <c:if test="${dayCnt == 4}">
-        <c:forEach var="myinfo"  items="${place4}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place4${dayCnt}-${status.index}" id="place4${dayCnt}-${status.index}" rows="1">${place4[status.index] }</textarea>
-        <textarea class="form-control" name="time4${dayCnt}-${status.index}" id="time4${dayCnt}-${status.index}" rows="1">${time4[status.index] }</textarea>
-        <textarea class="form-control" name="context4${dayCnt}-${status.index}" id="context4${dayCnt}-${status.index}" rows="6">${context4[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+        <c:if test="${dayCnt == 4}">	 
+	 <c:forEach var="myinfo"  items="${place2}" varStatus="status">
+	 	<div id="card${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place4" id="c_place4" rows="1">${place4[status.index] }</textarea>
+        <textarea class="form-control" name="c_time4" id="c_time4" rows="1">${time4[status.index] }</textarea>
+        <textarea class="form-control" name="c_y4" id="c_y4" rows="1" style="display:none">${ y_list4[status.index] }</textarea>
+        <textarea class="form-control" name="c_x4" id="c_x4" rows="1" style="display:none">${ x_list4[status.index] }</textarea>
+        <textarea class="form-control" name="c_context4" id="c_context4" rows="6">${context4[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
         </div>    
         </c:forEach>
         </c:if>
-        <c:if test="${dayCnt == 5}">
-        <c:forEach var="myinfo"  items="${place5}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place5${dayCnt}-${status.index}" id="place5${dayCnt}-${status.index}" rows="1">${place5[status.index] }</textarea>
-        <textarea class="form-control" name="time5${dayCnt}-${status.index}" id="time5${dayCnt}-${status.index}" rows="1">${time5[status.index] }</textarea>
-        <textarea class="form-control" name="context5${dayCnt}-${status.index}" id="context5${dayCnt}-${status.index}" rows="6">${context5[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+        <c:if test="${dayCnt == 5}">	 
+	 <c:forEach var="myinfo"  items="${place5}" varStatus="status">
+	 	<div id="card${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place5" id="c_place5" rows="1">${place5[status.index] }</textarea>
+        <textarea class="form-control" name="c_time5" id="c_time5" rows="1">${time5[status.index] }</textarea>
+        <textarea class="form-control" name="c_y5" id="c_y5" rows="1" style="display:none">${ y_list5[status.index] }</textarea>
+        <textarea class="form-control" name="c_x5" id="c_x5" rows="1" style="display:none">${ x_list5[status.index] }</textarea>
+        <textarea class="form-control" name="c_context5" id="c_context2" rows="6">${context5[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
         </div>    
         </c:forEach>
         </c:if>
-        <c:if test="${dayCnt == 6}">
-        <c:forEach var="myinfo"  items="${place6}" varStatus="status">
-	 	<div id="card${dayCnt}-${status.index}" name="card${dayCnt}-${status.index}" class="card"> 	
-        <textarea class="form-control" name="place6${dayCnt}-${status.index}" id="place6${dayCnt}-${status.index}" rows="1">${place6[status.index] }</textarea>
-        <textarea class="form-control" name="time6${dayCnt}-${status.index}" id="time6${dayCnt}-${status.index}" rows="1">${time6[status.index] }</textarea>
-        <textarea class="form-control" name="context6${dayCnt}-${status.index}" id="context6${dayCnt}-${status.index}" rows="6">${context6[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${dayCnt}+'-'+${status.index})" />
+        <c:if test="${dayCnt == 6}">	 
+	 <c:forEach var="myinfo"  items="${place6}" varStatus="status">
+	 	<div id="card${ status.index}" name="card" class="card"> 	
+        <textarea class="form-control" name="c_place6" id="c_place6" rows="1">${place6[status.index] }</textarea>
+        <textarea class="form-control" name="c_time6" id="c_time6" rows="1">${time6[status.index] }</textarea>
+        <textarea class="form-control" name="c_y6" id="c_y6" rows="1" style="display:none">${ y_list6[status.index] }</textarea>
+        <textarea class="form-control" name="c_x6" id="c_x6" rows="1" style="display:none">${ x_list6[status.index] }</textarea>
+        <textarea class="form-control" name="c_context6" id="c_context2" rows="6">${context6[status.index] }</textarea>
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
         </div>    
         </c:forEach>
         </c:if>
+       
 	 </div><br>
 	 <button type="button" class="btn btn-info" id="send_bt${dayCnt}" name="send_bt${dayCnt}"   onclick="clkBtn(${dayCnt})" style="float: right; width:40%" >  ${dayCnt}일차 수정 </button>
 	 <br><br><br><br><br>
@@ -474,29 +488,11 @@ function makeOverListener(map, marker, infowindow) {
     
   <script>
   function upload(){
-	  alert("upload");
+	  
 		 $(".left").load("map1.do");
 	 }
   function clkBtn(num){
-	/*  if(document.getElementById("p_place1") && document.getElementById("p_place1").value =="" ){
-	  		alert("1일차 장소를 선택하세요. ");
-	  		return false;
-	  	}if(document.getElementById("p_place2") && document.getElementById("p_place2").value ==""   ){
-	  		alert("2일차 장소를 선택하세요. ");
-	  		return false;
-	  	}if(document.getElementById("p_place3") && document.getElementById("p_place3").value =="" ){
-	  		alert("3일차 장소를 선택하세요. ");
-	  		return false;
-	  	}if(document.getElementById("p_place4") && document.getElementById("p_place4").value ==""){
-	  		alert("4일차 장소를 선택하세요. ");
-	  		return false;
-	  	}if(document.getElementById("p_place5") && document.getElementById("p_place5").value ==""){
-	  		alert("5일차 장소를 선택하세요. ");
-	  		return false;
-	  	}if(document.getElementById("p_place6") && document.getElementById("p_place6").value ==""){
-	  		alert("6일차 장소를 선택하세요. ");
-	  		return false;
-	  	}*/
+
 	  	 if(document.getElementById("field1")){
 
 	  		 var form = $('#day_card'+num)[0];  
@@ -521,37 +517,53 @@ function makeOverListener(map, marker, infowindow) {
     	if(num == 1){    		 		
         	var c_place = document.sccedule_card1.p_place1.value;
         	var c_context = document.sccedule_card1.p_context1.value; 
-        	var c_time = document.sccedule_card1.p_time1.value;}
+        	var c_time = document.sccedule_card1.p_time1.value;
+        	var c_y = document.sccedule_card1.p_y1.value;
+    		var c_x = document.sccedule_card1.p_x1.value;}
     	if(num == 2){		
         	var c_place = document.sccedule_card2.p_place2.value;
         	var c_context = document.sccedule_card2.p_context2.value;
-        	var c_time = document.sccedule_card2.p_time2.value;}
+        	var c_time = document.sccedule_card2.p_time2.value;
+        	var c_y = document.sccedule_card2.p_y2.value;
+    		var c_x = document.sccedule_card2.p_x2.value;}
     	if(num == 3){     		
         	var c_place = document.sccedule_card3.p_place3.value;
         	var c_context = document.sccedule_card3.p_context3.value;    	
-        	var c_time = document.sccedule_card3.p_time3.value;}
+        	var c_time = document.sccedule_card3.p_time3.value;
+        	var c_y = document.sccedule_card3.p_y3.value;
+    		var c_x = document.sccedule_card3.p_x3.value;}
     	if(num == 4){		
         	var c_place = document.sccedule_card4.p_place4.value;
         	var c_context = document.sccedule_card4.p_context4.value;
-        	var c_time = document.sccedule_card4.p_time4.value;}
+        	var c_time = document.sccedule_card4.p_time4.value;
+        	var c_y = document.sccedule_card4.p_y4.value;
+    		var c_x = document.sccedule_card4.p_x4.value;}
     	if(num == 5){ 		
         	var c_place = document.sccedule_card5.p_place5.value;
         	var c_context = document.sccedule_card5.p_context5.value;	
-        	var c_time = document.sccedule_card5.p_time5.value;}
+        	var c_time = document.sccedule_card5.p_time5.value;
+        	var c_y = document.sccedule_card5.p_y5.value;
+    		var c_x = document.sccedule_card5.p_x5.value;}
     	if(num == 6){    		
         	var c_place = document.sccedule_card6.p_place6.value;
         	var c_context = document.sccedule_card6.p_context6.value;
-        	var c_time = document.sccedule_card6.p_time6.value;}
+        	var c_time = document.sccedule_card6.p_time6.value;
+        	var c_y = document.sccedule_card6.p_y6.value;
+    		var c_x = document.sccedule_card6.p_x6.value;}
     	if(num == 7){   		
         	var c_place = document.sccedule_card7.p_place7.value;
         	var c_context = document.sccedule_card7.p_context7.value;	
-        	var c_time = document.sccedule_card7.p_time7.value;}
+        	var c_time = document.sccedule_card7.p_time7.value;
+        	var c_y = document.sccedule_card7.p_y7.value;
+    		var c_x = document.sccedule_card7.p_x7.value;}
 	
         var addDiv = document.createElement('div');
         
         addDiv.innerHTML =  '<div id="card'+num+'" name="card'+num+'" class="card">'+
         ' <textarea class="form-control" name="c_place'+num+'" id="c_place'+num+'" rows="1">'+c_place+'</textarea>'+
         ' <textarea class="form-control" name="c_time'+num+'" id="c_time'+num+'" rows="1">'+c_time+'</textarea>'+
+        ' <textarea class="form-control" name="c_y'+num+'" id="c_y'+num+'" rows="1"style="display:none">'+c_y+'</textarea>'+
+        ' <textarea class="form-control" name="c_x'+num+'" id="c_x'+num+'" rows="1" style="display:none">'+c_x+'</textarea>'+
         ' <textarea class="form-control" name="c_context'+num+'" id="c_context'+num+'" rows="6">'+c_context+'</textarea></div>'+
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this,'+num+')" />';   
         
@@ -562,10 +574,12 @@ function makeOverListener(map, marker, infowindow) {
     	document.getElementById('field'+num).removeChild(obj.parentNode);
     	}
     function remove_div2(string){  	
-
-    	  var de = document.getElementById( 'card'+string );    
-    	  var parent = de.parentNode;
-    		parent.removeChild(de);
+  	alert(string);
+    	$('div').remove('#card'+string);
+    	//  var de = document.getElementById( 'card'+num );    
+    	 // alert('card'+num );
+    	//  var parent = de.parentNode;
+    	//	parent.removeChild(de);
     	}
     
 </script>

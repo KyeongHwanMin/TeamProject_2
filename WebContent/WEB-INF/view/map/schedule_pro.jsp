@@ -520,9 +520,9 @@ function add(id,n) {
 	 <button type="button" class="btn btn-info" id="send_bt" name="send_bt"   onclick="clkBtn(${dayCnt})" style="float: right; width:40%" >  ${dayCnt}일차 저장 </button>
 	 <br><br><br><br><br>
    </form>
-   </div>
-   
+   </div> 
     </c:forEach>
+    <button type="button" class="btn btn-primary" name="reload" id="reload" style="width:40%" onclick="location.href='schedule_table.do'" style="float: right" > 내 일정 보기</button>
     </div>
   <script>
   function clkBtn(num){

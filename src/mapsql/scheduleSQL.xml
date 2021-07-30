@@ -12,6 +12,10 @@
  	insert into schedule(subject, id, date1, day1, with1, travel,c_place1,c_time1,c_context1,num1,c_y1,c_x1)
   				values (#{subject},#{id},#{date1},#{day1},#{with1},#{travel},#{c_place1}, #{c_time1},#{c_context1},num1.NEXTVAL,#{c_y1},#{c_x1})
  	</insert>
+ 	<update id="updatesc"  parameterType="scheduleDTO">
+  		update schedule set c_place1 = #{c_place1},c_time1 = #{c_time1},c_context1 = #{c_context1},c_y1 = #{c_y1},c_x1 = #{c_x1} 												 										   										   										   										 
+  		where subject=#{subject}
+  	</update>
  		<update id="updatesc2"  parameterType="scheduleDTO">
   		update schedule set c_place2 = #{c_place2},c_time2 = #{c_time2},c_context2 = #{c_context2},c_y2 = #{c_y2},c_x2 = #{c_x2} 												 										   										   										   										 
   		where subject=#{subject}

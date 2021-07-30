@@ -250,13 +250,7 @@ function createtotalMarkers() {
 		  '          <div> &nbsp ${maplist.name}</div>' + 
 	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maplist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' ;
 		    
 	     </c:forEach>	 
     for (var i = 0; i < totalPositions.length; i++) {  
@@ -305,13 +299,7 @@ function createtourMarkers() {
 		  '          <div> &nbsp ${maptourlist.name}</div>' + 
 	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maptourlist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ';
 		    
 	     </c:forEach>	 
     for (var i = 0; i < tourPositions.length; i++) {
@@ -356,13 +344,7 @@ function createhomeMarkers() {
 		  '          <div> &nbsp ${maphomelist.name}</div>' + 
 	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maphomelist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ';
 		    
 	     </c:forEach>	 
     for (var i = 0; i < homePositions.length; i++) {
@@ -466,7 +448,7 @@ function makeOverListener(map, marker, infowindow) {
 				<input type="text" name="subject" id="subject"
 					placeholder="계획 제목을 입력하세요." size="45" />
 				<legend>일정 조회</legend>
-				<br /> <input type='date' name='date' />
+				<br /> <input type='date' name='date' id="date"/>
 				<fieldset class="form-group">
 					<legend class="mt-4">예상일정</legend>
 					<select class="form-select" aria-label="Default select example"
@@ -503,14 +485,14 @@ function makeOverListener(map, marker, infowindow) {
 					</div>
 					<div class="form-check">
 						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="2~4명">
-							2~4명
+							class="form-check-input" name="with" id="with" value="2인이상">
+							2인이상
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="with" id="with" value="5명 이상">
-							5명 이상
+							class="form-check-input" name="with" id="with" value="5인 이상">
+							5인 이상
 						</label>
 					</div>
 
@@ -559,6 +541,22 @@ function makeOverListener(map, marker, infowindow) {
 		</div>
 	</div>
 
+<script>
+function check(){
+	if(document.getElementById("subject").value==''){
+		alert("제목을 입력해주세요.");
+		return false;
+	}
+	if(document.getElementById("date").value==''){
+		alert("월/일 을 입력해주세요.");
+		return false;
+	}
+	if(document.getElementById("day").value=='여행 일수'){
+		alert("예상 일정을 입력해주세요.");
+		return false;
+	}
 
+}
+</script>
 </body>
 </html>

@@ -124,7 +124,10 @@ public class map {
 		scheduledto=dao.selectOne("schedule.mylocation",num1);		
 		model.addAttribute("scheduledto", scheduledto);		
 		myscheduledto = dao.selectOne("schedule.mylocation",num1);
-		
+		model.addAttribute("myscheduledto",myscheduledto);
+
+	
+		//나의 일정 항목들 리스트로 저장
 		if(myscheduledto.getC_place1() != null){List<String> place1 = Arrays.asList(myscheduledto.getC_place1().split(","));
 		model.addAttribute("place1",place1);}
 		if(myscheduledto.getC_time1() != null){List<String> time1 = Arrays.asList(myscheduledto.getC_time1().split(","));
@@ -186,14 +189,6 @@ public class map {
 		if(myscheduledto.getC_x6() !=null) {List<String> x_list6 = Arrays.asList(myscheduledto.getC_x6().split(","));
 		model.addAttribute("x_list6",x_list6);}
 		
-		
-		
-		
-			model.addAttribute("myscheduledto",myscheduledto);
-		  
-		  
-		
-	
 		return "/map/schedule_table_content.jsp";
 	}
 	
@@ -256,15 +251,14 @@ public class map {
 				String c_context4,String c_context5,String c_context6,String c_time1,String c_time2,String c_time3,String c_time4,String c_time5,String c_time6,
 				String c_y1,String c_x1,String c_y2,String c_x2,String c_y3,String c_x3,String c_y4,String c_x4,String c_y5,String c_x5,String c_y6,String c_x6,
 				Model model,HttpSession session) {		
-			System.out.println("넘어옴");
-			/*
+
 			if(c_place1 != null) {
 			scheduledto.setC_place1(c_place1);
 			scheduledto.setC_context1(c_context1);
 			scheduledto.setC_time1(c_time1);	
 			scheduledto.setC_y1(c_y1);
-			scheduledto.setC_x1(c_x1);
-			dao.insert("schedule.insertsc" ,scheduledto);
+			scheduledto.setC_x1(c_x1);			
+			dao.update("schedule.updatesc",scheduledto);
 			}if(c_place2 != null) {	
 			scheduledto.setC_place2(c_place2);
 			scheduledto.setC_context2(c_context2);
@@ -300,7 +294,7 @@ public class map {
 				scheduledto.setC_y6(c_y6);
 				scheduledto.setC_x6(c_x6);
 				dao.update("schedule.updatesc6",scheduledto);
-			}*/
+			}
 		
 			return "";
 	}
