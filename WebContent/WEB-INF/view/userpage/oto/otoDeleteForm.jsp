@@ -47,20 +47,17 @@
 
 
 <center>
-	<b>글삭제</b> <br>
+	<b>문의글삭제</b> <br>
 	<form method="POST" name="delForm"
 		action="/jejuguseok/deletePro.do?num=${num}&otonum=${otonum}&pageNum=${pageNum}&level=${level}"
 		onsubmit="return deleteSave()">
-		<table border="1" align="center" cellspacing="0" cellpadding="0"
-			width="360">
+		<table border="1" align="center" cellspacing="0" cellpadding="0" width="360">
 			<tr height="30">
-				<td align=center><b>문의글을 정말로 삭제하시겠습니까??</b></td>
+				<td align=center><b>문의글을 정말로 삭제하시겠습니까?</b></td>
 			</tr>
-				<input type="hidden" name="num" value="${num}">
 			<tr height="30">
-				<td align=center><input type="submit" value="글삭제"> <input
-					type="button" value="글목록"
-					onclick="document.location.href='/jejuguseok/list.do?pageNum=${pageNum}'">
+				<td align=center><input type="submit" value="글삭제"> <input type="button" value="글목록"
+					onclick="document.location.href='/jejuguseok/list.do?'">
 				</td>
 			</tr>
 		</table>

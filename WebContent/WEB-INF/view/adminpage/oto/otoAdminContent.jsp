@@ -21,14 +21,16 @@
 				<td align="center" width="125" align="center">${article.num}<input
 					type="hidden" name="otonum" value="${article.num}" /></td>
 				<td align="center" width="125">문의상태</td>
-				<td align="center" width="125" align="center"><c:if
-						test="${article.readcount > 0 && article.re_level > 0 }">
+				<td align="center" width="125" align="center">
+					<c:if test="${article.readcount > 0 && article.re_level > 0}">
 						<b>문의답변</b>
-					</c:if> <c:if test="${article.readcount > 0 && article.re_level == 0 }">
+					</c:if> 
+					<c:if test="${article.readcount > 0 && article.re_level == 0}">
 						<b>문의확인</b>
-					</c:if> <c:if test="${article.readcount == 0 && article.re_level == 0}">
+					</c:if> 
+					<c:if test="${article.readcount == 0 && article.re_level == 0}">
 						<b>문의대기</b></td>
-				</c:if>
+					</c:if>
 				</td>
 			</tr>
 			<tr height="30">
@@ -48,16 +50,8 @@
 				<td align="center" width="125">문의내용</td>
 				<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 			</tr>
-			<tr>
-				<td align="center" width="125">첨부파일</td>
-				<td align="left" width="375" colspan="3"><pre> <img
-							src="/badgudu/save/${article.save}" /> <br />
-  
-			</tr>
 			<tr height="30">
-				<td colspan="4" align="right"><input type="button"
-					value="문의수정"
-					onclick="document.location.href='/jejuguseok/adminpage/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+				<td colspan="4" align="right">
 					<input type="button" value="문의삭제"
 					onclick="document.location.href='/jejuguseok/adminpage/deleteForm.do?num=${num}&otonum=${article.otonum}&pageNum=${pageNum}&re_level=${article.re_level}'">
 					<input type="button" value="답변쓰기"

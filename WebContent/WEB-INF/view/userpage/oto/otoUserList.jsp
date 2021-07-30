@@ -6,7 +6,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UTF-8">
 <head>
 <title>CONTACT</title>
 <meta charset="UTF-8">
@@ -81,7 +81,7 @@
 
 					<c:forEach var="article" items="${articleList}">
 						<tr height="30">
-							<td align="center" width="50">${number }
+							<td align="center" width="50">${number}
 							 <c:set var="number" value="${number-1}" />
 							</td>
 							<td width="250"><c:if test="${article.re_level > 0 }">

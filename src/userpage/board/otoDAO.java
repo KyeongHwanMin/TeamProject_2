@@ -79,14 +79,16 @@ import userpage.main.userDTO;
 		
 		// 리스트에서 페이지 누를시 보여지는 화면 DTO 를 아티클에 null 값으로 입력 
 		@RequestMapping("content.do")
-		public String content(int num, int pageNum, Model model) {
-	
-	
+		public String content(int num, String pageNum, Model model) {
+			
 			otoDTO article =null ;
-			//dao.update("updateNum", num);
+			
 			article =  dao.selectOne("getArticlesNum",num);
 	
-	
+			int ref=article.getRef();
+			int re_step=article.getRe_step();
+			int re_level=article.getRe_level();
+			
 			model.addAttribute("num", num);
 			model.addAttribute("pageNum", pageNum);
 			model.addAttribute("article", article);
@@ -116,13 +118,10 @@ import userpage.main.userDTO;
 		}
 		
 		@RequestMapping("writePro.do")
-		public String insert(Model model, otoDTO dto, int num, int ref, int re_step, int re_level) throws Exception{
+		public String insert(otoDTO dto, int num, int ref, int re_step, int re_level) throws Exception{
 			
 
 			int number=0;
-			
-			System.out.println(dto.getNum());
-			System.out.println(dto.getPh());
 			
 			number = (Integer)dao.selectOne("board.maxNum");
 			
@@ -156,34 +155,69 @@ import userpage.main.userDTO;
 		}
 		
 		@RequestMapping("updateForm.do")
-		public String update(otoDTO dto, String pagenum, int num, Model model) {
+		public String update(otoDTO dto, int num, String pageNum, Model model) {
+				
+			otoDTO article = null;
 			
-
-			List article = null;
-
-			article =  dao.selectList("updateGetArticle", num);
+			article = dao.selectOne("board.updateGetArticle", num);
 			
-			model.addAttribute("pagenum", pagenum);
+			article.setNum(article.getNum());
+			article.setWriter(article.getWriter());
+			article.setPh(article.getPh());
+			article.setSubject(article.getSubject());
+			article.setReg_date(article.getReg_date());
+			article.setReadcount(article.getReadcount());
+			article.setRef(article.getRef());
+			article.setRe_step(article.getRe_step());
+			article.setRe_level(article.getRe_level());
+			article.setContent(article.getContent());
+			article.setOtonum(article.getOtonum());
+			
+			
+			model.addAttribute("pageNum", pageNum);
 			model.addAttribute("num", num);
+			model.addAttribute("article", article);
+			
+			System.out.println(num);
 			
 			return "/userpage/oto/otoUpdateForm.jsp";
 		}
 		
+		@RequestMapping("UpdatePro.do")
+		public String updatePro(otoDTO dto, String pageNum) {
+			
+			dao.update("board.updateArticle", dto);
+			
+			dto.setWriter(dto.getWriter());
+			dto.setPh(dto.getPh());
+			dto.setSubject(dto.getSubject());
+			dto.setReg_date(dto.getReg_date());
+			dto.setContent(dto.getContent());
+			dto.setNum(dto.getNum());
+			
+			return "/userpage/oto/otoUpdatePro.jsp";
+		}
+		
 		@RequestMapping("deletePro.do")
-		public String passwd(otoDTO dto, String pagenum, int num , int otonum , int level) {
+		public String passwd(otoDTO dto, int num , int otonum , int level, String pageNum, Model model) {
 			
-			  int check = 0;
-			  
 
+			  if(level==0){
+				dao.delete("board.delete", otonum);
+			} else if(level != 0){
+				dao.delete("board.deleteOne", num);
+			}
 			
+			 model.addAttribute("pageNum", pageNum);
+			  
 			return "/userpage/oto/otoDeletePro.jsp";
 		}
 		
 		@RequestMapping("deleteForm.do")
-		public String delete(otoDTO dto, String pagenum, int num, int re_level, int otonum, Model model) {
+		public String delete(otoDTO dto, String pageNum, int num, int re_level, int otonum, Model model) {
 			
 			
-			dao.selectOne("updateGetArticle", num);
+			dao.selectOne("board.updateGetArticle", num);
 			
 			dto.setNum(dto.getNum());
 			dto.setWriter(dto.getWriter());
@@ -197,10 +231,12 @@ import userpage.main.userDTO;
 			dto.setContent(dto.getContent());
 			dto.setOtonum(dto.getOtonum());
 			
-			model.addAttribute("pagenum", pagenum);
+			model.addAttribute("pageNum", pageNum);
 			model.addAttribute("num", num);
-			model.addAttribute("re_level", re_level);
+			model.addAttribute("level", re_level);
 			model.addAttribute("otonum", otonum);
+			
+			System.out.println("num="+num);
 			
 			return "/userpage/oto/otoDeleteForm.jsp";
 		}

@@ -10,8 +10,8 @@
 	</select>
 	
 		<select id="adminGetArticles" resultType="otoDTO" parameterType="HashMap">
-	select num,writer,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r 
-					from (select num,writer,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r 
+	select num,writer,subject,reg_date,ref,re_step,re_level,content,readcount,r 
+					from (select num,writer,subject,reg_date,ref,re_step,re_level,content,readcount,rownum r 
 					from (select *
 					from otoboard order by otonum desc, re_step asc) order by otonum desc, re_step asc ) 
 					<![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
@@ -28,6 +28,10 @@
 	
 	<select id="getArticle" resultType="otoDTO" parameterType="int">
 		select * from otoboard where num = #{num}
+	</select>
+	
+	<select id="otoNum" parameterType = "int" resultType="otoDTO">
+		select otonum from otoboard where num = #{num}
 	</select>
 	
 </mapper>

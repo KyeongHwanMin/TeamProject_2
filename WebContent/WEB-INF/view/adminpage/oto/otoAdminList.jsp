@@ -71,7 +71,7 @@
 
 				<c:forEach var="article" items="${articleList}">
 					<tr height="30">
-						<td align="center" width="50">${number} <c:set var="nuber"
+						<td align="center" width="50">${number} <c:set var="number"
 								value="${number-1}" />
 						</td>
 						<td width="250"><c:if test="${article.re_level > 0 }">
@@ -83,16 +83,16 @@
 						<td align="center" width="100">${article.writer}</a>
 						</td>
 						<td align="center" width="150">${article.reg_date}</td>
-						<td align="center" width="50"><c:if
-								test="${article.readcount>0 && article.re_level>0}">
-								<b>문의답변</b>
-							</c:if> <c:if
-								test="${article.getReadcount()>0 && article.getRe_level()==0}">
-								<b>문의확인</b>
-							</c:if> <c:if
-								test="${article.getReadcount()<0 && article.getRe_level()==0}">
-								<b>문의대기</b></td>
-						</c:if>
+						<td align="center" width="50">
+								<c:if test="${article.readcount > 0 && article.re_level > 0}">
+									<b>문의답변</b>
+								</c:if> 
+								<c:if test="${article.readcount > 0 && article.re_level == 0}">
+									<b>문의확인</b>
+								</c:if> 
+								<c:if test="${article.readcount == 0 && article.re_level == 0}">
+									<b>문의대기</b></td>
+								</c:if>
 					</tr>
 				</c:forEach>
 			</table>

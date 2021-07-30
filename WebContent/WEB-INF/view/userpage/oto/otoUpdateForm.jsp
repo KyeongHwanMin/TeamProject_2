@@ -1,61 +1,75 @@
-<%@ page contentType="text/html; charset=euc-kr"%>
-
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CONTACT</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
+</head>
+	<div class="super_container">
 
-
+		<%@ include file="../header.jsp"%>
+		
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 
 <center>
 	<b>CONTACT</b> <br>
 	<form method="post" name="writeform"
-		action="/jejuguseok/WEB-INF/view/userpage/oto/otoUpdatePro.do?pageNum=${pageNum}"
+		action="/jejuguseok/UpdatePro.do?pageNum=${pageNum}"
 		onsubmit="return writeSave()">
 		<table width="400" border="1" cellspacing="0" cellpadding="0"
 			align="center">
+ 			<tr>
+   				<td  width="70"  align="center">ì•„ ì´ ë””</td>
+    			<td align="left" width="330">${user_id}
+       				<input type="hidden" size="10" maxlength="10" name="writer" value="${user_id}">
+	   				<input type="hidden" name="num" value="${article.num}"></td>
+ 			</tr>
 			<tr>
-				<td width="70" align="center">ÀÌ ¸§</td>
-				<td align="left" width="330"><input type="text" size="10"
-					maxlength="10" name="writer" value="${article.writer}"> <input
-					type="hidden" name="num" value="${article.num}"></td>
-			</tr>
-			<tr>
-				<td width="70" align="center">Á¦ ¸ñ</td>
+				<td width="70" align="center">ì œ ëª©</td>
 				<td align="left" width="330"><input type="text" size="40"
 					maxlength="50" name="subject" value="${article.subject}"></td>
 			</tr>
 			<tr>
 				<td width="70" align="center">Email</td>
 				<td align="left" width="330"><input type="text" size="40"
-					maxlength="30" name="email" value="${article.email}"></td>
+					maxlength="30" name="email" value="${email}"></td>
 			</tr>
 			<tr>
-				<td width="70" align="center">ÈÞ´ëÆù¹øÈ£</td>
+				<td width="70" align="center">íœ´ëŒ€í°ë²ˆí˜¸</td>
 				<td align="left" width="330"><input type="text" size="40"
 					maxlength="30" name="ph" value="${article.ph}"></td>
 			</tr>
 			<tr>
-				<td width="70" align="center">³» ¿ë</td>
+				<td width="70" align="center">ë‚´ ìš©</td>
 				<td align="left" width="330"><textarea name="content" rows="13"
 						cols="40">${article.content}</textarea></td>
 			</tr>
 			<tr>
-				<td width="70" align="center">ºñ¹Ð¹øÈ£</td>
-				<td align="left" width="330"><input type="password" size="8"
-					maxlength="4" name="passwd"></td>
-			</tr>
-			<tr>
-				<td width="70" align="center">Ã·ºÎÆÄÀÏ</td>
-				<td align="left" width="330"><input type="file" name="img"
-					value="${article.save}" /> <br /></td>
-			</tr>
-			<tr>
-				<td colspan=2 align="center"><input type="submit" value="±Û¼öÁ¤">
-					<input type="reset" value="´Ù½ÃÀÛ¼º"> <input type="button"
-					value="¸ñ·Ïº¸±â"
-					onclick="document.location.href='/jejuguseok/list.do'">
+				<td colspan=2 align="center"><input type="submit" value="ê¸€ìˆ˜ì •">
+					<input type="reset" value="ë‹¤ì‹œìž‘ì„±"> <input type="button"
+					value="ëª©ë¡ë³´ê¸°"
+					onclick="document.location.href='/jejuguseok/list.do??pageNum=${pageNum}'">
 				</td>
 			</tr>
 		</table>
