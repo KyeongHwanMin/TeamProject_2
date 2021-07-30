@@ -15,7 +15,7 @@
 					from (select num,writer,ph,subject,reg_date,ref,re_step,re_level,content,readcount,rownum r 
 					from (select num,writer,ph,subject,reg_date,ref,re_step,re_level,content,readcount 
 					from (select * 
-					from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum) order by num desc, ref asc) order by num desc, ref asc ) 
+					from otoboard A,(select otonum from otoboard where writer=#{user_id}) B where A.otonum = B.otonum) order by ref desc, re_step asc) order by ref desc, re_step asc ) 
 					<![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
 	</select>
 
@@ -41,7 +41,7 @@
 	</insert>
 	
 	<!-- 답글시 증가 -->
-	<update id="readCountUp" parameterType="otoDTO">
+	<update id="readCountUp" parameterType="int">
 		update otoboard set re_step=re_step+1 where ref=#{ref} and re_step>#{re_step}
 	</update>
 	

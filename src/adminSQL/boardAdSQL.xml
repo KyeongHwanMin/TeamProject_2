@@ -30,8 +30,18 @@
 		select * from otoboard where num = #{num}
 	</select>
 	
-	<select id="otoNum" parameterType = "int" resultType="otoDTO">
+	<select id="otoNum" parameterType="int" resultType="int">
 		select otonum from otoboard where num = #{num}
 	</select>
+	
+	<insert id="AdInsertArticles" parameterType="otoDTO">
+		insert into otoboard(num,writer,ph,subject,reg_date,ref,re_step,re_level,content,otonum)
+		values(otoboard_seq.NEXTVAL,#{writer},#{ph},#{subject},sysdate,#{ref},#{re_step},#{re_level},#{content},#{otonum})
+	</insert>
+	
+		<!-- 답글시 증가 -->
+	<update id="readCountUp" parameterType="Hashmap">
+		update otoboard set re_step=re_step+1 where ref=#{ref} and re_step>#{re_step}
+	</update>
 	
 </mapper>

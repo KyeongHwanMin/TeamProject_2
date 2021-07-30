@@ -4,6 +4,19 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 
 
+		<%@ include file="../adminHeader.jsp"%>
+		
+			<div id="layoutSidenav_content">
+			<main>
+			<div class="container-fluid px-4">
+			<div class="card mb-4">
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
 <main>
 	<html>
 <head>

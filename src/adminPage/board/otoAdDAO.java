@@ -29,7 +29,7 @@ public class otoAdDAO {
 		
 		String id = (String) session.getAttribute("user_id");
 
-		int pageSize = 10;  // 한페이지에 보여질 게시물수
+		int pageSize = 10;  // �븳�럹�씠吏��뿉 蹂댁뿬吏� 寃뚯떆臾쇱닔
  
 		    if (pageNum == null) {
 		        pageNum = "1";
@@ -38,8 +38,8 @@ public class otoAdDAO {
 		    int currentPage = Integer.parseInt(pageNum);  // 1
 		    int startRow = (currentPage - 1) * pageSize + 1;  // (1-1) * 10 + 1 = 11
 		    int endRow = currentPage * pageSize;  // 1 * 10 = 10
-		    int count = 0;  // 전체 게시물수.. 
-		    int number=0;  // 화면 글번호 
+		    int count = 0;  // �쟾泥� 寃뚯떆臾쇱닔.. 
+		    int number=0;  // �솕硫� 湲�踰덊샇 
 
 		    List articleList = null;
 			HashMap Row = new HashMap();
@@ -185,35 +185,38 @@ public class otoAdDAO {
 	
 	@RequestMapping("/adminpage/write.do")
 	public String write(Model model, HttpSession session, int num , int ref, int re_step, int re_level) {
-
+		
 		String id = (String) session.getAttribute("user_id");
 		
 			model.addAttribute("num", num);
 			model.addAttribute("ref", ref);
 			model.addAttribute("re_step", re_step);
 			model.addAttribute("re_level", re_level);
-			model.addAttribute("otonum", num);
-			
-			System.out.println(num);
 			
 		return "/adminpage/oto/otoAdminWrite.jsp";
 	}
 
 
 	@RequestMapping("/adminpage/writePro.do")
-	public String writePro(otoDTO dto) {
-		
-		int num=dto.getNum();
-		int ref=dto.getRef();
-		int re_step=dto.getRe_step();
-		int re_level=dto.getRe_level();
+	public String writePro(otoDTO dto, int num , int ref, int re_step, int re_level) throws Exception{
+
 		int number=0;
 		
 		number = (Integer)dao.selectOne("board.maxNum");
 		
 		number += 1;
 		
+		System.out.println("num======"+num);
+		System.out.println("ref======"+ref);
+		System.out.println("re_step======"+re_step);
+		
+		
+
+		HashMap up = new HashMap();
+		up.put("ref", ref);
+		up.put("re_step", re_step);
 		if(num!=0) {
+			dao.update("board.readCountUp", up);
 			re_step=re_step+1;
 			re_level=re_level+1;
 		}else {
@@ -221,27 +224,21 @@ public class otoAdDAO {
 			re_step=0;
 			re_level=0;
 		}
-		
-		
-		int otonum =dao.selectOne("otoNum");
-		
-		System.out.println(otonum);
-		
+		 
+		int otonum = (Integer)dao.selectOne("boardAd.otoNum", num);
+	
 		otoDTO.setWriter(dto.getWriter());
 		otoDTO.setPh(dto.getPh());
 		otoDTO.setSubject(dto.getSubject());
-		otoDTO.setReg_date(dto.getReg_date());
+		otoDTO.setReg_date(dto.getReg_date());	
 		otoDTO.setRef(ref);
 		otoDTO.setRe_step(re_step);
 		otoDTO.setRe_level(re_level);
 		otoDTO.setContent(dto.getContent());
 		otoDTO.setOtonum(otonum);
 		
-		dao.insert("board.insertArticles", dto);
-	    
+		dao.insert("boardAd.AdInsertArticles", otoDTO);
 		
 		return "/adminpage/oto/otoWritePro.jsp";
 	}
-
-
 }

@@ -30,7 +30,7 @@ import userpage.main.userDTO;
 		private SqlSessionTemplate dao = null;
 		
 		
-		// 리스트 페이지 비교및 파라미터 가져오기 dao 에 있는 getArticles 가져오기
+		// 자신의 아이디에 맞는 리스트들을 불러온다.
 		@RequestMapping("list.do")
 		public String list(String pageNum, Model model, HttpServletRequest request, otoDTO dto, userDTO userdto,  HttpSession session) {	
 	
@@ -51,8 +51,6 @@ import userpage.main.userDTO;
 			Row.put("user_id", id);
 			Row.put("startRow", startRow);
 			Row.put("endRow", endRow);
-			
-			System.out.println("id=" + id);
 	
 			count = dao.selectOne("board.userGetArticleCount" , id);
 			if(count > 0) {                         
@@ -77,7 +75,7 @@ import userpage.main.userDTO;
 		}
 		
 		
-		// 리스트에서 페이지 누를시 보여지는 화면 DTO 를 아티클에 null 값으로 입력 
+		// 由ъ뒪�듃�뿉�꽌 �럹�씠吏� �늻瑜쇱떆 蹂댁뿬吏��뒗 �솕硫� DTO 瑜� �븘�떚�겢�뿉 null 媛믪쑝濡� �엯�젰 
 		@RequestMapping("content.do")
 		public String content(int num, String pageNum, Model model) {
 			
@@ -98,37 +96,43 @@ import userpage.main.userDTO;
 		}
 		
 		@RequestMapping("write.do")
-		public String write(Model model, HttpSession session) {
+		public String write(Model model, HttpSession session, otoDTO dto) {
 			
 			String id = (String) session.getAttribute("user_id");
 			
-			int num=0,ref=1,re_step=0,re_level=0;
+			int num=dto.getNum();
+			int ref=dto.getRef();
+			int re_step=dto.getRe_step();
+			int re_level=dto.getRe_level();
 			
-				model.addAttribute("num", num);
-				model.addAttribute("ref", ref);
-				model.addAttribute("re_step", re_step);
-				model.addAttribute("re_level", re_level);
-
-			System.out.println("num = " + num);
-			System.out.println("ref = " + ref);
-			System.out.println("re_step = " + re_step);
-			System.out.println("re_level = " + re_level);
+			model.addAttribute("num", num);
+			model.addAttribute("ref", ref);
+			model.addAttribute("re_step", re_step);
+			model.addAttribute("re_level", re_level);
 			
 			return "/userpage/oto/otoWrite.jsp";
 		}
 		
 		@RequestMapping("writePro.do")
-		public String insert(otoDTO dto, int num, int ref, int re_step, int re_level) throws Exception{
+		public String insert(otoDTO dto) throws Exception{
 			
-
+			int num=dto.getNum();
+			int ref=dto.getRef();
+			int re_step=dto.getRe_step();
+			int re_level=dto.getRe_level();
 			int number=0;
 			
 			number = (Integer)dao.selectOne("board.maxNum");
 			
-			number += 1;
+			number+=1;
 			
+			System.out.println(number);
+			
+			HashMap up = new HashMap();
+			up.put("ref", ref);
+			up.put("re_step", re_step);
 			if(num!=0) {
-				dao.update("board.readCountUp");
+				dao.update("board.readCountUp", up);
 				re_step=re_step+1;
 				re_level=re_level+1;
 			}else {
@@ -136,6 +140,8 @@ import userpage.main.userDTO;
 				re_step=0;
 				re_level=0;
 			}
+			
+			System.out.println(ref);
 			
 			otoDTO.setWriter(dto.getWriter());
 			otoDTO.setPh(dto.getPh());
@@ -147,13 +153,14 @@ import userpage.main.userDTO;
 			otoDTO.setContent(dto.getContent());
 			otoDTO.setOtonum(dto.getOtonum());
 			
-			dao.insert("board.insertArticles", dto);
+			dao.insert("board.insertArticles", otoDTO);
 			
-			System.out.println(dto.getWriter());
+			System.out.println(ref);
 			
 			return "/userpage/oto/otoWritePro.jsp";
 		}
 		
+	
 		@RequestMapping("updateForm.do")
 		public String update(otoDTO dto, int num, String pageNum, Model model) {
 				
@@ -178,7 +185,6 @@ import userpage.main.userDTO;
 			model.addAttribute("num", num);
 			model.addAttribute("article", article);
 			
-			System.out.println(num);
 			
 			return "/userpage/oto/otoUpdateForm.jsp";
 		}
@@ -236,7 +242,6 @@ import userpage.main.userDTO;
 			model.addAttribute("level", re_level);
 			model.addAttribute("otonum", otonum);
 			
-			System.out.println("num="+num);
 			
 			return "/userpage/oto/otoDeleteForm.jsp";
 		}

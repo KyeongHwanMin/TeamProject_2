@@ -3,6 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+
+		<%@ include file="../adminHeader.jsp"%>
+		
+			<div id="layoutSidenav_content">
+			<main>
+			<div class="container-fluid px-4">
+			<div class="card mb-4">
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
 <main>
 
 	<html>
