@@ -29,17 +29,17 @@ public class otoAdDAO {
 		
 		String id = (String) session.getAttribute("user_id");
 
-		int pageSize = 10;  // �븳�럹�씠吏��뿉 蹂댁뿬吏� 寃뚯떆臾쇱닔
+		int pageSize = 10; 
  
 		    if (pageNum == null) {
 		        pageNum = "1";
 		    }
 
-		    int currentPage = Integer.parseInt(pageNum);  // 1
-		    int startRow = (currentPage - 1) * pageSize + 1;  // (1-1) * 10 + 1 = 11
-		    int endRow = currentPage * pageSize;  // 1 * 10 = 10
-		    int count = 0;  // �쟾泥� 寃뚯떆臾쇱닔.. 
-		    int number=0;  // �솕硫� 湲�踰덊샇 
+		    int currentPage = Integer.parseInt(pageNum); 
+		    int startRow = (currentPage - 1) * pageSize + 1;  
+		    int endRow = currentPage * pageSize;  
+		    int count = 0;   
+		    int number=0;  
 
 		    List articleList = null;
 			HashMap Row = new HashMap();
@@ -64,6 +64,8 @@ public class otoAdDAO {
 			model.addAttribute("number", number);
 			model.addAttribute("articleList", articleList);
 			model.addAttribute("pageNum", pageNum);
+			
+			
 			
 			return "/adminpage/oto/otoAdminList.jsp";
 	}

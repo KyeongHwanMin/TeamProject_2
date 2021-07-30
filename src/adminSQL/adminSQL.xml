@@ -4,9 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="admin">
-
+	
+	<!-- 유저 수  -->
   	<select id="all" resultType="userDTO">
   	  select * from member
   	</select>
-
+  	
+  	<!--  동행 유형 차트  -->
+  	 <select id="alone" resultType="int">
+  	     select count(*) from schedule where with1 = '혼자'
+  	</select>
+  	
+  	 <select id="couple" resultType="int">
+  	     select count(*) from schedule where with1 = '커플'
+  	</select>
+  	
+  	<select id="family" resultType="int">
+  	     select count(*) from schedule where with1 = '가족'
+  	</select>
+  	
+  	<select id="over2" resultType="int">
+  	     select count(*) from schedule where with1 = '2~4명'
+  	</select>
+  	
+  	<select id="over5" resultType="int">
+  	     select count(*) from schedule where with1 = '5명 이상'
+  	</select>
+  	
+  	<select id="boardcount" resultType="int">
+		select count(*) from otoboard where re_level = 0
+	</select>
+  	
+  	<select id="to1020" resultType="int">
+  		select count(*) from member where year_birth between 2012 and 2002
+	</select>
+	
+	<select id="to2030" resultType="int">
+  		select count(*) from member where year_birth between 2002 and 1992
+	</select>
+	
+	<select id="to3040" resultType="int">
+  		select count(*) from member where year_birth between 1992 and 1982
+	</select>
+	
+	<select id="to4050" resultType="int">
+  		select count(*) from member where year_birth between 1982 and 1972
+	</select>	
+	
+	<select id="to50" resultType="int">
+  		select count(*) from member where year_birth between 1972 and 0
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
