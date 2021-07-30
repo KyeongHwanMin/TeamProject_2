@@ -6,6 +6,7 @@
 <%-- 관광지 메인/프로 페이지에서 찜하기 클릭 시 해당 알럿 노출  --%>
 
 	<script> 
-	  alert("${place_name}을 찜하였습니다");
+	  alert("${place_no}:${place_name}을/를 찜하였습니다");
       history.go(-1);
+
 	</script>

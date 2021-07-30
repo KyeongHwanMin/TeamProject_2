@@ -5,31 +5,31 @@
   
   
   <mapper namespace="item">
-  	<insert id="insertAttraction" parameterType="attractionDTO">
-		insert into attraction(place_no, place_name, place_address, place_content, x, y, place_category,place_local, place_img)
-  values (place_no.nextval,#{place_name},#{place_address}, #{place_content}, #{x}, #{y}, #{place_category},#{place_local}, #{place_img})
+  	<insert id="insertAtt" parameterType="locationDTO">
+		insert into location(no,type,name,address,content,x,y,category,location,img)
+  values (no.nextval,#{type},#{name},#{address},#{content},#{x},#{y},#{category},#{location},#{img})
 	</insert>
 	
-  	<insert id="insertHome" parameterType="homeDTO">
-		insert into home(home_no, home_name, home_address, x, y, home_content, home_local, home_type, home_img)
-  values (home_no.nextval, #{home_name},#{home_address},#{x}, #{y}, #{home_content},#{home_local},#{home_type},#{home_img})
+  	<insert id="insertHome" parameterType="locationDTO">
+		insert into location(no,type,name,address,content,x,y,category,location,img)
+  values (no.nextval,#{home},#{name},#{address},#{content},#{x},#{y},#{category},#{location},#{img})
 	</insert>	
 	
-	<select id="myHome" resultType="homeDTO">
- 		select * from Home
+	<select id="myHome" resultType="locationDTO">
+ 		select * from location
  	</select>
  	
  	
- 	<select id="homeLoca" resultType="homeDTO">
- 		select * from Home where home_local = #{home_local}
+ 	<select id="homeLoca" resultType="locationDTO">
+ 		select * from location where location = #{location}
  	</select>
  	
-	<select id="searchAttraction" resultType="attractionDTO">
- 		select * from attraction
+	<select id="searchAttraction" resultType="locationDTO">
+ 		select * from location
  	</select>
  					
-	<select id="getAttractionList" resultType="attractionDTO" parameterType="attractionDTO">
- 		select * from attraction where place_local=#{place_local} and place_category=#{place_category}
+	<select id="getAttractionList" resultType="locationDTO" parameterType="locationDTO">
+ 		select * from location where location=#{location} and category=#{category}
  	</select>
  	
   </mapper>

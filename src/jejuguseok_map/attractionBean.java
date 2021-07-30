@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import jejuguseok_map.attractionDTO;
+import jejuguseok_map.locationDTO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,20 +31,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
-ê´€ê´‘ì§€ Bean: ì—­ì‚¬ë¬¸í™”, ìì—°ê²½ì¹˜, ë ˆì €ì²´í—˜í•™ìŠµ, íœ´ì‹íë§
-list1: ê´€ê´‘ì§€ ë©”ì¸(form) í˜ì´ì§€
-list2: ê´€ê´‘ì§€ pro í˜ì´ì§€ 
+°ü±¤Áö Bean: ¿ª»ç¹®È­, ÀÚ¿¬°æÄ¡, ·¹ÀúÃ¼ÇèÇĞ½À, ÈŞ½ÄÈú¸µ
+list1: °ü±¤Áö ¸ŞÀÎ(form) ÆäÀÌÁö
+list2: °ü±¤Áö pro ÆäÀÌÁö 
 
- * í˜ì´ì§• ìš”ì•½ 
-- í˜„ì¬ í˜ì´ì§€(current page = í´ë¦­í•œ í˜ì´ì§€) 
-- String pageNum ~ : ì²« í˜ì´ì§€ 1(1~10 í•´ë‹¹ í˜ì´ì§€ ë°›ê¸°) 
-- if (pageNum == null) ~:  í˜ì´ì§€ ì…ë ¥ x >  1í˜ì´ì§€, ì…ë ¥ ì‹œ null=ifë¬¸ ë™ì‘ ì•ˆí•¨ 
+ * ÆäÀÌÂ¡ ¿ä¾à 
+- ÇöÀç ÆäÀÌÁö(current page = Å¬¸¯ÇÑ ÆäÀÌÁö) 
+- String pageNum ~ : Ã¹ ÆäÀÌÁö 1(1~10 ÇØ´ç ÆäÀÌÁö ¹Ş±â) 
+- if (pageNum == null) ~:  ÆäÀÌÁö ÀÔ·Â x >  1ÆäÀÌÁö, ÀÔ·Â ½Ã null=if¹® µ¿ÀÛ ¾ÈÇÔ 
 - int startRow ~:  (1-1) * 10 + 1 = 1
 - int endRow ~: 1 * 10 = 10
-- int count = 0; ì „ì²´ ê´€ê´‘ì§€ ìˆ˜
-- int number= 0; í™”ë©´ì— ë³´ì´ëŠ” ê²Œì‹œë¬¼ ë²ˆí˜¸. 
-  ì…ë ¥ëœ ë²ˆí˜¸ê°€ ì•„ë‹ˆë©° ì‚­ì œë˜ë©´ ì‹œí€€ìŠ¤ëŠ” emty ë²ˆí˜¸ë¥¼ ì²´í¬í•˜ì§€ ì•ŠëŠ”ë‹¤ ì¦‰, ì…ë ¥ëœ ë²ˆí˜¸ê°€ ì•„ë‹Œ ê²Œì‹œë¬¼ ë“±ë¡í•  ë–„ë§Œ ë³´ì´ëŠ” ë²ˆí˜¸	
-- HashMap Row = new HashMap(); : sqlì— HashMap ì‚¬ìš©í•´ì„œ startRow / endRow ì´ë¦„ìœ¼ë¡œ ê°’ì„ ë³´ë‚¸ë‹¤. 
+- int count = 0; ÀüÃ¼ °ü±¤Áö ¼ö
+- int number= 0; È­¸é¿¡ º¸ÀÌ´Â °Ô½Ã¹° ¹øÈ£. 
+  ÀÔ·ÂµÈ ¹øÈ£°¡ ¾Æ´Ï¸ç »èÁ¦µÇ¸é ½ÃÄö½º´Â emty ¹øÈ£¸¦ Ã¼Å©ÇÏÁö ¾Ê´Â´Ù Áï, ÀÔ·ÂµÈ ¹øÈ£°¡ ¾Æ´Ñ °Ô½Ã¹° µî·ÏÇÒ ‹š¸¸ º¸ÀÌ´Â ¹øÈ£	
+- HashMap Row = new HashMap(); : sql¿¡ HashMap »ç¿ëÇØ¼­ startRow / endRow ÀÌ¸§À¸·Î °ªÀ» º¸³½´Ù. 
  */
 @Controller
 public class attractionBean {
@@ -54,58 +54,62 @@ public class attractionBean {
 	private SqlSessionTemplate dao =null;	
 	
 	
-//	ê´€ê´‘ì§€ ë¶ë§ˆí¬: attformì—ì„œ ì°œí•˜ê¸° í´ë¦­ ì‹œ í•´ë‹¹ í˜ì´ì§€ ì´ë™ í›„ ë³µê·€(ì•ŒëŸ¿ê¸°ëŠ¥) 
+//	°ü±¤Áö ºÏ¸¶Å©: attform¿¡¼­ ÂòÇÏ±â Å¬¸¯ ½Ã ÇØ´ç ÆäÀÌÁö ÀÌµ¿ ÈÄ º¹±Í(¾Ë·µ±â´É) 
 	@RequestMapping("attbook.do") 
-	public String attbook(Model model, attractionDTO dto, String place_no,  
+	public String attbook(Model model, locationDTO dto, int no,  String name, String category,
 			HttpSession session)  throws Exception{
 		
 		String id =(String)session.getAttribute("user_id");
+		System.out.println("°ü±¤Áö ¹øÈ£: "+no);
+		System.out.println("°ü±¤Áö À¯Çü: "+category);
+		System.out.println("°ü±¤Áö ÀÌ¸§: "+name);
 		
-		attractionDTO att = new attractionDTO();
-		attBookMarkDTO bm = new attBookMarkDTO();
+		locationDTO att = new locationDTO();
+		attBkDTO attBkDTO = new attBkDTO();
+		att = dao.selectOne("att.selectAtt", no);
 		
-		att = dao.selectOne("attraction.selectAtt", place_no);
-		bm.setUser_id(id);
-		bm.setPlace_address(att.getPlace_address());
-		bm.setPlace_category(att.getPlace_category());
-		bm.setPlace_content(att.getPlace_content());
-		bm.setPlace_img(att.getPlace_img());
-		bm.setPlace_local(att.getPlace_local());
-		bm.setPlace_name(att.getPlace_name());
-		bm.setPlace_no(att.getPlace_no());
-		dao.insert("attraction.insertAtt", bm);
+		attBkDTO.setUSER_ID(id);
+		attBkDTO.setPLACE_NO(no);
+		
+		attBkDTO.setPLACE_NAME(att.getName());
+		attBkDTO.setPLACE_ADDRESS(att.getAddress());
+		attBkDTO.setPLACE_CATEGORY(att.getCategory());
+		attBkDTO.setPLACE_CONTENT(att.getContent());
+		attBkDTO.setPLACE_LOCAL(att.getLocation());
+	
+		dao.insert("att.insertAttmk", attBkDTO);
 		
 		return "/userpage/attraction/attBookMark.jsp";
 	}
 	
-//	ë¶ë§ˆí‚¹í•œ ê´€ê´‘ì§€ ë¦¬ìŠ¤íŠ¸ mypageì—ì„œ ë…¸ì¶œ 
+//	ºÏ¸¶Å·ÇÑ °ü±¤Áö ¸®½ºÆ® mypage¿¡¼­ ³ëÃâ 
 	@RequestMapping("myAtt.do")
 	public String myAccom(String user_id, Model model, HttpSession session) {
 		
 		String id =(String) session.getAttribute("user_id");
-		System.out.println("ì•„ì´ë”” í™•ì¸: "+id);
+		System.out.println("¾ÆÀÌµğ È®ÀÎ: "+id);
 		
 		int count = 0;
-		attBookMarkDTO dto = new attBookMarkDTO();
+		attBkDTO attBkDTO = new attBkDTO();
 		model.addAttribute("count", count);
-		count = dao.selectOne("attraciton.attCount", id);
-		List myAttList = dao.selectList("attraction.myAtt", id);
+		count = dao.selectOne("att.attCount", id);
+		List myAttList = dao.selectList("att.myAtt", id);
 		model.addAttribute("myAttList",myAttList);
 		
 		return "/userpage/attraction/myAttraction.jsp";
 	}
 	
-	//ë¶ë§ˆí‚¹ í•´ì œ(mypageì—ì„œ)  
+	//ºÏ¸¶Å· ÇØÁ¦(mypage¿¡¼­)  
 	@RequestMapping("myAttDelete.do")
-	public String myAccomDeletePro( String place_no, String place_name, HttpSession session,HttpServletRequest request)  throws Exception{
+	public String myAccomDeletePro( String no, String name, HttpSession session,HttpServletRequest request)  throws Exception{
 		
-		dao.delete("attraction.deleteMyAtt", place_no);
-		System.out.println("ë¶ë§ˆí‚¹ í•´ì œ: "+ place_no +place_name);
+		dao.delete("att.deleteMyAtt", no);
+		System.out.println("ºÏ¸¶Å· ÇØÁ¦: "+ no +name);
 		
 		return "/userpage/mypage/myAttDelete.jsp"; 
 	}
 	
-//	ê´€ê´‘ì§€ ê²€ìƒ‰ (ì§€ì—­, ì¹´í…Œê³ ë¦¬ë¡œ ê²€ìƒ‰) + í˜ì´ì§• 
+//	°ü±¤Áö °Ë»ö (Áö¿ª, Ä«Å×°í¸®·Î °Ë»ö) + ÆäÀÌÂ¡ 
 	@RequestMapping("attForm.do")
 	public String SearchForm(Model model, HttpServletRequest request) {
 		
@@ -121,20 +125,20 @@ public class attractionBean {
 		int count = 0;	
 		int number= 0;
 
-		List articleList = null;
-		count = dao.selectOne("attraction.attcount");
+		List attList = null;
+		count = dao.selectOne("att.attcount");
 		
-		System.out.println("í˜ì´ì§• ì²´í¬: "+count);
+		System.out.println("ÆäÀÌÂ¡ Ã¼Å©: "+count);
 		
 		HashMap Row = new HashMap();  
 		Row.put("startRow", startRow);
 		Row.put("endRow", endRow);
 
 		if (count > 0) {
-			articleList = dao.selectList("attraction.attList", Row);
+			attList = dao.selectList("att.attList", Row);
 		}
 		
-		System.out.println("ê´€ê´‘ì§€ ë¦¬ìŠ¤íŠ¸: "+articleList);
+		System.out.println("°ü±¤Áö ¸®½ºÆ®: "+ attList);
 		number=count-(currentPage-1)*pageSize;			
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("startRow", startRow);
@@ -142,7 +146,7 @@ public class attractionBean {
 		model.addAttribute("count", count);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("number", number);
-		model.addAttribute("articleList", articleList); 
+		model.addAttribute("attList", attList); 
 		model.addAttribute("pageNum", pageNum);
 
 		List list1 = dao.selectList("item.searchAttraction"); 
@@ -151,63 +155,63 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-//  ê´€ê´‘ì§€ DB ë¶ˆëŸ¬ì˜¤ê¸° 
-	@RequestMapping("attractionSearchPro.do")								  		
+//  °ü±¤Áö DB ºÒ·¯¿À±â 
+	@RequestMapping("attPro.do")								  		
 	public String attractionSearch_local(Model model, 
 			HttpServletRequest request) throws IOException {
 	
 		int sea1 = Integer.parseInt(request.getParameter("search1"));
-		String search1="ì œì£¼ì‹œ";
+		String search1="Á¦ÁÖ½Ã";
 		
 		if(sea1 == 2){
-			search1="ì„œê·€í¬ì‹œ";
-			List list2 = dao.selectList("attraction.seoquiposi"); 
+			search1="¼­±ÍÆ÷½Ã";
+			List list2 = dao.selectList("att.seoquiposi"); 
 			 model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 		
 		}else if(sea1==3){
-			search1="ì¤‘ë¬¸";
-			List list2 = dao.selectList("attraction.jungmun"); 
+			search1="Áß¹®";
+			List list2 = dao.selectList("att.jungmun"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			 
 		}else if(sea1==4){
-			search1="ì œì£¼êµ­ì œê³µí•­";
-			List list2 = dao.selectList("attraction.jejuairport"); 
+			search1="Á¦ÁÖ±¹Á¦°øÇ×";
+			List list2 = dao.selectList("att.jejuairport"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			
 		}else if(sea1==5){
-			search1="ì• ì›”/í•œë¦¼/í˜‘ì¬";
-			List list2 = dao.selectList("attraction.aweol"); 
+			search1="¾Ö¿ù/ÇÑ¸²/ÇùÀç";
+			List list2 = dao.selectList("att.aweol"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			
 		}else if(sea1==6){
-			search1="í‘œì„ /ìƒì‚°";
-			List list2 = dao.selectList("attraction.pyoseon"); 
+			search1="Ç¥¼±/»ó»ê";
+			List list2 = dao.selectList("att.pyoseon"); 
 			model.addAttribute("list2",list2);
 			
 			return "/userpage/attraction/attractionSearchPro.jsp";
 			 
 		}else if(sea1==7){ 
-			search1="í•¨ë•/ê¹€ë…•/ì„¸í™”";
-			List list2 = dao.selectList("attraction.hamduk"); 
+			search1="ÇÔ´ö/±è³ç/¼¼È­";
+			List list2 = dao.selectList("att.hamduk"); 
 			model.addAttribute("list2",list2);
 			
 			return "/userpage/attraction/attractionSearchPro.jsp";
 		}
-		List list2 = dao.selectList("attraction.jejusi"); 
+		List list2 = dao.selectList("att.jejusi"); 
 		model.addAttribute("list2",list2);
 		 
 		return "/userpage/attraction/attractionSearchPro.jsp";
 	}
 	
-//	ê´€ê´‘ì§€ ì´ë¯¸ì§€íŒŒì¼ ì €ì¥ ë° Db ì—…ë¡œë“œ 
+//	°ü±¤Áö ÀÌ¹ÌÁöÆÄÀÏ ÀúÀå ¹× Db ¾÷·Îµå 
 	
 	@RequestMapping("attractionForm.do")
 	public String uploadForm() {
@@ -215,65 +219,54 @@ public class attractionBean {
 		return "/adminpage/upload/attractionForm.jsp"; 
 	}
 	@RequestMapping("attractionPro.do")
-	public String pro(String place_name, String place_address, String x, String y, String place_content, String place_local, String place_category,
-			MultipartHttpServletRequest ms) {
-		MultipartFile mf = ms.getFile("place_img"); // íŒŒì¼ ì›ë³¸
-		String fileName = mf.getOriginalFilename(); // íŒŒì¼ ì›ë³¸ ì´ë¦„
-		File f = new File("/WEB-INF/userpage/save"+fileName); // ë³µì‚¬ ìœ„ì¹˜
+	public String pro(String name, String address, String x, String y, String content, 
+			String location, String category, String type, MultipartHttpServletRequest ms) {
+		MultipartFile mf = ms.getFile("img"); // ÆÄÀÏ ¿øº»
+		String fileName = mf.getOriginalFilename(); // ÆÄÀÏ ¿øº» ÀÌ¸§
+		File f = new File("/WEB-INF/userpage/save"+fileName); // º¹»ç À§Ä¡
 		
 		try {
-			mf.transferTo(f); // ë³µì‚¬
+			mf.transferTo(f); // º¹»ç
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		ms.setAttribute("filename",fileName);
 		
-		Object place_img1 = (Object)f;
-		String place_img = String.valueOf(place_img1);
+		Object img1 = (Object)f;
+		String img = String.valueOf(img1);
 		
-		attractionDTO itemdto = new attractionDTO();
-		itemdto.setPlace_name(place_name);
-		itemdto.setPlace_address(place_address);
-		itemdto.setX(x);		
-		itemdto.setY(y);
-		itemdto.setPlace_content(place_content);
-		itemdto.setPlace_category(place_category);	
-		itemdto.setPlace_local(place_local);
-		itemdto.setPlace_img(place_img);
-		
-		dao.insert("item.insertAttraction",itemdto);
+		locationDTO lo = new locationDTO();
+		lo.setAddress(address);
+		lo.setCategory(category);
+		lo.setContent(content);
+		lo.setImg(img);
+		lo.setLocation(location);
+		lo.setName(name);
+		lo.setType(type);
+		lo.setX(x);
+		lo.setY(y);
+		dao.insert("item.insertAtt",lo);
 		System.out.println(f);
 		return "/adminpage/upload/attractionPro.jsp";
 	}
 
-//	6. ì°œí•œ ê´€ê´‘ì§€ ë…¸ì¶œ (mypageì—ì„œ) 	
+//	6. ÂòÇÑ °ü±¤Áö ³ëÃâ (mypage¿¡¼­) 	
 	@RequestMapping("myAttraction.do")
-	public String myAttraction(String place_name, String place_address, String place_category) {
+	public String myAttraction(String name, String address, String category) {
 		
 		return "/userpage/attraction/myAttraction.jsp";
 	}
 	
-	/*	DB ì €ì¥ëœ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸° (Formì—ì„œ IDê°’ í†µì¼ì‹œí‚¤ê¸°) 
-	@RequestMapping("attractionSearchPro1.do")
-								  		ê´€ê´‘ì§€_ì§€ì—­,			ê´€ê´‘ì§€ ìœ í˜•	ìœ¼ë¡œ ê´€ê´‘ì§€ DB 	ë§¤ê°œë³€ìˆ˜ ì„¤ì • 	
-	public String attractionSearchPro(attractionDTO dto, Model model, 
-			HttpServletRequest request) throws IOException {
+// 	°ü±¤Áö ¼öÁ¤ (°ü¸®ÀÚID) 
+	@RequestMapping("attUpdate.do")
+	public String attUpdate(String name, String address, String category) {
 		
-	 	dtoì— ë“¤ì–´ê°ˆ ê°’ì„ ë©”ê°œë³€ìˆ˜ë¡œ ì„ ì–¸í•˜ë©´ ì´ë¦„ì— ë§ì¶°ì„œ ë“¤ì–´ê°
-		System.out.println(dto.getPlace_category());
-		System.out.println(dto.getPlace_local());
-
-		setìœ¼ë¡œ ì €ì¥í•œ DTOë¥¼ List ì €ì¥
- 		sql: mapper namespace="item" + id="getAttractionList" + ìƒì„±ëœ dtoë¡œ ë¶ˆëŸ¬ì˜¤ê¸° 
-			
-		List list = dao.selectList("item.getAttractionList", dto); 
-		model.addAttribute("list", list); //ì¶œë ¥í•˜ê¸°
-		System.out.println(list.size());  // ê²°ê³¼ ëª‡ê°œ ë‚˜ì˜¤ëŠ”ì§€ í™•ì¸
-	
+		homeDTO dto = new homeDTO();
+	//	dto = dao.selectOne("home.homeInfo", home_no);
+	//	model.addAttribute("dto", dto);
 		
-		return "/userpage/attraction/attractionSearchPro.jsp"; 
-		}
-*/
+		return "/adminpage/upload/attUpdate.jsp";
+	}
 }
 	
 

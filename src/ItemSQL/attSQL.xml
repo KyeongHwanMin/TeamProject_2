@@ -4,100 +4,118 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  
-  <mapper namespace="attraction">
+  <mapper namespace="att">
   
   <!-- 관광지 찜하기 관련 내용 -->
   
-    <!-- 관광지 찜하기 count  -->
-  <select id="attCount" resultType="int" parameterType="String">
-  	   select count(*) from myAttraction where user_id=#{user_id}
-  	   
+  <!-- 관광지(att) 리스트업 -->
+    <select id="selectAtt" resultType="locationDTO"  parameterType="int"> 
+  		select * from location where no= #{no}
+   </select>
+
+  <!--  관광지(att) 북마킹(DB 추가)  -->
+  <insert id="insertAttmk" parameterType="accomBookMKdto">
+  	   insert into MYATTRACTION(MYACCODE, USER_ID, place_NO, place_NAME,place_CONTENT, place_TYPE, place_LOCAL, place_IMG , place_ADDRESS) 
+  	   values(myaccomk_seq.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_content}, #{place_type}, #{place_local}, #{place_img}, #{place_address} )
+  	</insert>
+  
+  <!--  북마킹 관광지(att) 마이페이지 -->
+	<select id="myAccom" resultType="accomBookMKdto" parameterType="String">
+  	   select * from MYATTRACTION where user_id=#{user_id}  	   
   	</select>
 
-  <!--  관광지 불러오기  -->
-   <select id="selectAtt" resultType="attractionDTO"  parameterType="String"> 
-  select * from attraction where place_no= #{place_no}
-   </select> 
-  
-  <!--  관광지 찜해서 insert  -->
-	<insert id="insertAtt" parameterType="attBookMarkDTO">
-  	   insert into myAttraction(MYATT, USER_ID, place_no, place_name, place_address, place_content, place_category, place_local, place_img) 
-  	   values(MYATT_seq.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_address}, 
-  	   		#{place_content}, #{place_category}, #{place_local}, #{place_img)
-  	</insert>
-   
-  <!--  찜한 관광지 노출 -->
-	<select id="myAtt" resultType="attBookMarkDTO" parameterType="String">
-  	   select * from myattraction where user_id=#{user_id}
-  	</select>  
-  
-  <!-- 마이페이지에서 찜한 관광지 삭제)-->
-  <delete id="deleteMyAtt" parameterType="String">
- 	 delete from myattraction where place_no = #{place_no}
+  <!-- 북마킹 해제 -->
+  <delete id="deleteMK" parameterType="int">
+ 	 delete from MYATTRACTION where place_no = #{place_no}
   </delete>
+  
+  
+  <!--  관광지(att) 수정하기 위해 해당 관광지(att) 불러오는거  -->
+   <select id="readAtt" resultType="locationDTO" parameterType="String">
+     select * from location where no = #{place_no}
+   </select>
+   
+  <!-- 관광지(att) 수정  -->
+  <update id="updateAtt" parameterType="String">
+  	update location set 
+  	 place_name = #{place_name, jdbcType=VARCHAR},
+  	 place_address = #{place_address, jdbcType=VARCHAR},
+  	 place_content = #{place_content, jdbcType=VARCHAR},
+  	 x = #{x , jdbcType=VARCHAR},
+  	 y = #{y, jdbcType=VARCHAR},
+  	 place_type= #{place_type, jdbcType=VARCHAR},
+  	 place_local= #{place_local, jdbcType=VARCHAR}
+  	where place_no= #{place_no}
+  </update>
+
+  <!-- 관광지(att) 삭제 -->
+  <delete id="deleteAtt" parameterType="String">
+  		delete from location where no= #{no}
+  </delete>
+
   
   
   <!-- 관광지 메인페이지(attractionSearchForm) 페이징 -->
 	<select id="attcount" resultType="int">
-  	   select count(*) from attraction 
+  	   select count(*) from location
   	</select>
 	
-	<select id="attList" resultType="attractionDTO" parameterType="hashmap" >
-  	   select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y , r 
-	from ( select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y , rownum r 
-	from ( select place_no, place_name, place_address, place_content, place_category, place_local, place_img, x, y 
-	from attraction)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
-   </select>
+  	<select id="attList" resultType="locationDTO" parameterType="hashmap" >
+    select no, name, x, y, category,  address, content, location, type,img,  r 
+	from(select no, name, x, y, category,  address, content, location, type,img, rownum r 
+	from(select no, name, x, y, category,  address, content, location, type,img 
+	from location where type='attraction')) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+	</select>
  
    <!--  관광지 지역  -->
-  <select id="jejusi" resultType="attractionDTO">   
-  	select * from attraction where place_local='jejusi'
+  <select id="jejusi" resultType="locationDTO">   
+  	select * from location where location='jejusi' and type='attraction'
   </select>
 
-  <select id="seoquiposi" resultType="attractionDTO">   
-  	select * from attraction where place_local='seoquiposi'
+  <select id="seoquiposi" resultType="locationDTO">   
+  	select * from location where location='seoquiposi' and type='attraction'
   </select>
   
-   <select id="jungmun" resultType="attractionDTO">  
-  	select * from attraction where place_local='jungmun'
+   <select id="jungmun" resultType="locationDTO">  
+  	select * from location where location='jungmun' and type='attraction'
   </select>
   
-    <select id="jejuairport" resultType="attractionDTO"> 
-  	select * from attraction where place_local='jejuairport'
+    <select id="jejuairport" resultType="locationDTO"> 
+  	select * from location where location='jejuairport' and type='attraction'
   </select>
   
-    <select id="aweol" resultType="attractionDTO"> 
-  	select * from attraction where place_local='aweol'
+    <select id="aweol" resultType="locationDTO"> 
+  	select * from location where location='aweol' and type='attraction'
   </select>
   
-   <select id="pyoseon" resultType="attractionDTO"> 
-  	select * from attraction where place_local='pyoseon'
+   <select id="pyoseon" resultType="locationDTO"> 
+  	select * from location where location='pyoseon' and type='attraction'
   </select>
   
-	<select id="hamduk" resultType="attractionDTO"> 
-  	select * from attraction where place_local='hamduk'
+	<select id="hamduk" resultType="locationDTO"> 
+  	select * from location where location='hamduk' and type='attraction'
   </select>
   
   <!--  관광지 유형  -->
   
   <!--  역사/문화  -->
-  <select id="history" resultType="attractionDTO">
-  select * from attraction where place_category='history'
+  <select id="history" resultType="locationDTO">
+  select * from location where category='history' 
   </select>
   
     <!--  자연  -->
-  <select id="nature" resultType="attractionDTO">
-  select * from attraction where place_category='nature'
+  <select id="nature" resultType="locationDTO">
+  select * from location where category='nature' 
   </select>
   
     <!--  레저/체험  -->
-  <select id="leisure" resultType="attractionDTO">
-  select * from attraction where place_category='leisure'
+  <select id="leisure" resultType="locationDTO">
+  select * from location where category='leisure' 
   </select>
   
     <!--  힐링  -->
-  <select id="healing" resultType="attractionDTO">
-  select * from attraction where place_category='healing'
+  <select id="healing" resultType="locationDTO">
+  select * from location where category='healing' 
   </select>
   </mapper>
   

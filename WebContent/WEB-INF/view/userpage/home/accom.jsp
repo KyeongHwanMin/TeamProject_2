@@ -26,6 +26,18 @@
 function myFunction() {
   document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
+
+var category='all';
+
+
+function cate(num){
+	category=num;
+}
+
+
+function pageNext(pageNum){
+	window.location="/jejuguseok/accom.do?pageNum="+pageNum+"&category="+category;
+}
 </script>
 	
 
@@ -85,11 +97,11 @@ function myFunction() {
 								<span class="sorting_text">숙소 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
-									<li class="filter_btn" data-filter="*"><span>숙소 전체</span></li>
-									<li class="filter_btn" data-filter=".motel"><span>모텔</span></li>
-									<li class="filter_btn" data-filter=".guesthouse"><span>게스트하우스</span></li>
-									<li class="filter_btn" data-filter=".pention"><span>펜션</span></li>
-									<li class="filter_btn" data-filter=".hotel"><span>호텔</span></li>
+									<li class="filter_btn" data-filter="*"  onclick="cate('all')"><span>숙소 전체</span></li>
+									<li class="filter_btn" data-filter=".motel" onclick="cate('motel')"><span>민박/모텔</span></li>
+									<li class="filter_btn" data-filter=".guesthouse" onclick="cate('guesthouse')"><span>게스트하우스</span></li>
+									<li class="filter_btn" data-filter=".pention" onclick="cate('pension')"><span>펜션</span></li>
+									<li class="filter_btn" data-filter=".hotel" onclick="cate('hotel')"><span>호텔</span></li>
 								</ul>
 							</li>
 							
@@ -242,7 +254,7 @@ function myFunction() {
 				   <c:forEach var="i" begin="${startPage}" end="${endPage}">
 				      
 				      <li class="page-item">
-				       <a class="page-link" href="accom.do?pageNum=${i}"> ${i} </a>
+				       <a class="page-link" href="javascript:void(0);" onclick="pageNext(${i});"> ${i} </a>
 				       </li>
 				       
 				   </c:forEach>

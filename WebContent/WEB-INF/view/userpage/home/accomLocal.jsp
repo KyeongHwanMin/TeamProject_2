@@ -27,7 +27,7 @@
 	
 
 	<!-- 숙소 소개 페이지  -->
-
+ 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/제주숙소.jpg"></div> 
 		<div class="home_content">
@@ -82,7 +82,7 @@
 								<i class="fa fa-chevron-down"></i>
 								<ul>
 									<li class="filter_btn" data-filter="*"><span>숙소 전체</span></li>
-									<li class="filter_btn" data-filter=".motel"><span>모텔</span></li>
+									<li class="filter_btn" data-filter=".motel"><span>민박/모텔</span></li>
 									<li class="filter_btn" data-filter=".guesthouse"><span>게스트하우스</span></li>
 									<li class="filter_btn" data-filter=".pention"><span>펜션</span></li>
 									<li class="filter_btn" data-filter=".hotel"><span>호텔</span></li>

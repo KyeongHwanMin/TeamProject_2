@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <!--  숙소 지역  -->
-  <mapper namespace="home">
-  
+  <mapper namespace="home"> 
+   
   
    <select id="homecount" resultType="int">
   	     select count(*) from location where type='home'
   	</select>
   
-  
+   
   
   <select id="articleList" resultType="locationDTO" parameterType="hashmap" >
                 select no, name, x, y, category,  address, content, location, img,  r 
@@ -68,16 +68,19 @@ from location where type='home')) <![CDATA[where r >= #{startRow} and r <= #{end
   
   
   
-   <!--  숙소 불러오기  -->
-   <select id="selecthome" resultType="homeDTO"  parameterType="String"> 
-  select * from home where home_no= #{home_no}
+  
+  
+  
+   <!--  숙소 불러오기  select * from home where home_no= #{home_no} no 디비는 숫자인데;;; 근데 저번에 불러서 넣었던 테이블에도 디비가 number 였는데... 그럼 locationDTO에  -->
+   <select id="selecthome" resultType="locationDTO"  parameterType="int"> 
+  		select * from location where no= #{no}
    </select>
   
   
   <!--  숙소 찜하기 (db 넣기)  -->
   <insert id="insertMK" parameterType="accomBookMKdto">
   	   insert into myaccomk(MYACCODE, USER_ID, HOME_NO, HOME_NAME,HOME_CONTENT, HOME_TYPE, HOME_LOCAL, HOME_IMG , HOME_ADDRESS) 
-  	   values(myaccomk_seq.NEXTVAL, #{user_id, jdbcType=VARCHAR}, #{home_no, jdbcType=VARCHAR}, #{home_name, jdbcType=VARCHAR}, #{home_content, jdbcType=VARCHAR}, #{home_type, jdbcType=VARCHAR}, #{home_local, jdbcType=VARCHAR}, #{home_img, jdbcType=VARCHAR}, #{home_address, jdbcType=VARCHAR})
+  	   values(myaccomk_seq.NEXTVAL, #{user_id}, #{home_no}, #{home_name}, #{home_content}, #{home_type}, #{home_local}, #{home_img}, #{home_address} )
   	</insert>
   
   
@@ -89,34 +92,49 @@ from location where type='home')) <![CDATA[where r >= #{startRow} and r <= #{end
   
   
   <!-- 찜풀기 -->
-  <delete id="deleteMK" parameterType="String">
- 	 delete from MYACCOMK where home_no = #{home_no}
+  <delete id="deleteMK" parameterType="int">
+ 	 delete from MYACCOMK where home_no = #{no}
   </delete>
   
   
   <!--  숙소 수정하기 위해 해당 숙소 불러오는거  -->
-   <select id="homeInfo" resultType="homeDTO" parameterType="String">
-     select * from home where home_no = #{home_no}
+   <select id="homeInfo" resultType="locationDTO" parameterType="int">
+     select * from location where no = #{no}
    </select>
    
-  <!-- 숙소 수정  -->
-  <update id="homeUpdate" parameterType="String">
-  	update home set 
-  	 home_name = #{home_name, jdbcType=VARCHAR},
-  	 home_address = #{home_address, jdbcType=VARCHAR},
-  	 home_content = #{home_content, jdbcType=VARCHAR},
-  	 x = #{x , jdbcType=VARCHAR},
-  	 y = #{y, jdbcType=VARCHAR},
-  	 home_type= #{home_type, jdbcType=VARCHAR},
-  	 home_local= #{home_local, jdbcType=VARCHAR}
-  	where home_no= #{home_no}
-  </update>
+  <!-- 숙소 수정  -->            
+
+  <update id="homeUpdate" parameterType="locationDTO">
+  	update location set 
+  	 name = #{name},
+  	 x = #{x},
+  	 y = #{y},
+  	 category= #{category}, 
+  	 type='home',
+  	 address = #{address},
+  	 content = #{content},
+  	 location = #{location}
+  	where no= #{no}
+  </update> 
   
-  
+    <update id="homeMKUpdate" parameterType="locationDTO">
+  	update myaccomk set
+  	 home_name = #{name},
+  	 home_content = #{content},
+  	 home_type=#{category},
+  	 home_local = #{location},
+  	 home_address = #{address}
+  	where home_no= #{no}
+  </update> 
+
   
   <!-- 숙소 삭제 -->
   <delete id="deletehome" parameterType="String">
-  		delete from home where home_no= #{home_no}
+  		delete from location where no= #{no}
+  </delete>
+  
+    <delete id="deletehome2" parameterType="String">
+  		delete from myaccomk where home_no= #{no}
   </delete>
   
   

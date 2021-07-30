@@ -39,9 +39,9 @@ public class homeBean {
 		return "/adminpage/upload/homeForm.jsp"; 
 	}
 	@RequestMapping("homePro.do")
-	public String homePro(String home_name, String home_address,String x, String y, String home_content, String home_local, 
-			String home_type, MultipartHttpServletRequest ms) {
-		MultipartFile mf = ms.getFile("home_img"); // 파일 원본
+	public String homePro(String name, String address, String content, String category, 
+			String location, String x, String y, String type, MultipartHttpServletRequest ms) {
+		MultipartFile mf = ms.getFile("img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
 		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
 		
@@ -52,99 +52,95 @@ public class homeBean {
 		}
 		ms.setAttribute("filename",fileName);
 		
-		Object home_img1 = (Object)f;
-		String home_img = String.valueOf(home_img1);
+		Object img1 = (Object)f;
+		String img = String.valueOf(img1);
 
-		homeDTO itemdto = new homeDTO();
-		itemdto.setHome_name(home_name);		
-		itemdto.setHome_address(home_address);
-		itemdto.setX(x);		
-		itemdto.setY(y);
-		itemdto.setHome_content(home_content);
-		itemdto.setHome_local(home_local);
-		itemdto.setHome_type(home_type);
-		itemdto.setHome_img(home_img);
+		locationDTO lo = new locationDTO();
+		lo.setName(name);		
+		lo.setAddress(address);
+		lo.setContent(content);
+		lo.setLocation(location);
+		lo.setCategory(category);
+		lo.setX(x);
+		lo.setY(y);
+		lo.setType(type);
+		lo.setImg(img);
+		lo.setCategory(category);
 	
-		dao.insert("item.insertHome",itemdto);
+		dao.insert("item.insertHome",lo);
 		System.out.println(f);
 		return "/adminpage/upload/homePro.jsp";
 	}	
 
-
-	
-	
 	// -----------정현서 추가----------------------
 	
-	// 숙소 정보 수정 
-	@RequestMapping("homeUpdate.do")
-	public String homeUpdate(String home_no,  Model model) {
+		// 숙소 정보 수정 
+		@RequestMapping("homeUpdate.do")
+		public String homeUpdate(String home_no,  Model model) {
+				
+			homeDTO dto = new homeDTO();
+			dto = dao.selectOne("home.homeInfo", home_no);
+			model.addAttribute("dto", dto);
 			
-		homeDTO dto = new homeDTO();
-		dto = dao.selectOne("home.homeInfo", home_no);
-		model.addAttribute("dto", dto);
+			
+			return "/adminpage/upload/homeUpdate.jsp"; 
+		}
 		
 		
-		return "/adminpage/upload/homeUpdate.jsp"; 
+		// 숙소 정보 수정 
+		@RequestMapping("homeUpdatePro.do")
+		public String homeUpdatePro(Model model, HttpServletRequest request) {
+				
+			String home_name = request.getParameter("home_name");
+			String home_address = request.getParameter("home_address");
+			String home_content = request.getParameter("home_content");
+			String x = request.getParameter("x");
+			String y =  request.getParameter("y");
+			String home_type = request.getParameter("home_type");
+			String home_local = request.getParameter("home_local");
+			
+			homeDTO dto = new homeDTO();
+			System.out.println("dto====="+dto);
+			dto.setHome_name(home_name);
+			dto.setHome_address(home_address);
+			dto.setHome_content(home_content);
+			dto.setX(x);
+			dto.setY(y);
+			dto.setHome_type(home_type);
+			dto.setHome_local(home_local);
+			
+			dao.update("home.homeUpdate", dto);
+			
+			
+			return "/adminpage/upload/homeUpdatePro.jsp"; 
+		}
+		
+		
+		
+		
+		// 숙소 삭제 
+		@RequestMapping("homeDelete.do")
+		public String homeDelete( HttpServletRequest request, Model model) {
+				
+			String home_no = request.getParameter("home_no");
+			model.addAttribute("home_no", home_no);
+			
+			return "/adminpage/upload/homeDelete.jsp"; 
+		}
+		
+		
+		@RequestMapping("homeDeletePro.do")
+		public String homeDeletePro( HttpServletRequest request, Model model) {
+				
+			String home_no = request.getParameter("home_no");
+			dao.delete("home.deletehome", home_no);
+			
+			return "/adminpage/upload/homeDeletePro.jsp"; 
+		}
+		
+		
+		
+		
+		
 	}
 	
-	
-	// 숙소 정보 수정 
-	@RequestMapping("homeUpdatePro.do")
-	public String homeUpdatePro( String home_no , Model model, HttpServletRequest request) {
-			
-		String homeno = request.getParameter("home_no");
-		String home_name = request.getParameter("home_name");
-		String home_address = request.getParameter("home_address");
-		String home_content = request.getParameter("home_content");
-		String x = request.getParameter("x");
-		String y =  request.getParameter("y");
-		String home_type = request.getParameter("home_type");
-		String home_local = request.getParameter("home_local");
-		
-		homeDTO dto = new homeDTO();
-		System.out.println("dto====="+dto);
-		System.out.println("homeno====="+homeno);
-		dto.setHome_no(homeno);
-		dto.setHome_name(home_name);
-		dto.setHome_address(home_address);
-		dto.setHome_content(home_content);
-		dto.setX(x);
-		dto.setY(y);
-		dto.setHome_type(home_type);
-		dto.setHome_local(home_local);
-		
-		dao.update("home.homeUpdate", dto);
-		
-		
-		return "/adminpage/upload/homeUpdatePro.jsp"; 
-	}
-	
-	
-	
-	
-	// 숙소 삭제 
-	@RequestMapping("homeDelete.do")
-	public String homeDelete( HttpServletRequest request, Model model) {
-			
-		String home_no = request.getParameter("home_no");
-		model.addAttribute("home_no", home_no);
-		
-		return "/adminpage/upload/homeDelete.jsp"; 
-	}
-	
-	
-	@RequestMapping("homeDeletePro.do")
-	public String homeDeletePro( HttpServletRequest request, Model model) {
-			
-		String home_no = request.getParameter("home_no");
-		dao.delete("home.deletehome", home_no);
-		
-		return "/adminpage/upload/homeDeletePro.jsp"; 
-	}
-	
-	
-	
-	
-	
-}
-

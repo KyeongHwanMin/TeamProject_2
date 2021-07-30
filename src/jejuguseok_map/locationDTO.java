@@ -2,7 +2,7 @@ package jejuguseok_map;
 
 public class locationDTO {
 
-	private String no;
+	private int no;  //이거 INT로
 	private String name;
 	private String x;
 	private String y;
@@ -11,10 +11,15 @@ public class locationDTO {
 	private String address;
 	private String content;
 	private String location;
-	public String getNo() {
+	private String img;
+	
+	
+	
+	
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getName() {
@@ -65,6 +70,14 @@ public class locationDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	
 	
 	
 }

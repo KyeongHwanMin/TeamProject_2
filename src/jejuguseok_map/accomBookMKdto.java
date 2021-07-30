@@ -5,7 +5,7 @@ public class accomBookMKdto {
 	
 	private int MYACCODE;  
 	private String user_id;  
-	private String home_no; 
+	private int home_no; 
 	private String home_name;
 	private String home_content;
 	private String home_local;
@@ -26,10 +26,15 @@ public class accomBookMKdto {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getHome_no() {
+
+	
+	
+	
+	
+	public int getHome_no() {
 		return home_no;
 	}
-	public void setHome_no(String home_no) {
+	public void setHome_no(int home_no) {
 		this.home_no = home_no;
 	}
 	public String getHome_name() {
