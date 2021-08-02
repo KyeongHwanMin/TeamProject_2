@@ -77,7 +77,7 @@ div.fheader {
 								<li class="main_nav_item"><a href="mypage.do">나의 여행</a></li>
 								<li class="main_nav_item"><a href="attForm.do">관광지</a></li>
 								<li class="main_nav_item"><a href="accom.do">숙박</a></li>
-								<li class="main_nav_item"><a href="blog.html">장소 추천</a></li>
+								<li class="main_nav_item"><a href="recommend.do">장소 추천</a></li>
 								<li class="main_nav_item"><a href="list.do">contact</a></li>
 						</c:if>	
 								

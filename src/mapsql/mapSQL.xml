@@ -12,6 +12,10 @@
  	<select id="home" resultType="mapDTO">
  		select * from location where type = 'home'
  	</select>
+ 	<select id="mybook_2030" resultType="recommendDTO">
+ 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 2008 and year_birth >= 1990 ]]>
+ 	
+ 	</select>
  	
 
  </mapper>

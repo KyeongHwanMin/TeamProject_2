@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -74,7 +75,7 @@ public class map {
 		scheduledto.setSubject(subject);
 		scheduledto.setDate1(date);
 		scheduledto.setDay1(day);
-		scheduledto.setId(id);
+		scheduledto.setUser_id(id);
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
 		
@@ -83,18 +84,19 @@ public class map {
 	}
 	
 	@RequestMapping("schedule_table.do")
-	public String schedule(String pageNum,Model model) {
+	public String schedule(String pageNum,Model model, HttpSession session) {
 			int pageSize = 10;
 			if(pageNum == null) {
 				pageNum ="1";
 			}
+			
 			
 			int currentPage = Integer.parseInt(pageNum);
 			int startRow = (currentPage - 1) * pageSize +1;
 			int endRow = currentPage * pageSize;
 			int count = 0;
 			int number = 0;
-			
+
 			List articleList = null;
 			HashMap Row = new HashMap();
 			Row.put("startRow", startRow);
@@ -104,7 +106,11 @@ public class map {
 			if(count > 0) {
 				articleList = dao.selectList("schedule.getArticles",Row);
 			}
+			
+			
 			number=count-(currentPage-1)*pageSize;
+			
+			
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("startRow", startRow);
 			model.addAttribute("endRow", endRow);
@@ -257,7 +263,8 @@ public class map {
 			scheduledto.setC_context1(c_context1);
 			scheduledto.setC_time1(c_time1);	
 			scheduledto.setC_y1(c_y1);
-			scheduledto.setC_x1(c_x1);			
+			scheduledto.setC_x1(c_x1);		
+			System.out.println("subject"+scheduledto.getSubject());
 			dao.update("schedule.updatesc",scheduledto);
 			}if(c_place2 != null) {	
 			scheduledto.setC_place2(c_place2);
@@ -308,6 +315,14 @@ public class map {
 		String id = request.getParameter("id");
 		request.setAttribute("id", id);
 		return "/map/map2.jsp";
+	}
+	@RequestMapping("sccedule_card_delete.do")
+	public String delete(String number, String date, String day,String subject,  String user_id,HttpServletRequest request) {
+		
+		
+		System.out.println("subject="+subject);
+
+		return "";
 	}
 	
 		

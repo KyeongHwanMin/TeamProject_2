@@ -2,7 +2,7 @@ package jejuguseok.map;
 
 public class scheduleDTO {
 	private int num1;
-	private String id;
+	private String user_id;
 	private String date1;
 	private String day1;
 	private String with1;
@@ -38,98 +38,17 @@ public class scheduleDTO {
 	private String c_context6;
 	private String c_y6;
 	private String c_x6;
-	
-	
-	
-	public String getC_y1() {
-		return c_y1;
-	}
-	public void setC_y1(String c_y1) {
-		this.c_y1 = c_y1;
-	}
-	public String getC_x1() {
-		return c_x1;
-	}
-	public void setC_x1(String c_x1) {
-		this.c_x1 = c_x1;
-	}
-	public String getC_y2() {
-		return c_y2;
-	}
-	public void setC_y2(String c_y2) {
-		this.c_y2 = c_y2;
-	}
-	public String getC_x2() {
-		return c_x2;
-	}
-	public void setC_x2(String c_x2) {
-		this.c_x2 = c_x2;
-	}
-	public String getC_y3() {
-		return c_y3;
-	}
-	public void setC_y3(String c_y3) {
-		this.c_y3 = c_y3;
-	}
-	public String getC_x3() {
-		return c_x3;
-	}
-	public void setC_x3(String c_x3) {
-		this.c_x3 = c_x3;
-	}
-	public String getC_y4() {
-		return c_y4;
-	}
-	public void setC_y4(String c_y4) {
-		this.c_y4 = c_y4;
-	}
-	public String getC_x4() {
-		return c_x4;
-	}
-	public void setC_x4(String c_x4) {
-		this.c_x4 = c_x4;
-	}
-	public String getC_y5() {
-		return c_y5;
-	}
-	public void setC_y5(String c_y5) {
-		this.c_y5 = c_y5;
-	}
-	public String getC_x5() {
-		return c_x5;
-	}
-	public void setC_x5(String c_x5) {
-		this.c_x5 = c_x5;
-	}
-	public String getC_y6() {
-		return c_y6;
-	}
-	public void setC_y6(String c_y6) {
-		this.c_y6 = c_y6;
-	}
-	public String getC_x6() {
-		return c_x6;
-	}
-	public void setC_x6(String c_x6) {
-		this.c_x6 = c_x6;
-	}
 	public int getNum1() {
 		return num1;
 	}
 	public void setNum1(int num1) {
 		this.num1 = num1;
 	}
-	public String getSubject() {
-		return subject;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getDate1() {
 		return date1;
@@ -155,6 +74,12 @@ public class scheduleDTO {
 	public void setTravel(String travel) {
 		this.travel = travel;
 	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
 	public String getC_place1() {
 		return c_place1;
 	}
@@ -172,6 +97,18 @@ public class scheduleDTO {
 	}
 	public void setC_context1(String c_context1) {
 		this.c_context1 = c_context1;
+	}
+	public String getC_y1() {
+		return c_y1;
+	}
+	public void setC_y1(String c_y1) {
+		this.c_y1 = c_y1;
+	}
+	public String getC_x1() {
+		return c_x1;
+	}
+	public void setC_x1(String c_x1) {
+		this.c_x1 = c_x1;
 	}
 	public String getC_place2() {
 		return c_place2;
@@ -191,6 +128,18 @@ public class scheduleDTO {
 	public void setC_context2(String c_context2) {
 		this.c_context2 = c_context2;
 	}
+	public String getC_y2() {
+		return c_y2;
+	}
+	public void setC_y2(String c_y2) {
+		this.c_y2 = c_y2;
+	}
+	public String getC_x2() {
+		return c_x2;
+	}
+	public void setC_x2(String c_x2) {
+		this.c_x2 = c_x2;
+	}
 	public String getC_place3() {
 		return c_place3;
 	}
@@ -208,6 +157,18 @@ public class scheduleDTO {
 	}
 	public void setC_context3(String c_context3) {
 		this.c_context3 = c_context3;
+	}
+	public String getC_y3() {
+		return c_y3;
+	}
+	public void setC_y3(String c_y3) {
+		this.c_y3 = c_y3;
+	}
+	public String getC_x3() {
+		return c_x3;
+	}
+	public void setC_x3(String c_x3) {
+		this.c_x3 = c_x3;
 	}
 	public String getC_place4() {
 		return c_place4;
@@ -227,6 +188,18 @@ public class scheduleDTO {
 	public void setC_context4(String c_context4) {
 		this.c_context4 = c_context4;
 	}
+	public String getC_y4() {
+		return c_y4;
+	}
+	public void setC_y4(String c_y4) {
+		this.c_y4 = c_y4;
+	}
+	public String getC_x4() {
+		return c_x4;
+	}
+	public void setC_x4(String c_x4) {
+		this.c_x4 = c_x4;
+	}
 	public String getC_place5() {
 		return c_place5;
 	}
@@ -244,6 +217,18 @@ public class scheduleDTO {
 	}
 	public void setC_context5(String c_context5) {
 		this.c_context5 = c_context5;
+	}
+	public String getC_y5() {
+		return c_y5;
+	}
+	public void setC_y5(String c_y5) {
+		this.c_y5 = c_y5;
+	}
+	public String getC_x5() {
+		return c_x5;
+	}
+	public void setC_x5(String c_x5) {
+		this.c_x5 = c_x5;
 	}
 	public String getC_place6() {
 		return c_place6;
@@ -263,7 +248,20 @@ public class scheduleDTO {
 	public void setC_context6(String c_context6) {
 		this.c_context6 = c_context6;
 	}
+	public String getC_y6() {
+		return c_y6;
+	}
+	public void setC_y6(String c_y6) {
+		this.c_y6 = c_y6;
+	}
+	public String getC_x6() {
+		return c_x6;
+	}
+	public void setC_x6(String c_x6) {
+		this.c_x6 = c_x6;
+	}
 	
+
 	
 	
 

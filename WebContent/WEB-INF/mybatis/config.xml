@@ -7,6 +7,7 @@
 	<typeAliases> <!--  자주 사용하는 DTO 를 이렇게 적어두는 방법 -->
 	  <typeAlias type="userpage.main.userDTO" alias="userDTO" />
 	  <typeAlias type="jejuguseok.map.mapDTO" alias="mapDTO" />
+	  <typeAlias type="jejuguseok.map.recommendDTO" alias="recommendDTO" />
 	  <typeAlias type="userpage.board.otoDTO" alias="otoDTO" />
 	  <typeAlias type="jejuguseok_map.attBkDTO" alias="attBkDTO" />
 	  <typeAlias type="jejuguseok_map.locationDTO" alias="locationDTO" />
@@ -27,7 +28,7 @@
 	<mappers>
 		<!--  <mapper resource="/resources/mappers/otoMapper.xml" />-->
 		<mapper resource="/mapsql/mapSQL.xml"/>
-		
+		<mapper resource="/mapsql/recommendSQL.xml"/>
 		<mapper resource="/userpageSQL/userSQL.xml"/>
 		
 		<mapper resource="/ItemSQL/attraction_homeSQL.xml"/>

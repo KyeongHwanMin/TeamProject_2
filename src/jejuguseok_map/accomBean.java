@@ -13,11 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
  
-/* Á¤Çö¼­ work. 
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ work. 
  *   
- * ¼÷¼Ò Bean: À¯Çü/Áö¿ªº° ºÐ·ù 
- * 1 À¯Çü: ¸ðÅÚ, °Ô½ºÆ®ÇÏ¿ì½º, Ææ¼Ç, È£ÅÚ
- * 2 Áö¿ª: Á¦ÁÖ½Ã, ¼­±ÍÆ÷½Ã, Áß¹®, Á¦ÁÖ±¹Á¦°øÇ×, ¾Ö¿ù/ÇÑ¸²/ÇùÀç, Ç¥¼±/»ó»ê, ÇÔ´ö/±è³ç/¼¼È­ 
+ * ï¿½ï¿½ï¿½ï¿½ Bean: ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð·ï¿½ 
+ * 1 ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½, ï¿½Ô½ï¿½Æ®ï¿½Ï¿ì½º, ï¿½ï¿½ï¿½, È£ï¿½ï¿½
+ * 2 ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ö½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ß¹ï¿½, ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ö¿ï¿½/ï¿½Ñ¸ï¿½/ï¿½ï¿½ï¿½ï¿½, Ç¥ï¿½ï¿½/ï¿½ï¿½ï¿½, ï¿½Ô´ï¿½/ï¿½ï¿½ï¿½/ï¿½ï¿½È­ 
  */
 @Controller
 public class accomBean {
@@ -27,37 +27,37 @@ public class accomBean {
 	
 	
 	
-	// ¼÷¹Ú ÆäÀÌÁö
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("accom.do")
 	public String accom(Model model, HttpServletRequest request){
 		
-		int pageSize = 5;	// ÇÑ ÆäÀÌÁö¿¡ º¸¿©Áú °Ô½Ã¹° ¼ö 
+		int pageSize = 5;	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ 
 		
-		//ÆäÀÌÁö ¸µÅ©¸¦ Å¬¸¯ÇÑ ¹øÈ£ Áï ÇöÀç ÆäÀÌÁö 
-		String pageNum = request.getParameter("pageNum");	// ¸®½ºÆ®¿¡¼­ ÆäÀÌÁö ¹øÈ£¸¦ Å¬¸¯ ½Ã ¹ÞÀ» ¼ö ÀÖ´Ù.(ÆäÀÌÁö¸¦ Ã³À½¿¡ Å¬¸¯ÇÏÁö ¾Ê´Â´Ù.)
-		String category = request.getParameter("category");	// ¸®½ºÆ®¿¡¼­ ÆäÀÌÁö ¹øÈ£¸¦ Å¬¸¯ ½Ã ¹ÞÀ» ¼ö ÀÖ´Ù.(ÆäÀÌÁö¸¦ Ã³À½¿¡ Å¬¸¯ÇÏÁö ¾Ê´Â´Ù.)
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+		String pageNum = request.getParameter("pageNum");	// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.)
+		String category = request.getParameter("category");	// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.)
 		
 		if(category==null) {
 			category="all";
 		}
-		if (pageNum == null) {	// ÆäÀÌÁö¸¦ ÀÔ·Â ¾ÈÇÏ¸é 1ÆäÀÌÁö.. ÀÔ·ÂÇÏ¸é nullÀÌ ¾Æ´Ï¹Ç·Î if¹® µ¿ÀÛÇÏÁö¾Ê´Â´Ù.
+		if (pageNum == null) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.. ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ nullï¿½ï¿½ ï¿½Æ´Ï¹Ç·ï¿½ ifï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê´Â´ï¿½.
 		    pageNum = "1";
 		}
 		
 		
-		int currentPage = Integer.parseInt(pageNum);		// 1.. ¹®ÀÚ(string)Å¸ÀÔÀ¸·Î µé¾î¿À´Ï º¯È¯
+		int currentPage = Integer.parseInt(pageNum);		// 1.. ï¿½ï¿½ï¿½ï¿½(string)Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 
 		int startRow = (currentPage - 1) * pageSize + 1;	// (1-1) * 10 + 1 = 1
 		int endRow = currentPage * pageSize;				// 1 * 10 = 10
-		int count = 0;	// ÀüÃ¼ °Ô½Ã¹° ¼ö
-		int number= 0;	// È­¸é¿¡ º¸ÀÌ´Â °Ô½Ã¹° ¹øÈ£. ÀÔ·ÂÇÑ ¹øÈ£¿Í ´Ù¸£´Ù »èÁ¦ ½Ã ½ÃÄö½º´Â ºó ¹øÈ£¸¦ Ã¤¿ìÁö ¾Ê´Â´Ù Áï, ³»ÀåµÈ ¹øÈ£°¡ ¾Æ´Ñ º¸ÀÌ´Â ¹øÈ£
+		int count = 0;	// ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½
+		int number= 0;	// È­ï¿½é¿¡ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½È£. ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½È£
 		
 		List articleList = null;
 		count = dao.selectOne("home.homecount");
 		
-		System.out.println("Ä«¿îÆ®~~~"+count);
+		System.out.println("Ä«ï¿½ï¿½Æ®~~~"+count);
 		
-		HashMap Row = new HashMap();  // sql¿¡ HashMap »ç¿ëÇØ¼­ startRow / endRow ÀÌ¸§À¸·Î °ªÀ» º¸³½´Ù. 
+		HashMap Row = new HashMap();  // sqlï¿½ï¿½ HashMap ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ startRow / endRow ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 
 		Row.put("startRow", startRow);
 		Row.put("endRow", endRow);
 		
@@ -65,7 +65,7 @@ public class accomBean {
 			articleList = dao.selectList("home.articleList", Row);
 		}
 		
-		number=count-(currentPage-1)*pageSize;	// ÀüÃ¼ °Ô½Ã¹° ¼ö - (ÆäÀÌÁö - 1) * 10  = 
+		number=count-(currentPage-1)*pageSize;	// ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ - (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - 1) * 10  = 
 			
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("startRow", startRow);
@@ -73,10 +73,10 @@ public class accomBean {
 		model.addAttribute("count", count);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("number", number);
-		model.addAttribute("articleList", articleList); //list3 ¿ªÇÒ 
+		model.addAttribute("articleList", articleList); //list3 ï¿½ï¿½ï¿½ï¿½ 
 		model.addAttribute("pageNum", pageNum);
 
-		
+
 		 //List list3 = dao.selectList("item.myHome"); 
 		
 		//List list3 = dao.selectList("item.articleList");
@@ -86,52 +86,52 @@ public class accomBean {
 	}
 	
 	
-	// ¼÷¹Ú ÆäÀÌÁö - Áö¿ª ±¸ºÐÇÏ±â ÆäÀÌÁö 
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	@RequestMapping("accomLocal.do")
 	public String accomLocal(Model model, HttpServletRequest request){
 		
 		int se= Integer.parseInt(request.getParameter("search"));
-		System.out.println("Ãâ·Â!!"+se);
+		System.out.println("ï¿½ï¿½ï¿½!!"+se);
 		
-		String search="Á¦ÁÖ½Ã";
+		String search="ï¿½ï¿½ï¿½Ö½ï¿½";
 		
 		
 		if(se == 2){
-			search="¼­±ÍÆ÷½Ã";
+			search="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			List slist = dao.selectList("home.seoquiposi"); 
 			 model.addAttribute("slist",slist);
 			
 			 return "/userpage/home/accomLocal.jsp"; 
 					 
 		}else if(se==3){
-			search="Áß¹®";
+			search="ï¿½ß¹ï¿½";
 			List slist = dao.selectList("home.jungmun"); 
 			 model.addAttribute("slist",slist);
 			
 			 return "/userpage/home/accomLocal.jsp"; 
 		}else if(se==4){
-			search="Á¦ÁÖ±¹Á¦°øÇ×";
+			search="ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			List slist = dao.selectList("home.jejuairport"); 
 			 model.addAttribute("slist",slist);
 			
 			 return "/userpage/home/accomLocal.jsp"; 
 			
 		}else if(se==5){
-			search="¾Ö¿ù/ÇÑ¸²/ÇùÀç";
+			search="ï¿½Ö¿ï¿½/ï¿½Ñ¸ï¿½/ï¿½ï¿½ï¿½ï¿½";
 			List slist = dao.selectList("home.aweol"); 
 			 model.addAttribute("slist",slist);
 			
 			 return "/userpage/home/accomLocal.jsp"; 
 			
 		}else if(se==6){
-			search="Ç¥¼±/»ó»ê";
+			search="Ç¥ï¿½ï¿½/ï¿½ï¿½ï¿½";
 			List slist = dao.selectList("home.pyoseon"); 
 			 model.addAttribute("slist",slist);
 			
 			 return "/userpage/home/accomLocal.jsp"; 
 			 
 		}else if(se==7){   //hamduk
-			search="ÇÔ´ö/±è³ç/¼¼È­";
+			search="ï¿½Ô´ï¿½/ï¿½ï¿½ï¿½/ï¿½ï¿½È­";
 			List slist = dao.selectList("home.hamduk"); 
 			 model.addAttribute("slist",slist);
 			
@@ -146,8 +146,8 @@ public class accomBean {
 	}
 	
 	
-	//¼÷¹Ú ÂòÇÏ±â ¹öÆ° ´©¸¦¶§ °¡´Â ÆäÀÌÁö. ÀÏÁ¾ÀÇ pro 
-	// accom.do¿¡¼­ ÂòÇÏ±â ´©¸£¸é ½ºÅ©¸³Æ®°¡ ¶ß°í º» ÆäÀÌÁö(accom.do)·Î µ¹¾Æ¿Â´Ù (ÂòÇÏ±â°¡ µî·ÏµÇ¾ú½À´Ï´Ù! [È®ÀÎ] ) 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ pro 
+	// accom.doï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(accom.do)ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿Â´ï¿½ (ï¿½ï¿½ï¿½Ï±â°¡ ï¿½ï¿½ÏµÇ¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½! [È®ï¿½ï¿½] ) 
 	
 	@RequestMapping("accomBookMK.do")  //accomBookMKdto 
 	public String accomBookMK(locationDTO dto , int no, HttpSession session,Model model, HttpServletRequest request)  throws Exception{
@@ -177,17 +177,17 @@ public class accomBean {
 	}
 	
 	
-	//³»°¡ ÂòÇÑ ¼÷¹Ú ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping("myAccom.do")
 	public String myAccom(String user_id, Model model, HttpSession session){
 		
 		String id = (String) session.getAttribute("user_id");
-		System.out.println("¾ÆÀÌµð ==="+id);
+		System.out.println("ï¿½ï¿½ï¿½Ìµï¿½ ==="+id);
 		
 		accomBookMKdto dto = new accomBookMKdto();
 		int count = 0;
 		count =dao.selectOne("home.count", id);
-		System.out.println("Ä«¿î¤¼ ¤Ñ~~~"+count);
+		System.out.println("Ä«ï¿½î¤¼ ï¿½ï¿½~~~"+count);
 		
 		model.addAttribute("count",count);
 		List myAccomList = dao.selectList("home.myAccom", id); 
@@ -198,7 +198,7 @@ public class accomBean {
 	}
 	
 	
-	//ÂòÇÏ±â Ç®±â 
+	//ï¿½ï¿½ï¿½Ï±ï¿½ Ç®ï¿½ï¿½ 
 	@RequestMapping("myAccomDeletePro.do")  //myAccomDeletePro
 	public String myAccomDeletePro( int no, HttpSession session,HttpServletRequest request)  throws Exception{
 		

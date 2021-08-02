@@ -416,7 +416,7 @@ function makeOverListener(map, marker, infowindow) {
         <textarea class="form-control" name="c_y2" id="c_y2" rows="1" style="display:none">${ y_list2[status.index] }</textarea>
         <textarea class="form-control" name="c_x2" id="c_x2" rows="1" style="display:none">${ x_list2[status.index] }</textarea>
         <textarea class="form-control" name="c_context2" id="c_context2" rows="6">${context2[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
@@ -428,7 +428,7 @@ function makeOverListener(map, marker, infowindow) {
         <textarea class="form-control" name="c_y3" id="c_y3" rows="1" style="display:none">${ y_list3[status.index] }</textarea>
         <textarea class="form-control" name="c_x3" id="c_x3" rows="1" style="display:none">${ x_list3[status.index] }</textarea>
         <textarea class="form-control" name="c_context3" id="c_context3" rows="6">${context3[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
@@ -440,7 +440,7 @@ function makeOverListener(map, marker, infowindow) {
         <textarea class="form-control" name="c_y4" id="c_y4" rows="1" style="display:none">${ y_list4[status.index] }</textarea>
         <textarea class="form-control" name="c_x4" id="c_x4" rows="1" style="display:none">${ x_list4[status.index] }</textarea>
         <textarea class="form-control" name="c_context4" id="c_context4" rows="6">${context4[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
@@ -452,7 +452,7 @@ function makeOverListener(map, marker, infowindow) {
         <textarea class="form-control" name="c_y5" id="c_y5" rows="1" style="display:none">${ y_list5[status.index] }</textarea>
         <textarea class="form-control" name="c_x5" id="c_x5" rows="1" style="display:none">${ x_list5[status.index] }</textarea>
         <textarea class="form-control" name="c_context5" id="c_context2" rows="6">${context5[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
@@ -464,7 +464,7 @@ function makeOverListener(map, marker, infowindow) {
         <textarea class="form-control" name="c_y6" id="c_y6" rows="1" style="display:none">${ y_list6[status.index] }</textarea>
         <textarea class="form-control" name="c_x6" id="c_x6" rows="1" style="display:none">${ x_list6[status.index] }</textarea>
         <textarea class="form-control" name="c_context6" id="c_context2" rows="6">${context6[status.index] }</textarea>
-         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2(${ status.index})" />
+         <input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div2('${dayCnt}_${ status.index}')" />
         </div>    
         </c:forEach>
         </c:if>
@@ -574,7 +574,7 @@ function makeOverListener(map, marker, infowindow) {
     	document.getElementById('field'+num).removeChild(obj.parentNode);
     	}
     function remove_div2(string){  	
-  	alert(string);
+  
     	$('div').remove('#card'+string);
     	//  var de = document.getElementById( 'card'+num );    
     	 // alert('card'+num );
