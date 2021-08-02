@@ -17,7 +17,13 @@
                 select no, name, x, y, category,  address, content, location, img,  r 
 from(  select no, name, x, y, category,  address, content, location, img, rownum r 
 from(  select no, name, x, y, category,  address, content, location, img 
-from location where type='home')) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+from location where type='home' and category=#{category} order by no desc)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+   </select>
+   <select id="articleListAll" resultType="locationDTO" parameterType="hashmap" >
+                select no, name, x, y, category,  address, content, location, img,  r 
+from(  select no, name, x, y, category,  address, content, location, img, rownum r 
+from(  select no, name, x, y, category,  address, content, location, img 
+from location where type='home' order by no desc)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
    </select>
     
   

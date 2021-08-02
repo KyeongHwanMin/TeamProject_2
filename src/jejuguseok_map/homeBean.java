@@ -31,116 +31,128 @@ public class homeBean {
 		return "/userpage/home/search.jsp";
 	}	
 
-//	숙소 이미지파일 저장 및 DB 업로드
+//	숙소  DB 업로드 ================================
 	
 	@RequestMapping("homeForm.do")
 	public String uploadForm() {
 
 		return "/adminpage/upload/homeForm.jsp"; 
 	}
-	@RequestMapping("homePro.do")
-	public String homePro(String name, String address, String content, String category, 
-			String location, String x, String y, String type, MultipartHttpServletRequest ms) {
-		MultipartFile mf = ms.getFile("img"); // 파일 원본
-		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
-		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
-		
-		try {
-			mf.transferTo(f); // 복사
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		ms.setAttribute("filename",fileName);
-		
-		Object img1 = (Object)f;
-		String img = String.valueOf(img1);
-
-		locationDTO lo = new locationDTO();
-		lo.setName(name);		
-		lo.setAddress(address);
-		lo.setContent(content);
-		lo.setLocation(location);
-		lo.setCategory(category);
-		lo.setX(x);
-		lo.setY(y);
-		lo.setType(type);
-		lo.setImg(img);
-		lo.setCategory(category);
 	
-		dao.insert("item.insertHome",lo);
-		System.out.println(f);
-		return "/adminpage/upload/homePro.jsp";
-	}	
+	
+	   @RequestMapping("homePro.do")
+	   public String homePro(String name, String address, String content, String category, 
+	         String location, String x, String y, String type, MultipartHttpServletRequest ms) {
+	      MultipartFile mf = ms.getFile("img"); // 파일 원본
+	      String fileName = mf.getOriginalFilename(); // 파일 원본 이름
+	      File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
+	      
+	      try {
+	         mf.transferTo(f); // 복사
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      ms.setAttribute("filename",fileName);
+	      
+	      Object img1 = (Object)f;
+	      String img = String.valueOf(img1);
 
+	      locationDTO lo = new locationDTO();
+	      lo.setName(name);      
+	      lo.setAddress(address);
+	      lo.setContent(content);
+	      lo.setLocation(location);
+	      lo.setCategory(category);
+	      lo.setX(x);
+	      lo.setY(y);
+	      lo.setType(type);
+	      lo.setImg(img);
+	      lo.setCategory(category);
+	   
+	      dao.insert("item.insertHome",lo);
+	      System.out.println(f);
+	      return "/adminpage/upload/homePro.jsp";
+	   }   
+
+	
+	
 	// -----------정현서 추가----------------------
 	
-		// 숙소 정보 수정 
-		@RequestMapping("homeUpdate.do")
-		public String homeUpdate(String home_no,  Model model) {
-				
-			homeDTO dto = new homeDTO();
-			dto = dao.selectOne("home.homeInfo", home_no);
-			model.addAttribute("dto", dto);
-			
-			
-			return "/adminpage/upload/homeUpdate.jsp"; 
-		}
+	// 숙소 정보 수정 . 입력 폼이랑 비슷하다. 
+	@RequestMapping("homeUpdate.do")
+	public String homeUpdate(int no,  Model model) {
 		
 		
-		// 숙소 정보 수정 
-		@RequestMapping("homeUpdatePro.do")
-		public String homeUpdatePro(Model model, HttpServletRequest request) {
-				
-			String home_name = request.getParameter("home_name");
-			String home_address = request.getParameter("home_address");
-			String home_content = request.getParameter("home_content");
-			String x = request.getParameter("x");
-			String y =  request.getParameter("y");
-			String home_type = request.getParameter("home_type");
-			String home_local = request.getParameter("home_local");
-			
-			homeDTO dto = new homeDTO();
-			System.out.println("dto====="+dto);
-			dto.setHome_name(home_name);
-			dto.setHome_address(home_address);
-			dto.setHome_content(home_content);
-			dto.setX(x);
-			dto.setY(y);
-			dto.setHome_type(home_type);
-			dto.setHome_local(home_local);
-			
-			dao.update("home.homeUpdate", dto);
-			
-			
-			return "/adminpage/upload/homeUpdatePro.jsp"; 
-		}
+		locationDTO dto = new locationDTO();
+		dto = dao.selectOne("home.homeInfo", no);
+		model.addAttribute("dto", dto);
 		
-		
-		
-		
-		// 숙소 삭제 
-		@RequestMapping("homeDelete.do")
-		public String homeDelete( HttpServletRequest request, Model model) {
-				
-			String home_no = request.getParameter("home_no");
-			model.addAttribute("home_no", home_no);
-			
-			return "/adminpage/upload/homeDelete.jsp"; 
-		}
-		
-		
-		@RequestMapping("homeDeletePro.do")
-		public String homeDeletePro( HttpServletRequest request, Model model) {
-				
-			String home_no = request.getParameter("home_no");
-			dao.delete("home.deletehome", home_no);
-			
-			return "/adminpage/upload/homeDeletePro.jsp"; 
-		}
-		
-		
-		
-		
-		
+		return "/adminpage/upload/homeUpdate.jsp"; 
 	}
 	
+	
+	// 숙소 정보 수정 pro.
+	@RequestMapping("homeUpdatePro.do")
+	public String homeUpdatePro(int no,  Model model, HttpServletRequest request) {
+		System.out.println("homeno====="+no);	
+		
+		//int no2 = Integer.parseInt(String.valueOf("no"));
+		
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String content = request.getParameter("content");
+		String x = request.getParameter("x");
+		String y =  request.getParameter("y");
+		String category = request.getParameter("category");
+		String location = request.getParameter("location");
+		System.out.println("category====="+category);	
+		locationDTO dto = new locationDTO();
+		System.out.println("UpdatePro  dto====="+dto);
+	
+		dto.setNo(no);
+		dto.setName(name);
+		dto.setAddress(address);
+		dto.setContent(content);
+		dto.setX(x);
+		dto.setY(y);
+		dto.setCategory(category);
+		dto.setLocation(location);
+		
+		// 여기서 dto로 보내잔아. 
+		dao.update("home.homeUpdate", dto);
+		dao.update("home.homeMKUpdate", dto);
+		
+		
+		return "/adminpage/upload/homeUpdatePro.jsp"; 
+	}
+	
+	
+	
+	
+	// 관리자 ---- 숙소 삭제 
+	@RequestMapping("homeDelete.do")
+	public String homeDelete( HttpServletRequest request, Model model) {
+			
+		String no = request.getParameter("no");
+		model.addAttribute("no", no);
+		
+		return "/adminpage/upload/homeDelete.jsp"; 
+	}
+	
+	
+	@RequestMapping("homeDeletePro.do")
+	public String homeDeletePro( HttpServletRequest request, Model model) {
+			
+		String no = request.getParameter("no");
+		dao.delete("home.deletehome", no);
+		dao.delete("home.deletehome2", no);
+		
+		return "/adminpage/upload/homeDeletePro.jsp"; 
+	}
+	
+	
+	
+	
+	
+}
+

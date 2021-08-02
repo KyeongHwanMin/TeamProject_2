@@ -11,7 +11,6 @@
 	  <typeAlias type="userpage.board.otoDTO" alias="otoDTO" />
 	  <typeAlias type="jejuguseok_map.attBkDTO" alias="attBkDTO" />
 	  <typeAlias type="jejuguseok_map.locationDTO" alias="locationDTO" />
-	  <typeAlias type="jejuguseok_map.homeDTO" alias="homeDTO" />
 	  <typeAlias type="jejuguseok_map.accomBookMKdto" alias="accomBookMKdto" />
 	  <typeAlias type="jejuguseok.map.scheduleDTO" alias="scheduleDTO" />
 	</typeAliases>

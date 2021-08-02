@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+
 import jejuguseok_map.locationDTO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -258,6 +261,22 @@ public class attractionBean {
 		return "/adminpage/upload/attractionPro.jsp";
 	}
 
+    //파일명 랜덤 생성 메서드
+    private String uploadFile(String originalName, byte[] fileData) throws Exception{
+    
+        // uuid 생성 
+        UUID uuid = UUID.randomUUID();
+        
+        //savedName 변수에 uuid + 원래 이름 추가
+        String fileName = uuid.toString()+"_"+originalName;
+        
+        //uploadPath경로의 savedName 파일에 대한 file 객체 생성
+        File target = new File("/WEB-INF/userpage/save", fileName);
+        //fileData의 내용을 target에 복사함
+        FileCopyUtils.copy(fileData, target);
+ 
+        return fileName;
+    }
 
 	
 /* admin ID로 관광지 정보 수정 및 삭제 

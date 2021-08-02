@@ -10,12 +10,11 @@
   <div id="layoutSidenav_content">
    <main>
      <div class="container-fluid px-4">
-        <h3 class="mt-4">숙소 등록</h3>
+        <h1 class="mt-4">숙소 등록</h1>
            <ol class="breadcrumb mb-4">
-               <li class="breadcrumb-item"><a href="/jejuguseok/adminpage/index.do">Admin Main</a></li>
-               <li class="breadcrumb-item"><a href="attractionForm.do">관광지 등록</a></li>
+               <li class="breadcrumb-item"><a href="adminpage/index.do">Dashboard</a></li>
+               <li class="breadcrumb-item active">숙소 등록</li>
            </ol>
-
 <!-- 
 숙소 번호: num(시퀀스 자동생성)
 숙소명: name
@@ -26,11 +25,16 @@
 숙소 분류: type
 숙소 이미지: img
  -->
+<!-- 숙소 지역/정보 등록 -->
+
 
 
 <form class="form-horizontal" action="homePro.do" method="post" enctype="multipart/form-data">
-<!-- 숙소 지역/정보 등록 -->
+
 <legend></legend>
+<!--  
+	<input type="radio" name="home" value="home" checked=""> 숙소 입력  <br />
+	-->
 	<input type="hidden" id="type" name="type" value="home">
 	숙소명: <input type="text" name ="name" /> <br />	
 	숙소 주소: <input type="text" name ="address" /> <br />	
@@ -43,7 +47,7 @@
   <div class="col-md-4">
     <select id="location" name="location" class="form-control">
       <option value="jejusi">제주시</option>
-      <option value="seogwiposi">서귀포시</option>
+      <option value="seoquiposi">서귀포시</option> <!--  스펠링 꼭 확인하세요.  -->
       <option value="jungmun">중문</option>
       <option value="jejuairport">제주국제공항</option>
       <option value="aweol">애월/한림/협재</option>
@@ -70,12 +74,17 @@
 	 <br/>
 </form>
 
-<!--   -->
 
-     </div>
+
+
+
+
+
+<!-- BOTTOM  태그(*) -->
+ </div>
    </main>
   </div>
-<!-- BOTTOM  태그(*) -->
+
 </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/jejuguseok/adminStyle/js/scripts.js"></script>
@@ -85,4 +94,4 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="/jejuguseok/adminStyle/js/datatables-simple-demo.js"></script>
     </body>
-</html>   
+</html>            
