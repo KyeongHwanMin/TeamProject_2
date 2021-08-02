@@ -3,17 +3,8 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+	<script> 
+	  alert("찜하기를 취소하였습니다.");
+	  window.location="myAtt.do";
 
-</head>
-<body>
-  <script>
- 	alert("관광지 북마킹 삭제");
- 	window.location="attForm.do";
- </script>
-
-</body>
-</html>
+	</script>

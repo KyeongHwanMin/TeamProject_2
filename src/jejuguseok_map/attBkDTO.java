@@ -1,70 +1,76 @@
 package jejuguseok_map;
-// 북마크 DTO 
+
 public class attBkDTO {
 	
-	private int PLACE_NO;
-	private int MYATT;
-	private String PLACE_NAME;
-	private String USER_ID; 
-	private String PLACE_ADDRESS;
-	private String PLACE_CONTENT;
-	private String PLACE_CATEGORY; 
-	private String PLACE_IMG;
-	private String PLACE_LOCAL;
-	public int getPLACE_NO() {
-		return PLACE_NO;
+	private int place_no;
+	private int att_no;
+	private String place_name;
+	private String user_id; 
+	private String place_address;
+	private String place_content;
+	private String place_category; 
+	private String place_img;
+	private String place_type;
+	private String place_local;
+	public int getPlace_no() {
+		return place_no;
 	}
-	public void setPLACE_NO(int pLACE_NO) {
-		PLACE_NO = pLACE_NO;
+	public void setPlace_no(int place_no) {
+		this.place_no = place_no;
 	}
-	public int getMYATT() {
-		return MYATT;
+	public int getatt_no() {
+		return att_no;
 	}
-	public void setMYATT(int mYATT) {
-		MYATT = mYATT;
+	public void setatt_no(int att_no) {
+		this.att_no = att_no;
 	}
-	public String getPLACE_NAME() {
-		return PLACE_NAME;
+	public String getPlace_name() {
+		return place_name;
 	}
-	public void setPLACE_NAME(String pLACE_NAME) {
-		PLACE_NAME = pLACE_NAME;
+	public void setPlace_name(String place_name) {
+		this.place_name = place_name;
 	}
-	public String getUSER_ID() {
-		return USER_ID;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setUSER_ID(String uSER_ID) {
-		USER_ID = uSER_ID;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
-	public String getPLACE_ADDRESS() {
-		return PLACE_ADDRESS;
+	public String getPlace_address() {
+		return place_address;
 	}
-	public void setPLACE_ADDRESS(String pLACE_ADDRESS) {
-		PLACE_ADDRESS = pLACE_ADDRESS;
+	public void setPlace_address(String place_address) {
+		this.place_address = place_address;
 	}
-	public String getPLACE_CONTENT() {
-		return PLACE_CONTENT;
+	public String getPlace_content() {
+		return place_content;
 	}
-	public void setPLACE_CONTENT(String pLACE_CONTENT) {
-		PLACE_CONTENT = pLACE_CONTENT;
+	public void setPlace_content(String place_content) {
+		this.place_content = place_content;
 	}
-	public String getPLACE_CATEGORY() {
-		return PLACE_CATEGORY;
+	public String getPlace_category() {
+		return place_category;
 	}
-	public void setPLACE_CATEGORY(String pLACE_CATEGORY) {
-		PLACE_CATEGORY = pLACE_CATEGORY;
+	public void setPlace_category(String place_category) {
+		this.place_category = place_category;
 	}
-	public String getPLACE_IMG() {
-		return PLACE_IMG;
+	public String getPlace_img() {
+		return place_img;
 	}
-	public void setPLACE_IMG(String pLACE_IMG) {
-		PLACE_IMG = pLACE_IMG;
+	public void setPlace_img(String place_img) {
+		this.place_img = place_img;
 	}
-	public String getPLACE_LOCAL() {
-		return PLACE_LOCAL;
+	public String getPlace_type() {
+		return place_type;
 	}
-	public void setPLACE_LOCAL(String pLACE_LOCAL) {
-		PLACE_LOCAL = pLACE_LOCAL;
+	public void setPlace_type(String place_type) {
+		this.place_type = place_type;
 	}
-	
+	public String getPlace_local() {
+		return place_local;
+	}
+	public void setPlace_local(String place_local) {
+		this.place_local = place_local;
+	}
 	
 }

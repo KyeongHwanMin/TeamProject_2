@@ -31,20 +31,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
-°ü±¤Áö Bean: ¿ª»ç¹®È­, ÀÚ¿¬°æÄ¡, ·¹ÀúÃ¼ÇèÇĞ½À, ÈŞ½ÄÈú¸µ
-list1: °ü±¤Áö ¸ŞÀÎ(form) ÆäÀÌÁö
-list2: °ü±¤Áö pro ÆäÀÌÁö 
+ê´€ê´‘ì§€ Bean: ì—­ì‚¬ë¬¸í™”, ìì—°ê²½ì¹˜, ë ˆì €ì²´í—˜í•™ìŠµ, íœ´ì‹íë§
+list1: ê´€ê´‘ì§€ ë©”ì¸(form) í˜ì´ì§€
+list2: ê´€ê´‘ì§€ pro í˜ì´ì§€ 
 
- * ÆäÀÌÂ¡ ¿ä¾à 
-- ÇöÀç ÆäÀÌÁö(current page = Å¬¸¯ÇÑ ÆäÀÌÁö) 
-- String pageNum ~ : Ã¹ ÆäÀÌÁö 1(1~10 ÇØ´ç ÆäÀÌÁö ¹Ş±â) 
-- if (pageNum == null) ~:  ÆäÀÌÁö ÀÔ·Â x >  1ÆäÀÌÁö, ÀÔ·Â ½Ã null=if¹® µ¿ÀÛ ¾ÈÇÔ 
+ * í˜ì´ì§• ìš”ì•½ 
+- í˜„ì¬ í˜ì´ì§€(current page = í´ë¦­í•œ í˜ì´ì§€) 
+- String pageNum ~ : ì²« í˜ì´ì§€ 1(1~10 í•´ë‹¹ í˜ì´ì§€ ë°›ê¸°) 
+- if (pageNum == null) ~:  í˜ì´ì§€ ì…ë ¥ x >  1í˜ì´ì§€, ì…ë ¥ ì‹œ null=ifë¬¸ ë™ì‘ ì•ˆí•¨ 
 - int startRow ~:  (1-1) * 10 + 1 = 1
 - int endRow ~: 1 * 10 = 10
-- int count = 0; ÀüÃ¼ °ü±¤Áö ¼ö
-- int number= 0; È­¸é¿¡ º¸ÀÌ´Â °Ô½Ã¹° ¹øÈ£. 
-  ÀÔ·ÂµÈ ¹øÈ£°¡ ¾Æ´Ï¸ç »èÁ¦µÇ¸é ½ÃÄö½º´Â emty ¹øÈ£¸¦ Ã¼Å©ÇÏÁö ¾Ê´Â´Ù Áï, ÀÔ·ÂµÈ ¹øÈ£°¡ ¾Æ´Ñ °Ô½Ã¹° µî·ÏÇÒ ‹š¸¸ º¸ÀÌ´Â ¹øÈ£	
-- HashMap Row = new HashMap(); : sql¿¡ HashMap »ç¿ëÇØ¼­ startRow / endRow ÀÌ¸§À¸·Î °ªÀ» º¸³½´Ù. 
+- int count = 0; ì „ì²´ ê´€ê´‘ì§€ ìˆ˜
+- int number= 0; í™”ë©´ì— ë³´ì´ëŠ” ê²Œì‹œë¬¼ ë²ˆí˜¸. 
+  ì…ë ¥ëœ ë²ˆí˜¸ê°€ ì•„ë‹ˆë©° ì‚­ì œë˜ë©´ ì‹œí€€ìŠ¤ëŠ” emty ë²ˆí˜¸ë¥¼ ì²´í¬í•˜ì§€ ì•ŠëŠ”ë‹¤ ì¦‰, ì…ë ¥ëœ ë²ˆí˜¸ê°€ ì•„ë‹Œ ê²Œì‹œë¬¼ ë“±ë¡í•  ë–„ë§Œ ë³´ì´ëŠ” ë²ˆí˜¸	
+- HashMap Row = new HashMap(); : sqlì— HashMap ì‚¬ìš©í•´ì„œ startRow / endRow ì´ë¦„ìœ¼ë¡œ ê°’ì„ ë³´ë‚¸ë‹¤. 
  */
 @Controller
 public class attractionBean {
@@ -54,62 +54,70 @@ public class attractionBean {
 	private SqlSessionTemplate dao =null;	
 	
 	
-//	°ü±¤Áö ºÏ¸¶Å©: attform¿¡¼­ ÂòÇÏ±â Å¬¸¯ ½Ã ÇØ´ç ÆäÀÌÁö ÀÌµ¿ ÈÄ º¹±Í(¾Ë·µ±â´É) 
-	@RequestMapping("attbook.do") 
-	public String attbook(Model model, locationDTO dto, int no,  String name, String category,
-			HttpSession session)  throws Exception{
+//	ê´€ê´‘ì§€ ë¶ë§ˆí¬: attformì—ì„œ ì°œí•˜ê¸° í´ë¦­ ì‹œ í•´ë‹¹ í˜ì´ì§€ ì´ë™ í›„ ë³µê·€(ì•ŒëŸ¿ê¸°ëŠ¥) 
+	@RequestMapping("attBookMark.do")  
+	public String accomBookMK(locationDTO dto , int no, 
+			HttpSession session,Model model)  throws Exception{
+		String id = (String) session.getAttribute("user_id");
 		
-		String id =(String)session.getAttribute("user_id");
-		System.out.println("°ü±¤Áö ¹øÈ£: "+no);
-		System.out.println("°ü±¤Áö À¯Çü: "+category);
-		System.out.println("°ü±¤Áö ÀÌ¸§: "+name);
+		System.out.println("ê´€ê´‘ì§€ ë²ˆí˜¸: "+ no);  
+		System.out.println("ë¶ë§ˆí‚¹ ID: "+ id);  
 		
-		locationDTO att = new locationDTO();
-		attBkDTO attBkDTO = new attBkDTO();
-		att = dao.selectOne("att.selectAtt", no);
+		locationDTO lo = new locationDTO();
+		attBkDTO abdto = new attBkDTO();  
 		
-		attBkDTO.setUSER_ID(id);
-		attBkDTO.setPLACE_NO(no);
+		lo = dao.selectOne("att.selectAtt", no); 
 		
-		attBkDTO.setPLACE_NAME(att.getName());
-		attBkDTO.setPLACE_ADDRESS(att.getAddress());
-		attBkDTO.setPLACE_CATEGORY(att.getCategory());
-		attBkDTO.setPLACE_CONTENT(att.getContent());
-		attBkDTO.setPLACE_LOCAL(att.getLocation());
-	
-		dao.insert("att.insertAttmk", attBkDTO);
+		abdto.setUser_id(id);
+		abdto.setPlace_no(no);
+		
+		abdto.setPlace_address(lo.getAddress());
+		abdto.setPlace_type(lo.getType());
+		abdto.setPlace_category(lo.getCategory());
+		abdto.setPlace_content(lo.getContent());
+		abdto.setPlace_img(lo.getImg());
+		abdto.setPlace_local(lo.getLocation());
+		abdto.setPlace_name(lo.getName());
+		
+		dao.insert("att.insertAttmk", abdto);
 		
 		return "/userpage/attraction/attBookMark.jsp";
 	}
 	
-//	ºÏ¸¶Å·ÇÑ °ü±¤Áö ¸®½ºÆ® mypage¿¡¼­ ³ëÃâ 
-	@RequestMapping("myAtt.do")
-	public String myAccom(String user_id, Model model, HttpSession session) {
+	//ë‚´ê°€ ì°œí•œ ê´€ê´‘ì§€ ë¶ˆëŸ¬ì˜¤ê¸° 
+		@RequestMapping("myAtt.do")
+		public String myAccom(String user_id, String place_name, String place_category, Model model, 
+				HttpSession session)throws Exception{
+			
+			String id = (String) session.getAttribute("user_id");
+			System.out.println("í•´ë‹¹ ì•„ì´ë””: "+id);
+			
+			attBkDTO dto = new attBkDTO();
+			int count = 0;
+			
+			count =dao.selectOne("att.Attcount", id);
+			// System.out.println("ì¹´ìš´íŒ…: "+count);
+			// System.out.println("ì°œí•œ ê´€ê´‘ì§€: "+place_category+place_name);
+			model.addAttribute("count",count);
+			List myAttList = dao.selectList("att.myAttList", id); 
+			
+			 model.addAttribute("myAttList",myAttList);
 		
-		String id =(String) session.getAttribute("user_id");
-		System.out.println("¾ÆÀÌµğ È®ÀÎ: "+id);
-		
-		int count = 0;
-		attBkDTO attBkDTO = new attBkDTO();
-		model.addAttribute("count", count);
-		count = dao.selectOne("att.attCount", id);
-		List myAttList = dao.selectList("att.myAtt", id);
-		model.addAttribute("myAttList",myAttList);
-		
-		return "/userpage/attraction/myAttraction.jsp";
+		return "/userpage/mypage/myAttractionList.jsp";
 	}
 	
-	//ºÏ¸¶Å· ÇØÁ¦(mypage¿¡¼­)  
+	//ë¶ë§ˆí‚¹ í•´ì œ(mypageì—ì„œ)  
 	@RequestMapping("myAttDelete.do")
-	public String myAccomDeletePro( String no, String name, HttpSession session,HttpServletRequest request)  throws Exception{
+	public String myAccomDeletePro( int place_no, String name, HttpSession session,HttpServletRequest request)  
+			throws Exception{
 		
-		dao.delete("att.deleteMyAtt", no);
-		System.out.println("ºÏ¸¶Å· ÇØÁ¦: "+ no +name);
+		dao.delete("att.deleteMyAtt", place_no);
+		System.out.println("ë¶ë§ˆí‚¹ í•´ì œ: "+ place_no +name);
 		
 		return "/userpage/mypage/myAttDelete.jsp"; 
 	}
 	
-//	°ü±¤Áö °Ë»ö (Áö¿ª, Ä«Å×°í¸®·Î °Ë»ö) + ÆäÀÌÂ¡ 
+//	ê´€ê´‘ì§€ ê²€ìƒ‰ (ì§€ì—­, ì¹´í…Œê³ ë¦¬ë¡œ ê²€ìƒ‰) + í˜ì´ì§• 
 	@RequestMapping("attForm.do")
 	public String SearchForm(Model model, HttpServletRequest request) {
 		
@@ -128,7 +136,7 @@ public class attractionBean {
 		List attList = null;
 		count = dao.selectOne("att.attcount");
 		
-		System.out.println("ÆäÀÌÂ¡ Ã¼Å©: "+count);
+		System.out.println("í˜ì´ì§• ì²´í¬: "+count);
 		
 		HashMap Row = new HashMap();  
 		Row.put("startRow", startRow);
@@ -138,7 +146,7 @@ public class attractionBean {
 			attList = dao.selectList("att.attList", Row);
 		}
 		
-		System.out.println("°ü±¤Áö ¸®½ºÆ®: "+ attList);
+		System.out.println("ê´€ê´‘ì§€ ë¦¬ìŠ¤íŠ¸: "+ attList);
 		number=count-(currentPage-1)*pageSize;			
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("startRow", startRow);
@@ -155,51 +163,51 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchForm.jsp"; 
 	}
 	
-//  °ü±¤Áö DB ºÒ·¯¿À±â 
+//  ê´€ê´‘ì§€ DB ë¶ˆëŸ¬ì˜¤ê¸° 
 	@RequestMapping("attPro.do")								  		
 	public String attractionSearch_local(Model model, 
 			HttpServletRequest request) throws IOException {
 	
 		int sea1 = Integer.parseInt(request.getParameter("search1"));
-		String search1="Á¦ÁÖ½Ã";
+		String search1="ì œì£¼ì‹œ";
 		
 		if(sea1 == 2){
-			search1="¼­±ÍÆ÷½Ã";
+			search1="ì„œê·€í¬ì‹œ";
 			List list2 = dao.selectList("att.seoquiposi"); 
 			 model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 		
 		}else if(sea1==3){
-			search1="Áß¹®";
+			search1="ì¤‘ë¬¸";
 			List list2 = dao.selectList("att.jungmun"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			 
 		}else if(sea1==4){
-			search1="Á¦ÁÖ±¹Á¦°øÇ×";
+			search1="ì œì£¼êµ­ì œê³µí•­";
 			List list2 = dao.selectList("att.jejuairport"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			
 		}else if(sea1==5){
-			search1="¾Ö¿ù/ÇÑ¸²/ÇùÀç";
+			search1="ì• ì›”/í•œë¦¼/í˜‘ì¬";
 			List list2 = dao.selectList("att.aweol"); 
 			model.addAttribute("list2",list2);
 			
 			 return "/userpage/attraction/attractionSearchPro.jsp";
 			
 		}else if(sea1==6){
-			search1="Ç¥¼±/»ó»ê";
+			search1="í‘œì„ /ìƒì‚°";
 			List list2 = dao.selectList("att.pyoseon"); 
 			model.addAttribute("list2",list2);
 			
 			return "/userpage/attraction/attractionSearchPro.jsp";
 			 
 		}else if(sea1==7){ 
-			search1="ÇÔ´ö/±è³ç/¼¼È­";
+			search1="í•¨ë•/ê¹€ë…•/ì„¸í™”";
 			List list2 = dao.selectList("att.hamduk"); 
 			model.addAttribute("list2",list2);
 			
@@ -211,7 +219,7 @@ public class attractionBean {
 		return "/userpage/attraction/attractionSearchPro.jsp";
 	}
 	
-//	°ü±¤Áö ÀÌ¹ÌÁöÆÄÀÏ ÀúÀå ¹× Db ¾÷·Îµå 
+//	ê´€ê´‘ì§€ ì´ë¯¸ì§€íŒŒì¼ ì €ì¥ ë° Db ì—…ë¡œë“œ 
 	
 	@RequestMapping("attractionForm.do")
 	public String uploadForm() {
@@ -221,12 +229,12 @@ public class attractionBean {
 	@RequestMapping("attractionPro.do")
 	public String pro(String name, String address, String x, String y, String content, 
 			String location, String category, String type, MultipartHttpServletRequest ms) {
-		MultipartFile mf = ms.getFile("img"); // ÆÄÀÏ ¿øº»
-		String fileName = mf.getOriginalFilename(); // ÆÄÀÏ ¿øº» ÀÌ¸§
-		File f = new File("/WEB-INF/userpage/save"+fileName); // º¹»ç À§Ä¡
+		MultipartFile mf = ms.getFile("img"); // íŒŒì¼ ì›ë³¸
+		String fileName = mf.getOriginalFilename(); // íŒŒì¼ ì›ë³¸ ì´ë¦„
+		File f = new File("/WEB-INF/userpage/save"+fileName); // ë³µì‚¬ ìœ„ì¹˜
 		
 		try {
-			mf.transferTo(f); // º¹»ç
+			mf.transferTo(f); // ë³µì‚¬
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -250,23 +258,72 @@ public class attractionBean {
 		return "/adminpage/upload/attractionPro.jsp";
 	}
 
-//	6. ÂòÇÑ °ü±¤Áö ³ëÃâ (mypage¿¡¼­) 	
-	@RequestMapping("myAttraction.do")
-	public String myAttraction(String name, String address, String category) {
-		
-		return "/userpage/attraction/myAttraction.jsp";
-	}
-	
-// 	°ü±¤Áö ¼öÁ¤ (°ü¸®ÀÚID) 
-	@RequestMapping("attUpdate.do")
-	public String attUpdate(String name, String address, String category) {
-		
-		homeDTO dto = new homeDTO();
-	//	dto = dao.selectOne("home.homeInfo", home_no);
-	//	model.addAttribute("dto", dto);
-		
-		return "/adminpage/upload/attUpdate.jsp";
-	}
-}
-	
 
+	
+/* admin IDë¡œ ê´€ê´‘ì§€ ì •ë³´ ìˆ˜ì • ë° ì‚­ì œ 
+ * attupdate: ê´€ê´‘ì§€ ì •ë³´ ìˆ˜ì •
+ * attout: ê´€ê´‘ì§€ ì‚­ì œ 
+ */
+	
+	@RequestMapping("attupdate.do")
+	public String attupdate(locationDTO dto, Model model) {
+				
+		return "/adminpage/upload/attupdate.jsp"; 
+	}
+
+	@RequestMapping("attupdatePro.do")
+	public String attupdatePro(Model model, HttpServletRequest request, MultipartHttpServletRequest ms) {
+		MultipartFile mf = ms.getFile("img"); // íŒŒì¼ ì›ë³¸
+		String fileName = mf.getOriginalFilename(); // íŒŒì¼ ì›ë³¸ ì´ë¦„
+		File f = new File("/WEB-INF/userpage/save"+fileName); // ë³µì‚¬ ìœ„ì¹˜
+		
+		try {
+			mf.transferTo(f); // ë³µì‚¬
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		ms.setAttribute("filename",fileName);
+		
+		Object img1 = (Object)f;
+		String img = String.valueOf(img1);
+		int no = Integer.parseInt(request.getParameter("no"));
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String content = request.getParameter("content");
+		String x = request.getParameter("x");
+		String y =  request.getParameter("y");
+		String category = request.getParameter("category");
+		String type = request.getParameter("type");
+		String location = request.getParameter("location");
+		
+		locationDTO lo = new locationDTO();
+		System.out.println("ê´€ê´‘ì§€ëª…: "+name);
+		lo.setName(name);
+		lo.setAddress(address);
+		lo.setCategory(category);
+		lo.setContent(content);
+		lo.setLocation(location);
+		lo.setType(type);
+		lo.setX(x);
+		lo.setY(y);
+		lo.setImg(img);
+		lo.setNo(no);
+
+		System.out.println("ìˆ˜ì •ëœ ê´€ê´‘ì§€: "+no);
+		System.out.println("ìˆ˜ì •ëœ ì´ë¦„: "+name);
+		dao.update("att.updateAtt", lo);
+		
+		
+		return "/adminpage/upload/attupdatePro.jsp"; 
+	}
+	
+	@RequestMapping("attdelete.do")
+	public String attdelete(locationDTO dto, HttpServletRequest request, Model model) {
+		
+		String no = request.getParameter("no");
+		dao.delete("att.deleteAtt", no);
+		
+		return "/adminpage/upload/attdelete.jsp"; 
+	}
+	
+}

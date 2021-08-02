@@ -83,7 +83,7 @@
 						<div class="sidebar_title">내가 찜한 장소 </div>
 						<div class="sidebar_list">
 							<ul>
-								<li><a href="#">관광지</a></li>
+								<li><a href="myAtt.do">관광지</a></li>
 								<li><a href="myAccom.do">숙소</a></li>
 								
 							</ul>

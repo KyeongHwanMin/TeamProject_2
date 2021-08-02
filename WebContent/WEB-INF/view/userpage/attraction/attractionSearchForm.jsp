@@ -164,12 +164,12 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="attbook.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      
-											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?no=${locationDTO.no}"> 수정 </a></button>
-											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
+											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
 										</c:if>
 									</div>
 								</div>

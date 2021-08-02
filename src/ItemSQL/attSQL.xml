@@ -12,41 +12,46 @@
     <select id="selectAtt" resultType="locationDTO"  parameterType="int"> 
   		select * from location where no= #{no}
    </select>
-
-  <!--  관광지(att) 북마킹(DB 추가)  -->
-  <insert id="insertAttmk" parameterType="accomBookMKdto">
-  	   insert into MYATTRACTION(MYACCODE, USER_ID, place_NO, place_NAME,place_CONTENT, place_TYPE, place_LOCAL, place_IMG , place_ADDRESS) 
-  	   values(myaccomk_seq.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_content}, #{place_type}, #{place_local}, #{place_img}, #{place_address} )
-  	</insert>
   
-  <!--  북마킹 관광지(att) 마이페이지 -->
-	<select id="myAccom" resultType="accomBookMKdto" parameterType="String">
-  	   select * from MYATTRACTION where user_id=#{user_id}  	   
+  <!-- 관광지(att) 카운팅 -->
+	<select id="countAtt" resultType="int">
+  	     select count(*) from location where type='attraction'
   	</select>
 
+  <!--  관광지(att) 북마킹(DB 추가)  -->
+  <insert id="insertAttmk" parameterType="attBkDTO">
+  	   insert into myAttraction(att_no, user_id, place_no, place_name, place_content, place_type, place_local, place_img, place_address) 
+  	   values(att_no.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_content}, #{place_type}, #{place_local}, #{place_img}, #{place_address})
+  	</insert>
+  
+  <!-- 찜한 관광지 카운트  -->
+  	<select id="Attcount" resultType="int" parameterType="String">
+  	   select count(*) from myAttraction where user_id=#{user_id}
+	</select>
+ 
+  <!--  찜한 관광지 가져오기 -->
+	<select id="myAttList" resultType="attBkDTO" parameterType="String">
+  	   select * from myAttraction where user_id=#{user_id}
+  	   
+  	</select>  	
+  	
+
   <!-- 북마킹 해제 -->
-  <delete id="deleteMK" parameterType="int">
- 	 delete from MYATTRACTION where place_no = #{place_no}
+  <delete id="deleteMyAtt" parameterType="int">
+ 	 delete from myAttraction where place_no = #{place_no}
   </delete>
   
   
-  <!--  관광지(att) 수정하기 위해 해당 관광지(att) 불러오는거  -->
-   <select id="readAtt" resultType="locationDTO" parameterType="String">
-     select * from location where no = #{place_no}
+  <!--  수정할 관광지 리스트업  -->
+   <select id="updatelist" resultType="locationDTO" parameterType="int">
+     select * from location where no = #{no}
    </select>
    
-  <!-- 관광지(att) 수정  -->
-  <update id="updateAtt" parameterType="String">
-  	update location set 
-  	 place_name = #{place_name, jdbcType=VARCHAR},
-  	 place_address = #{place_address, jdbcType=VARCHAR},
-  	 place_content = #{place_content, jdbcType=VARCHAR},
-  	 x = #{x , jdbcType=VARCHAR},
-  	 y = #{y, jdbcType=VARCHAR},
-  	 place_type= #{place_type, jdbcType=VARCHAR},
-  	 place_local= #{place_local, jdbcType=VARCHAR}
-  	where place_no= #{place_no}
-  </update>
+  <!-- 관광지 수정  -->
+  <update id="updateAtt" parameterType="locationDTO">
+  update location set name = #{name}, x = #{x}, y = #{y}, category = #{category}, type = #{type}, address = #{address},
+	content = #{content}, location = #{location}, img = #{img} where no = #{no}
+  </update> 
 
   <!-- 관광지(att) 삭제 -->
   <delete id="deleteAtt" parameterType="String">
