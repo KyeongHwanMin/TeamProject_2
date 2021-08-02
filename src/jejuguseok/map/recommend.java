@@ -56,9 +56,19 @@ public class recommend {
 			count = dao.selectOne("home.homecount");
 			if (count > 0) {
 				recommendCount = dao.selectList("recommend.top10");
-			
-				recommendList = dao.selectList("recommend.mybook_2030");
-				
+				if(search == 1) {
+				recommendList = dao.selectList("recommend.mybook_20");
+				}else if(search == 2) {
+					recommendList = dao.selectList("recommend.mybook_30");
+				}else if(search == 3) {
+					recommendList = dao.selectList("recommend.mybook_40");
+				}else if(search == 4) {
+					recommendList = dao.selectList("recommend.mybook_50");
+				}else if(search == 5) {
+					recommendList = dao.selectList("recommend.mybook_2");
+				}else if(search == 6) {
+					recommendList = dao.selectList("recommend.mybook_5");
+				}		
 			}
 			for(int i = 0; i < recommendList.size(); i ++){
 				recommenddto =  (recommendDTO) recommendList.get(i);				
@@ -71,7 +81,7 @@ public class recommend {
 			model.addAttribute("recommendCount", recommendCount);
 			model.addAttribute("homeNo2", homeNo2); 
 
-			return "/map/recommend.jsp"; 
+			return "/map/recommendserach.jsp"; 
 		}
 	
 }
