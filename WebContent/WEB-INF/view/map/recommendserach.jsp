@@ -43,7 +43,7 @@
 		<!-- 지역 선택  -->
  <div id=recommend align="center">
  <div class="button book_buttonn"><a href="recommend.do">전체</a></div> 
-
+ 
  <div class="button book_buttonn"><a href="recommendsearch.do?search=1">20대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=2">30대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=3">40대</a></div>
@@ -78,7 +78,10 @@
 			<c:if test="${count > 0}"> 
 					
 							<c:forEach var="recommendCount" items="${recommendCount}" varStatus="status" >
-								
+								<c:set var="cnt" value="${recommendCount.HOME_NO}"/>	
+							 	<c:forEach var="homeNo2" items="${homeNo2}" >
+							 <c:set var="homeNo2" value="${homeNo2}"/>
+								<c:if test="${ cnt == homeNo2 }">
 						<div class="offers_item ${recommendCount.HOME_TYPE } "> <!-- ${guesthouse}  -->
 						 
 							<div class="row"> 
@@ -127,7 +130,7 @@
 								</div>
 							
 								<div class="col-lg-8">
-									<h3>TOP${status.index+1}</h3>
+									<h3>TOP${status.index -1}</h3>
 									<div class="offers_content">
 									
 										<div class="offers_price">${recommendCount.HOME_NAME} <span> ${recommendCount.HOME_LOCAL} </span></div>
@@ -151,7 +154,8 @@
 						</div>
 						
 						<br /> <br />
-					
+						</c:if>
+				</c:forEach>
 					</c:forEach> 
 			</c:if>
 			

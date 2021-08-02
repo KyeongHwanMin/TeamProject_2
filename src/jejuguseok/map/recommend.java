@@ -1,7 +1,9 @@
 package jejuguseok.map;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,67 +20,57 @@ import userpage.main.userDTO;
 @Controller
 public class recommend {
 	@Autowired
+	private recommendDTO recommenddto = null;
+	@Autowired
 	private SqlSessionTemplate dao =null;
 	
 
 	
 		@RequestMapping("recommend.do")
-		public String accom(Model model, HttpServletRequest request){
-			
-			int pageSize = 5;	
-			
-			
-			String pageNum = request.getParameter("pageNum");	
-			String category = request.getParameter("category");	
-			
-			if(category==null) {
-				category="all";
-			}
-			if (pageNum == null) {	
-			    pageNum = "1";
-			}
-			
-			
-			int currentPage = Integer.parseInt(pageNum);		
+		public String recommend(Model model, HttpServletRequest request){
 
-			int startRow = (currentPage - 1) * pageSize + 1;	
-			int endRow = currentPage * pageSize;				
 			int count = 0;	
-			int number= 0;
-			
 			List recommendCount = null;
 			List recommendList = null;
+			List homeNo = new ArrayList();
 			count = dao.selectOne("home.homecount");
-			
-			
-			
-			HashMap Row = new HashMap();   
-			Row.put("startRow", startRow);
-			Row.put("endRow", endRow);
-			
 			if (count > 0) {
 				recommendCount = dao.selectList("recommend.top10");
-				recommendList = dao.selectList("recommend.mybook_2030");
-			}
-			
-			number=count-(currentPage-1)*pageSize;	 
-				
-			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("startRow", startRow);
-			model.addAttribute("endRow", endRow);
-			model.addAttribute("count", count);
-			model.addAttribute("pageSize", pageSize);
-			model.addAttribute("number", number);
+			}		
+			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
-			model.addAttribute("recommendList", recommendList); 
-			model.addAttribute("pageNum", pageNum);
 
 
-			 //List list3 = dao.selectList("item.myHome"); 
+			return "/map/recommend.jsp"; 
+		}
+		@RequestMapping("recommendsearch.do")
+		public String recommendsearch(Model model, HttpServletRequest request){
 			
-			//List list3 = dao.selectList("item.articleList");
-			// model.addAttribute("list3",list3);
+			int search = Integer.parseInt(request.getParameter("search"));
 			
+			System.out.println("search = "+search);
+			int count = 0;	
+			List recommendCount = null;
+			List recommendList = null;
+			List homeNo = new ArrayList();
+			count = dao.selectOne("home.homecount");
+			if (count > 0) {
+				recommendCount = dao.selectList("recommend.top10");
+			
+				recommendList = dao.selectList("recommend.mybook_2030");
+				
+			}
+			for(int i = 0; i < recommendList.size(); i ++){
+				recommenddto =  (recommendDTO) recommendList.get(i);				
+				homeNo.add(recommenddto.getHOME_NO());
+				}
+			TreeSet<String> homeNo2 = new TreeSet<String>(homeNo);
+			System.out.println(homeNo2);
+
+			model.addAttribute("count", count);			
+			model.addAttribute("recommendCount", recommendCount);
+			model.addAttribute("homeNo2", homeNo2); 
+
 			return "/map/recommend.jsp"; 
 		}
 	

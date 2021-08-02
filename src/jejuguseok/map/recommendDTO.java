@@ -1,6 +1,7 @@
 package jejuguseok.map;
 
 public class recommendDTO {
+	private String user_id;
 	private String HOME_NO;
 	private String HOME_NAME;
 	private String HOME_CONTENT;
@@ -10,6 +11,12 @@ public class recommendDTO {
 	private String HOME_LOCAL;
 	
 	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public String getHOME_LOCAL() {
 		return HOME_LOCAL;
 	}
