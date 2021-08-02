@@ -41,11 +41,11 @@ public class adminBean {
 		List list2 = daosql.selectList("admin.all");
 		 model.addAttribute("list2",list2);
 		
-		// 1:1문의 답변 없는 문의 수
+		// 1:1문의 확인하지 않은 문의 수 카운트
 		int count = daosql.selectOne("admin.boardcount");
 		model.addAttribute("count",count);
 		
-		// 회원 연령별 파이 그래프에 넣을 데이터
+		// 회원 연령별 var 그래프에 넣을 데이터
 		int to1020 = daosql.selectOne("admin.to1020");
 		model.addAttribute("to1020",to1020);
 		int to2030 = daosql.selectOne("admin.to2030");

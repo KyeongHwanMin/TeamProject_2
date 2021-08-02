@@ -5,23 +5,23 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 
 
-		<%@ include file="../adminHeader.jsp"%>
-		
-			<div id="layoutSidenav_content">
-			<main>
-			<div class="container-fluid px-4">
-			<div class="card mb-4">
+<%@ include file="../adminHeader.jsp"%>
 
-</br>
-</br>
-</br>
-</br>
-</br>
+<div id="layoutSidenav_content">
+	<main>
+		<div class="container-fluid px-4">
+			<h1 class="mt-4">Tables</h1>
+			<ol class="breadcrumb mb-4">
+				<li class="breadcrumb-item"><a href="adminpage/index.do">Dashboard</a></li>
+				<li class="breadcrumb-item active">Tables</li>
+			</ol>
+
+			</br> </br> </br> </br> </br>
 
 
 
-<center>
-<main>
+			<center>
+				<main>
 
 					<h2>1:1문의</h2>
 					<p>궁금하신 점은 1:1 문의를 남겨주세요. 친절하게 답변 드리겠습니다.</p>
@@ -32,90 +32,106 @@
 					<p>간단한 문의라면 문의주시기 전에 자주 묻는 질문을 먼저 체크해보세요.</p>
 
 
-<body>
+					<body>
 
-	<center>
-		<b>1:1문의(전체 글:${count})</b>
+						<center>
+							<b>1:1문의(전체 글:${count})</b>
 
-		<c:if test="${count == 0}">
-			<table width="700" border="1" cellpadding="0" cellspacing="0">
-				<tr>
-					<td align="center">게시판에 작성된 문의가 없습니다.</td>
-				</tr>
-			</table>
-		</c:if>
+							<c:if test="${count == 0}">
+								<table width="700" border="1" cellpadding="0" cellspacing="0">
+									<tr>
+										<td align="center">게시판에 작성된 문의가 없습니다.</td>
+									</tr>
+								</table>
+							</c:if>
 
-		<c:if test="${couunt != 0}">
-			<table border="1" width="700" cellpadding="0" cellspacing="0"
-				align="center">
-				<tr height="30">
-					<td align="center" width="50">번 호</td>
-					<td align="center" width="250">제 목</td>
-					<td align="center" width="100">작성자</td>
-					<td align="center" width="150">작성일</td>
-					<td align="center" width="50">문의 상태</td>
-				</tr>
+							<c:if test="${couunt != 0}">
+								<table border="1" width="700" cellpadding="0" cellspacing="0"
+									align="center">
+									<tr height="30">
+										<td align="center" width="50">번 호</td>
+										<td align="center" width="250">제 목</td>
+										<td align="center" width="100">작성자</td>
+										<td align="center" width="150">작성일</td>
+										<td align="center" width="50">문의 상태</td>
+									</tr>
 
-				<c:forEach var="article" items="${articleList}">
-					<tr height="30">
-						<td align="center" width="50">${number} <c:set var="number"
-								value="${number-1}" />
-						</td>
-						<td width="250"><c:if test="${article.re_level > 0 }">
-								<img src="images/re.gif">
-							</c:if> <c:if test="${article.re_level == 0 }">
-							</c:if> <a
-							href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
-								${article.subject} </a></td>
-						<td align="center" width="100">${article.writer}</a>
-						</td>
-						<td align="center" width="150">${article.reg_date}</td>
-						<td align="center" width="50">
-								<c:if test="${article.readcount > 0 && article.re_level > 0}">
-									<b>문의답변</b>
-								</c:if> 
-								<c:if test="${article.readcount > 0 && article.re_level == 0}">
-									<b>문의확인</b>
-								</c:if> 
-								<c:if test="${article.readcount == 0 && article.re_level == 0}">
-									<b>문의대기</b></td>
+									<c:forEach var="article" items="${articleList}">
+										<tr height="30">
+											<td align="center" width="50">${number}<c:set
+													var="number" value="${number-1}" />
+											</td>
+											<td width="250"><c:if test="${article.re_level > 0 }">
+													<img src="images/re.gif">
+												</c:if> <c:if test="${article.re_level == 0 }">
+												</c:if> <a
+												href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
+													${article.subject} </a></td>
+											<td align="center" width="100">${article.writer}</a>
+											</td>
+											<td align="center" width="150">${article.reg_date}</td>
+											<td align="center" width="50"><c:if
+													test="${article.readcount > 0 && article.re_level > 0}">
+													<b>문의답변</b>
+												</c:if> <c:if
+													test="${article.readcount > 0 && article.re_level == 0}">
+													<b>문의확인</b>
+												</c:if> <c:if
+													test="${article.readcount == 0 && article.re_level == 0}">
+													<b>문의대기</b></td>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</table>
+							</c:if>
+
+
+							<c:if test="${count > 0}">
+								<c:set var="pageCount"
+									value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}" />
+								<c:set var="pageBlock" value="${10}" />
+								<fmt:parseNumber var="result" value="${currentPage / 10}"
+									integerOnly="true" />
+								<c:set var="startPage" value="${result * 10 + 1}" />
+								<c:set var="endPage" value="${startPage + pageBlock-1}" />
+								<c:if test="${endPage > pageCount}">
+									<c:set var="endPage" value="${pageCount}" />
 								</c:if>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
 
+								<c:if test="${startPage > 10}">
+									<a
+										href="/jejuguseok/adminpage/list.do?pageNum=${startPage - 10 }">[이전]</a>
+								</c:if>
 
-		<c:if test="${count > 0}">
-			<c:set var="pageCount"
-				value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}" />
-			<c:set var="pageBlock" value="${10}" />
-			<fmt:parseNumber var="result" value="${currentPage / 10}"
-				integerOnly="true" />
-			<c:set var="startPage" value="${result * 10 + 1}" />
-			<c:set var="endPage" value="${startPage + pageBlock-1}" />
-			<c:if test="${endPage > pageCount}">
-				<c:set var="endPage" value="${pageCount}" />
-			</c:if>
+								<c:forEach var="i" begin="${startPage}" end="${endPage}">
+									<a href="/jejuguseok/adminpage/list.do?pageNum=${i}">[${i}]</a>
+								</c:forEach>
 
-			<c:if test="${startPage > 10}">
-				<a
-					href="/jejuguseok/adminpage/list.do?pageNum=${startPage - 10 }">[이전]</a>
-			</c:if>
+								<c:if test="${endPage < pageCount}">
+									<a
+										href="/jejuguseok/adminpage/list.do?pageNum=${startPage + 10}">[다음]</a>
+								</c:if>
+							</c:if>
 
-			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<a
-					href="/jejuguseok/adminpage/list.do?pageNum=${i}">[${i}]</a>
-			</c:forEach>
+						</center>
+					</body>
+		</div>
+	</main>
+</div>
 
-			<c:if test="${endPage < pageCount}">
-				<a
-					href="/jejuguseok/adminpage/list.do?pageNum=${startPage + 10}">[다음]</a>
-			</c:if>
-		</c:if>
-
-	</center>
-	</body>
-	</html>
-</main>
+</div>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<script src="/jejuguseok/adminStyle/js/scripts.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+	crossorigin="anonymous"></script>
+<script src="/jejuguseok/adminStyle/assets/demo/chart-area-demo.js"></script>
+<script src="/jejuguseok/adminStyle/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+	crossorigin="anonymous"></script>
+<script src="/jejuguseok/adminStyle/js/datatables-simple-demo.js"></script>
+</body>
+</html>
 </div>
