@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <title>나의 여행 </title>
@@ -28,6 +28,8 @@
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/blog_background.jpg"></div>
+		
+		
 		<div class="home_content">
 			<div class="home_title"> ${dto.name}님의 </div>
 			 <div class="home_title"> 제주도 여행 </div>
@@ -47,17 +49,18 @@
 						<!-- Blog Post -->
 						
 						<div class="blog_post">
+						
+						<!-- -->
 							<div class="blog_post_image">
-								<img src="images/blog_1.jpg" alt="https://unsplash.com/@anniespratt">
-								
-							</div>
+								<img src="images/blog_1.jpg"  alt="https://unsplash.com/@anniespratt">
+							</div> 
 							<div class="blog_post_meta">
 								<ul>
 									<li class="blog_post_meta_item"><a href="modifyProfile.do"> 나의 정보 수정 </a></li>
 									
 								</ul>
 							</div>
-							<div class="blog_post_title"><a href="#">지금 나의 제주도 여행 일정을 만드세요! </a></div>
+							<div class="blog_post_title"><a href="map.do">지금 나의 제주도 여행 일정을 만드세요! </a></div>
 							<div class="blog_post_text">
 								
 								<p>이름:  ${dto.name}</p>
@@ -83,7 +86,7 @@
 						<div class="sidebar_title">내가 찜한 장소 </div>
 						<div class="sidebar_list">
 							<ul>
-								<li><a href="myAtt.do">관광지</a></li>
+								<li><a href="#">관광지</a></li>
 								<li><a href="myAccom.do">숙소</a></li>
 								
 							</ul>
@@ -94,19 +97,9 @@
 					
 	<!--    나의 여행 일정  --!!!    -->
 					<div class="sidebar_categories">
-						<div class="sidebar_title"> 나의 여행 일정 리스트  </div>
+						<div class="sidebar_title"><a href="schedule_table.do">  나의 여행 일정 리스트 </a> </div>
 						<div class="sidebar_list">
-							<ul>
-								<li><a href="schedule_table.do">내 여행 일정 보기</a></li>
-								<li><a href="#">여행 만들기때 이름을 지정해야00</a></li>
-								
-								<c:if test="${count == 0}">
-								   <li><a href="#">나의 일정이 없습니다</a></li>
-								</c:if>
-								<c:if test="${count > 0}">
-								   <li><a href="#">여행 만들기때 이름을 지정해야~ </a></li>
-								</c:if>
-							</ul>
+							
 						</div>
 					</div>  <!-- sidebar_categories 끝 -->
 
