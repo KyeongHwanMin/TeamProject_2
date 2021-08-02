@@ -274,7 +274,7 @@ public class attractionBean {
 	@RequestMapping("attupdatePro.do")
 	public String attupdatePro(Model model, HttpServletRequest request, MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("img"); // 파일 원본
-		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
+		String fileName = mf.getOriginalFilename(); // 파일 원본 이름 붙이기 
 		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
 		
 		try {

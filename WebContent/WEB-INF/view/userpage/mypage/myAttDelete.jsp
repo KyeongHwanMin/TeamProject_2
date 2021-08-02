@@ -5,6 +5,6 @@
 
 	<script> 
 	  alert("찜하기를 취소하였습니다.");
-	  window.location="myAtt.do";
+	  window.location="myAtt.do;
 
 	</script>

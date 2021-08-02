@@ -16,7 +16,7 @@
                <li class="breadcrumb-item"><a href="attractionForm.do">관광지 등록</a></li>
            </ol>
 
-
+<!-- 관광지 수정 -->
 <div id="layoutSidenav_content">
 <main>
 <div class="container-fluid px-4">

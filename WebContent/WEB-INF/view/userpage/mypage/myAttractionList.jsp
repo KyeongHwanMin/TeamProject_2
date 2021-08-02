@@ -80,7 +80,7 @@
 
 			<div class="col-lg-12">
 				
-					<!-- Offers Grid : 숙소 리스트  -->
+					<!-- Offers Grid : 관광지 리스트  -->
 
 					<div class="offers_grid">
 				
