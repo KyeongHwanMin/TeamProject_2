@@ -20,13 +20,13 @@ public class adminBean {
 	@Autowired
 	private otoAdDAO otoAdDAO = null;
 	
-	//¾îµå¹Î ¸ŞÀÎ ÆäÀÌÁö 
-	//°£´ÜÇÑ Â÷Æ® 
-	// À¯Àú ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® 
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping("adminpage/index.do") 
 	public String adminIndex(Model model){
 		
-		//ÆÄÀÌÂ÷Æ® - µ¿Çà À¯Çü 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		int alone = daosql.selectOne("admin.alone");
 		model.addAttribute("alone", alone);
 		int couple = daosql.selectOne("admin.couple");
@@ -41,11 +41,11 @@ public class adminBean {
 		List list2 = daosql.selectList("admin.all");
 		 model.addAttribute("list2",list2);
 		
-		// 1:1¹®ÀÇ È®ÀÎÇÏÁö ¾ÊÀº ¹®ÀÇ ¼ö Ä«¿îÆ®
+		// 1:1ë¬¸ì˜ í™•ì¸ ì•ˆí•œ ê²Œì‹œê¸€ ì¹´ìš´íŒ…
 		int count = daosql.selectOne("admin.boardcount");
 		model.addAttribute("count",count);
 		
-		// È¸¿ø ¿¬·Éº° var ±×·¡ÇÁ¿¡ ³ÖÀ» µ¥ÀÌÅÍ
+		// íšŒì› ì—°ë ¹ë³„ í†µê³„
 		int to1020 = daosql.selectOne("admin.to1020");
 		model.addAttribute("to1020",to1020);
 		int to2030 = daosql.selectOne("admin.to2030");

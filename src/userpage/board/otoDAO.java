@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jejuguseok_map.accomBookMKdto;
-import jejuguseok_map.homeDTO;
 import userpage.main.userDTO;
 
 	@Controller
