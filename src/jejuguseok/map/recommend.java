@@ -48,7 +48,7 @@ public class recommend {
 			
 			int search = Integer.parseInt(request.getParameter("search"));
 			
-			System.out.println("search = "+search);
+
 			int count = 0;	
 			List recommendCount = null;
 			List recommendList = null;
@@ -64,11 +64,7 @@ public class recommend {
 					recommendList = dao.selectList("recommend.mybook_40");
 				}else if(search == 4) {
 					recommendList = dao.selectList("recommend.mybook_50");
-				}else if(search == 5) {
-					recommendList = dao.selectList("recommend.mybook_2");
-				}else if(search == 6) {
-					recommendList = dao.selectList("recommend.mybook_5");
-				}		
+				}
 			}
 			for(int i = 0; i < recommendList.size(); i ++){
 				recommenddto =  (recommendDTO) recommendList.get(i);				

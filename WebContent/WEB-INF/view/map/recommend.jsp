@@ -48,8 +48,7 @@
  <div class="button book_buttonn"><a href="recommendsearch.do?search=2">30대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=3">40대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=4">50대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=5">2인이상</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=6">5인이상</a></div>
+
  </div>
  
   

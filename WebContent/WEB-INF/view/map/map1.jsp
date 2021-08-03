@@ -250,7 +250,7 @@ function createtotalMarkers() {
 	<c:forEach var="maplist" items="${maplist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maplist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maplist.address} </div>' +		
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
 	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
@@ -305,7 +305,7 @@ function createtourMarkers() {
 	<c:forEach var="maptourlist" items="${maptourlist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maptourlist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maptourlist.address} </div>' +		
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
 	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
@@ -356,7 +356,7 @@ function createhomeMarkers() {
 	<c:forEach var="maphomelist" items="${maphomelist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maphomelist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maphomelist.address} </div>' +		
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
 	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+

@@ -3,7 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="recommend">
- 	
+ 	<select id="mine" resultType="recommendDTO" parameterType="String">
+ 		select * from myaccomk,location where user_id=#{user_id} and myaccomk.home_no = location.no
+ 	</select>
  	<select id="mybook_20" resultType="recommendDTO">
  	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 2001 and year_birth >= 1992 ]]>	
  	</select>
@@ -27,7 +29,7 @@
  	select * from (select home_no,home_name,home_address,myaccomk.HOME_TYPE,
  	myaccomk.HOME_LOCAL,myaccomk.HOME_CONTENT, count(*) 
  	from myaccomk group by home_no,home_name,home_address,myaccomk.HOME_TYPE,
- 	myaccomk.HOME_LOCAL,myaccomk.HOME_CONTENT) where <![CDATA[ rownum <= 10]]>
+ 	myaccomk.HOME_LOCAL,myaccomk.HOME_CONTENT ORDER BY count(*) DESC ) where <![CDATA[ rownum <= 10]]>
 		
 	</select>
  </mapper>

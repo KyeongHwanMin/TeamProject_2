@@ -30,7 +30,11 @@ public class map {
 	private SqlSessionTemplate dao = null;
 
 
-
+	@RequestMapping("mtest.do")
+	public String mapt(Model model , HttpSession session) {		
+	
+		return "/map/mtest.jsp";
+	}
 	@RequestMapping("map.do")
 	public String map(Model model , HttpSession session) {		
 		List maplist = dao.selectList("map.location");
@@ -57,14 +61,19 @@ public class map {
 	}
 	@RequestMapping("schedule_pro.do")
 	public String schedule_pro(HttpSession session,String subject, String date, String day, String with, String travel, Model model) {
+		String id = (String) session.getAttribute("user_id");
+		
 		List maplist = dao.selectList("map.location");
 		List maptourlist = dao.selectList("map.tour");
-		List maphomelist = dao.selectList("map.home");
+		List maphomelist = dao.selectList("map.home");		
+		List mylist = dao.selectList("recommend.mine",id);		
+		
 		model.addAttribute("maplist", maplist);
 		model.addAttribute("maptourlist", maptourlist);
 		model.addAttribute("maphomelist", maphomelist);
-		String id = (String) session.getAttribute("user_id");
-		System.out.println("id1 "+id);
+		model.addAttribute("mylist",mylist);
+		
+		
 		
 		model.addAttribute("subject",subject);
 		model.addAttribute("date",date);
@@ -78,6 +87,8 @@ public class map {
 		scheduledto.setUser_id(id);
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
+		
+		
 		
 		//dao.insert("schedule.insertsc" ,scheduledto);
 		return "/map/schedule_pro.jsp";
@@ -324,6 +335,19 @@ public class map {
 
 		return "";
 	}
+	 //정현서의 스케줄 삭제  -----------
+	   @RequestMapping("schedule_card_delete.do")
+	   public String delete(int num1, int pageNum,Model model) {
+	      
+	      
+	      System.out.println("넘 111="+num1);
+	      System.out.println("pageNum11="+pageNum);
+	      
+	      //delete from schedule where num1 ='40';
+	      dao.selectOne("schedule.deleteSche", num1);
+	      
+	      return "/map/schedule_card_delete.jsp";
+	   }
 	
 		
 }

@@ -132,7 +132,7 @@
 		<td id="subject" style="display:none">${article.subject }</td>
 		<td id="subject" style="width:50%;"><a href="schedule_table_content.do?num1=${article.num1}&pageNum=${currentPage}"> ${article.subject }</a></td>
 		<td id="user_id">${article.user_id }</td>
-		<td><input type="button" style="width:50pt" value="삭제" class="btn btn-success" onclick="remove_schedule(this,${ status.index})" /></td>
+		<td><div class="btn btn-light"><a href="schedule_card_delete.do?num1=${article.num1}&pageNum=${currentPage}" id="demo">삭제<span></span><span></span><span></span></a></div></td> 
 </c:if>
 </c:forEach>
 </tbody>

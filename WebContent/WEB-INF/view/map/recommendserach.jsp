@@ -48,8 +48,7 @@
  <div class="button book_buttonn"><a href="recommendsearch.do?search=2">30대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=3">40대</a></div>
  <div class="button book_buttonn"><a href="recommendsearch.do?search=4">50대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=5">2인이상</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=6">5인이상</a></div>
+
  </div>
  
   
@@ -130,7 +129,7 @@
 								</div>
 							
 								<div class="col-lg-8">
-									<h3>TOP${status.index -1}</h3>
+									<h3>TOP${status.index+1}</h3>
 									<div class="offers_content">
 									
 										<div class="offers_price">${recommendCount.HOME_NAME} <span> ${recommendCount.HOME_LOCAL} </span></div>

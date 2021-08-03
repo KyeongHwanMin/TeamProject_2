@@ -3,13 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="schedule">
+	
  	<select id="mylocation" resultType="scheduleDTO" parameterType="int">
  		select * from schedule where num1=#{num1}
  	</select>
  	<delete id="delete"  parameterType="scheduleDTO">
  		delete from schedule where subject=#{subject}
  	</delete>
- 
+
+  <delete id="deleteSche" parameterType="int">
+        delete from schedule where num1 =#{num1}
+  </delete>
  	
  	<insert id="insertsc" parameterType="scheduleDTO">
  	insert into schedule(subject, user_id, date1, day1, with1, travel,c_place1,c_time1,c_context1,num1,c_y1,c_x1)

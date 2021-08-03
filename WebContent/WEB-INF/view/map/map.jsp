@@ -135,6 +135,7 @@ div.right {
 		<%@ include file="/WEB-INF/view/userpage/header.jsp"%>
 	</div>
 	<div class="r">
+
 		<div class="left">
 
 			<!-- 아래는 본인들의 내용 작성하기 -->
@@ -248,9 +249,9 @@ function createtotalMarkers() {
 	<c:forEach var="maplist" items="${maplist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maplist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maplist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' ;
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">길찾기</a></div> &nbsp ' ;
 		    
 	     </c:forEach>	 
     for (var i = 0; i < totalPositions.length; i++) {  
@@ -297,7 +298,7 @@ function createtourMarkers() {
 	<c:forEach var="maptourlist" items="${maptourlist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maptourlist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maptourlist.address} </div>' +		
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ';
 		    
@@ -342,7 +343,7 @@ function createhomeMarkers() {
 	<c:forEach var="maphomelist" items="${maphomelist}" varStatus="status">
 	 iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maphomelist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70"></div>' +
+	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maphomelist.address} </div>' +		
 	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ';
 		    
