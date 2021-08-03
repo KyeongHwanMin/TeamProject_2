@@ -8,20 +8,20 @@
   
   <!-- 관광지 찜하기 관련 내용 -->
   
-  <!-- 관광지(att) 리스트업 -->
-    <select id="selectAtt" resultType="locationDTO"  parameterType="int"> 
-  		select * from location where no= #{no}
-   </select>
-  
+
   <!-- 관광지(att) 카운팅 -->
 	<select id="countAtt" resultType="int">
   	     select count(*) from location where type='attraction'
   	</select>
 
+  <!-- 관광지(att) 중복 체크 -->
+	<select id="checkAtt" parameterType="attBkDTO" resultType="int">
+  	     select COUNT(*) from myattraction where place_no=#{place_no} and user_id=#{user_id}
+  	</select>
+
   <!--  관광지(att) 북마킹(DB 추가)  -->
   <insert id="insertAttmk" parameterType="attBkDTO">
-  	   insert into myAttraction(att_no, user_id, place_no, place_name, place_content, place_type, place_local, place_img, place_address) 
-  	   values(att_no.NEXTVAL, #{user_id}, #{place_no}, #{place_name}, #{place_content}, #{place_type}, #{place_local}, #{place_img}, #{place_address})
+  	   insert into myAttraction values(num.NEXTVAL, #{place_no}, #{user_id})
   	</insert>
   
   <!-- 찜한 관광지 카운트  -->
@@ -30,9 +30,8 @@
 	</select>
  
   <!--  찜한 관광지 가져오기 -->
-	<select id="myAttList" resultType="attBkDTO" parameterType="String">
-  	   select * from myAttraction where user_id=#{user_id}
-  	   
+	<select id="myAttList" resultType="locationDTO" parameterType="String">
+  	   SELECT * FROM location T1 INNER JOIN myattraction T2 ON (T2.place_no = T1.no) where user_id=#{user_id}
   	</select>  	
   	
 

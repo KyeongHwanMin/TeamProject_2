@@ -40,39 +40,42 @@ public class homeBean {
 	}
 	
 	
-	   @RequestMapping("homePro.do")
-	   public String homePro(String name, String address, String content, String category, 
-	         String location, String x, String y, String type, MultipartHttpServletRequest ms) {
-	      MultipartFile mf = ms.getFile("img"); // 파일 원본
-	      String fileName = mf.getOriginalFilename(); // 파일 원본 이름
-	      File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
-	      
-	      try {
-	         mf.transferTo(f); // 복사
-	      }catch(Exception e) {
-	         e.printStackTrace();
-	      }
-	      ms.setAttribute("filename",fileName);
-	      
-	      Object img1 = (Object)f;
-	      String img = String.valueOf(img1);
+	@RequestMapping("homePro.do")
+	public String homePro(String name, String address, String content, String category, 
+			String location, String x, String y, String type, MultipartHttpServletRequest ms) {
+		
+		MultipartFile mf = ms.getFile("img"); // 파일 원본
+		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
+		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
+		
+		try {
+			mf.transferTo(f); // 복사
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		ms.setAttribute("filename",fileName);
+		
+		Object img1 = (Object)f;
+		String img = String.valueOf(img1);
 
-	      locationDTO lo = new locationDTO();
-	      lo.setName(name);      
-	      lo.setAddress(address);
-	      lo.setContent(content);
-	      lo.setLocation(location);
-	      lo.setCategory(category);
-	      lo.setX(x);
-	      lo.setY(y);
-	      lo.setType(type);
-	      lo.setImg(img);
-	      lo.setCategory(category);
-	   
-	      dao.insert("item.insertHome",lo);
-	      System.out.println(f);
-	      return "/adminpage/upload/homePro.jsp";
-	   }   
+		locationDTO lo = new locationDTO();
+		lo.setName(name);	
+		lo.setX(x);
+		lo.setY(y);
+		lo.setCategory(category);
+		System.out.println("category=========="+category);
+		lo.setAddress(address);
+		lo.setContent(content);
+		lo.setLocation(location);
+		//lo.setType(type); 
+		//System.out.println("type========="+type);
+		lo.setImg(img);
+		System.out.println("img========="+img);
+		
+		dao.insert("item.insertHome",lo);
+		System.out.println(f);
+		return "/adminpage/upload/homePro.jsp";
+	}	
 
 	
 	

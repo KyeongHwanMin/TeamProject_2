@@ -88,45 +88,45 @@
 
 					<!-- Offers Item -->
 				<c:if test="${count > 0}"> 
-					<c:forEach var="attBkDTO" items="${myAttList}">
+					<c:forEach var="locationDTO" items="${myAttList}">
 						
-						<div class="offers_item ${attBkDTO.place_category}"> 
+						<div class="offers_item ${location.category}"> 
 						  
 							<div class="row"> 
 								<div class="col-lg-1 temp_col"></div>
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
-									<c:if test="${attBkDTO.place_category == 'history'}">	
+									<c:if test="${location.category == 'history'}">	
 										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
 									</c:if>	
-									<c:if test="${attBkDTO.place_category == 'leisure'}">	
+									<c:if test="${llocation.category == 'leisure'}">	
 										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
 									</c:if>		
-									<c:if test="${attBkDTO.place_category == 'nature'}">	
+									<c:if test="${location.category == 'nature'}">	
 										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
 									</c:if>	
-									<c:if test="${attBkDTO.place_category== 'healing'}">	
+									<c:if test="${location.category== 'healing'}">	
 										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
-									<c:if test="${attBkDTO.place_local == 'jejusi'}">	
+									<c:if test="${location.local == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${attBkDTO.place_local == 'seoquiposi'}">	 
+									<c:if test="${location.local == 'seoquiposi'}">	 
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${attBkDTO.place_local == 'jungmun'}">	
+									<c:if test="${location.local == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
 									</c:if> 
-									<c:if test="${attBkDTO.place_local == 'jejuairport'}">	
+									<c:if test="${location.local == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${attBkDTO.place_local == 'aweol'}">	
+									<c:if test="${location.local == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${attBkDTO.place_local == 'pyoseon'}">	
+									<c:if test="${location.local == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${attBkDTO.place_local == 'hamduk'}">	
+									<c:if test="${location.local == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
@@ -135,11 +135,11 @@
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${attBkDTO.place_name} <span> 테마:${attBkDTO.place_category} </span></div>
+										<div class="offers_price">${location.name} <span> 테마: ${location.category} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 										</div>
-										<p class="offers_text"> 소개: ${attBkDTO.place_content} </p>
-										<p class="offers_text"> 정보: ${attBkDTO.place_address} </p>
+										<p class="offers_text"> 소개: ${location.content} </p>
+										<p class="offers_text"> 정보: ${location.address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>

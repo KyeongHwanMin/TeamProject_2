@@ -11,7 +11,7 @@ public class accomBookMKdto {
 	private String home_local;
 	private String home_type;
 	private String home_img;
-	private String home_address;
+	private String home_address; // 수정할게요 .
 	
 	
 	public int getMYACCODE() {
@@ -29,7 +29,7 @@ public class accomBookMKdto {
 
 	
 	
-	
+	 
 	
 	public int getHome_no() {
 		return home_no;

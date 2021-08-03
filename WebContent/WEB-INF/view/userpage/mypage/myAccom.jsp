@@ -156,7 +156,14 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_buttonn"><a href="myAccomDeletePro.do?home_no=${homeDTO.home_no}"> 찜하기 취소 <span></span><span></span><span></span></a></div>
+										<div class="button book_buttonn"><a href="myAccomDeletePro.do?no=${homeDTO.home_no}"> 찜하기 취소 <span></span><span></span><span></span></a></div>
+										
+												<!-- 관리자  -->
+										<c:if test="${user_id == 'admin'}">      
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?no=${homeDTO.home_no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${homeDTO.home_no}"> 삭제 </a></button> 
+										</c:if>
+									<!-- 관리자  -->	
 										
 									</div>
 								</div>

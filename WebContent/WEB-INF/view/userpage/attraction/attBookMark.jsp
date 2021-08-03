@@ -5,8 +5,15 @@
 
 <%-- 관광지 메인/프로 페이지에서 찜하기 클릭 시 해당 알럿 노출  --%>
 
+<c:if test="${count == 0}">
 	<script> 
 	  alert("해당 관광지를 찜하였습니다.");
       history.go(-1);
-
 	</script>
+</c:if>
+<c:if test="${count ==1 }">
+	<script> 
+	  alert("이미 찜한 관광지입니다.");
+      history.go(-1);
+	</script>
+</c:if>

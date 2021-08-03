@@ -6,12 +6,14 @@
   <!--  숙소 지역  -->
   <mapper namespace="home"> 
    
-  
+  <!-- and category=#{category}  -->
    <select id="homecount" resultType="int">
-  	     select count(*) from location where type='home'
+  	     select count(*) from location where type='home' 
   	</select>
   
-   
+      <select id="homecount2" resultType="int"  parameterType="String">
+  	     select count(*) from location where type='home' and category=#{category}
+  	</select>
   
   <select id="articleList" resultType="locationDTO" parameterType="hashmap" >
                 select no, name, x, y, category,  address, content, location, img,  r 

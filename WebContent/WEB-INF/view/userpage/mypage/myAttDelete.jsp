@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 	<script> 
-	  alert("찜하기를 취소하였습니다.");
-	  window.location="myAtt.do;
-
+	<c:redirect url="myAtt.do" /> 
 	</script>
+	
+	
+	

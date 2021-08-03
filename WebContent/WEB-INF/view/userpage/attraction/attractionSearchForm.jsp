@@ -164,7 +164,7 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="attBookMark.do?place_no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      

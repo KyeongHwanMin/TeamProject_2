@@ -59,43 +59,30 @@ public class attractionBean {
 	
 //	관광지 북마크: attform에서 찜하기 클릭 시 해당 페이지 이동 후 복귀(알럿기능) 
 	@RequestMapping("attBookMark.do")  
-	public String accomBookMK(locationDTO dto , int no, 
-			HttpSession session,Model model)  throws Exception{
-		String id = (String) session.getAttribute("user_id");
+	public String attBookMark(attBkDTO dto, HttpSession session,Model model )  throws Exception{
 		
-		System.out.println("관광지 번호: "+ no);  
-		System.out.println("북마킹 ID: "+ id);  
+		String id = (String) session.getAttribute("user_id"); // 세션 ID 불러오기 	
+		dto.setUser_id(id);
 		
-		locationDTO lo = new locationDTO();
-		attBkDTO abdto = new attBkDTO();  
-		
-		lo = dao.selectOne("att.selectAtt", no); 
-		
-		abdto.setUser_id(id);
-		abdto.setPlace_no(no);
-		
-		abdto.setPlace_address(lo.getAddress());
-		abdto.setPlace_type(lo.getType());
-		abdto.setPlace_category(lo.getCategory());
-		abdto.setPlace_content(lo.getContent());
-		abdto.setPlace_img(lo.getImg());
-		abdto.setPlace_local(lo.getLocation());
-		abdto.setPlace_name(lo.getName());
-		
-		dao.insert("att.insertAttmk", abdto);
+		int count = dao.selectOne("att.checkAtt", dto);	
+		if(count==0) {
+			dao.insert("att.insertAttmk", dto);
+		}
+		model.addAttribute("count", count);
 		
 		return "/userpage/attraction/attBookMark.jsp";
 	}
 	
 	//내가 찜한 관광지 불러오기 
 		@RequestMapping("myAtt.do")
-		public String myAccom(String user_id, String place_name, String place_category, Model model, 
+		public String myAtt(String user_id, locationDTO dto, Model model, 
 				HttpSession session)throws Exception{
 			
 			String id = (String) session.getAttribute("user_id");
-			System.out.println("해당 아이디: "+id);
+			// System.out.println("해당 아이디: "+id);
 			
-			attBkDTO dto = new attBkDTO();
+			locationDTO lo = new locationDTO();
+			attBkDTO ab = new attBkDTO();
 			int count = 0;
 			
 			count =dao.selectOne("att.Attcount", id);
@@ -111,11 +98,11 @@ public class attractionBean {
 	
 	//북마킹 해제(mypage에서)  
 	@RequestMapping("myAttDelete.do")
-	public String myAccomDeletePro( int place_no, String name, HttpSession session,HttpServletRequest request)  
+	public String myAttDelete( int place_no, String place_name, HttpSession session,HttpServletRequest request)  
 			throws Exception{
 		
 		dao.delete("att.deleteMyAtt", place_no);
-		System.out.println("북마킹 해제: "+ place_no +name);
+		System.out.println("북마킹 해제: "+ place_no +place_name);
 		
 		return "/userpage/mypage/myAttDelete.jsp"; 
 	}
@@ -230,7 +217,7 @@ public class attractionBean {
 		return "/adminpage/upload/attractionForm.jsp"; 
 	}
 	@RequestMapping("attractionPro.do")
-	public String pro(String name, String address, String x, String y, String content, 
+	public String attractionPro(String name, String address, String x, String y, String content, 
 			String location, String category, String type, MultipartHttpServletRequest ms) {
 		MultipartFile mf = ms.getFile("img"); // 파일 원본
 		String fileName = mf.getOriginalFilename(); // 파일 원본 이름
