@@ -21,6 +21,7 @@
 <body>
 <%@ include file ="../header.jsp" %>	<!-- Header --> 
 <div class="super_container">
+
 <!--  ﻿해당 찜하기 버튼 클릭 시 function 기능으로 attbookmark 이동 -->	
 <script>
 function myFunction() {
@@ -28,12 +29,10 @@ function myFunction() {
 }
 var category='all';
 
-
 function cate(num){
 	category=num;
+	window.location="/jejuguseok/attForm.do?pageNum="+pageNum+"&category="+category;
 }
-
-
 function pageNext(pageNum){
 	window.location="/jejuguseok/attForm.do?pageNum="+pageNum+"&category="+category;
 }
@@ -82,22 +81,14 @@ function pageNext(pageNum){
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">이름순</span>
-								<i class="fa fa-chevron-down"></i>
-								<ul>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>기본</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
-								</ul>
-							</li>
-							<li>
 								<span class="sorting_text">관광지 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
-									<li class="filter_btn" data-filter="*"><span>모든 관광지</span></li>
-									<li class="filter_btn" data-filter=".histroy" ><span >역사/문화</span></li>
-									<li class="filter_btn" data-filter=".leisure" ><span>레저/체험/학습</span></li>
-									<li class="filter_btn" data-filter=".nature" ><span>자연/경치</span></li>
-									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
+									<li class="filter_btn" width="250"  height="50" align="center" data-filter="*"><span>모든 관광지</span></li>
+									<li class="filter_btn" width="250"   height="50"align="center" data-filter=".history" ><span >역사/문화</span></li>
+									<li class="filter_btn" width="250"   height="50"align="center"data-filter=".leisure" ><span>레저/체험/학습</span></li>
+									<li class="filter_btn" width="250" height="50" align="center" data-filter=".nature" ><span>자연/경치</span></li>
+									<li class="filter_btn" width="250"  height="50" align="center" data-filter=".healing"><span>휴식/힐링</span></li>
 								</ul>
 							</li>
 							
@@ -193,13 +184,18 @@ function pageNext(pageNum){
 			
 	</div>
 			
-			<!--  페이징 처리    -->
+		<!--  페이징 처리    -->
 					
 					<br /> <br />
 					
 					<div align="center">  
+					
+					
 				<c:if test="${count > 0}">
 				   <c:set  var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+				   
+				   
+				   
 				   <c:set var="pageBlock" value="${10}"/>
 				   <fmt:parseNumber var="result" value="${currentPage / 10}" integerOnly="true" />
 				   <c:set var="startPage" value="${result * 10 + 1}" />
@@ -227,7 +223,7 @@ function pageNext(pageNum){
 				
 				   <c:if test="${endPage < pageCount}">
 				   <li class="page-item">
-				        <a class="page-link" href="attForm.do?pageNum=${startPage + 10}">&raquo;</a>
+				        <a class="page-link" href="attForm?pageNum=${startPage + 10}">&raquo;</a>
 				       </li>  
 				   </c:if>
 				</ul> 

@@ -21,14 +21,6 @@
 <body>
 <%@ include file ="../header.jsp" %>	<!-- Header --> 
 <div class="super_container">
-	
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-}
-</script>
-	
-
 	<!-- 관광지 pro  --> 
 
 	<div class="home">
@@ -61,23 +53,16 @@ function myFunction() {
 <!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
-							<li>
-								<span class="sorting_text">이름순</span>
-								<i class="fa fa-chevron-down"></i>
-								<ul>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>기본</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
-								</ul>
-							</li>
+
 							<li>
 								<span class="sorting_text">관광지 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
-									<li class="filter_btn" data-filter="*"><span>모든 관광지</span></li>
-									<li class="filter_btn" data-filter=".histroy" ><span >역사/문화</span></li>
-									<li class="filter_btn" data-filter=".leisure" ><span>레저/체험/학습</span></li>
-									<li class="filter_btn" data-filter=".nature" ><span>자연/경치</span></li>
-									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
+									<li class="filter_btn" width="250" data-filter="*"><span>모든 관광지</span></li>
+									<li class="filter_btn" width="250" data-filter=".history" ><span >역사/문화</span></li>
+									<li class="filter_btn" width="250" data-filter=".leisure" ><span>레저/체험/학습</span></li>
+									<li class="filter_btn" width="250" data-filter=".nature" ><span>자연/경치</span></li>
+									<li class="filter_btn" width="250" data-filter=".healing"><span>휴식/힐링</span></li>
 								</ul>
 							</li>
 							

@@ -32,6 +32,8 @@ var category='all';
 
 function cate(num){
 	category=num;
+	window.location="/jejuguseok/accom.do?pageNum="+pageNum+"&category="+category;
+	//window.location="/jejuguseok/accom.do?pageNum=1&category=num
 }
 
 
@@ -85,23 +87,17 @@ function pageNext(pageNum){
 					<!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
-							<li>
-								<span class="sorting_text">이름순</span>
-								<i class="fa fa-chevron-down"></i>
-								<ul>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>default</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
-								</ul>
-							</li>
+						
+							
 							<li>
 								<span class="sorting_text">숙소 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
-									<li class="filter_btn" data-filter="*"  onclick="cate('all')"><span>숙소 전체</span></li>
-									<li class="filter_btn" data-filter=".motel" onclick="cate('motel')"><span>민박/모텔</span></li>
-									<li class="filter_btn" data-filter=".guesthouse" onclick="cate('guesthouse')"><span>게스트하우스</span></li>
-									<li class="filter_btn" data-filter=".pention" onclick="cate('pension')"><span>펜션</span></li>
-									<li class="filter_btn" data-filter=".hotel" onclick="cate('hotel')"><span>호텔</span></li>
+									<li class="filter_btn"><span> <a href='accom.do'>숙소 전체</a></span></li>
+									<li class="filter_btn"><span> <a href='accom.do?pageNum=1&category=motel'>민박/모텔</a></span></li>
+									<li class="filter_btn"><span> <a href='accom.do?pageNum=1&category=guesthouse'>게스트하우스</a></span></li>
+									<li class="filter_btn"><span> <a href='accom.do?pageNum=1&category=pention'>펜션</a></span></li>
+									<li class="filter_btn"><span> <a href='accom.do?pageNum=1&category=hotel'>호텔</a></span></li>
 								</ul>
 							</li>
 							
@@ -142,25 +138,25 @@ function pageNext(pageNum){
 									</c:if>	
 									
 									<c:if test="${locationDTO.location == 'jejusi'}">	
-										<div class="offer_name"><a href="#">제주시</a></div>
+										<div class="offer_name"><a href="/jejuguseok/accomLocal.do?search=1">제주시</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'seoquiposi'}">	  <!-- seogwiposi  -->
-										<div class="offer_name"><a href="#">서귀포시</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=2">서귀포시</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'jungmun'}">	
-										<div class="offer_name"><a href="#">중문</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=3">중문</a></div>
 									</c:if> 
 									<c:if test="${locationDTO.location == 'jejuairport'}">	
-										<div class="offer_name"><a href="#">제주국제공항</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=4">제주국제공항</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'aweol'}">	
-										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=5">애월/한림/협재</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'pyoseon'}">	
-										<div class="offer_name"><a href="#">표선/성산</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=6">표선/성산</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'hamduk'}">	
-										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
+										<div class="offer_name"><a href="accomLocal.do?search=7">함덕/김녕/세화</a></div>
 									</c:if>	
 										
 										
@@ -204,36 +200,20 @@ function pageNext(pageNum){
 			
 	</div>
 				
-				<%-- 
-					<div>
-					  <ul class="pagination">
-					    <li class="page-item disabled">
-					      <a class="page-link" href="#">&laquo;</a>
-					    </li>
-					    <li class="page-item active">
-					      <a class="page-link" href="#">1</a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#">2</a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#">3</a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#">&raquo;</a>
-					    </li>
-					  </ul>
-					</div>
-				--%>	
-					
+			
 					
 			<!--  페이징 처리    -->
 					
 					<br /> <br />
 					
 					<div align="center">  
+					
+					
 				<c:if test="${count > 0}">
 				   <c:set  var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+				   
+				   
+				   
 				   <c:set var="pageBlock" value="${10}"/>
 				   <fmt:parseNumber var="result" value="${currentPage / 10}" integerOnly="true" />
 				   <c:set var="startPage" value="${result * 10 + 1}" />

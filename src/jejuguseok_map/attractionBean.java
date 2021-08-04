@@ -304,6 +304,13 @@ public class attractionBean {
 		return "/adminpage/upload/attdelete.jsp"; 
 	}
 	
+	@RequestMapping("sitemap.do")
+	public String sitemap() {
+		
+	
+		return "/userpage/sitemap.jsp"; 
+	}
+	
 
 	
 }

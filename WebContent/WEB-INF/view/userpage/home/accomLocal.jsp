@@ -47,10 +47,7 @@
 		 부모님을 모시고 가거나 아이와 함께 간다면 수영장이 있는 제주도 호텔을 선택하는 것이 좋다. </p>
 
 		<!-- 지역 선택  -->
- 								<c:forEach var="locationDTO" items="${slist}">
-<h1>1</h1>
-123
-</c:forEach>
+ 
  <div class="button book_buttonn"><a href="accom.do">전체 지역</a></div> 
  
  <div class="button book_buttonn"><a href="accomLocal.do?search=1">제주시</a></div>
@@ -72,6 +69,8 @@
 					<!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
+							
+							<!-- 
 							<li>
 								<span class="sorting_text">이름순</span>
 								<i class="fa fa-chevron-down"></i>
@@ -79,12 +78,11 @@
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>default</span></li>
 									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
 								</ul>
-							</li>
+							</li> -->
 							<li>
 								<span class="sorting_text">숙소 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>
-
 									<li class="filter_btn" data-filter="*"><span>숙소 전체</span></li>
 									<li class="filter_btn" data-filter=".motel"><span>민박/모텔</span></li>
 									<li class="filter_btn" data-filter=".guesthouse"><span>게스트하우스</span></li>
