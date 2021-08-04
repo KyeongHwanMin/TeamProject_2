@@ -32,4 +32,10 @@
  		select * from location where location=#{location} and category=#{category}
  	</select>
  	
+ 	
+ 	<!-- type 이 'attraction' 관광지 인것만 카운팅 하기 -->
+ 	<select id="locationcount" resultType="int">
+  	   select count(*) from location where type='attraction' 
+  	</select>
+ 	
   </mapper>

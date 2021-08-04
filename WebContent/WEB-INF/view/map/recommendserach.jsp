@@ -39,7 +39,10 @@
 		<!-- 설명 -->
 	
 		<h3 align="center"> TOP 10  </h3> <br/> 
-					
+		<div align="center">      
+        <button type="button" class="btn btn-primary "  onclick="location.href=atttoplist.do" >  관광지 </button>      
+        <button type="button" class="btn btn-danger "  onclick="location.href='recommend.do';" >  숙 소 </button>
+        </div>      				
 		<!-- 지역 선택  -->
  <div id=recommend align="center">
  <div class="button book_buttonn"><a href="recommend.do">전체</a></div> 
