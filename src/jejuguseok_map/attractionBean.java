@@ -59,50 +59,47 @@ public class attractionBean {
 	
 //	관광지 북마크: attform에서 찜하기 클릭 시 해당 페이지 이동 후 복귀(알럿기능) 
 	@RequestMapping("attBookMark.do")  
-	public String attBookMark(attBkDTO dto, HttpSession session,Model model )  throws Exception{
-		
-		String id = (String) session.getAttribute("user_id"); // 세션 ID 불러오기 	
-		dto.setUser_id(id);
-		
-		int count = dao.selectOne("att.checkAtt", dto);	
+	public String attBookMark(attBkDTO ab, HttpSession session,Model model )  throws Exception{
+//		﻿ 관광지 메인페이지에서 해당 관광지 저장하기(myatt으로 보냄)
+		String id = (String) session.getAttribute("user_id"); 
+
+		ab.setUser_id(id); 
+//		﻿id를 session을 이용해 getAttribute로 가져옴
+// 		﻿attbkDTO(ab)에 저장된 user_id(id)를 가져옴 (ab : num(pk), place_no(관광지 번호), user_id(아이디))
+		int count = dao.selectOne("att.checkAtt", ab);	
+//		찜한 북마크를 기존 DB에서 place_no와 user_id를 통해 중복 체크(중복일 땐=1 알럿 노출)		
 		if(count==0) {
-			dao.insert("att.insertAttmk", dto);
+			dao.insert("att.insertAttmk", ab); 
 		}
+//		 ﻿중복 확인 후(count=0)일 땐 inserattmk로 추가
 		model.addAttribute("count", count);
-		
-		return "/userpage/attraction/attBookMark.jsp";
+//		﻿model을 통해 해당 count 정보를 view로 이동		
+		return "/userpage/mypage/attBookMark.jsp";
 	}
 	
 	//내가 찜한 관광지 불러오기 
 		@RequestMapping("myAtt.do")
-		public String myAtt(String user_id, locationDTO dto, Model model, 
+		public String myAtt(String user_id, Model model, 
 				HttpSession session)throws Exception{
-			
+//			﻿session을 통해 user_id 확인			
 			String id = (String) session.getAttribute("user_id");
-			// System.out.println("해당 아이디: "+id);
-			
-			locationDTO lo = new locationDTO();
-			attBkDTO ab = new attBkDTO();
-			int count = 0;
-			
-			count =dao.selectOne("att.Attcount", id);
-			// System.out.println("카운팅: "+count);
+
 			// System.out.println("찜한 관광지: "+place_category+place_name);
-			model.addAttribute("count",count);
 			List myAttList = dao.selectList("att.myAttList", id); 
-			
-			 model.addAttribute("myAttList",myAttList);
-		
+//			﻿sql에서 location과 myattraciton DB에서 user_id와 no을 매칭시켜 불러오기 	
+			model.addAttribute("myAttList",myAttList);
+//			﻿model을 이용해 해당 리스트를 view 이동		
 		return "/userpage/mypage/myAttractionList.jsp";
 	}
 	
 	//북마킹 해제(mypage에서)  
 	@RequestMapping("myAttDelete.do")
-	public String myAttDelete( int place_no, String place_name, HttpSession session,HttpServletRequest request)  
+	public String myAttDelete( int place_no, attBkDTO ab, 
+			HttpSession session, HttpServletRequest request)  
 			throws Exception{
-		
+//		﻿place_no으로 확인하여 해당 관광지 삭제		
 		dao.delete("att.deleteMyAtt", place_no);
-		System.out.println("북마킹 해제: "+ place_no +place_name);
+		System.out.println("북마킹 해제: "+ ab.getPlace_no());
 		
 		return "/userpage/mypage/myAttDelete.jsp"; 
 	}
@@ -248,23 +245,6 @@ public class attractionBean {
 		return "/adminpage/upload/attractionPro.jsp";
 	}
 
-    //파일명 랜덤 생성 메서드
-    private String uploadFile(String originalName, byte[] fileData) throws Exception{
-    
-        // uuid 생성 
-        UUID uuid = UUID.randomUUID();
-        
-        //savedName 변수에 uuid + 원래 이름 추가
-        String fileName = uuid.toString()+"_"+originalName;
-        
-        //uploadPath경로의 savedName 파일에 대한 file 객체 생성
-        File target = new File("/WEB-INF/userpage/save", fileName);
-        //fileData의 내용을 target에 복사함
-        FileCopyUtils.copy(fileData, target);
- 
-        return fileName;
-    }
-
 	
 /* admin ID로 관광지 정보 수정 및 삭제 
  * attupdate: 관광지 정보 수정
@@ -272,27 +252,19 @@ public class attractionBean {
  */
 	
 	@RequestMapping("attupdate.do")
-	public String attupdate(locationDTO dto, Model model) {
+	public String attupdate(Model model, int no) {
 				
+		locationDTO lo = new locationDTO();
+		lo = dao.selectOne("att.updatelist", no);
+		model.addAttribute("lo", lo);
+		
 		return "/adminpage/upload/attupdate.jsp"; 
 	}
 
 	@RequestMapping("attupdatePro.do")
-	public String attupdatePro(Model model, HttpServletRequest request, MultipartHttpServletRequest ms) {
-		MultipartFile mf = ms.getFile("img"); // 파일 원본
-		String fileName = mf.getOriginalFilename(); // 파일 원본 이름 붙이기 
-		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
+	public String attupdatePro(Model model, int no, HttpServletRequest request) {
 		
-		try {
-			mf.transferTo(f); // 복사
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		ms.setAttribute("filename",fileName);
 		
-		Object img1 = (Object)f;
-		String img = String.valueOf(img1);
-		int no = Integer.parseInt(request.getParameter("no"));
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String content = request.getParameter("content");
@@ -303,7 +275,8 @@ public class attractionBean {
 		String location = request.getParameter("location");
 		
 		locationDTO lo = new locationDTO();
-		System.out.println("관광지명: "+name);
+		System.out.println("관광지수정: "+lo);
+		
 		lo.setName(name);
 		lo.setAddress(address);
 		lo.setCategory(category);
@@ -312,13 +285,12 @@ public class attractionBean {
 		lo.setType(type);
 		lo.setX(x);
 		lo.setY(y);
-		lo.setImg(img);
 		lo.setNo(no);
 
 		System.out.println("수정된 관광지: "+no);
 		System.out.println("수정된 이름: "+name);
 		dao.update("att.updateAtt", lo);
-		
+		//dao.update("att.updateAttBk", lo);
 		
 		return "/adminpage/upload/attupdatePro.jsp"; 
 	}
@@ -331,5 +303,7 @@ public class attractionBean {
 		
 		return "/adminpage/upload/attdelete.jsp"; 
 	}
+	
+
 	
 }

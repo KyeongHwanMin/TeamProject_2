@@ -21,15 +21,26 @@
 <body>
 <%@ include file ="../header.jsp" %>	<!-- Header --> 
 <div class="super_container">
-	
+<!--  ﻿해당 찜하기 버튼 클릭 시 function 기능으로 attbookmark 이동 -->	
 <script>
 function myFunction() {
   document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
+var category='all';
+
+
+function cate(num){
+	category=num;
+}
+
+
+function pageNext(pageNum){
+	window.location="/jejuguseok/attForm.do?pageNum="+pageNum+"&category="+category;
+}
 </script>
 	
 
-	<!-- 숙소 소개 페이지  --> 
+	<!-- 관광지 main  --> 
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/jejuview.jpg"></div>
@@ -182,7 +193,9 @@ function myFunction() {
 			
 	</div>
 			
-			<!--  페이징    -->
+			<!--  페이징 처리    -->
+					
+					<br /> <br />
 					
 					<div align="center">  
 				<c:if test="${count > 0}">
@@ -207,7 +220,7 @@ function myFunction() {
 				   <c:forEach var="i" begin="${startPage}" end="${endPage}">
 				      
 				      <li class="page-item">
-				       <a class="page-link" href="attForm.do?pageNum=${i}"> ${i} </a>
+				       <a class="page-link" href="javascript:void(0);" onclick="pageNext(${i});"> ${i} </a>
 				       </li>
 				       
 				   </c:forEach>

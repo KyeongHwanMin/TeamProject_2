@@ -21,21 +21,21 @@
 <main>
 <div class="container-fluid px-4">
 <div class="card mb-4">
-<form action="attupdatePro.do" method="post" enctype="multipart/form-data">
+
+<form action="attupdatePro.do?no=${no}" method="post" enctype="multipart/form-data">
 <input type="hidden" id="type" name="type" value="attraction">
-<input type="hidden" id="no" name="no" value="${locationDTO.no}">
-<legend></legend>
-	관광지 번호: ${locationDTO.no} <br />	
-	관광지명: <input type="text" name ="name" value="${locationDTO.name}"/> <br />	
-	관광지 주소: <input type="text" name ="address" value="${locationDTO.address}" /> <br />	
-	관광지 정보: <textarea id="content" name ="content" rows="5" cols="20" > ${locationDTO.content} </textarea> <br />
-	위도: <input type="text" id="x" name="x"  value="${locationDTO.x}" >${locationDTO.x}<br/>
-	경도: <input type="text" id="y" name="y" value="${locationDTO.y}">${locationDTO.y}<br/>
+<input type="hidden" id="no" name="no" value="${lo.no}">
+	<!-- 관광지 번호: ${lo.no} <br />	 -->
+	관광지명: <input type="text" name ="name" value="${lo.name}"/> <br />	
+	관광지 주소: <input type="text" name ="address" value="${lo.address}" /> <br />	
+	관광지 정보: <textarea id="content" name ="content" rows="5" cols="20" > ${lo.content} </textarea> <br />
+	위도: <input type="text" id="x" name="x"  value="${lo.x}" ><br/>
+	경도: <input type="text" id="y" name="y" value="${lo.y}"><br/>
 <div class="form-group">
   <label class="col-md-4 control-label" for="location">지역 선택</label>
   <div class="col-md-4">
     <select id="location" name="location" class="form-control">
-      <option value="${locationDTO.location}"></option>
+      <option value="${lo.location}">${lo.location}</option>
       <option value="jejusi">제주시</option>
       <option value="seoquiposi">서귀포시</option>
       <option value="jungmun">중문</option>
@@ -51,7 +51,7 @@
   <label class="col-md-4 control-label" for="category">테마 선택</label>
   <div class="col-md-4">
     <select id="category" name="category" class="form-control">
-      <option value="${locationDTO.category}">${locationDTO.category}</option>
+      <option value="${lo.category}">${lo.category}</option>
 				<option value="history">역사/문화</option>
 				<option value="nature">자연/경치</option>
 				<option value="healing">휴식/힐링</option>
@@ -60,8 +60,6 @@
   </div>
 </div>
 
-
-	관광지 이미지: <input type="file" id="img" value="img" name="img" /><br />
 	<input type="submit" value ="수정"onclick="adminpage/index.do"/>
 	<input type="button" value="취소" onclick="adminpage/index.do">
 	 <br/>

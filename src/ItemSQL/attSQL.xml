@@ -9,10 +9,10 @@
   <!-- 관광지 찜하기 관련 내용 -->
   
 
-  <!-- 관광지(att) 카운팅 -->
+  <!-- 관광지(att) 카운팅 
 	<select id="countAtt" resultType="int">
   	     select count(*) from location where type='attraction'
-  	</select>
+  	</select>-->
 
   <!-- 관광지(att) 중복 체크 -->
 	<select id="checkAtt" parameterType="attBkDTO" resultType="int">
@@ -24,10 +24,7 @@
   	   insert into myAttraction values(num.NEXTVAL, #{place_no}, #{user_id})
   	</insert>
   
-  <!-- 찜한 관광지 카운트  -->
-  	<select id="Attcount" resultType="int" parameterType="String">
-  	   select count(*) from myAttraction where user_id=#{user_id}
-	</select>
+
  
   <!--  찜한 관광지 가져오기 -->
 	<select id="myAttList" resultType="locationDTO" parameterType="String">
@@ -39,7 +36,17 @@
   <delete id="deleteMyAtt" parameterType="int">
  	 delete from myAttraction where place_no = #{place_no}
   </delete>
-  
+ 
+  <!-- 북마킹 관광지 수정 
+	<update id="updateAttBk" parameterType="locationDTO">
+  	update myaccomk set
+  	 home_name = #{name},
+  	 home_content = #{content},
+  	 home_type=#{category},
+  	 home_local = #{location},
+  	 home_address = #{address}
+  	where home_no= #{no}
+  </update>  --> 
   
   <!--  수정할 관광지 리스트업  -->
    <select id="updatelist" resultType="locationDTO" parameterType="int">
@@ -48,8 +55,16 @@
    
   <!-- 관광지 수정  -->
   <update id="updateAtt" parameterType="locationDTO">
-  update location set name = #{name}, x = #{x}, y = #{y}, category = #{category}, type = #{type}, address = #{address},
-	content = #{content}, location = #{location}, img = #{img} where no = #{no}
+  update location set 
+  name = #{name}, 
+  x = #{x}, 
+  y = #{y}, 
+  category = #{category}, 
+  type = #{type}, 
+  address = #{address},
+	content = #{content}, 
+	location = #{location}
+	where no = #{no}
   </update> 
 
   <!-- 관광지(att) 삭제 -->

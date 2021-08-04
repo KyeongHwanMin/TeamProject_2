@@ -23,7 +23,7 @@
 <%@ include file ="../header.jsp" %>	<!-- Header -->
 <div class="super_container">
 	
-	<!-- Offers -->
+	<!-- ﻿myattractionList : 마이페이지에서 찜한 관광지 노출 -->
 
 	<div class="offers">
 
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 
-
+<!-- ﻿count를 확인하여 찜한 관광지가 없을 땐 찜한 관광지가 없습니다 노출 --> 
 			<c:if test="${count == 0}"> 
 				<div class="col-lg-12">
 					<div class="offers_grid">
@@ -86,10 +86,11 @@
 				
 				
 
-					<!-- Offers Item -->
-				<c:if test="${count > 0}"> 
-					<c:forEach var="locationDTO" items="${myAttList}">
-						
+					<!-- 관광지 리스트: ﻿myattlist가 null이 아닐 때(관광지가 있을 때) 아래 정보 노출-->
+					<!-- ﻿myattlist 불러오기(sql에서 location과 myattraciton DB에서 user_id와 no을 매칭시켜 불러오기) -->	
+				<c:if test="${myAttList != null}"> 
+					<c:forEach var="location" items="${myAttList}">
+									
 						<div class="offers_item ${location.category}"> 
 						  
 							<div class="row"> 
@@ -99,7 +100,7 @@
 									<c:if test="${location.category == 'history'}">	
 										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
 									</c:if>	
-									<c:if test="${llocation.category == 'leisure'}">	
+									<c:if test="${location.category == 'leisure'}">	
 										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
 									</c:if>		
 									<c:if test="${location.category == 'nature'}">	
@@ -108,29 +109,29 @@
 									<c:if test="${location.category== 'healing'}">	
 										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
-									<c:if test="${location.local == 'jejusi'}">	
+									<c:if test="${location.location == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${location.local == 'seoquiposi'}">	 
+									<c:if test="${location.location == 'seoquiposi'}">	 
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${location.local == 'jungmun'}">	
+									<c:if test="${location.location == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
 									</c:if> 
-									<c:if test="${location.local == 'jejuairport'}">	
+									<c:if test="${location.location == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${location.local == 'aweol'}">	
+									<c:if test="${location.location == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${location.local == 'pyoseon'}">	
+									<c:if test="${location.location == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${location.local == 'hamduk'}">	
+									<c:if test="${location.location == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
-										
+								<!--﻿location DB에서 각 값들 불러오기 -->										
 									</div>
 								</div>
 								<div class="col-lg-8">
@@ -148,8 +149,11 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_buttonn"><a href="myAttDelete.do?place_no=${attBkDTO.place_no}"> 찜하기 취소 <span></span><span></span><span></span></a></div>
-										
+										<div class="button book_buttonn"><a href="myAttDelete.do?place_no=${location.no}"> 찜하기 취소 <span></span><span></span><span></span></a></div>
+										<!-- ﻿찜한 관광지를 location DB에서 no으로 취소시킴 -->										
+										<c:if test="${user_id == 'admin'}">      
+											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${location.no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${location.no}"> 삭제 </a></button> 										</c:if>
 									</div>
 								</div>
 							</div>

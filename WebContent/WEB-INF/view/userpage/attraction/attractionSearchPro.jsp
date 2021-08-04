@@ -29,7 +29,7 @@ function myFunction() {
 </script>
 	
 
-	<!-- 숙소 소개 페이지  --> 
+	<!-- 관광지 pro  --> 
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/jejuview.jpg"></div>
@@ -150,12 +150,12 @@ function myFunction() {
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="attbook.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="attBookMark.do?place_no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      
-											<button type="button" class="btn btn-outline-secondary"><a href="Update.do?no=${locationDTO.no}"> 수정 </a></button>
-											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
+											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
 										</c:if>
 									</div>
 								</div>
