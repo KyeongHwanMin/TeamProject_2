@@ -1,5 +1,6 @@
 package adminPage.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,6 +20,8 @@ public class adminBean {
 	private SqlSessionTemplate daosql =null;
 	@Autowired
 	private otoAdDAO otoAdDAO = null;
+	@Autowired
+	private HomeDTO homedto = null;
 	
 	//���� ���� ������ 
 	//������ ��Ʈ 
@@ -62,7 +65,7 @@ public class adminBean {
 	}
 	
 	
-	
+
 	@RequestMapping("adminpage/userManage.do") 
 	public String userManage(Model model){
 		
@@ -78,6 +81,35 @@ public class adminBean {
 		
 		return "/adminpage/chartPage.jsp";
 	}
+	// 숙소 차트
+	@RequestMapping("adminpage/HomeChart.do") 
+	public String HomeChart(Model model){
+		List list_1 =new ArrayList();
+		List list_2 =new ArrayList();
+		List list_3 =new ArrayList();
+		List list_4 =new ArrayList();
+		List travel_list = daosql.selectList("admin.category");
+		//List travel_list_30 = daosql.selectList("admin.travel_30");
+		//List travel_list_40 = daosql.selectList("admin.travel_40");
+		//List travel_list_50 = daosql.selectList("admin.travel_50");
+
+			list_1.add(travel_list.get(0));
+			list_1.add(travel_list.get(1));
+			homedto = (HomeDTO) list_1.get(0);
+			System.out.println(homedto.getTravel());
+			System.out.println(homedto.getCount());
+			
+			
+			
+			
 	
-	
+		
+		model.addAttribute("travel_list",travel_list);
+		//model.addAttribute("travel_list_30",travel_list_30);
+		//model.addAttribute("travel_list_40",travel_list_40);
+	  // model.addAttribute("travel_list_50",travel_list_50);
+		return "/adminpage/Homechart.jsp";
+	}
+
+
 }

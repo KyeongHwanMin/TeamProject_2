@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
 <mapper namespace="admin">
 	
-	<!-- 유저 수  -->
+	
   	<select id="all" resultType="userDTO">
   	  select * from member
   	</select>
@@ -55,4 +54,24 @@
   		select count(*) from member where year_birth between 0 and 1972
 	</select>
 	
+	<select id="category" resultType="HomeDTO">
+	select travel,count(*) as count from schedule group by travel order by count(*) desc
+	</select>
+	<select id="travel_20" resultType="HomeDTO">
+	select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1992 and year_birth <= 2001 ]]>
+			group by travel order by count(*) desc
+	</select>
+	<select id="travel_30" resultType="HomeDTO">
+  		select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1982 and year_birth <= 1991  ]]>
+			group by travel order by count(*) desc
+	</select>
+	<select id="travel_40" resultType="HomeDTO">
+  		select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1972 and year_birth <= 1981  ]]>
+			group by travel order by count(*) desc
+	</select>
+	<select id="travel_50" resultType="HomeDTO">
+  		select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1962 and year_birth <= 1971  ]]>
+			group by travel order by count(*) desc
+	</select>
+
 </mapper>

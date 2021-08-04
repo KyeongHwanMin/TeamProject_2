@@ -20,6 +20,7 @@
     <!-- <bean id="userDAOImpl" class="userpage.main.userDAOImpl" /> -->
      
     <bean id="userDTO" class="userpage.main.userDTO" />
+    <bean id="HomeDTO" class="adminPage.main.HomeDTO"/>
     
   
 

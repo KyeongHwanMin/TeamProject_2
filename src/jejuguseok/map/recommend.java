@@ -40,9 +40,9 @@ public class recommend {
 			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
 
-
 			return "/map/recommend.jsp"; 
 		}
+		
 		@RequestMapping("recommendsearch.do")
 		public String recommendsearch(Model model, HttpServletRequest request){
 			
@@ -57,27 +57,21 @@ public class recommend {
 			if (count > 0) {
 				recommendCount = dao.selectList("recommend.top10");
 				if(search == 1) {
-				recommendList = dao.selectList("recommend.mybook_20");
+					recommendCount = dao.selectList("recommend.mybook_20");				
 				}else if(search == 2) {
-					recommendList = dao.selectList("recommend.mybook_30");
+					recommendCount = dao.selectList("recommend.mybook_30");
 				}else if(search == 3) {
-					recommendList = dao.selectList("recommend.mybook_40");
+					recommendCount = dao.selectList("recommend.mybook_40");
 				}else if(search == 4) {
-					recommendList = dao.selectList("recommend.mybook_50");
+					recommendCount = dao.selectList("recommend.mybook_50");
 				}
 			}
-			for(int i = 0; i < recommendList.size(); i ++){
-				recommenddto =  (recommendDTO) recommendList.get(i);				
-				homeNo.add(recommenddto.getHOME_NO());
-				}
-			TreeSet<String> homeNo2 = new TreeSet<String>(homeNo);
-			System.out.println(homeNo2);
-
+			
 			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
-			model.addAttribute("homeNo2", homeNo2); 
+			
 
-			return "/map/recommendserach.jsp"; 
+			return "/map/recommend.jsp"; 
 		}
 	
 }

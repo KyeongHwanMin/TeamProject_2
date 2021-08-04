@@ -7,29 +7,37 @@
  		select * from myaccomk,location where user_id=#{user_id} and myaccomk.home_no = location.no
  	</select>
  	<select id="mybook_20" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 2001 and year_birth >= 1992 ]]>	
+select * from(select home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT,count(*) 
+from myaccomk,member where member.USER_ID = myaccomk.USER_ID and <![CDATA[ year_birth >= 1992 and year_birth <= 2001 
+group by home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT order by count(*) desc)
+where rownum <=10 ]]>
+	
  	</select>
  	<select id="mybook_30" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 1991 and year_birth >= 1981 ]]>	
+select * from(select home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT,count(*) 
+from myaccomk,member where member.USER_ID = myaccomk.USER_ID and <![CDATA[ year_birth >= 1982 and year_birth <= 1991 
+group by home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT order by count(*) desc)
+where rownum <=10 ]]>
  	</select>
  	<select id="mybook_40" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 1979 and year_birth >= 1971 ]]>	
+select * from(select home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT,count(*) 
+from myaccomk,member where member.USER_ID = myaccomk.USER_ID and <![CDATA[ year_birth >= 1972 and year_birth <= 1981 
+group by home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT order by count(*) desc)
+where rownum <=10 ]]>	
  	</select>
  	<select id="mybook_50" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 1970 and year_birth >= 1961 ]]>	
- 	</select>
- 	<select id="mybook_2" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 1980 and year_birth >= 1970 ]]>	
- 	</select>
- 	<select id="mybook_5" resultType="recommendDTO">
- 	select * from member,myaccomk where member.USER_ID = myaccomk.USER_ID and<![CDATA[ year_birth <= 1980 and year_birth >= 1970 ]]>	
+select * from(select home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT,count(*) 
+from myaccomk,member where member.USER_ID = myaccomk.USER_ID and <![CDATA[ year_birth >= 1962 and year_birth <= 1971 
+group by home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT order by count(*) desc)
+where rownum <=10 ]]>	
  	</select>
  	
+ 	
  	<select id="top10" resultType="recommendDTO">
- 	select * from (select home_no,home_name,home_address,myaccomk.HOME_TYPE,
- 	myaccomk.HOME_LOCAL,myaccomk.HOME_CONTENT, count(*) 
- 	from myaccomk group by home_no,home_name,home_address,myaccomk.HOME_TYPE,
- 	myaccomk.HOME_LOCAL,myaccomk.HOME_CONTENT ORDER BY count(*) DESC ) where <![CDATA[ rownum <= 10]]>
+ 	select * from (select home_no,home_name,home_address,HOME_TYPE,
+ 	HOME_LOCAL,HOME_CONTENT, count(*) 
+ 	from myaccomk group by home_no,home_name,home_address,HOME_TYPE,
+ 	HOME_LOCAL,HOME_CONTENT ORDER BY count(*) DESC ) where <![CDATA[ rownum <= 10]]>
 		
 	</select>
  </mapper>

@@ -97,7 +97,7 @@
 					
 	<!--    나의 여행 일정  --!!!    -->
 					<div class="sidebar_categories">
-						<div class="sidebar_title"><a href="schedule_table.do">  나의 여행 일정 리스트 </a> </div>
+						<div class="sidebar_title"><a href="schedule_table.do">  나의 여행 일정 리스트 </a> 개</div>
 						<div class="sidebar_list">
 							
 						</div>

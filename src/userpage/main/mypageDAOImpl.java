@@ -34,6 +34,13 @@ public class mypageDAOImpl implements mypageDAOInter {
 		return mypageDAO.selectOne("user.myinfo", user_id); 
 		
 	}
+
+	@Override
+	public Integer getMycount(String user_id) {
+		
+		return mypageDAO.selectOne("schedule.my_count",user_id);
+	}
+	
 	
 	
 	

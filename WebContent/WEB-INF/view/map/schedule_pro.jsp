@@ -531,9 +531,9 @@ function add(id,n) {
 		var id = id.split(',');
 	document.getElementById("p_place"+n).value = id[0];
 	document.getElementById("p_y"+n).value = id[1];
-	document.getElementById("p_x"+n).value = id[2];
-	
+	document.getElementById("p_x"+n).value = id[2];	
 }
+
 	</script>
 		</div>
 <div class="right">

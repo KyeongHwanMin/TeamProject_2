@@ -23,10 +23,11 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	public String mypage(String user_id, HttpSession session, Model model) throws Exception{	
 	
 		String id = (String) session.getAttribute("user_id");
-	
+		int my_count = mypageDAO.getMycount(id);
 		 userDTO dto = new userDTO();		 
 		 dto = mypageDAO.getMyInfo(id);
 		 model.addAttribute("dto", dto);
+		 model.addAttribute("my_count",my_count);
  
 		return "/userpage/mypage/mypage.jsp";
 	}
