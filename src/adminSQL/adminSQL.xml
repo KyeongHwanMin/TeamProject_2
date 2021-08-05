@@ -23,12 +23,12 @@
   	</select>
   	
   	<select id="over2" resultType="int">
-  	     select count(*) from schedule where with1 = '2~4명'
+  	     select count(*) from schedule where with1 = '2인이상'
   	</select>
   	
-  	<select id="over5" resultType="int">
-  	     select count(*) from schedule where with1 = '5명 이상'
-  	</select>
+  	  	<select id="over5" resultType="int">
+          select count(*) from schedule where with1 = '5인이상'
+     </select>
   	
   	<select id="boardcount" resultType="int">
 		select count(*) from otoboard where readcount = 0

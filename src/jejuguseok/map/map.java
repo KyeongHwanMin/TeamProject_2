@@ -96,7 +96,7 @@ public class map {
 	
 	@RequestMapping("schedule_table.do")
 	public String schedule(String pageNum,Model model, HttpSession session) {
-			int pageSize = 10;
+			int pageSize = 30;
 			if(pageNum == null) {
 				pageNum ="1";
 			}

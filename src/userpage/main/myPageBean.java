@@ -24,6 +24,7 @@ public class myPageBean {    //" 나의 여행 " 페이지
 	
 		String id = (String) session.getAttribute("user_id");
 		int my_count = mypageDAO.getMycount(id);
+		System.out.println(my_count);
 		 userDTO dto = new userDTO();		 
 		 dto = mypageDAO.getMyInfo(id);
 		 model.addAttribute("dto", dto);

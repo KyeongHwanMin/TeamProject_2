@@ -3,8 +3,6 @@ package adminPage.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,54 +84,28 @@ public class adminBean {
 	// 숙소 차트
 	@RequestMapping("adminpage/HomeChart.do") 
 	public String HomeChart(Model model){
-		List list_1 =new ArrayList();
-		List list_2 =new ArrayList();
-		List list_3 =new ArrayList();
-		List list_4 =new ArrayList();
-		List travel_list = daosql.selectList("admin.category");
-		//List travel_list_30 = daosql.selectList("admin.travel_30");
-		//List travel_list_40 = daosql.selectList("admin.travel_40");
-		//List travel_list_50 = daosql.selectList("admin.travel_50");
-
-			list_1.add(travel_list.get(0));
-			list_1.add(travel_list.get(1));
-			homedto = (HomeDTO) list_1.get(0);
-			System.out.println(homedto.getTravel());
-			System.out.println(homedto.getCount());
-			
-			
-			
-			
-	
+		// 카테고리별 순위
+		List history_list = daosql.selectList("admin.category_history");
+		List nature_list = daosql.selectList("admin.category_nature");
+		List leisurel_list = daosql.selectList("admin.category_leisure");
+		List healing_list = daosql.selectList("admin.category_healing");
+		// 연령대별 카테고리 순위
+		List list_20 = daosql.selectList("admin.travel_20");
+		List list_30 = daosql.selectList("admin.travel_30");
+		List list_40 = daosql.selectList("admin.travel_40");
+		List list_50 = daosql.selectList("admin.travel_50");
 		
-		model.addAttribute("travel_list",travel_list);
-		//model.addAttribute("travel_list_30",travel_list_30);
-		//model.addAttribute("travel_list_40",travel_list_40);
-	  // model.addAttribute("travel_list_50",travel_list_50);
+
+	   model.addAttribute("history_list",history_list);
+	   model.addAttribute("nature_list",nature_list);
+	   model.addAttribute("leisurel_list",leisurel_list);
+	   model.addAttribute("healing_list",healing_list);
+	   model.addAttribute("list_20",list_20);
+	   model.addAttribute("list_30",list_30);
+	   model.addAttribute("list_40",list_40);
+	   model.addAttribute("list_50",list_50);
 		return "/adminpage/Homechart.jsp";
 	}
 
-	
-
-	//-- 회원 삭제 
-	@RequestMapping("adminpage/memberDelete.do")
-	public String homeDelete(HttpServletRequest request, Model model) {
-	        
-		String user_id = request.getParameter("user_id");
-		model.addAttribute("user_id", user_id);
-	      
-		return "/adminpage/memberDelete.jsp"; 
-	}
-	   
-	   
-	@RequestMapping("adminpage/memberDeletePro.do")
-	public String homeDeletePro(HttpServletRequest request, Model model) {
-	         
-		String user_id = request.getParameter("user_id");
-		daosql.delete("admin.memberDelete", user_id);
-	      
-		return "/adminpage/memberDeletePro.jsp"; 
-	}
-	
 
 }
