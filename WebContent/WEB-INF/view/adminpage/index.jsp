@@ -103,6 +103,7 @@
                         <th>성별</th>
                        <th>가입 날짜</th>
                       <th>회원 상태</th>
+                      <th></th>
                      </tr>
                    </tfoot>
 
@@ -120,6 +121,10 @@
                           <td>
                           	<c:if test="${userDTO.num==9}">관리자</c:if>
                           	<c:if test="${userDTO.num==0}">유저</c:if>
+                          </td>
+                            <td> <c:if test="${userDTO.num==0}">
+                              <button type="button" class="btn btn-primary btn-sm" onclick ="window.location='memberDelete.do?user_id=${userDTO.user_id}'"> 회원 삭제 </button> 
+                             </c:if>    
                           </td>
                        </tr>
                 </c:forEach>   

@@ -3,6 +3,8 @@ package adminPage.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -111,5 +113,27 @@ public class adminBean {
 		return "/adminpage/Homechart.jsp";
 	}
 
+	
+
+	//-- 회원 삭제 
+	@RequestMapping("adminpage/memberDelete.do")
+	public String homeDelete(HttpServletRequest request, Model model) {
+	        
+		String user_id = request.getParameter("user_id");
+		model.addAttribute("user_id", user_id);
+	      
+		return "/adminpage/memberDelete.jsp"; 
+	}
+	   
+	   
+	@RequestMapping("adminpage/memberDeletePro.do")
+	public String homeDeletePro(HttpServletRequest request, Model model) {
+	         
+		String user_id = request.getParameter("user_id");
+		daosql.delete("admin.memberDelete", user_id);
+	      
+		return "/adminpage/memberDeletePro.jsp"; 
+	}
+	
 
 }

@@ -74,4 +74,9 @@
 			group by travel order by count(*) desc
 	</select>
 
+		<!-- 멤버 삭제 -->
+  	<delete id="memberDelete" parameterType="String">
+        delete from member where user_id= #{user_id}
+  	</delete>   
+
 </mapper>
