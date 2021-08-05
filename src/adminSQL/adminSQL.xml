@@ -53,10 +53,11 @@
 	<select id="to50" resultType="int">
   		select count(*) from member where year_birth between 0 and 1972
 	</select>
-	
+	<!-- 카테고리별 -->
 	<select id="category" resultType="HomeDTO">
 	select travel,count(*) as count from schedule group by travel order by count(*) desc
 	</select>
+	<!-- 연령대별 카테고리 -->
 	<select id="travel_20" resultType="HomeDTO">
 	select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1992 and year_birth <= 2001 ]]>
 			group by travel order by count(*) desc
@@ -72,7 +73,21 @@
 	<select id="travel_50" resultType="HomeDTO">
   		select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and <![CDATA[ year_birth >= 1962 and year_birth <= 1971  ]]>
 			group by travel order by count(*) desc
+	</select>	
+	<!-- 성별 -->
+	<select id="male" resultType="HomeDTO">
+	 select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and gender = 'male'
+			group by travel order by count(*) desc
 	</select>
+	<select id="female" resultType="HomeDTO">
+	 select travel,count(*) as count from schedule inner join member on schedule.user_id = member.user_id and gender = 'female'
+			group by travel order by count(*) desc
+	</select>
+		<!-- 월별 가입자 수 -->
+	<select id="month" resultType="String">
+	  select signupdate from member
+	</select>
+	
 
 		<!-- 멤버 삭제 -->
   	<delete id="memberDelete" parameterType="String">

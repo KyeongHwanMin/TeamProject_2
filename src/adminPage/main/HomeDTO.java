@@ -4,9 +4,17 @@ public class HomeDTO {
 	private String travel;
 	private int count;
 	private int year_birth;
+	private String signupdate;
 	
 	
 
+	
+	public String getSignupdate() {
+		return signupdate;
+	}
+	public void setSignupdate(String signupdate) {
+		this.signupdate = signupdate;
+	}
 	public int getYear_birth() {
 		return year_birth;
 	}
