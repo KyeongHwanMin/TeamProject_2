@@ -8,6 +8,7 @@
 	  <typeAlias type="userpage.main.userDTO" alias="userDTO" />
 	  <typeAlias type="jejuguseok.map.mapDTO" alias="mapDTO" />
 	  <typeAlias type="adminPage.main.HomeDTO" alias="HomeDTO"/>
+	  <typeAlias type="adminPage.main.chartDTO" alias="chartDTO"/>
 	  <typeAlias type="jejuguseok.map.recommendDTO" alias="recommendDTO" />
 	  <typeAlias type="userpage.board.otoDTO" alias="otoDTO" />
 	  <typeAlias type="jejuguseok_map.attBkDTO" alias="attBkDTO" />

@@ -17,6 +17,7 @@
 	
 	<bean id="scheduleDTO" class="jejuguseok.map.scheduleDTO"></bean>
 	<bean id="attBkDTO" class="jejuguseok_map.attBkDTO"></bean>
+	<bean id="accomBookMKdto" class="jejuguseok_map.accomBookMKdto"></bean>
 	<bean id="locationDTO" class="jejuguseok_map.locationDTO" ></bean>
 	<!-- multipartResolver스캔 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

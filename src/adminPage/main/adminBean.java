@@ -104,8 +104,27 @@ public class adminBean {
 		return "/adminpage/userManage.jsp";
 	}
 
-	@RequestMapping("chartPage.do") 
-	public String chartPage(){
+	@RequestMapping("adminpage/chartPage.do") 
+	public String chartPage(Model model){
+		
+		// 관광지 카테고리별 순위
+		List location_categoty = daosql.selectList("admin.location_categoty");
+		// 관광지 장소별 순위
+		List location_location = daosql.selectList("admin.location_location");
+		// 숙소 카테고리별 순위
+		List home_category = daosql.selectList("admin.home_category");
+		// 숙소 장소별 순위
+		List home_location = daosql.selectList("admin.home_location");
+		
+		model.addAttribute("location_categoty",location_categoty);
+		model.addAttribute("location_location",location_location);
+		model.addAttribute("home_category",home_category);
+		model.addAttribute("home_location",home_location);
+		
+		System.out.println(location_categoty);
+		System.out.println(location_location);
+		System.out.println(home_category);
+		System.out.println(home_location);
 		
 		return "/adminpage/chartPage.jsp";
 	}

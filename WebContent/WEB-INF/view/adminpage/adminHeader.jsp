@@ -63,7 +63,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html"> 관광지 </a>
+                                    <a class="nav-link" href="/jejuguseok/adminpage/chartPage.do"> 관광지 </a>
                                     <a class="nav-link" href="/jejuguseok/adminpage/HomeChart.do"> 숙소 </a>
                                 </nav>
                             </div>
@@ -71,10 +71,6 @@
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 차트
-                            </a>
-                            <a class="nav-link" href="/jejuguseok/adminpage/userManage.do">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                회원 목록
                             </a>
                     
                             

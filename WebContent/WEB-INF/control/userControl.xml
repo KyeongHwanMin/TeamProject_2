@@ -21,6 +21,7 @@
      
     <bean id="userDTO" class="userpage.main.userDTO" />
     <bean id="HomeDTO" class="adminPage.main.HomeDTO"/>
+    <bean id="chartDTO" class="adminPage.main.chartDTO"/>
     
   
 

@@ -162,7 +162,7 @@
         var myLineChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ["10~20", "20~30", "30~40", "40~50", "50~"],
+              labels: ["10대", "20대", "30대", "40대", "50대이상"],
             datasets: [{
               label: "회원 연령별 인원",
               backgroundColor: "rgba(2,117,216,1)",
