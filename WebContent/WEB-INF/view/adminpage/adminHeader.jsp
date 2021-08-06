@@ -64,7 +64,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/jejuguseok/adminpage/chartPage.do"> 관광지 </a>
-                                    <a class="nav-link" href=""> 숙소 </a>
+                                    <a class="nav-link" href="chart.jsp"> 숙소 </a>
                                 </nav>
                             </div>
                            <div class="sb-sidenav-menu-heading"> 데이터 시각화 </div>

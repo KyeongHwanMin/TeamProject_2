@@ -36,7 +36,7 @@
           <div class="card mb-4">
             <div class="card-header">
                <i class="fas fa-chart-pie me-1"></i>
-                   카테고리별 통계                                
+                   카테고리별                               
                     </div>
                       <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>              
                       <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
@@ -46,7 +46,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        남자 통계 
+                                        남자
                                     </div>
                                     <div class="card-body"><canvas id="horizontalBar" width="100%" height="40"></canvas></div>
                                 </div>
@@ -56,8 +56,8 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        나이대별 카테고리 통계  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                         red=20대,yellow=30대,blue=40대,green=50대 
+                                        나이대별 카테고리   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                         red=20대 &nbsp yellow=30대 &nbsp blue=40대 &nbsp green=50대 
                                     </div>
                                     <div class="card-body"><canvas id="ageChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        여자 통계  
+                                        여자 
                                     </div>
                                     <div class="card-body"><canvas id="horizontalBar1" width="100%" height="40"></canvas></div>
                                 </div>
@@ -124,7 +124,7 @@
     	 "labels": ["역사/문화", "자연/경치", "레저/체험/학습", "휴식/힐링"],
     	 "datasets": [{
     	 "label": "카테고리",
-    	 data: [${list_male[2].count},${list_male[1].count},${list_male[0].count},${list_male[3].count}],
+    	 data: [${list_female[3].count},${list_female[1].count},${list_female[0].count},${list_female[2].count}],
     	 "fill": false,
     	 "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
     	 "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",

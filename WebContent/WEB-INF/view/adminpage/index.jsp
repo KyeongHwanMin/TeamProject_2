@@ -68,7 +68,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        회원 연령별 통계
+                                        회원 연령별 
                                     </div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="57"></canvas></div>
                                 </div>
