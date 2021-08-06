@@ -3,6 +3,7 @@ package adminPage.main;
 public class chartDTO {
 	private int no;
 	private String name;
+	private int count;
 	private String x;
 	private String y;
 	private String address;
@@ -70,6 +71,12 @@ public class chartDTO {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	

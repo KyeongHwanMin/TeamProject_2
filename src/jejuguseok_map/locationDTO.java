@@ -12,7 +12,7 @@ public class locationDTO {
 	private String content;
 	private String location;
 	private String img;
-	
+	private int count;
 	
 	
 	
@@ -75,6 +75,12 @@ public class locationDTO {
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	
