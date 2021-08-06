@@ -160,7 +160,10 @@ public class adminBean {
 				model.addAttribute("over2", over2);
 				int over5 = daosql.selectOne("admin.over5");
 				model.addAttribute("over5", over5);
-		
+		// 숙박기간
+				List day1=daosql.selectList("admin.day1");
+				model.addAttribute("day1",day1);
+				
 		return "/adminpage/Homechart.jsp";
 		}
 	

@@ -38,7 +38,7 @@
                <i class="fas fa-chart-pie me-1"></i>
                    카테고리별                               
                     </div>
-                      <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>              
+                      <div class="card-body"><canvas id="polarChart" width="100%" height="50"></canvas></div>              
                       <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
            </div>
       </div>
@@ -71,7 +71,16 @@
                                     <div class="card-body"><canvas id="horizontalBar1" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
-                        <canvas id="lineChart"></canvas>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        숙박 기간 
+                                    </div>
+                                    <div class="card-body"><canvas id="radarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        
                         
                         </div>                  
                     </div>
@@ -148,29 +157,32 @@
     	 });
      </script>   
         
-        
+        <script type="text/javascript">
+      //polar
+        var ctxPA = document.getElementById("polarChart").getContext('2d');
+        var myPolarChart = new Chart(ctxPA, {
+        type: 'polarArea',
+        data: {
+        	labels: ["역사/문화", "자연/경치", "레저/체험/학습", "휴식/힐링"],
+        datasets: [{
+        	 data: [${category_list[3].count}, ${category_list[1].count}, ${category_list[0].count}, ${category_list[2].count}],
+        backgroundColor: ["rgba(219, 0, 0, 0.1)", "rgba(0, 165, 2, 0.1)", "rgba(255, 195, 15, 0.2)",
+        "rgba(55, 59, 66, 0.1)", "rgba(0, 0, 0, 0.3)"
+        ],
+        hoverBackgroundColor: ["rgba(219, 0, 0, 0.2)", "rgba(0, 165, 2, 0.2)",
+        "rgba(255, 195, 15, 0.3)", "rgba(55, 59, 66, 0.1)", "rgba(0, 0, 0, 0.4)"
+        ]
+        }]
+        },
+        options: {
+        responsive: true
+        }
+        });
+        </script>
         
        
    
-        <script type="text/javascript"> 
-       	  //파이 차트 - 카테고리별 
-         // Set new default font family and font color to mimic Bootstrap's default styling
-        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = '#292b2c';
-        
-        var ctx = document.getElementById("myPieChart");
-        var myPieChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: ["역사/문화", "자연/경치", "레저/체험/학습", "휴식/힐링"],
-            datasets: [{
-            data: [${category_list[3].count}, ${category_list[1].count}, ${category_list[0].count}, ${category_list[2].count}],
-              backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#a72898'],
-            }],
-          },
-        });
-        
-        </script>
+      
        
         <script>
         // 다중차트,나이대별
@@ -219,6 +231,32 @@
         });
         
         </script>
+         <script type="text/javascript"> 
+       //radar, 숙박기간
+         var ctxR = document.getElementById("radarChart").getContext('2d');
+         var myRadarChart = new Chart(ctxR, {
+         type: 'radar',
+         data: {
+         labels: ["1박", "2박", "3박", "4박", "5박", "6박"],
+         datasets: [{
+         label: "숙박",
+         data: [${day1[1].count},${day1[0].count},${day1[2].count},${day1[4].count},${day1[3].count},${day1[5].count}],
+         backgroundColor: [
+        	 'rgba(0, 250, 220, .2)',
+         ],
+         borderColor: [
+        	 'rgba(0, 213, 132, .7)',
+         ],
+         borderWidth: 2
+         },
+         
+         ]
+         },
+         options: {
+         responsive: true
+         }
+         });
+         </script>
 
         
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

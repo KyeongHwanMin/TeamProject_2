@@ -5,10 +5,16 @@ public class HomeDTO {
 	private int count;
 	private int year_birth;
 	private String signupdate;
-	
+	private String day1;
 	
 
 	
+	public String getDay1() {
+		return day1;
+	}
+	public void setDay1(String day1) {
+		this.day1 = day1;
+	}
 	public String getSignupdate() {
 		return signupdate;
 	}

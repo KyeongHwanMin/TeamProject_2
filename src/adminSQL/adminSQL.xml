@@ -85,6 +85,10 @@
 	<select id="month" resultType="String">
 	  select signupdate from member
 	</select>
+	<!-- day -->
+	<select id="day1" resultType="HomeDTO">
+	select day1,count(*) as count from schedule group by day1 order by count(*) desc
+	</select>
 	
 
 		<!-- 멤버 삭제 -->
