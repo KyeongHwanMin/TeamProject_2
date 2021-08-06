@@ -17,13 +17,8 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">숙소 통계</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">통계</li>
-                        </ol>
-                        
-                      
-                        
+                        <h1 class="mt-4">통계</h1>
+    
                         <div class="row">
                         
                           <div class="col-lg-6">

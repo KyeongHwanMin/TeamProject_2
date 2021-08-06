@@ -70,7 +70,7 @@
                                         <i class="fas fa-chart-bar me-1"></i>
                                         회원 연령별 통계
                                     </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="57"></canvas></div>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
               yAxes: [{
                 ticks: {
                   min: 0,
-                  max: 50,
+                  max: 100,
                   maxTicksLimit: 5
                 },
                 gridLines: {
