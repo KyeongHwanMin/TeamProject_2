@@ -137,7 +137,7 @@ div.right {
       box-sizing: border-box;
       }
       
-      <!-- 목록-->
+      <!-- 찜 목록-->
       .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
@@ -208,6 +208,20 @@ div.right {
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
 	         		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
+        </ul>
+        <div id="pagination"></div>
+       </c:forEach>
+       <c:forEach var="mylist_t" items="${mylist_t}" varStatus="status"> 		
+        <ul id="placesList">   
+                 <div> <h6> ${mylist_t.name}</h6></div>
+	                <div>  <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="70" height="70"></div>
+					<div>	${mylist_t.address} </div>	
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	         		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
         </ul>
         <div id="pagination"></div>
        </c:forEach>

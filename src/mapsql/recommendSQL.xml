@@ -3,8 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="recommend">
- 	<select id="mine" resultType="recommendDTO" parameterType="String">
+ 	<select id="mine_home" resultType="recommendDTO" parameterType="String">
  		select * from myaccomk,location where user_id=#{user_id} and myaccomk.home_no = location.no
+ 	</select>
+ 	<select id="mine_travel" resultType="recommendDTO" parameterType="String">
+ 		select name,address,y,x from myattraction,location where user_id=#{user_id} and myattraction.place_no = location.no
  	</select>
  	<select id="mybook_20" resultType="recommendDTO">
 select * from(select home_no,home_name,home_address,HOME_TYPE,HOME_LOCAL,HOME_CONTENT,count(*) 

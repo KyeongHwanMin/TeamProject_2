@@ -56,6 +56,13 @@ public class map {
 		model.addAttribute("maptourlist", maptourlist);
 		model.addAttribute("maphomelist", maphomelist);
 		String id = (String) session.getAttribute("user_id");
+		List mylist = dao.selectList("recommend.mine_home",id);
+		List mylist_t = dao.selectList("recommend.mine_travel",id);	
+
+
+	
+		model.addAttribute("mylist",mylist);
+		model.addAttribute("mylist_t",mylist_t);
 		System.out.println("id0 "+id);
 		return "/map/map1.jsp";
 	}
@@ -66,12 +73,15 @@ public class map {
 		List maplist = dao.selectList("map.location");
 		List maptourlist = dao.selectList("map.tour");
 		List maphomelist = dao.selectList("map.home");		
-		List mylist = dao.selectList("recommend.mine",id);		
+		List mylist = dao.selectList("recommend.mine_home",id);
+		List mylist_t = dao.selectList("recommend.mine_travel",id);
 		
+		model.addAttribute("mylist",mylist);
+		model.addAttribute("mylist_t",mylist_t);
 		model.addAttribute("maplist", maplist);
 		model.addAttribute("maptourlist", maptourlist);
 		model.addAttribute("maphomelist", maphomelist);
-		model.addAttribute("mylist",mylist);
+		
 		
 		
 		
@@ -134,15 +144,19 @@ public class map {
 		return "/map/schedule_table.jsp";
 	}
 	@RequestMapping("schedule_table_content.do")
-	public String content(int num1, int pageNum,Model model) {
+	public String content(int num1, int pageNum,Model model,HttpSession session) {
 		  
-		//String id = (String) session.getAttribute("user_id");
+		String id = (String) session.getAttribute("user_id");
 		
 		scheduledto=dao.selectOne("schedule.mylocation",num1);		
 		model.addAttribute("scheduledto", scheduledto);		
 		myscheduledto = dao.selectOne("schedule.mylocation",num1);
 		model.addAttribute("myscheduledto",myscheduledto);
+		List mylist = dao.selectList("recommend.mine_home",id);
+		List mylist_t = dao.selectList("recommend.mine_travel",id);			
 
+		model.addAttribute("mylist",mylist);
+		model.addAttribute("mylist_t",mylist_t);
 	
 		//나의 일정 항목들 리스트로 저장
 		if(myscheduledto.getC_place1() != null){List<String> place1 = Arrays.asList(myscheduledto.getC_place1().split(","));
