@@ -28,18 +28,50 @@ public class adminBean {
 	@RequestMapping("adminpage/index.do")
 	public String adminIndex(Model model) {
 
-		// ������Ʈ - ���� ����
-		int alone = daosql.selectOne("admin.alone");
-		model.addAttribute("alone", alone);
-		int couple = daosql.selectOne("admin.couple");
-		model.addAttribute("couple", couple);
-		int fam = daosql.selectOne("admin.family");
-		model.addAttribute("fam", fam);
-		int over2 = daosql.selectOne("admin.over2");
-		model.addAttribute("over2", over2);
-		int over5 = daosql.selectOne("admin.over5");
-		model.addAttribute("over5", over5);
-
+		 //월별 순위
+		 List list_month = daosql.selectList("admin.month");
+		 String m,m2 =null;
+		int count_1=0;int count_2=0;int count_3=0;int count_4=0;int count_5=0;int count_6=0;
+		int count_7=0;int count_8=0;int count_9=0;int count_10=0;int count_11=0;int count_12=0;
+		for(int i=0; i<list_month.size(); i++) {
+			 m = (String) list_month.get(i);
+			 m2+=m;		
+		}
+		String[] month = m2.split("-");
+		for(int i=0; i<month.length; i++) {
+				if(i%2==1) {
+					if(month[i].equals("01")) {
+						count_1++;
+						}else if(month[i].equals("02")) {
+							count_2++;				
+						}else if(month[i].equals("03")) {
+							count_3++;						
+						}else if(month[i].equals("04")) {
+							count_4++;
+						}else if(month[i].equals("05")) {
+							count_5++;
+						}else if(month[i].equals("06")) {
+							count_6++;
+						}else if(month[i].equals("07")) {
+							count_7++;
+						}else if(month[i].equals("08")) {
+							count_8++;
+						}else if(month[i].equals("09")) {
+							count_9++;
+						}else if(month[i].equals("10")) {
+							count_10++;
+						}else if(month[i].equals("11")) {
+							count_11++;
+						}else if(month[i].equals("12")) {
+							count_12++;
+						}			
+					}
+				}
+		
+		model.addAttribute("count_1",count_1);model.addAttribute("count_2",count_2);model.addAttribute("count_3",count_3);
+		model.addAttribute("count_4",count_4);model.addAttribute("count_5",count_5);model.addAttribute("count_6",count_6);
+		model.addAttribute("count_7",count_7);model.addAttribute("count_8",count_8);model.addAttribute("count_9",count_9);
+		model.addAttribute("count_10",count_10);model.addAttribute("count_11",count_11);model.addAttribute("count_12",count_12);
 		List list2 = daosql.selectList("admin.all");
 		model.addAttribute("list2", list2);
 
@@ -98,50 +130,19 @@ public class adminBean {
 		 model.addAttribute("list_male",list_male);
 		 List list_female = daosql.selectList("admin.female");
 		 model.addAttribute("list_female",list_female);
-		 //월별 순위
-		 List list_month = daosql.selectList("admin.month");
-		 String m,m2 =null;
-		int count_1=0;int count_2=0;int count_3=0;int count_4=0;int count_5=0;int count_6=0;
-		int count_7=0;int count_8=0;int count_9=0;int count_10=0;int count_11=0;int count_12=0;
-		for(int i=0; i<list_month.size(); i++) {
-			 m = (String) list_month.get(i);
-			 m2+=m;		
-		}
-		String[] month = m2.split("-");
-		for(int i=0; i<month.length; i++) {
-				if(i%2==1) {
-					if(month[i].equals("01")) {
-						count_1++;
-						}else if(month[i].equals("02")) {
-							count_2++;				
-						}else if(month[i].equals("03")) {
-							count_3++;						
-						}else if(month[i].equals("04")) {
-							count_4++;
-						}else if(month[i].equals("05")) {
-							count_5++;
-						}else if(month[i].equals("06")) {
-							count_6++;
-						}else if(month[i].equals("07")) {
-							count_7++;
-						}else if(month[i].equals("08")) {
-							count_8++;
-						}else if(month[i].equals("09")) {
-							count_9++;
-						}else if(month[i].equals("10")) {
-							count_10++;
-						}else if(month[i].equals("11")) {
-							count_11++;
-						}else if(month[i].equals("12")) {
-							count_12++;
-						}			
-					}
-				}
 		
-		System.out.println(count_1);System.out.println(count_2);System.out.println(count_3);
-		System.out.println(count_4);System.out.println(count_5);System.out.println(count_6);
-		System.out.println(count_7);System.out.println(count_8);System.out.println(count_9);
-		System.out.println(count_10);System.out.println(count_11);System.out.println(count_12);
+		// 동반유형
+				int alone = daosql.selectOne("admin.alone");
+				model.addAttribute("alone", alone);
+				int couple = daosql.selectOne("admin.couple");
+				model.addAttribute("couple", couple);
+				int fam = daosql.selectOne("admin.family");
+				model.addAttribute("fam", fam);
+				int over2 = daosql.selectOne("admin.over2");
+				model.addAttribute("over2", over2);
+				int over5 = daosql.selectOne("admin.over5");
+				model.addAttribute("over5", over5);
+		
 		return "/adminpage/Homechart.jsp";
 		}
 	

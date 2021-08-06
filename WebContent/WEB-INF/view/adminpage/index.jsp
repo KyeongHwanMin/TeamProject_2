@@ -54,16 +54,16 @@
                         <div class="row">
                          
                                      
-     <div class="col-lg-6">
+               <div class="col-lg-6">
           <div class="card mb-4">
             <div class="card-header">
                <i class="fas fa-chart-pie me-1"></i>
-                  많이 가는 동반 유형                    
+                   통계                         
                     </div>
-                      <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>              
+                      <div class="card-body"><canvas id="m" width="780" height="400"></canvas></div>              
                       <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
            </div>
-      </div>
+      </div> 
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
@@ -199,32 +199,51 @@
             }
           }
         });
-        
-        
-        
-        
-        
         </script>
+          <script>
+         // 라인 그래프
+	var ctx = document.getElementById('m');
+	var myChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: ['1월', '2월', '3월', '4월', '5월', '6월','7월','8월','9월','10월','11월','12월'],
+			datasets: [{
+				label: '월별 가입자 수',
+				data: [${count_1},${count_2},${count_3},${count_4},${count_5},${count_6},
+							${count_7},${count_8},${count_9},${count_10},${count_11},${count_12}],
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 2
+			}]
+		},
+		options: {
+			responsive: false,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+		}
+	});
+</script>
         
-        <script type="text/javascript"> 
-       	  //파이 차트 - 동행 유형 
-         // Set new default font family and font color to mimic Bootstrap's default styling
-        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = '#292b2c';
-        
-        var ctx = document.getElementById("myPieChart");
-        var myPieChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: ["혼자", "커플", "가족", "2인~4인", "5인 이상"],
-            datasets: [{
-              data: [${alone}, ${couple}, ${fam}, ${over2}, ${over5}],
-              backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#a72898'],
-            }],
-          },
-        });
-        
-        </script>
+     
          
         
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
