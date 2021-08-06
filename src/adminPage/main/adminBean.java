@@ -124,7 +124,7 @@ public class adminBean {
 		System.out.println(location_categoty);
 		System.out.println(location_location);
 		System.out.println(home_category);
-		System.out.println(home_location);
+		System.out.println("home"+home_location);
 		
 		return "/adminpage/chartPage.jsp";
 	}

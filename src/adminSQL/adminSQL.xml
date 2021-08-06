@@ -115,7 +115,7 @@
 	</select>
 	
 	<!-- 숙소 카테고리별 -->
-	<select id="home_category" resultType="chartDTO">
+	<select id="home_category" resultType="locationDTO">
 		    select home.category, count(*)  from home
     		inner join myaccomk on home.no = myaccomk.home_no
     		inner join member on myaccomk.user_id = member.user_id
@@ -124,7 +124,7 @@
 	</select>
 	
 	<!-- 숙소 장소별 -->
-	<select id="home_location" resultType="chartDTO">
+	<select id="home_location" resultType="locationDTO">
 		    select home.location, count(*)  from home
     		inner join myaccomk on home.no = myaccomk.home_no
     		inner join member on myaccomk.user_id = member.user_id
