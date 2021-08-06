@@ -44,14 +44,6 @@
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
-								<span class="sorting_text">이름순</span>
-								<i class="fa fa-chevron-down"></i>
-								<ul>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>default</span></li>
-									<li class="sort_btn" data-isotope-option='{ "sortBy": "name" }'><span>가나다순</span></li>
-								</ul>
-							</li>
-							<li>
 								<span class="sorting_text">관광지 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul>

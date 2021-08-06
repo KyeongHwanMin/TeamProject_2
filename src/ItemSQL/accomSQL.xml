@@ -88,7 +88,7 @@ from location where type='home' order by no desc)) <![CDATA[where r >= #{startRo
   <!--  숙소 찜하기 (db 넣기)  -->
   <insert id="insertMK" parameterType="accomBookMKdto">
   	   insert into myaccomk(MYACCODE, USER_ID, HOME_NO, HOME_NAME,HOME_CONTENT, HOME_TYPE, HOME_LOCAL, HOME_IMG , HOME_ADDRESS) 
-  	   values(myaccomk_seq.NEXTVAL, #{user_id}, #{home_no}, #{home_name}, #{home_content}, #{home_type}, #{home_local}, #{home_img}, #{home_address} )
+  	   values(MYACCODE.NEXTVAL, #{user_id}, #{home_no}, #{home_name}, #{home_content}, #{home_type}, #{home_local}, #{home_img}, #{home_address} )
   	</insert>
   
   
