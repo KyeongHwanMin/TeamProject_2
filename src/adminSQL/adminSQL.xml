@@ -34,9 +34,7 @@
 		select count(*) from otoboard where readcount = 0
 	</select>
   	
-  	<select id="to1020" resultType="int">
-  		select count(*) from member where year_birth between 2002 and 2012 
-	</select>
+  	
 	
 	<select id="to2030" resultType="int">
   		select count(*) from member where year_birth between 1992 and 2002

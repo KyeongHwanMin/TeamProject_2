@@ -80,8 +80,7 @@ public class adminBean {
 		model.addAttribute("count", count);
 
 		// 회원 연령별 통계
-		int to1020 = daosql.selectOne("admin.to1020");
-		model.addAttribute("to1020", to1020);
+	
 		int to2030 = daosql.selectOne("admin.to2030");
 		model.addAttribute("to2030", to2030);
 		int to3040 = daosql.selectOne("admin.to3040");

@@ -58,7 +58,7 @@
           <div class="card mb-4">
             <div class="card-header">
                <i class="fas fa-chart-pie me-1"></i>
-                   통계                         
+                   월별 가입자                         
                     </div>
                       <div class="card-body"><canvas id="m" width="780" height="400"></canvas></div>              
                       <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
@@ -162,12 +162,12 @@
         var myLineChart = new Chart(ctx, {
           type: 'bar',
           data: {
-              labels: ["10대", "20대", "30대", "40대", "50대이상"],
+              labels: [ "20대", "30대", "40대", "50대이상"],
             datasets: [{
               label: "회원 연령별 인원",
               backgroundColor: "rgba(2,117,216,1)",
               borderColor: "rgba(2,117,216,1)",
-              data: [${to1020}, ${to2030}, ${to3040}, ${to4050}, ${to50}],
+              data: [ ${to2030}, ${to3040}, ${to4050}, ${to50}],
             }],
           },
           options: {
