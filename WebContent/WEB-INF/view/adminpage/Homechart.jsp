@@ -28,7 +28,7 @@
                   많이 가는 동반 유형                    
                     </div>
                       <div class="card-body"><canvas id="with" width="100%" height="50"></canvas></div>              
-                      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
+                                      
            </div>
       </div>
           
@@ -39,7 +39,7 @@
                    카테고리별                               
                     </div>
                       <div class="card-body"><canvas id="polarChart" width="100%" height="50"></canvas></div>              
-                      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
+                                      
            </div>
       </div>
                             <div class="col-xl-6">

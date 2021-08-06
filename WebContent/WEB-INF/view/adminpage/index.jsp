@@ -60,8 +60,8 @@
                <i class="fas fa-chart-pie me-1"></i>
                    월별 가입자                         
                     </div>
-                      <div class="card-body"><canvas id="m" width="780" height="400"></canvas></div>              
-                      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>                
+                      <div class="card-body"><canvas id="m" width="780" height="440"></canvas></div>              
+                           
            </div>
       </div> 
                             <div class="col-xl-6">
