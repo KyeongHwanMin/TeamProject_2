@@ -2,8 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
+<%--
+	- http://localhost:8080/jejuguseok/recommend.do
+	- 숙소 top10 리스트 출력
+ --%>
+<html>
 <html lang="en">
 <head>
 <title>Offers</title> 
@@ -22,7 +25,6 @@
 <%@ include file ="/WEB-INF/view/userpage/header.jsp" %>	<!-- Header --> 
 <div class="super_container">
 	
-
 	<!-- 숙소 소개 페이지  --> 
 
 	<div class="home">
@@ -53,25 +55,18 @@
  <div class="button book_buttonn"><a href="recommendsearch.do?search=4">50대</a></div>
 
  </div>
- 
-  
-  
- 
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
-					
-					
+				
 					<!-- Offers Sorting 카테고리 선택  -->
-					<div class="offers_sorting_container">
-						
+					<div class="offers_sorting_container">						
 					</div>
 				</div>
-
 				<div class="col-lg-12">
-				
-				
+							
 		<!-- Offers Grid : 숙소 리스트  -->
 
 					<div class="offers_grid">

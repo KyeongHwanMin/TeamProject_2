@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+	- http://localhost:8080/jejuguseok/schedule_table.do
+	- 여행 일정을 표 형식으로 출력
+ --%>
+ <html>
 <html lang="en">
 <head>
 <title>table</title>

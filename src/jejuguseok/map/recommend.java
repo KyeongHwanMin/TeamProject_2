@@ -15,7 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import userpage.main.userDTO;
-
+/*
+ *  숙소 추천 DAO
+ *  	- recommend() : 숙소 TOP10
+ * 		- recommendsearch() : 연령별 숙소 TOP10
+ */
 
 @Controller
 public class recommend {
@@ -23,9 +27,7 @@ public class recommend {
 	private recommendDTO recommenddto = null;
 	@Autowired
 	private SqlSessionTemplate dao =null;
-	
 
-	
 		@RequestMapping("recommend.do")
 		public String recommend(Model model, HttpServletRequest request){
 

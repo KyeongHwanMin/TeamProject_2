@@ -2,11 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%--
+	- http://localhost:8080/jejuguseok/schedule_pro.do
+	- 찜목록을 보여주고 여행일정 정보(장소,시간,메모)를 자세히 기입 하여 저장
+ --%>
 <html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog</title>
+<title>map</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">

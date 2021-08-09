@@ -16,12 +16,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 //http://localhost:8080/jejuguseok/main.do
 import org.springframework.web.bind.annotation.ResponseBody;
+/*
+ *  http://localhost:8080/jejuguseok/map.do
+ *  맵 DAO
+ *  	- map() : 일정만들기 _기본 정보 입력, 카테고리 별로 지도 출력 
+ * 		- schedule_pro() : 일정만들기_자세한 정보 입력/저장, 찜목록, 지도 출력 
+ * 		- schedule_card() : 해당 일정내용 저장
+ *		- schedule() : 스케쥴 표 출력
+ *		- delete() : 스케쥴 삭제
+ *		- content() : 해당 내용의 여행 정보 지도로 출력
+ *		- schedule_fix() : 여행일정 수정
+ */
 
-// 컨트롤러에서 보낸걸 받아줌
 @Controller
 public class map {
 
-	// 컨트롤에서 생성한 객체 받기
+
 	@Autowired
 	private scheduleDTO myscheduledto = null;
 	@Autowired

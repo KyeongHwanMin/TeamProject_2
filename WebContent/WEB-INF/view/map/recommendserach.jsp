@@ -2,8 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
+<%--
+	- http://localhost:8080/jejuguseok/recommendsearch.do
+	- 숙소 top10 리스트 연령 별로 출력
+ --%>
+<html>
 <html lang="en">
 <head>
 <title>Offers</title> 

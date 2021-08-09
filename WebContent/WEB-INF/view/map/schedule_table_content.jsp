@@ -2,7 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%--
+	- http://localhost:8080/jejuguseok/schedule_table_content.do
+	- 여행 일정 제목을 클릭 했을 시 해당 내용을 지도에 마커로 출력
+ --%>
+ <html>
 <html lang="en">
 <head>
 <title>Blog</title>
@@ -418,6 +422,13 @@ function makeOverListener(map, marker, infowindow) {
     return function() {
         infowindow.open(map, marker);
     };
+}
+//일정 추가 버튼 메서드
+function add(id,n) {
+		var id = id.split(',');
+	document.getElementById("p_place"+n).value = id[0];
+	document.getElementById("p_y"+n).value = id[1];
+	document.getElementById("p_x"+n).value = id[2];	
 }
 	</script>
 </div>

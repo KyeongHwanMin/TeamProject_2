@@ -13,7 +13,7 @@
 
     <legend>일정 조회</legend>
 
-  <input type='date' name='userBirthday'/>
+  <input type='date' nameschedule_pro='userBirthday'/>
   <fieldset class="form-group">
       <legend class="mt-4">예상일정</legend>
       <div class="form-check">
