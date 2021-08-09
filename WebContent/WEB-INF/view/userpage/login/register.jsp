@@ -94,7 +94,7 @@
         $("#year_birth").append("<option value=''>년도</option>");
 
         // 올해 기준으로 -50년부터 +1년을 보여준다.
-        for (var y = (com_year - 80); y <= (com_year + 1); y++) {
+        for (var y = (com_year - 80); y <= (com_year - 10); y++) {
           $("#year_birth").append("<option value='" + y + "'>" + y + " 년" + "</option>");
         }
       }

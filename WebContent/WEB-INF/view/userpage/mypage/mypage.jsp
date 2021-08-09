@@ -97,10 +97,10 @@
 					
 	<!--    나의 여행 일정  --!!!    -->
 					<div class="sidebar_categories">
-						<div class="sidebar_title"><a href="schedule_table.do">  나의 여행 일정 리스트 </a> ${my_count }개</div>
-						<div class="sidebar_list">
-							
-						</div>
+						<div class="sidebar_title"><a href="schedule_table.do">  나의 여행 일정 리스트 </a><c:if test="${my_count  != 0}">${my_count }개</c:if> </div>
+						<br/>
+						<div><c:if test="${my_count  == 0}"> 아직 일정을 만들지 않았습니다.</c:if></div>
+						
 					</div>  <!-- sidebar_categories 끝 -->
 
 
