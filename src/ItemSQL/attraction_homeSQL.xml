@@ -38,4 +38,29 @@
   	   select count(*) from location where type='attraction' 
   	</select>
  	
+	<select id="attcount" resultType="int">
+  	     select count(*) from location where type='attraction' 
+  	</select>
+ 	
+	<select id="attcount2" resultType="int"  parameterType="String">
+  	     select count(*) from location where type='attraction' and category=#{category}
+  	</select>
+  	
+  	  <select id="attList" resultType="locationDTO" parameterType="hashmap" >
+	 select no, name, x, y, category,  address, content, location, img,  r 
+	from(  select no, name, x, y, category,  address, content, location, img, rownum r 
+	from(  select no, name, x, y, category,  address, content, location, img 
+	from location where type='attraction' and category=#{category} order by no desc)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+   </select>
+   
+   <select id="attListAll" resultType="locationDTO" parameterType="hashmap" >
+	select no, name, x, y, category,  address, content, location, img,  r 
+	from(  select no, name, x, y, category,  address, content, location, img, rownum r 
+	from(  select no, name, x, y, category,  address, content, location, img 
+	from location where type='attraction' order by no desc)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]>
+   </select>
+ 	
+ 	
+ 	
+ 	
   </mapper>

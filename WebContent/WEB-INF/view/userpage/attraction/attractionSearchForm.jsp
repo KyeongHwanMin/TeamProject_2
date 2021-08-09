@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>관광지 메인</title> 
+<title>Offers</title> 
 <meta charset="utf-8"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -21,25 +21,29 @@
 <body>
 <%@ include file ="../header.jsp" %>	<!-- Header --> 
 <div class="super_container">
-
-<!--  ﻿해당 찜하기 버튼 클릭 시 function 기능으로 attbookmark 이동 -->	
+	
 <script>
 function myFunction() {
   document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
+
 var category='all';
+
 
 function cate(num){
 	category=num;
 	window.location="/jejuguseok/attForm.do?pageNum="+pageNum+"&category="+category;
+
 }
+
+
 function pageNext(pageNum){
 	window.location="/jejuguseok/attForm.do?pageNum="+pageNum+"&category="+category;
 }
 </script>
 	
 
-	<!-- 관광지 main  --> 
+	<!-- 관광지 소개 페이지  --> 
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/jejuview.jpg"></div>
@@ -51,9 +55,6 @@ function pageNext(pageNum){
 	<!-- Offers -->
 
 	<div class="offers">
-
-		<!-- 설명 -->
-	
 		<h3 align="center"> 테마별로 즐기는 취향저격 제주 여행 </h3> <br/> 
 		<p align="center"> 4개의 테마로 새로운 제주를 알아가는 즐거움 <br/>
 		여행 전에 한번 알아보고 간다면 여행을 할 때 훨씬 보이는 것이 많아질 것이다. <br/>
@@ -62,16 +63,19 @@ function pageNext(pageNum){
 
 		<!-- 지역 선택  -->
  
- <div class="button book_buttonn"><a href="attForm.do">전체</a></div> 
- <div class="button book_buttonn"><a href="attPro.do?search1=1">제주시</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=2">서귀포시</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=3">중문</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=4">제주국제공항</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=5">애월/한림/협재</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=6">표선/성산</a></div>
- <div class="button book_buttonn"><a href="attPro.do?search1=7">함덕/김녕/세화</a></div>
+ <div class="button book_buttonn"><a href="attForm.do">전체 지역</a></div> 
+ <div class="button book_buttonn"><a href="attPro.do?search=1">제주시</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=2">서귀포시</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=3">중문</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=4">제주국제공항</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=5">애월/한림/협재</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=6">표선/성산</a></div>
+ <div class="button book_buttonn"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
  
- 	<div class="container">
+  
+  
+ 
+		<div class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
@@ -79,16 +83,18 @@ function pageNext(pageNum){
 					
 					<!-- Offers Sorting 카테고리 선택  -->
 					<div class="offers_sorting_container">
-						<ul class="offers_sorting" >
-							<li> 
+						<ul class="offers_sorting">
+						
+							
+							<li>
 								<span class="sorting_text">관광지 종류</span>
-								<i class="fa fa-chevron-down" ></i>
-								<ul ul style="width: 170px">
-									<li class="filter_btn" data-filter="*"><span>모든 관광지</span></li>
-									<li class="filter_btn" data-filter=".history" ><span >역사/문화</span></li>
-									<li class="filter_btn" data-filter=".leisure" ><span>레저/체험/학습</span></li>
-									<li class="filter_btn" data-filter=".nature" ><span>자연/경치</span></li>
-									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
+								<i class="fa fa-chevron-down"></i>
+								<ul style="width: 170px">
+									<li class="filter_btn"><span> <a href='attForm.do'>관광지 전체</a></span></li>
+									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=history'>역사/문화</a></span></li>
+									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=leisure'>레저/체험/학습</a></span></li>
+									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=nature'>자연/경치</a></span></li>
+									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=healing'>휴식/힐링</a></span></li>
 								</ul>
 							</li>
 							
@@ -99,13 +105,13 @@ function pageNext(pageNum){
 				<div class="col-lg-12">
 				
 				
-		<!-- Offers Grid : 관광지  -->
+		<!-- Offers Grid : 관광지 리스트  -->
 
 					<div class="offers_grid">
 
 						<!-- Offers Item -->
 			<c:if test="${count > 0}"> 
-					<c:forEach var="locationDTO" items="${attList}">
+					<c:forEach var="locationDTO" items="${articleList}">
 						
 						<div class="offers_item ${locationDTO.category}"> 
 						  
@@ -113,6 +119,8 @@ function pageNext(pageNum){
 								<div class="col-lg-1 temp_col"></div>
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@kensuarez -->
+										
 									<c:if test="${locationDTO.category == 'history'}">	
 										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
 									</c:if>	
@@ -122,29 +130,30 @@ function pageNext(pageNum){
 									<c:if test="${locationDTO.category == 'nature'}">	
 										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
 									</c:if>	
-									<c:if test="${locationDTO.category== 'healing'}">	
+									<c:if test="${locationDTO.category == 'healing'}">	
 										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
+									
 									<c:if test="${locationDTO.location == 'jejusi'}">	
-										<div class="offer_name"><a href="#">제주시</a></div>
+										<div class="offer_name"><a href="/jejuguseok/attPro.do?search=1">제주시</a></div>
 									</c:if>
-									<c:if test="${locationDTO.location == 'seoquiposi'}">	 
-										<div class="offer_name"><a href="#">서귀포시</a></div>
+									<c:if test="${locationDTO.location == 'seoquiposi'}">	  
+										<div class="offer_name"><a href="attPro.do?search=2">서귀포시</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'jungmun'}">	
-										<div class="offer_name"><a href="#">중문</a></div>
+										<div class="offer_name"><a href="attPro.do?search=3">중문</a></div>
 									</c:if> 
 									<c:if test="${locationDTO.location == 'jejuairport'}">	
-										<div class="offer_name"><a href="#">제주국제공항</a></div>
+										<div class="offer_name"><a href="attPro.do?search=4">제주국제공항</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'aweol'}">	
-										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
+										<div class="offer_name"><a href="attPro.do?search=5">애월/한림/협재</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'pyoseon'}">	
-										<div class="offer_name"><a href="#">표선/성산</a></div>
+										<div class="offer_name"><a href="attPro.do?search=6">표선/성산</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'hamduk'}">	
-										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
+										<div class="offer_name"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
 									</c:if>	
 										
 										
@@ -152,11 +161,12 @@ function pageNext(pageNum){
 								</div>
 								<div class="col-lg-8">
 									<div class="offers_content">
-										<div class="offers_price">${locationDTO.name} <span> 테마:${locationDTO.category} </span></div>
+										<div class="offers_price">${locationDTO.name} <span> ${locationDTO.location} </span></div>
+										
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 										</div>
-										<p class="offers_text"> 소개: ${locationDTO.content} </p>
-										<p class="offers_text"> 정보: ${locationDTO.address} </p>
+										<p class="offers_text"> 정보: ${locationDTO.content} </p>
+										<p class="offers_text"> 주소: ${locationDTO.address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -166,13 +176,15 @@ function pageNext(pageNum){
 											</ul>
 										</div>
 										
-										<div class="button book_button"><a href="attBookMark.do?place_no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
 									<!-- 관리자  -->
 										<c:if test="${user_id == 'admin'}">      
 											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>
 											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
 										</c:if>
+									<!-- 관리자  -->	
+									
 									</div>
 								</div>
 							</div>
@@ -183,8 +195,10 @@ function pageNext(pageNum){
 			</c:if>
 			
 	</div>
+				
 			
-		<!--  페이징 처리    -->
+					
+			<!--  페이징 처리    -->
 					
 					<br /> <br />
 					

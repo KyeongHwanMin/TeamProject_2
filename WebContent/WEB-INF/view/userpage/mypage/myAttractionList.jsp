@@ -46,9 +46,9 @@
 							<li>
 								<span class="sorting_text">관광지 종류</span>
 								<i class="fa fa-chevron-down"></i>
-								<ul ul style="width: 170px">
+								<ul style="width: 170px">
 									<li class="filter_btn" data-filter="*"><span>모든 관광지</span></li>
-									<li class="filter_btn" data-filter=".histroy" ><span >역사/문화</span></li>
+									<li class="filter_btn" data-filter=".history" ><span >역사/문화</span></li>
 									<li class="filter_btn" data-filter=".leisure" ><span>레저/체험/학습</span></li>
 									<li class="filter_btn" data-filter=".nature" ><span>자연/경치</span></li>
 									<li class="filter_btn" data-filter=".healing"><span>휴식/힐링</span></li>
