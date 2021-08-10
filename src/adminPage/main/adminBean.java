@@ -120,6 +120,39 @@ public class adminBean {
 		model.addAttribute("home_category",home_category);
 		model.addAttribute("home_location",home_location);
 		
+		// 관광지 연령별
+		List location_20 = daosql.selectList("admin.location_20");
+		List location_30 = daosql.selectList("admin.location_30");
+		List location_40 = daosql.selectList("admin.location_40");
+		List location_50 = daosql.selectList("admin.location_50");
+		
+		model.addAttribute("location_20",location_20);
+		model.addAttribute("location_30",location_30);
+		model.addAttribute("location_40",location_40);
+		model.addAttribute("location_50",location_50);
+		
+		
+		System.out.println(location_20);
+		System.out.println(location_30);
+		System.out.println(location_40);
+		System.out.println(location_50);
+		
+		// 숙소 연령별
+		List home_20 = daosql.selectList("admin.home_20");
+		List home_30 = daosql.selectList("admin.home_30");
+		List home_40 = daosql.selectList("admin.home_40");
+		List home_50 = daosql.selectList("admin.home_50");
+		
+		model.addAttribute("home_20",home_20);
+		model.addAttribute("home_30",home_30);
+		model.addAttribute("home_40",home_40);
+		model.addAttribute("home_50",home_50);
+		
+		System.out.println(home_20);
+		System.out.println(home_30);
+		System.out.println(home_40);
+		System.out.println(home_50);
+		
 		return "/adminpage/chartPage.jsp";
 	}
 

@@ -9,6 +9,7 @@
 <html lang="UTF-8">
 <head>
 <title>CONTACT</title>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -67,14 +68,14 @@
 			</c:if>
 
 			<c:if test="${count > 0 }">
-				<table border="1" width="700" cellpadding="0" cellspacing="0"
+				<table border="1" width="700" cellpadding="0" cellspacing="10"
 					align="center">
-					<tr height="30">
+					<tr height="50">
 						<td align="center" width="50">번 호</td>
 						<td align="center" width="250">제 목</td>
 						<td align="center" width="100">작성자</td>
 						<td align="center" width="150">작성일</td>
-						<td align="center" width="50">문의 상태</td>
+						<td align="center" width="70">문의 상태</td>
 					</tr>
 
 					<c:forEach var="article" items="${articleList}">

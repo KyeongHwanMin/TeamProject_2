@@ -69,6 +69,8 @@ public class mainBean {
 	@RequestMapping(value="loginPro.do", method=RequestMethod.POST, params={"user_id" , "pw"}) 
 	public String loginPro(userDTO dto,  Model model, HttpSession session){
 		
+		 
+		
 		int result = (Integer)sql.selectOne("user.loginCheck",dto);
 		if(result == 1) {
 			 session.setAttribute("user_id", dto.getUser_id());

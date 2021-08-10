@@ -134,4 +134,86 @@
 		    order by count(*) desc
 	</select>
 	
+	
+	
+	<!-- 관광지 연령별 -->
+	<select id="location_20" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myattraction on location.no = myattraction.place_no
+		    inner join member on myattraction.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1992 and year_birth <= 2001 ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	<select id="location_30" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myattraction on location.no = myattraction.place_no
+		    inner join member on myattraction.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1982 and year_birth <= 1991  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	<select id="location_40" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myattraction on location.no = myattraction.place_no
+		    inner join member on myattraction.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1972 and year_birth <= 1981  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	
+	<select id="location_50" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myattraction on location.no = myattraction.place_no
+		    inner join member on myattraction.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1962 and year_birth <= 1971  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	
+	
+		<!-- 숙소 연령별 카테고리 -->
+	<select id="home_20" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myaccomk on location.no = myaccomk.home_no
+		    inner join member on myaccomk.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1992 and year_birth <= 2001 ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	<select id="home_30" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myaccomk on location.no = myaccomk.home_no
+		    inner join member on myaccomk.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1982 and year_birth <= 1991  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	<select id="home_40" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myaccomk on location.no = myaccomk.home_no
+		    inner join member on myaccomk.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1972 and year_birth <= 1981  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	
+	<select id="home_50" resultType="chartDTO">
+			select category, count(*) as count from location
+		    inner join myaccomk on location.no = myaccomk.home_no
+		    inner join member on myaccomk.user_id = member.user_id
+		    and <![CDATA[ year_birth >= 1962 and year_birth <= 1971  ]]>
+		    group by category
+		    order by count(*) desc
+	</select>
+	
+	
+	
 </mapper>

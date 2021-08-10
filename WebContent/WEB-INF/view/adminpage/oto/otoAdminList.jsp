@@ -51,7 +51,7 @@
 										<td align="center" width="250">제 목</td>
 										<td align="center" width="100">작성자</td>
 										<td align="center" width="150">작성일</td>
-										<td align="center" width="50">문의 상태</td>
+										<td align="center" width="70">문의 상태</td>
 									</tr>
 
 									<c:forEach var="article" items="${articleList}">

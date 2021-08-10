@@ -74,7 +74,7 @@ import userpage.main.userDTO;
 		}
 		
 		
-		// 由ъ뒪�듃�뿉�꽌 �럹�씠吏� �늻瑜쇱떆 蹂댁뿬吏��뒗 �솕硫� DTO 瑜� �븘�떚�겢�뿉 null 媛믪쑝濡� �엯�젰 
+		// 게시물 보기
 		@RequestMapping("content.do")
 		public String content(int num, String pageNum, Model model) {
 			
@@ -94,10 +94,16 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoContent.jsp";
 		}
 		
+		// 글쓰기 게시판
 		@RequestMapping("write.do")
-		public String write(Model model, HttpSession session, otoDTO dto) {
+		public String write(Model model, HttpSession session, otoDTO dto, userDTO Udto) {
 			
 			String id = (String) session.getAttribute("user_id");
+			
+			userDTO article = null;
+			
+			article =  dao.selectOne("getArticlesEmail", id);
+			
 			
 			int num=dto.getNum();
 			int ref=dto.getRef();
@@ -108,10 +114,13 @@ import userpage.main.userDTO;
 			model.addAttribute("ref", ref);
 			model.addAttribute("re_step", re_step);
 			model.addAttribute("re_level", re_level);
+			model.addAttribute("article", article);
 			
+
 			return "/userpage/oto/otoWrite.jsp";
 		}
 		
+		// 글쓰기 게시판 pro 페이지
 		@RequestMapping("writePro.do")
 		public String insert(otoDTO dto) throws Exception{
 			
@@ -159,7 +168,7 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoWritePro.jsp";
 		}
 		
-	
+		// 글수정 페이지
 		@RequestMapping("updateForm.do")
 		public String update(otoDTO dto, int num, String pageNum, Model model) {
 				
@@ -188,6 +197,7 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoUpdateForm.jsp";
 		}
 		
+		// 글수정 Pro 페이지
 		@RequestMapping("UpdatePro.do")
 		public String updatePro(otoDTO dto, String pageNum) {
 			
@@ -203,6 +213,7 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoUpdatePro.jsp";
 		}
 		
+		// 글삭제 Pro 페이지
 		@RequestMapping("deletePro.do")
 		public String passwd(otoDTO dto, int num , int otonum , int level, String pageNum, Model model) {
 			
@@ -218,6 +229,7 @@ import userpage.main.userDTO;
 			return "/userpage/oto/otoDeletePro.jsp";
 		}
 		
+		// 글삭제 폼 페이지
 		@RequestMapping("deleteForm.do")
 		public String delete(otoDTO dto, String pageNum, int num, int re_level, int otonum, Model model) {
 			

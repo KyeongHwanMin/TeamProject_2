@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 <title>CONTACT</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -61,13 +62,13 @@
 				</tr>
 
 				<tr height="30">
-					<td align="center" width="125">문의제목</td>
-					<td align="center" width="125" align="center">${article.subject}</td>
-					<td align="center" width="125">휴대폰번호</td>
-					<td align="center" width="125" align="center">${article.ph}</td>
+					<td align="center" width="1000">문의제목</td>
+					<td align="center" width="1000" align="center">${article.subject}</td>
+					<td align="center" width="1000">휴대폰번호</td>
+					<td align="center" width="1000" align="center">${article.ph}</td>
 				</tr>
 				<tr>
-					<td align="center" width="125">문의내용</td>
+					<td align="center" width="1000">문의내용</td>
 					<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 				</tr>
 				<tr height="30">

@@ -27,7 +27,7 @@
 					<div class="card-header">
 						<i class="fas fa-chart-bar me-1"></i> 관광지 카테고리별 통계 </div>
 					<div class="card-body">
-						<canvas id="myChart" width="100%" height="50"></canvas>
+						<canvas id="myChart" width="100%" height="40"></canvas>
 					</div>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 					<div class="card-header">
 						<i class="fas fa-chart-bar me-1"></i> 관광지 장소별 통계 </div>
 					<div class="card-body">
-						<canvas id="myChart2" width="100%" height="50"></canvas>
+						<canvas id="myChart2" width="100%" height="40"></canvas>
 					</div>
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 					<div class="card-header">
 						<i class="fas fa-chart-pie me-1"></i> 숙소 카테고리별 통계 </div>
 					<div class="card-body">
-						<canvas id="myChart3" width="100%" height="50"></canvas>
+						<canvas id="myChart3" width="100%" height="40"></canvas>
 					</div>
 				</div>
 			</div>
@@ -57,11 +57,30 @@
 					<div class="card-header">
 						<i class="fas fa-chart-pie me-1"></i> 숙소 장소별 통계 </div>
 					<div class="card-body">
-						<canvas id="myChart4" width="100%" height="50"></canvas>
+						<canvas id="myChart4" width="100%" height="40"></canvas>
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-bar me-1"></i> 연령별 관광지 카테고리 통계 </div>
+					<div class="card-body">
+						<canvas id="myChart5" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-bar me-1"></i> 연령별 숙소 카테고리 통계 </div>
+					<div class="card-body">
+						<canvas id="myChart6" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
 
 			<!-- 부트스트랩 -->
 	  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -197,7 +216,67 @@
 			}
 			  
 		  </script>
+		
+		<%-- 관광지 연령별 카테고리 통계 다중 차트 --%>
+		<script>
+        // 다중차트,나이대별
+        const colors = ['red','yellow','blue','#a72898','#28a745']; 
+        var chBar = document.getElementById("myChart5"); 
+        var chartData = { labels: ["자연", "레져", "힐링", "역사"], 
+        		datasets:
+        			[{ data: [${location_20[0].count},${location_20[1].count},${location_20[2].count},${location_20[3].count}], 
+        				backgroundColor: colors[0] }, 
+        			{ data: [${location_30[0].count},${location_30[1].count},${location_30[2].count},${location_30[3].count}],
+        					backgroundColor: colors[1] },
+        			{ data: [${location_40[0].count},${location_40[1].count},${location_40[2].count},${location_40[3].count}], 
+        						backgroundColor: colors[2] },
+        			{ data: [${location_50[0].count},${location_50[1].count},${location_50[2].count},${location_50[3].count},], 
+        							backgroundColor: colors[4] }] }; 
+        var myChart = new Chart(chBar, { 
+        	// 챠트 종류를 선택 
+        	type: 'bar', 
+        	// 챠트를 그릴 데이타 
+        	data: chartData, 
+        	// 옵션 
+        	options: { 
+        		legend: { 
+        			display: false 
+        			} } });
 
+        
+        </script>
+		
+		
+		<%-- 숙소 연령별 카테고리 통계 다중 차트 --%>
+		<script>
+        // 다중차트,나이대별
+        const colors = ['red','yellow','blue','#a72898','#28a745']; 
+        var chBar = document.getElementById("myChart6"); 
+        var chartData = { labels: ["호텔", "펜션", "게스트하우스", "모텔"], 
+        		datasets:
+        			[{ data: [${home_20[0].count},${home_20[1].count},${home_20[2].count},${home_20[3].count}], 
+        				backgroundColor: colors[0] }, 
+        			{ data: [${home_30[0].count},${home_30[1].count},${home_30[2].count},${home_30[3].count}],
+        					backgroundColor: colors[1] },
+        			{ data: [${home_40[0].count},${home_40[1].count},${home_40[2].count},${home_40[3].count}], 
+        						backgroundColor: colors[2] },
+        			{ data: [${home_50[0].count},${home_50[1].count},${home_50[2].count},${home_50[3].count},], 
+        							backgroundColor: colors[4] }] }; 
+        var myChart = new Chart(chBar, { 
+        	// 챠트 종류를 선택 
+        	type: 'bar', 
+        	// 챠트를 그릴 데이타 
+        	data: chartData, 
+        	// 옵션 
+        	options: { 
+        		legend: { 
+        			display: false 
+        			} } });
+
+        
+        </script>
+
+			
 </body>
 	
 <!-- BOTTOM  태그(*) -->

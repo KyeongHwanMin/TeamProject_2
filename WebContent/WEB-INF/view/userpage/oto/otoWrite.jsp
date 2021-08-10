@@ -61,8 +61,8 @@
 				</tr>
 				<tr>
 					<td width="70" align="center">Email</td>
-					<td width="330">${email}<input type="hidden" name="email"
-					value="${email}">
+					<td width="330">${article.email}<input type="hidden" name="email"
+					value="${article.email}">
 					</td>
 				</tr>
 				<tr>
@@ -77,7 +77,7 @@
 					</c:if>
 				</tr>
 				<tr>
-					<td width="70" align="center">휴대폰번호</td>
+					<td width="150" align="center">휴대폰번호</td>
 					<td width="330"><input type="text" size="40" maxlength="30"
 						name="ph"></td>
 				</tr>

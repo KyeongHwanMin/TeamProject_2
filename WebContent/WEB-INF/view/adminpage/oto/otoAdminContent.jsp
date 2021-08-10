@@ -31,10 +31,10 @@
 		<table width="500" border="1" cellspacing="0" cellpadding="0"
 			align="center">
 			<tr height="30">
-				<td align="center" width="125">문의번호</td>
+				<td align="center" width="1000">문의번호</td>
 				<td align="center" width="125" align="center">${article.num}<input
 					type="hidden" name="otonum" value="${article.num}" /></td>
-				<td align="center" width="125">문의상태</td>
+				<td align="center" width="1000">문의상태</td>
 				<td align="center" width="125" align="center"><c:if
 						test="${article.readcount > 0 && article.re_level > 0}">
 						<b>문의답변</b>
@@ -46,20 +46,20 @@
 				</td>
 			</tr>
 			<tr height="30">
-				<td align="center" width="125">작성자</td>
-				<td align="center" width="125" align="center">${article.writer}</td>
-				<td align="center" width="125">작성일</td>
-				<td align="center" width="125" align="center">${article.reg_date}</td>
+				<td align="center" width="1000">작성자</td>
+				<td align="center" width="1000" align="center">${article.writer}</td>
+				<td align="center" width="1000">작성일</td>
+				<td align="center" width="1000" align="center">${article.reg_date}</td>
 			</tr>
 
 			<tr height="30">
-				<td align="center" width="125">문의제목</td>
-				<td align="center" width="125" align="center">${article.subject}</td>
-				<td align="center" width="125">휴대폰번호</td>
-				<td align="center" width="125" align="center">${article.ph}</td>
+				<td align="center" width="1000">문의제목</td>
+				<td align="center" width="1000" align="center">${article.subject}</td>
+				<td align="center" width="1000">휴대폰번호</td>
+				<td align="center" width="1000" align="center">${article.ph}</td>
 			</tr>
 			<tr>
-				<td align="center" width="125">문의내용</td>
+				<td align="center" width="1000">문의내용</td>
 				<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 			</tr>
 			<tr height="30">
