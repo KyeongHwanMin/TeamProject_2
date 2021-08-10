@@ -190,13 +190,13 @@
         var chBar = document.getElementById("ageChart"); 
         var chartData = { labels: ["역사/문화", "자연/경치", "레저/체험/학습", "휴식/힐링"], 
         		datasets:
-        			[{ data: [${list_20[3].count},${list_20[1].count},${list_20[2].count},${list_20[0].count}], 
+        			[{ data: [${list_20[3].count},${list_20[2].count},${list_20[0].count},${list_20[1].count}], 
         				backgroundColor: colors[0] }, 
-        			{ data: [${list_30[2].count},${list_30[0].count},${list_30[1].count},${list_30[3].count}],
+        			{ data: [${list_30[2].count},${list_30[1].count},${list_30[0].count},${list_30[3].count}],
         					backgroundColor: colors[1] },
-        			{ data: [${list_40[3].count},${list_40[2].count},${list_40[0].count},${list_40[1].count}], 
+        			{ data: [${list_40[1].count},${list_40[2].count},${list_40[3].count},${list_40[0].count}], 
         						backgroundColor: colors[2] },
-        			{ data: [${list_50[3].count},${list_50[1].count},${list_50[0].count},${list_50[2].count},], 
+        			{ data: [${list_50[1].count},${list_50[2].count},${list_50[3].count},${list_50[0].count},], 
         							backgroundColor: colors[4] }] }; 
         var myChart = new Chart(chBar, { 
         	// 챠트 종류를 선택 
