@@ -40,11 +40,6 @@ public class map {
 	private SqlSessionTemplate dao = null;
 
 
-	@RequestMapping("mtest.do")
-	public String mapt(Model model , HttpSession session) {		
-	
-		return "/map/mtest.jsp";
-	}
 	@RequestMapping("map.do")
 	public String map(Model model , HttpSession session) {		
 		List maplist = dao.selectList("map.location");
@@ -108,9 +103,7 @@ public class map {
 		scheduledto.setWith1(with);
 		scheduledto.setTravel(travel);
 		
-		
-		
-		//dao.insert("schedule.insertsc" ,scheduledto);
+
 		return "/map/schedule_pro.jsp";
 	}
 	
@@ -340,34 +333,11 @@ public class map {
 		
 			return "";
 	}
-	@RequestMapping("mapPro.do")
-	public String map2(String name, int age, mapDTO mapdto, HttpServletRequest request) {
-		System.out.println(name);
-		System.out.println(age);
-		System.out.println(mapdto.getX());
-		System.out.println(request.getParameter("id"));
+	
 
-		String id = request.getParameter("id");
-		request.setAttribute("id", id);
-		return "/map/map2.jsp";
-	}
-	@RequestMapping("sccedule_card_delete.do")
-	public String delete(String number, String date, String day,String subject,  String user_id,HttpServletRequest request) {
-		
-		
-		System.out.println("subject="+subject);
-
-		return "";
-	}
-	 //정현서의 스케줄 삭제  -----------
 	   @RequestMapping("schedule_card_delete.do")
 	   public String delete(int num1, int pageNum,Model model) {
-	      
-	      
-	      System.out.println("넘 111="+num1);
-	      System.out.println("pageNum11="+pageNum);
-	      
-	      //delete from schedule where num1 ='40';
+
 	      dao.selectOne("schedule.deleteSche", num1);
 	      
 	      return "/map/schedule_card_delete.jsp";
