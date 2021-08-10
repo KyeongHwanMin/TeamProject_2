@@ -54,7 +54,7 @@ function pageNext(pageNum){
 
 	<!-- Offers -->
 
-	<div class="offers">
+	<div id="attMain" align="center" class="offers">
 		<h3 align="center"> 테마별로 즐기는 취향저격 제주 여행 </h3> <br/> 
 		<p align="center"> 4개의 테마로 새로운 제주를 알아가는 즐거움 <br/>
 		여행 전에 한번 알아보고 간다면 여행을 할 때 훨씬 보이는 것이 많아질 것이다. <br/>
@@ -63,8 +63,8 @@ function pageNext(pageNum){
 
 		<!-- 지역 선택  -->
  
- <div class="button book_buttonn"><a href="attForm.do">전체 지역</a></div> 
- <div class="button book_buttonn"><a href="attPro.do?search=1">제주시</a></div>
+ <div class="button book_buttonn" ><a href="attForm.do">전체 지역</a></div> 
+ <div class="button book_buttonn" ><a href="attPro.do?search=1">제주시</a></div>
  <div class="button book_buttonn"><a href="attPro.do?search=2">서귀포시</a></div>
  <div class="button book_buttonn"><a href="attPro.do?search=3">중문</a></div>
  <div class="button book_buttonn"><a href="attPro.do?search=4">제주국제공항</a></div>
@@ -72,14 +72,14 @@ function pageNext(pageNum){
  <div class="button book_buttonn"><a href="attPro.do?search=6">표선/성산</a></div>
  <div class="button book_buttonn"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
  
- 		<div class="container">
+ 		<div id="attSort" align="left" class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
 					
 					<!-- 관광지 카테고리 선택  -->
-					<div class="offers_sorting_container">
+					<div  class="offers_sorting_container" >
 						<ul class="offers_sorting">
 						
 							
@@ -104,7 +104,7 @@ function pageNext(pageNum){
 				
 		<!-- 관광지 리스트  -->
 
-					<div class="offers_grid">
+					<div id="attMain" align="left" class="offers_grid">
 
 						<!-- Offers Item -->
 			<c:if test="${count > 0}"> 

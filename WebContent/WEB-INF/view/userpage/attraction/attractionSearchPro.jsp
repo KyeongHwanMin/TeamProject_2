@@ -31,7 +31,7 @@
 	</div>
 
 	<!-- Offers -->
-	<div class="offers">
+	<div id="attMain" align="center" class="offers">
 		<h3 align="center"> 테마별로 즐기는 취향저격 제주 여행 </h3> <br/> 
 		<p align="center"> 4개의 테마로 새로운 제주를 알아가는 즐거움 <br/>
 		여행 전에 한번 알아보고 간다면 여행을 할 때 훨씬 보이는 것이 많아질 것이다. <br/>
@@ -52,9 +52,9 @@
   
   
  
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-1 temp_col"></div>
+		<div id="attSort" align="left" class="container">
+			<div  class="row">
+				<div  class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
 					<!-- 관광지 카테고리 선택  -->

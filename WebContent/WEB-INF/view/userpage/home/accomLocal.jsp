@@ -37,7 +37,7 @@
 
 	<!-- Offers -->
 
-	<div class="offers">
+	<div id="accoMain" align="center" class="offers">
  
 		<!-- 설명 -->
 
@@ -61,7 +61,7 @@
   
   
  
-		<div class="container">
+		<div id="accomSort" align="left" class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
@@ -99,7 +99,7 @@
 				
 					<!-- Offers Grid : 숙소 리스트  -->
 
-					<div class="offers_grid">
+					<div id="accomMain" align="left" class="offers_grid">
 
 						<!-- Offers Item -->
 
