@@ -3,7 +3,9 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%-- 관광지 메인/프로 페이지에서 찜하기 클릭 시 해당 알럿 노출  --%>
+<%-- 관광지 메인 페이지에서 찜하기 클릭 시 해당 알럿 노출 
+count 0 : 해당 id DB에 중복된 관광지 없음
+count 1 : 중복돈 관광지 있음  --%>
 
 <c:if test="${count == 0}">
 	<script> 

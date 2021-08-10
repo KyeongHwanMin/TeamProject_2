@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-<title>Offers</title>
+<title>관광지 메인</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -57,7 +57,7 @@
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
-					<!-- Offers Sorting 카테고리 선택  -->
+					<!-- 관광지 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 							<li>
@@ -144,12 +144,11 @@
 											</ul>
 										</div>
 										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}">찜하기<span></span><span></span><span></span></a></div>
-										<!-- 관리자  -->
+									<!-- admin 관광지 수정/삭제 -->
 										<c:if test="${user_id == 'admin'}">      
 											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>
 											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
-										</c:if>
-									<!-- 관리자  -->	
+										</c:if>	
 									</div>
 								</div>
 							</div>

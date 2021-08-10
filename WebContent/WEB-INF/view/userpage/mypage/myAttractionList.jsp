@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Offers</title>
+<title>내가 찜한 관광지</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -59,6 +59,7 @@
 				</div>
 
 <!-- ﻿count를 확인하여 찜한 관광지가 없을 땐 찜한 관광지가 없습니다 노출 --> 
+
 			<c:if test="${count == 0}"> 
 				<div class="col-lg-12">
 					<div class="offers_grid">

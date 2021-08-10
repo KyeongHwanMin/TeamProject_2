@@ -12,7 +12,7 @@
      <div class="container-fluid px-4">
         <h3 class="mt-4">관광지 등록</h3>
            <ol class="breadcrumb mb-4">
-               <li class="breadcrumb-item"><a href="/jejuguseok/adminpage/index.do">Admin Main</a></li>
+               <li class="breadcrumb-item"><a href="attForm.do">관광지 메인</a></li>
                <li class="breadcrumb-item"><a href="homeForm.do">숙소 등록</a></li>
            </ol>
            
@@ -28,7 +28,7 @@
  -->
 
 <form action="attractionPro.do" method="post" enctype="multipart/form-data">
-	<input type="hidden" id="type" name="type" value="attraction">
+	<input type="hidden" id="type" name="type" value="attraction"> <!-- 히든타입으로 attraction 입력 -->
 	장소명: <input type="text" id="name" name="name" /> <br /> 
 	주소: <input	type="text" id="address"  name="address" /> <br /> 
 	장소 정보: <textarea id="content" name="content" rows="5" cols="20"> </textarea><br/>

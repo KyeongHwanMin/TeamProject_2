@@ -1,5 +1,5 @@
 package jejuguseok_map;
-
+// 관광지 찜하기 DTO + SQL myattraction DB
 public class attBkDTO {
 	
 	private int num;

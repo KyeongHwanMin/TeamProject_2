@@ -12,7 +12,7 @@
      <div class="container-fluid px-4">
         <h3 class="mt-4">관광지 정보 수정</h3>
            <ol class="breadcrumb mb-4">
-               <li class="breadcrumb-item"><a href="/jejuguseok/adminpage/index.do">Admin Main</a></li>
+               <li class="breadcrumb-item"><a href="attForm.do">관광지 메인</a></li>
                <li class="breadcrumb-item"><a href="attractionForm.do">관광지 등록</a></li>
            </ol>
 
@@ -23,7 +23,7 @@
 <div class="card mb-4">
 
 <form action="attupdatePro.do?no=${no}" method="post" enctype="multipart/form-data">
-<input type="hidden" id="type" name="type" value="attraction">
+<input type="hidden" id="type" name="type" value="attraction"> <!-- 히든타입으로 attraction 입력 -->
 <input type="hidden" id="no" name="no" value="${lo.no}">
 	<!-- 관광지 번호: ${lo.no} <br />	 -->
 	관광지명: <input type="text" name ="name" value="${lo.name}"/> <br />	

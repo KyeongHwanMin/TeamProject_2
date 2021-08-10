@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Offers</title> 
+<title>관광지 메인</title> 
 <meta charset="utf-8"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -72,16 +72,13 @@ function pageNext(pageNum){
  <div class="button book_buttonn"><a href="attPro.do?search=6">표선/성산</a></div>
  <div class="button book_buttonn"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
  
-  
-  
- 
-		<div class="container">
+ 		<div class="container">
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
 					
 					
-					<!-- Offers Sorting 카테고리 선택  -->
+					<!-- 관광지 카테고리 선택  -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
 						
@@ -105,7 +102,7 @@ function pageNext(pageNum){
 				<div class="col-lg-12">
 				
 				
-		<!-- Offers Grid : 관광지 리스트  -->
+		<!-- 관광지 리스트  -->
 
 					<div class="offers_grid">
 
@@ -135,7 +132,7 @@ function pageNext(pageNum){
 									</c:if>	
 									
 									<c:if test="${locationDTO.location == 'jejusi'}">	
-										<div class="offer_name"><a href="/jejuguseok/attPro.do?search=1">제주시</a></div>
+										<div class="offer_name"><a href="attPro.do?search=1">제주시</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'seoquiposi'}">	  
 										<div class="offer_name"><a href="attPro.do?search=2">서귀포시</a></div>
@@ -156,7 +153,7 @@ function pageNext(pageNum){
 										<div class="offer_name"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
 									</c:if>	
 										
-										
+									<!-- 관광지 정보 -->	
 									</div>
 								</div>
 								<div class="col-lg-8">
@@ -178,12 +175,12 @@ function pageNext(pageNum){
 										
 										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}" id="demo" onclick="myFunction()">찜하기<span></span><span></span><span></span></a></div>
 										
-									<!-- 관리자  -->
+									<!-- admin 관광지 수정/삭제 -->
 										<c:if test="${user_id == 'admin'}">      
 											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>
 											<button type="button" class="btn btn-outline-secondary"><a href="attdelete.do?no=${locationDTO.no}"> 삭제 </a></button> 
 										</c:if>
-									<!-- 관리자  -->	
+									
 									
 									</div>
 								</div>

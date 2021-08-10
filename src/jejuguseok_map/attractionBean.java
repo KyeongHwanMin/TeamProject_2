@@ -170,7 +170,7 @@ public class attractionBean {
 	@RequestMapping("attPro.do")
 	public String accomLocal(Model model, HttpServletRequest request){
 		
-		int se= Integer.parseInt(request.getParameter("search"));
+		int se= Integer.parseInt(request.getParameter("search")); 
 		System.out.println("출력: "+se);
 		
 		String search1="제주시";
@@ -240,16 +240,16 @@ public class attractionBean {
 		File f = new File("/WEB-INF/userpage/save"+fileName); // 복사 위치
 		
 		try {
-			mf.transferTo(f); // 복사
+			mf.transferTo(f); // 파일 복사
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		ms.setAttribute("filename",fileName);
+		ms.setAttribute("filename",fileName); // 파일 이름 저장 
 		
 		Object img1 = (Object)f;
 		String img = String.valueOf(img1);
 		
-		locationDTO lo = new locationDTO();
+		locationDTO lo = new locationDTO(); // DTO에 파일 저장
 		lo.setAddress(address);
 		lo.setCategory(category);
 		lo.setContent(content);
@@ -273,9 +273,9 @@ public class attractionBean {
 	@RequestMapping("attupdate.do")
 	public String attupdate(Model model, int no) {
 				
-		locationDTO lo = new locationDTO();
-		lo = dao.selectOne("att.updatelist", no);
-		model.addAttribute("lo", lo);
+		locationDTO lo = new locationDTO();			//DTO 객체 생성+저장
+		lo = dao.selectOne("att.updatelist", no);	//DB에 해당 정보들 가져오기
+		model.addAttribute("lo", lo);				//view 이동
 		
 		return "/adminpage/upload/attupdate.jsp"; 
 	}
@@ -284,7 +284,7 @@ public class attractionBean {
 	public String attupdatePro(Model model, int no, HttpServletRequest request) {
 		
 		
-		String name = request.getParameter("name");
+		String name = request.getParameter("name");				// 정보 가져오기 
 		String address = request.getParameter("address");
 		String content = request.getParameter("content");
 		String x = request.getParameter("x");
@@ -293,10 +293,10 @@ public class attractionBean {
 		String type = request.getParameter("type");
 		String location = request.getParameter("location");
 		
-		locationDTO lo = new locationDTO();
+		locationDTO lo = new locationDTO();		// DTO 객채 생성 저장
 		System.out.println("관광지수정: "+lo);
 		
-		lo.setName(name);
+		lo.setName(name);						// 정보 수정 
 		lo.setAddress(address);
 		lo.setCategory(category);
 		lo.setContent(content);
@@ -317,19 +317,19 @@ public class attractionBean {
 	@RequestMapping("attdelete.do")
 	public String attdelete(locationDTO dto, HttpServletRequest request, Model model) {
 		
-		String no = request.getParameter("no");
-		dao.delete("att.deleteAtt", no);
+		String no = request.getParameter("no");		// 관광지 no 가져오기
+		dao.delete("att.deleteAtt", no);			// DB 삭제 
 		
 		return "/adminpage/upload/attdelete.jsp"; 
 	}
-	
+	/*
 	@RequestMapping("sitemap.do")
 	public String sitemap() {
 		
 	
 		return "/userpage/sitemap.jsp"; 
 	}
-	
+	*/
 
 	
 }
