@@ -56,6 +56,7 @@ public class attractionDAO {
 		
 
 		int count = 0;	
+		String age = null;
 		List attCount = null;
 		List attList = null;
 		List attNo = new ArrayList();
@@ -66,12 +67,20 @@ public class attractionDAO {
 			attCount = dao.selectList("attlist.top10");
 			if(search == 1) {
 				attCount = dao.selectList("attlist.to20");
+				age="20대 ";
+				model.addAttribute("age", age);
 			}else if(search == 2) {
 				attCount = dao.selectList("attlist.to30");
+				age="30대 ";
+				model.addAttribute("age", age);
 			}else if(search == 3) {
 				attCount = dao.selectList("attlist.to40");
+				age="40대 ";
+				model.addAttribute("age", age);
 			}else if(search == 4) {
 				attCount = dao.selectList("attlist.to50");
+				age="50대 ";
+				model.addAttribute("age", age);
 			}
 		}
 		

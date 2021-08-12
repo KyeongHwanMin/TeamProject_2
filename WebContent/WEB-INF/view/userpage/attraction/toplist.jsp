@@ -38,7 +38,7 @@
 
 		<!-- 설명 -->
 	
-		<h3 align="center"> TOP 10  </h3> <br/> 
+		<h3 align="center">${age}관광지 TOP 10  </h3> <br/>
 		<div align="center">      
         <button type="button" class="btn btn-primary "  onclick="location.href=atttoplist.do" >  관광지 </button>      
         <button type="button" class="btn btn-danger "  onclick="location.href='recommend.do';" >  숙 소 </button>
@@ -47,8 +47,8 @@
  <div id=recommend align="center">
  <div class="button book_buttonn"><a href="atttoplist.do">전체</a></div> 
 
- <div class="button book_buttonn"><a href="atttoplistsearch.do?search=1">20대</a></div>
- <div class="button book_buttonn"><a href="atttoplistsearch.do?search=2">30대</a></div>
+ <div class="button book_buttonn " ><a href="atttoplistsearch.do?search=1">20대</a></div>
+ <div class="button book_buttonn  "><a href="atttoplistsearch.do?search=2">30대</a></div>
  <div class="button book_buttonn"><a href="atttoplistsearch.do?search=3">40대</a></div>
  <div class="button book_buttonn"><a href="atttoplistsearch.do?search=4">50대</a></div>
 

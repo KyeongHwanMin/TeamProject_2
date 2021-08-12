@@ -38,7 +38,7 @@
 
 		<!-- 설명 -->
 	
-		<h3 align="center"> TOP 10  </h3> <br/> 
+		<h3 align="center">관광지 TOP 10  </h3> <br/> 
         <div align="center">      
         <button type="button" class="btn btn-primary "  onclick="location.href=atttoplist.do" >  관광지 </button>      
         <button type="button" class="btn btn-danger "  onclick="location.href='recommend.do';" >  숙 소 </button>
