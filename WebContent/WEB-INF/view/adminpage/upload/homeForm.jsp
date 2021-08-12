@@ -6,7 +6,7 @@
 <html lang="en">
   <!--  어드민쪽 헤더 태그(*) -->
   <%@ include file ="../adminHeader.jsp" %>
-    
+     
   <div id="layoutSidenav_content">
    <main>
      <div class="container-fluid px-4">
@@ -32,9 +32,9 @@
 <form class="form-horizontal" action="homePro.do" method="post" enctype="multipart/form-data">
 
 <legend></legend>
-<!--  
+<!--  	-->
 	<input type="radio" name="home" value="home" checked=""> 숙소 입력  <br />
-	-->
+
 	<input type="hidden" id="type" name="type" value="home">
 	숙소명: <input type="text" name ="name" /> <br />	
 	숙소 주소: <input type="text" name ="address" /> <br />	
@@ -68,7 +68,7 @@
     </select>
   </div>
 </div>
-	이미지: <input type="file" name="img" /><br />
+	이미지: <input type="file" name="home_img" /><br />
 	<input type="submit" value ="확인" />
 	<input type="button" value="취소" onclick="/WEB-INF/view/adminpage/index.jsp">
 	 <br/>

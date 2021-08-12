@@ -13,7 +13,7 @@ count 1 : 중복돈 관광지 있음  --%>
       history.go(-1);
 	</script>
 </c:if>
-<c:if test="${count ==1 }">
+<c:if test="${count == 1 }">
 	<script> 
 	  alert("이미 찜한 관광지입니다.");
       history.go(-1);

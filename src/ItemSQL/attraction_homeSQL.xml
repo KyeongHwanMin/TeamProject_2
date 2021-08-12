@@ -12,7 +12,7 @@
 	
      <insert id="insertHome" parameterType="locationDTO">
       insert into location(no,type,name,address,content,x,y,category,location,img)
-  values (no.nextval,#{type},#{name},#{address},#{content},#{x},#{y},#{category},#{location},#{img})
+  values (no.nextval,#{type},#{name},#{address},#{content},#{x},#{y},#{category},#{location},'img')
    </insert>   
 	
 	<select id="myHome" resultType="locationDTO">
