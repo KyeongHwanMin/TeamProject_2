@@ -77,7 +77,7 @@
 </thead>
 <tbody >
 <c:forEach var="article" items="${articleList }" varStatus="status">
-<c:if test="${sessionScope.user_id == article.user_id}">
+
 	<tr id="sc" name="sc">	
 		<td id="number" style="width:5%;" >${number} <c:set var="number" value="${number-1 }"/></td>
 		<td id="date" style="width:10%;">${article.date1 }</td>
@@ -86,7 +86,7 @@
 		<td id="subject" style="width:50%;"><a href="schedule_table_content.do?num1=${article.num1}&pageNum=${currentPage}"> ${article.subject }</a></td>
 		<td id="user_id">${article.user_id }</td>
 		<td><div class="btn btn-light"><a href="schedule_card_delete.do?num1=${article.num1}&pageNum=${currentPage}" id="demo">삭제<span></span><span></span><span></span></a></div></td> 
-</c:if>
+
 </c:forEach>
 </tbody>
 </table>

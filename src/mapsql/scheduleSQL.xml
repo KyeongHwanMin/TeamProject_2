@@ -55,8 +55,12 @@
   	</select>
   	
   	<select id="getArticles" resultType="scheduleDTO" parameterType="Map">
-  	select date1,day1,subject,user_id,num1,rownum from schedule 
-  	 where user_id=#{id} and <![CDATA[  rownum >= #{startRow} and rownum <= #{endRow} ]]> order by date1
+  	select * 
+		from (select date1,day1,subject,user_id,num1,rownum r 
+		from (select date1,day1,subject,user_id,num1
+		from schedule  where user_id=#{id} order by date1 )) where <![CDATA[ r >= #{startRow} and r <= #{endRow}]]>
+  	
+  	
   	</select>
   	  	
  	
