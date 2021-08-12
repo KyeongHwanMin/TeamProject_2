@@ -75,12 +75,9 @@ public class attractionDAO {
 			}
 		}
 		
-		System.out.println(search);
-		System.out.println(attCount);
-		
 		model.addAttribute("count", count);			
 		model.addAttribute("attCount", attCount);
 
-		return "/userpage/attraction/toplistsearch.jsp"; 
+		return "/userpage/attraction/toplist.jsp"; 
 	}
 }
