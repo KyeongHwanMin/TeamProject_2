@@ -22,7 +22,8 @@
  	
  	<insert id="insertsc" parameterType="scheduleDTO">
  	insert into schedule(subject, user_id, date1, day1, with1, travel,c_place1,c_time1,c_context1,num1,c_y1,c_x1)
-  				values (#{subject},#{user_id},#{date1},#{day1},#{with1},#{travel},#{c_place1}, #{c_time1},#{c_context1},num1.NEXTVAL,#{c_y1},#{c_x1})
+  						values (#{subject},#{user_id},#{date1},#{day1},#{with1},#{travel},#{c_place1}, #{c_time1},#{c_context1},
+  						num1.NEXTVAL,#{c_y1},#{c_x1})
  	</insert>
  	<update id="updatesc"  parameterType="scheduleDTO">
   		update schedule set c_place1 = #{c_place1},c_time1 = #{c_time1},c_context1 = #{c_context1},c_y1 = #{c_y1},c_x1 = #{c_x1} 												 										   										   										   										 
@@ -49,14 +50,13 @@
   		where subject=#{subject}
   	</update>
   	
-  	<select id="getArticleCount" resultType="int">
-  		select count(*) from schedule
+  	<select id="getArticleCount" resultType="int" parameterType="String">
+  		select count(*) from schedule where user_id =#{id}
   	</select>
   	
-  	<select id="getArticles" resultType="scheduleDTO" parameterType="int">
-  	 select *
-  		from (select num1, subject, rownum r,user_id,date1,day1,with1,travel,c_place1,c_time1,c_context1,c_place2,c_time2,c_context2,c_place3,c_time3,c_context3,c_place4,c_time4,c_context4,c_place5,c_time5,c_context5,c_place6,c_time6,c_context6 
-  			from(select * from schedule order by date1)) <![CDATA[  where   r >= #{startRow} and r <= #{endRow} ]]>
+  	<select id="getArticles" resultType="scheduleDTO" parameterType="Map">
+  	select date1,day1,subject,user_id,num1,rownum from schedule 
+  	 where user_id=#{id} and <![CDATA[  rownum >= #{startRow} and rownum <= #{endRow} ]]> order by date1
   	</select>
   	  	
  	

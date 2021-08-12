@@ -49,7 +49,6 @@ public class map {
 		model.addAttribute("maptourlist", maptourlist);
 		model.addAttribute("maphomelist", maphomelist);
 		String id = (String) session.getAttribute("user_id");
-		System.out.println("id0 "+id);
 		return "/map/map.jsp";
 	}
 	@RequestMapping("map1.do")
@@ -109,7 +108,8 @@ public class map {
 	
 	@RequestMapping("schedule_table.do")
 	public String schedule(String pageNum,Model model, HttpSession session) {
-			int pageSize = 30;
+			String id = (String) session.getAttribute("user_id");
+			int pageSize = 10;
 			if(pageNum == null) {
 				pageNum ="1";
 			}
@@ -125,15 +125,17 @@ public class map {
 			HashMap Row = new HashMap();
 			Row.put("startRow", startRow);
 			Row.put("endRow", endRow);
+			Row.put("id", id);
 			System.out.println("Row"+Row);
-			count = dao.selectOne("schedule.getArticleCount"); 
+
+			count = dao.selectOne("schedule.getArticleCount",id); 
 			if(count > 0) {
 				articleList = dao.selectList("schedule.getArticles",Row);
 			}
 			
 			
 			number=count-(currentPage-1)*pageSize;
-			
+			System.out.println(count);
 			
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("startRow", startRow);
@@ -149,18 +151,15 @@ public class map {
 	@RequestMapping("schedule_table_content.do")
 	public String content(int num1, int pageNum,Model model,HttpSession session) {
 		  
-		String id = (String) session.getAttribute("user_id");
-		
-		scheduledto=dao.selectOne("schedule.mylocation",num1);		
-		model.addAttribute("scheduledto", scheduledto);		
+		String id = (String) session.getAttribute("user_id");		
+	
 		myscheduledto = dao.selectOne("schedule.mylocation",num1);
 		model.addAttribute("myscheduledto",myscheduledto);
 		List mylist = dao.selectList("recommend.mine_home",id);
-		List mylist_t = dao.selectList("recommend.mine_travel",id);			
-
 		model.addAttribute("mylist",mylist);
+		List mylist_t = dao.selectList("recommend.mine_travel",id);					
 		model.addAttribute("mylist_t",mylist_t);
-	
+		
 		//나의 일정 항목들 리스트로 저장
 		if(myscheduledto.getC_place1() != null){List<String> place1 = Arrays.asList(myscheduledto.getC_place1().split(","));
 		model.addAttribute("place1",place1);}

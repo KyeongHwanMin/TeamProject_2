@@ -77,8 +77,7 @@
 </thead>
 <tbody >
 <c:forEach var="article" items="${articleList }" varStatus="status">
-<c:set var="id" value="${article.user_id }"/>
-<c:if test="${sessionScope.user_id == id}">
+<c:if test="${sessionScope.user_id == article.user_id}">
 	<tr id="sc" name="sc">	
 		<td id="number" style="width:5%;" >${number} <c:set var="number" value="${number-1 }"/></td>
 		<td id="date" style="width:10%;">${article.date1 }</td>
@@ -121,6 +120,7 @@
 </ul>
 
 </div>
+
 </div>
 
 

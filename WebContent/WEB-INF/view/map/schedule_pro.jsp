@@ -755,9 +755,7 @@ function add(id,n) {
         ' <textarea class="form-control" name="c_context'+num+'" id="c_context'+num+'" rows="6">'+c_context+'</textarea></div>'+
         '<input type="button" style="width:223pt" value="삭제" class="btn btn-success"  onclick="remove_div(this,'+num+')" />';   
         
-        document.getElementById('field'+num).appendChild(addDiv);
-        
-   } 
+        document.getElementById('field'+num).appendChild(addDiv);  } 
     function remove_div(obj,num){
     	
     	document.getElementById('field'+num).removeChild(obj.parentNode);

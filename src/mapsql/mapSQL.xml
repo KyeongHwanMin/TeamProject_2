@@ -15,7 +15,6 @@
  	<select id="home" resultType="mapDTO">
  		select * from location where type = 'home'
  	</select>
-
  </mapper>
 
 

@@ -435,17 +435,17 @@ function add(id,n) {
 <div class="right">
 <br>
 <div class="container mt-3">
-<input type="text" name="subject" id="subject" value="${scheduledto.getSubject()}" size="45"><br>
- <input type="text" name="date" id="date" value="${scheduledto.getDate1()}" size="8">
-<input type="text" name="day"  id="day" value="${scheduledto.getDay1() }일" size="2">
-<input type="text" name="with"  id="with" value="${scheduledto.getWith1() }"size="3">
+<input type="text" name="subject" id="subject" value="${myscheduledto.getSubject()}" size="45"><br>
+ <input type="text" name="date" id="date" value="${myscheduledto.getDate1()}" size="8">
+<input type="text" name="day"  id="day" value="${myscheduledto.getDay1() }일" size="2">
+<input type="text" name="with"  id="with" value="${myscheduledto.getWith1() }"size="3">
 <input type="text" name="travel"  id="travel" value="${myscheduledto.getTravel() }"size="45">
 </div>
 <br><br>
 <button type="button" class="btn btn-danger" name="upload" id="upload" style="width:40%" onclick="upload()"> 관광지/숙박 보기</button>
 <button type="button" class="btn btn-primary" name="reload" id="reload" style="width:40%" onclick="location.reload();" style="float: right" > 내 일정 보기</button>
 <br><br>
- <c:forEach var="dayCnt" begin="1" end="${scheduledto.getDay1()}" step="1">
+ <c:forEach var="dayCnt" begin="1" end="${myscheduledto.getDay1()}" step="1">
  
  <button type="button" class="btn btn-success" name="day_btn${dayCnt}" id="day_btn${dayCnt}" data-toggle="collapse" data-target="#col${dayCnt}">  ${ dayCnt}일차  </button>
 

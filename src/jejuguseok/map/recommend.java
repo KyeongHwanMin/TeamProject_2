@@ -30,8 +30,7 @@ public class recommend {
 
 		@RequestMapping("recommend.do")
 		public String recommend(Model model, HttpServletRequest request){
-
-			int count = 0;	
+			int count =0;
 			List recommendCount = null;
 			List recommendList = null;
 			List homeNo = new ArrayList();
@@ -41,16 +40,12 @@ public class recommend {
 			}		
 			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
-
 			return "/map/recommend.jsp"; 
 		}
 		
 		@RequestMapping("recommendsearch.do")
-		public String recommendsearch(Model model, HttpServletRequest request){
-			
+		public String recommendsearch(Model model, HttpServletRequest request){			
 			int search = Integer.parseInt(request.getParameter("search"));
-			
-
 			int count = 0;	
 			List recommendCount = null;
 			List recommendList = null;
@@ -58,21 +53,13 @@ public class recommend {
 			count = dao.selectOne("home.homecount");
 			if (count > 0) {
 				recommendCount = dao.selectList("recommend.top10");
-				if(search == 1) {
-					recommendCount = dao.selectList("recommend.mybook_20");				
-				}else if(search == 2) {
-					recommendCount = dao.selectList("recommend.mybook_30");
-				}else if(search == 3) {
-					recommendCount = dao.selectList("recommend.mybook_40");
-				}else if(search == 4) {
-					recommendCount = dao.selectList("recommend.mybook_50");
-				}
-			}
-			
+				if(search == 1) {	recommendCount = dao.selectList("recommend.mybook_20"); }
+					else if(search == 2) { recommendCount = dao.selectList("recommend.mybook_30"); }
+					else if(search == 3) { recommendCount = dao.selectList("recommend.mybook_40"); }
+					else if(search == 4) { recommendCount = dao.selectList("recommend.mybook_50"); } }			
 			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
-			
-			return "/map/recommend.jsp"; 
+		return "/map/recommend.jsp"; 
 		}
 	
 }
