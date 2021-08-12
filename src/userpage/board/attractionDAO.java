@@ -43,7 +43,6 @@ public class attractionDAO {
 		
 		model.addAttribute("count", count);			
 		model.addAttribute("attCount", attCount);
-		System.out.println(attCount);
 
 
 		return "/userpage/attraction/toplist.jsp"; 
@@ -60,29 +59,27 @@ public class attractionDAO {
 		List attCount = null;
 		List attList = null;
 		List attNo = new ArrayList();
+		
 		count = dao.selectOne("att.attcount");
+		
 		if (count > 0) {
 			attCount = dao.selectList("attlist.top10");
 			if(search == 1) {
-			attList = dao.selectList("attlist.to20");
+				attCount = dao.selectList("attlist.to20");
 			}else if(search == 2) {
-				attList = dao.selectList("attlist.to30");
+				attCount = dao.selectList("attlist.to30");
 			}else if(search == 3) {
-				attList = dao.selectList("attlist.to40");
+				attCount = dao.selectList("attlist.to40");
 			}else if(search == 4) {
-				attList = dao.selectList("attlist.to50");
+				attCount = dao.selectList("attlist.to50");
 			}
 		}
-		for(int i = 0; i < attList.size(); i ++){
-			attDTO =  (locationDTO) attList.get(i);				
-			attNo.add(attDTO.getNo());
-			}
-		TreeSet<String> attNo2 = new TreeSet<String>(attNo);
-		System.out.println(attNo2);
-
+		
+		System.out.println(search);
+		System.out.println(attCount);
+		
 		model.addAttribute("count", count);			
 		model.addAttribute("attCount", attCount);
-		model.addAttribute("attNo2", attNo2); 
 
 		return "/userpage/attraction/toplistsearch.jsp"; 
 	}

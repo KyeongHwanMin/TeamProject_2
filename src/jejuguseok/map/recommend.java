@@ -72,7 +72,6 @@ public class recommend {
 			model.addAttribute("count", count);			
 			model.addAttribute("recommendCount", recommendCount);
 			
-
 			return "/map/recommend.jsp"; 
 		}
 	

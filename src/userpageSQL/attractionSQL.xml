@@ -4,27 +4,48 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="attlist">
- 	<select id="to20" resultType="attBkDTO">
- 	select * from member,myattraction where member.USER_ID = myattraction.USER_ID and<![CDATA[ year_birth <= 2001 and year_birth >= 1992 ]]>	
+  
+ 	<select id="to20" resultType="locationDTO">
+ 	select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+    inner join myattraction on location.no = myattraction.place_no
+    inner join member on myattraction.user_id = member.user_id
+    and <![CDATA[ year_birth <= 2001 and year_birth >= 1992 ]]>
+    group by location.no, location.name, location.category, location.location, location.address, location.content
+    order by count(*) desc) where <![CDATA[ rownum <= 10 ]]>
  	</select>
- 	<select id="to30" resultType="attBkDTO">
- 	select * from member,myattraction where member.USER_ID = myattraction.USER_ID and<![CDATA[ year_birth <= 1991 and year_birth >= 1981 ]]>	
+ 	
+ 	<select id="to30" resultType="locationDTO">
+ 	select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+    inner join myattraction on location.no = myattraction.place_no
+    inner join member on myattraction.user_id = member.user_id
+    and <![CDATA[ year_birth <= 1991 and year_birth >= 1981 ]]>
+    group by location.no, location.name, location.category, location.location, location.address, location.content
+    order by count(*) desc) where <![CDATA[ rownum <= 10 ]]>	
  	</select>
- 	<select id="to40" resultType="attBkDTO">
- 	select * from member,myattraction where member.USER_ID = myattraction.USER_ID and<![CDATA[ year_birth <= 1979 and year_birth >= 1971 ]]>	
+ 	
+ 	<select id="to40" resultType="locationDTO">
+ 	select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+    inner join myattraction on location.no = myattraction.place_no
+    inner join member on myattraction.user_id = member.user_id
+    and <![CDATA[ year_birth <= 1979 and year_birth >= 1971 ]]>
+    group by location.no, location.name, location.category, location.location, location.address, location.content
+    order by count(*) desc) where <![CDATA[ rownum <= 10 ]]>	
  	</select>
- 	<select id="to50" resultType="attBkDTO">
- 	select * from member,myattraction where member.USER_ID = myattraction.USER_ID and<![CDATA[ year_birth <= 1970 and year_birth >= 1961 ]]>	
- 	</select>
- 	<select id="toAll" resultType="attBkDTO">
- 	select * from member,myattraction where member.USER_ID = myattraction.USER_ID and<![CDATA[ year_birth <= 1980 and year_birth >= 1900 ]]>	
+ 	
+ 	<select id="to50" resultType="locationDTO">
+ 	select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+    inner join myattraction on location.no = myattraction.place_no
+    inner join member on myattraction.user_id = member.user_id
+    and <![CDATA[ year_birth <= 1970 and year_birth >= 1961 ]]>
+    group by location.no, location.name, location.category, location.location, location.address, location.content
+    order by count(*) desc) where <![CDATA[ rownum <= 10 ]]>
  	</select>
  	
  	<select id="top10" resultType="locationDTO">
-    select * from (select location.no, location.name, location.category, location.location, location.address, location.content, member.year_birth, count(*) from location
+    select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
     inner join myattraction on location.no = myattraction.place_no
     inner join member on myattraction.user_id = member.user_id
-    group by location.no, location.name, location.category, location.location, location.address, location.content, member.year_birth
+    group by location.no, location.name, location.category, location.location, location.address, location.content
     order by count(*) desc)  where <![CDATA[ rownum <= 10]]>
 	</select>
 	

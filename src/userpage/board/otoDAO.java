@@ -149,8 +149,6 @@ import userpage.main.userDTO;
 				re_level=0;
 			}
 			
-			System.out.println(ref);
-			
 			otoDTO.setWriter(dto.getWriter());
 			otoDTO.setPh(dto.getPh());
 			otoDTO.setSubject(dto.getSubject());
@@ -217,7 +215,7 @@ import userpage.main.userDTO;
 		@RequestMapping("deletePro.do")
 		public String passwd(otoDTO dto, int num , int otonum , int level, String pageNum, Model model) {
 			
-
+			// ref_level 값을 가져와서 0 이랑 같을시 ( 답글이 달리지 않을시 )
 			  if(level==0){
 				dao.delete("board.delete", otonum);
 			} else if(level != 0){

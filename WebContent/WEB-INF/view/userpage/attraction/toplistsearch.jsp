@@ -45,12 +45,12 @@
         </div>      			
 		<!-- 지역 선택  -->
  <div id=recommend align="center">
- <div class="button book_buttonn"><a href="recommend.do">전체</a></div> 
+ <div class="button book_buttonn"><a href="atttoplist.do">전체</a></div> 
  
- <div class="button book_buttonn"><a href="recommendsearch.do?search=1">20대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=2">30대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=3">40대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=4">50대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=1">20대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=2">30대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=3">40대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=4">50대</a></div>
 
  </div>
  
@@ -79,12 +79,12 @@
 						<!-- Offers Item -->
 			<c:if test="${count > 0}"> 
 					
-							<c:forEach var="recommendCount" items="${recommendCount}" varStatus="status" >
-								<c:set var="cnt" value="${recommendCount.HOME_NO}"/>	
-							 	<c:forEach var="homeNo2" items="${homeNo2}" >
-							 <c:set var="homeNo2" value="${homeNo2}"/>
-								<c:if test="${ cnt == homeNo2 }">
-						<div class="offers_item ${recommendCount.HOME_TYPE } "> <!-- ${guesthouse}  -->
+							<c:forEach var="attCount" items="${attCount}" varStatus="status">
+								<c:set var="cnt" value="${attCount.no}"/>	
+							 	<c:forEach var="attNo2" items="${attNo2}" >
+							 <c:set var="attNo2" value="${attNo2}"/>
+								<c:if test="${cnt == attNo2}">
+						<div class="offers_item ${attCount.name} ">
 						 
 							<div class="row"> 
 								<div class="col-lg-1 temp_col"></div>
@@ -92,38 +92,38 @@
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
 										
-									<c:if test="${recommendCount.HOME_TYPE == 'hotel'}">	
+									<c:if test="${attCount.category == 'healing'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
 									</c:if>	
-									<c:if test="${recommendCount.HOME_TYPE == 'motel'}">	
+									<c:if test="${attCount.category == 'leisure'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_5.jpg)"></div>
 									</c:if>		
-									<c:if test="${recommendCount.HOME_TYPE == 'guesthouse'}">	
+									<c:if test="${attCount.category == 'nature'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_8.jpg)"></div>
 									</c:if>	
-									<c:if test="${recommendCount.HOME_TYPE == 'pention'}">	
+									<c:if test="${attCount.category == 'history'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_7.jpg)"></div>
 									</c:if>	
 									
-									<c:if test="${recommendCount.HOME_LOCAL == 'jejusi'}">	
+									<c:if test="${attCount.location == 'jejusi'}">	
 										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${recommendCount.HOME_LOCAL == 'seoquiposi'}">	  <!-- seogwiposi  -->
+									<c:if test="${attCount.location == 'seoquiposi'}">	  <!-- seogwiposi  -->
 										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
-									<c:if test="${recommendCount.HOME_LOCAL == 'jungmun'}">	
+									<c:if test="${attCount.location == 'jungmun'}">	
 										<div class="offer_name"><a href="#">중문</a></div>
 									</c:if> 
-									<c:if test="${recommendCount.HOME_LOCAL == 'jejuairport'}">	
+									<c:if test="${attCount.location == 'jejuairport'}">	
 										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
-									<c:if test="${recommendCount.HOME_LOCAL == 'aweol'}">	
+									<c:if test="${attCount.location == 'aweol'}">	
 										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
-									<c:if test="${recommendCount.HOME_LOCAL == 'pyoseon'}">	
+									<c:if test="${attCount.location == 'pyoseon'}">	
 										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
-									<c:if test="${recommendCount.HOME_LOCAL == 'hamduk'}">	
+									<c:if test="${attCount.location == 'hamduk'}">	
 										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
@@ -135,13 +135,13 @@
 									<h3>TOP${status.index+1}</h3>
 									<div class="offers_content">
 									
-										<div class="offers_price">${attCount.ATT_NAME} <span> ${attCount.ATT_LOCAL} </span></div>
+										<div class="offers_price">${attCount.name} <span> ${attCount.location} </span></div>
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
-											관광지 종류 : ${attCount.ATT_TYPE}
+											관광지 종류 : ${attCount.category}
 										</div>
 								 
-										<p class="offers_text"> ${attCount.ATT_CONTENT} </p>
-										<p class="offers_text"> ${attCount.ATT_ADDRESS} </p>
+										<p class="offers_text"> ${attCount.content} </p>
+										<p class="offers_text"> ${attCount.address} </p>
 										<div class="offers_icons">
 											<ul class="offers_icons_list">
 												<li class="offers_icons_item"><img src="images/post.png" alt=""></li>

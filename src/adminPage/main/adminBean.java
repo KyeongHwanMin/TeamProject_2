@@ -131,12 +131,6 @@ public class adminBean {
 		model.addAttribute("location_40",location_40);
 		model.addAttribute("location_50",location_50);
 		
-		
-		System.out.println(location_20);
-		System.out.println(location_30);
-		System.out.println(location_40);
-		System.out.println(location_50);
-		
 		// 숙소 연령별
 		List home_20 = daosql.selectList("admin.home_20");
 		List home_30 = daosql.selectList("admin.home_30");
@@ -147,11 +141,6 @@ public class adminBean {
 		model.addAttribute("home_30",home_30);
 		model.addAttribute("home_40",home_40);
 		model.addAttribute("home_50",home_50);
-		
-		System.out.println(home_20);
-		System.out.println(home_30);
-		System.out.println(home_40);
-		System.out.println(home_50);
 		
 		return "/adminpage/chartPage.jsp";
 	}

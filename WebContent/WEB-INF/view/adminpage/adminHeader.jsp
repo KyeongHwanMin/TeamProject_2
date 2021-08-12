@@ -70,9 +70,13 @@
                            <div class="sb-sidenav-menu-heading"> 데이터 시각화 </div>
                             <a class="nav-link" href="/jejuguseok/adminpage/HomeChart.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                차트
+                                회원유형별 차트
                             </a>
-                    
+                            <a class="nav-link" href="/jejuguseok/adminpage/chartPage.do">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                장소별 차트
+                            </a>
+                    		
                             
                         </div>
                     </div>

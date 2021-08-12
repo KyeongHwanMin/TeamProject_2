@@ -45,12 +45,12 @@
         </div>      				
 		<!-- 지역 선택  -->
  <div id=recommend align="center">
- <div class="button book_buttonn"><a href="recommend.do">전체</a></div> 
+ <div class="button book_buttonn"><a href="atttoplist.do">전체</a></div> 
 
- <div class="button book_buttonn"><a href="recommendsearch.do?search=1">20대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=2">30대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=3">40대</a></div>
- <div class="button book_buttonn"><a href="recommendsearch.do?search=4">50대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=1">20대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=2">30대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=3">40대</a></div>
+ <div class="button book_buttonn"><a href="atttoplistsearch.do?search=4">50대</a></div>
 
  </div>
  

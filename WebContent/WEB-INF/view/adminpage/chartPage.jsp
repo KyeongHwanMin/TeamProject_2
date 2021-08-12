@@ -218,7 +218,7 @@
 		  </script>
 		
 		<%-- 관광지 연령별 카테고리 통계 다중 차트 --%>
-		<script>
+		<script type="text/javascript">
         // 다중차트,나이대별
         const colors = ['red','yellow','blue','#a72898','#28a745']; 
         var chBar = document.getElementById("myChart5"); 
@@ -248,7 +248,7 @@
 		
 		
 		<%-- 숙소 연령별 카테고리 통계 다중 차트 --%>
-		<script>
+		<script type="text/javascript">
         // 다중차트,나이대별
         const colors = ['red','yellow','blue','#a72898','#28a745']; 
         var chBar = document.getElementById("myChart6"); 
