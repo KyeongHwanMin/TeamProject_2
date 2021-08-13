@@ -74,7 +74,7 @@
 													<b>문의확인</b>
 												</c:if> <c:if
 													test="${article.readcount == 0 && article.re_level == 0}">
-													<b>문의대기</b></td>
+													<b style="color:red;">문의대기</b></td>
 											</c:if>
 										</tr>
 									</c:forEach>
