@@ -161,7 +161,7 @@
 		        level: 9, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
-		
+		 
 
 		// 지도를 생성한다 
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
@@ -442,7 +442,7 @@ function add(id,n) {
 <input type="text" name="travel"  id="travel" value="${myscheduledto.getTravel() }"size="45">
 </div>
 <br><br>
-<button type="button" class="btn btn-danger" name="upload" id="upload" style="width:40%" onclick="upload()"> 관광지/숙박 보기</button>
+<button type="button" class="btn btn-danger" name="upload" id="upload" style="width:40%" onclick="upload()"> 장소 더 추가하기 </button>
 <button type="button" class="btn btn-primary" name="reload" id="reload" style="width:40%" onclick="location.reload();" style="float: right" > 내 일정 보기</button>
 <br><br>
  <c:forEach var="dayCnt" begin="1" end="${myscheduledto.getDay1()}" step="1">

@@ -133,6 +133,12 @@ div.right {
 	<div class="fheader">
 		<%@ include file="/WEB-INF/view/userpage/header.jsp"%>
 	</div>
+	
+	<br />
+	<c:if test="${user_id == 'admin'}">
+	<br /> <br /> 
+	</c:if>
+	
 	<div class="r">
 
 		<div class="left">
@@ -536,7 +542,7 @@ function makeOverListener(map, marker, infowindow) {
 					crossorigin="anonymous"></script>
 
 
-				<input type="submit" value="저장 하기">
+				<input type="submit" value="저장 하기"> <br /> <br />
 			</form>
 		</div>
 	</div>
