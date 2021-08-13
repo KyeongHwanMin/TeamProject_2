@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
 	type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/blog_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
+<link href="../csBoard.css" rel="stylesheet" type="text/css">
 </head>
 	<div class="super_container">
 
@@ -30,12 +32,15 @@
 </br>
 </br>
 </br>
+</br>
+</br>
+</br>
 
 <main>
 	<body>
 		<center>
 			<b>문의내용 보기</b> <br>
-			<table width="500" border="1" cellspacing="0" cellpadding="0"
+			<table class="table-bordered" width="700" border="1" cellspacing="0" cellpadding="0"
 				align="center">
 				<tr height="30">
 					<td align="center" width="125">문의번호</td>
@@ -68,7 +73,7 @@
 					<td align="center" width="1000" align="center">${article.ph}</td>
 				</tr>
 				<tr>
-					<td align="center" width="1000">문의내용</td>
+					<td align="center" width="100">문의내용</td>
 					<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 				</tr>
 				<tr height="30">

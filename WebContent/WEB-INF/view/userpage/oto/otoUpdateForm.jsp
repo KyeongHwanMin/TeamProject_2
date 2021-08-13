@@ -30,14 +30,16 @@
 </br>
 </br>
 </br>
-
+</br>
+</br>
+</br>
 
 <center>
 	<b>CONTACT</b> <br>
 	<form method="post" name="writeform"
 		action="/jejuguseok/UpdatePro.do?pageNum=${pageNum}"
 		onsubmit="return writeSave()">
-		<table width="400" border="1" cellspacing="0" cellpadding="0"
+		<table class="table-bordered" width="400" border="1" cellspacing="0" cellpadding="0"
 			align="center">
  			<tr>
    				<td  width="70"  align="center">아 이 디</td>

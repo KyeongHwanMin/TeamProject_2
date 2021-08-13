@@ -16,7 +16,6 @@
 				<li class="breadcrumb-item active">Tables</li>
 			</ol>
 
-			</br> </br> </br> </br> </br>
 
 
 
@@ -44,8 +43,7 @@
 							</c:if>
 
 							<c:if test="${couunt != 0}">
-								<table border="1" width="700" cellpadding="0" cellspacing="0"
-									align="center">
+								<table class="table  table-white  table-hover" width="700">
 									<tr height="30">
 										<td align="center" width="50">번 호</td>
 										<td align="center" width="250">제 목</td>

@@ -28,8 +28,7 @@
 <body>
 	<center>
 		<b>문의내용 보기</b> <br>
-		<table width="500" border="1" cellspacing="0" cellpadding="0"
-			align="center">
+		<table class="table-bordered table-white table-hover" width="700">
 			<tr height="30">
 				<td align="center" width="1000">문의번호</td>
 				<td align="center" width="125" align="center">${article.num}<input

@@ -16,7 +16,7 @@
 				<li class="breadcrumb-item active">Tables</li>
 			</ol>
 
-			</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br>
+			</br> </br> </br> </br> </br> </br> </br> </br> 
 
 
 			<center>

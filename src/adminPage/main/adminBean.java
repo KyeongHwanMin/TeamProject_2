@@ -142,6 +142,15 @@ public class adminBean {
 		model.addAttribute("home_40",home_40);
 		model.addAttribute("home_50",home_50);
 		
+		System.out.println(location_20);
+		System.out.println(location_30);
+		System.out.println(location_40);
+		System.out.println(location_50);
+		System.out.println(home_20);
+		System.out.println(home_30);
+		System.out.println(home_40);
+		System.out.println(home_50);
+		
 		return "/adminpage/chartPage.jsp";
 	}
 

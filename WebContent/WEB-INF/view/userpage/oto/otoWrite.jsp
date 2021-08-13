@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,9 @@
 </br>
 </br>
 </br>
+</br>
+</br>
+</br>
 
 <c:if test="${user_id == null}">
 	<script>
@@ -48,7 +52,7 @@
 				<input type="hidden" name="re_step" value="${re_step}">
 				<input type="hidden" name="re_level" value="${re_level}">
 				
-			<table width="400" border="1" cellspacing="0" cellpadding="0"
+			<table class="table-bordered" width="400" border="1" cellspacing="0" cellpadding="0"
 				align="center">
 				<tr>
 					<td align="right" colspan="2"><a href="/jejuguseok/list.do">문의목록</a></td>

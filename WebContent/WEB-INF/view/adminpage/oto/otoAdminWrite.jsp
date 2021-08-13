@@ -16,7 +16,7 @@
 				<li class="breadcrumb-item active">Tables</li>
 			</ol>
 
-			</br> </br> </br> </br> </br>
+			</br> 
 
 			<main>
 
@@ -38,7 +38,7 @@
 			name="re_step" value="${re_step}"> <input type="hidden"
 			name="re_level" value="${re_level}">
 
-		<table width="400" border="1" cellspacing="0" cellpadding="0"
+		<table class="table-bordered" width="400" border="1" cellspacing="0" cellpadding="0"
 			align="center">
 			<input type="hidden" name="otonum" value="${num}">
 			<tr>
