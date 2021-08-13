@@ -143,7 +143,7 @@
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
 										</div>
-										<div class="button book_button"><a href="attBookMark.do?no=${locationDTO.no}">찜하기<span></span><span></span><span></span></a></div>
+										<div class="button book_button"><a href="attBookMark.do?place_no=${locationDTO.no}">찜하기<span></span><span></span><span></span></a></div>
 									<!-- admin 관광지 수정/삭제 -->
 										<c:if test="${user_id == 'admin'}">      
 											<button type="button" class="btn btn-outline-secondary"><a href="attupdate.do?no=${locationDTO.no}"> 수정 </a></button>

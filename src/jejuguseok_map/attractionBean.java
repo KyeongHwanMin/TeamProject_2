@@ -57,23 +57,27 @@ public class attractionBean {
 	private SqlSessionTemplate dao =null;	
 	
 	
-//	관광지 북마크: attform에서 찜하기 클릭 시 해당 페이지 이동 후 복귀(알럿기능) 
+/*	관광지 북마크: attform에서 찜하기 클릭 시 해당 페이지 이동 후 복귀(알럿기능) 
+﻿id를 session을 이용해 getAttribute로 가져옴
+﻿attbkDTO(ab)에 저장된 user_id(id)를 가져옴 (ab : num(pk), place_no(관광지 번호), user_id(아이디))
+찜한 북마크를 기존 DB에서 place_no와 user_id를 통해 중복 체크(중복일 땐=1 알럿 노출)	
+﻿중복 확인 후(count=0)일 땐 inserattmk로 추가
+﻿model을 통해 해당 count 정보를 view로 이동	
+*/	
 	@RequestMapping("attBookMark.do")  
 	public String attBookMark(attBkDTO ab, HttpSession session,Model model )  throws Exception{
-//		﻿ 관광지 메인페이지에서 해당 관광지 저장하기(myatt으로 보냄)
 		String id = (String) session.getAttribute("user_id"); 
 
 		ab.setUser_id(id); 
-//		﻿id를 session을 이용해 getAttribute로 가져옴
-// 		﻿attbkDTO(ab)에 저장된 user_id(id)를 가져옴 (ab : num(pk), place_no(관광지 번호), user_id(아이디))
+
 		int count = dao.selectOne("att.checkAtt", ab);	
-//		찜한 북마크를 기존 DB에서 place_no와 user_id를 통해 중복 체크(중복일 땐=1 알럿 노출)		
+	
 		if(count==0) {
 			dao.insert("att.insertAttmk", ab); 
 		}
-//		 ﻿중복 확인 후(count=0)일 땐 inserattmk로 추가
+
 		model.addAttribute("count", count);
-//		﻿model을 통해 해당 count 정보를 view로 이동		
+	
 		return "/userpage/mypage/attBookMark.jsp";
 	}
 	
