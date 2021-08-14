@@ -6,7 +6,7 @@
 <%-- 찜하기 버튼 클릭시 넘어오는  pro 페이지이다.     history.go(-1);--%>
 
 	<script> 
-	  alert("내 찜하기에 넣었습니다! ");
+	  alert("내 찜하기에 넣었습니다! "); 
 	  window.location="myAccom.do";
       	
 	</script>
