@@ -52,7 +52,9 @@ public class map {
 		return "/map/map.jsp";
 	}
 	@RequestMapping("map1.do")
-	public String map1(Model model , HttpSession session) {		
+	public String map1(Model model , HttpSession session, String day) {		
+		System.out.println("day"+day);
+		model.addAttribute("day",day);
 		List maplist = dao.selectList("map.location");
 		List maptourlist = dao.selectList("map.tour");
 		List maphomelist = dao.selectList("map.home");
@@ -280,7 +282,7 @@ public class map {
 		return "";
 }
 		@RequestMapping("sccedule_fix.do")
-		public String schedule_fix(String c_place1,String c_place2,String c_place3,String c_place4,String c_place5,String c_place6,String c_context1,String c_context2,String c_context3,
+		public String schedule_fix(String subject,String c_place1,String c_place2,String c_place3,String c_place4,String c_place5,String c_place6,String c_context1,String c_context2,String c_context3,
 				String c_context4,String c_context5,String c_context6,String c_time1,String c_time2,String c_time3,String c_time4,String c_time5,String c_time6,
 				String c_y1,String c_x1,String c_y2,String c_x2,String c_y3,String c_x3,String c_y4,String c_x4,String c_y5,String c_x5,String c_y6,String c_x6,
 				Model model,HttpSession session) {		
@@ -290,7 +292,10 @@ public class map {
 			scheduledto.setC_context1(c_context1);
 			scheduledto.setC_time1(c_time1);	
 			scheduledto.setC_y1(c_y1);
-			scheduledto.setC_x1(c_x1);		
+			scheduledto.setC_x1(c_x1);	
+			scheduledto.setSubject(subject);
+			System.out.println("test");
+			System.out.println(scheduledto.getC_place1());
 			System.out.println("subject"+scheduledto.getSubject());
 			dao.update("schedule.updatesc",scheduledto);
 			}if(c_place2 != null) {	
@@ -298,7 +303,8 @@ public class map {
 			scheduledto.setC_context2(c_context2);
 			scheduledto.setC_time2(c_time2);	
 			scheduledto.setC_y2(c_y2);
-			scheduledto.setC_x2(c_x2);		
+			scheduledto.setC_x2(c_x2);	
+			scheduledto.setSubject(subject);
 			dao.update("schedule.updatesc2",scheduledto);
 			}if(c_place3 != null) {
 			scheduledto.setC_place3(c_place3);
@@ -306,6 +312,7 @@ public class map {
 			scheduledto.setC_time3(c_time3);
 			scheduledto.setC_y3(c_y3);
 			scheduledto.setC_x3(c_x3);	
+			scheduledto.setSubject(subject);
 			dao.update("schedule.updatesc3",scheduledto);
 			}if(c_place4 != null) {
 			scheduledto.setC_place4(c_place4);
@@ -313,6 +320,7 @@ public class map {
 			scheduledto.setC_time4(c_time4);
 			scheduledto.setC_y4(c_y4);
 			scheduledto.setC_x4(c_x4);
+			scheduledto.setSubject(subject);
 			dao.update("schedule.updatesc4",scheduledto);
 			}if(c_place5 != null) {
 			scheduledto.setC_place5(c_place5);
@@ -320,6 +328,7 @@ public class map {
 			scheduledto.setC_time5(c_time5);
 			scheduledto.setC_y5(c_y5);
 			scheduledto.setC_x5(c_x5);
+			scheduledto.setSubject(subject);
 			dao.update("schedule.updatesc5",scheduledto);
 			}if(c_place6 != null) {
 				scheduledto.setC_place6(c_place6);
@@ -327,6 +336,7 @@ public class map {
 				scheduledto.setC_time6(c_time6);
 				scheduledto.setC_y6(c_y6);
 				scheduledto.setC_x6(c_x6);
+				scheduledto.setSubject(subject);
 				dao.update("schedule.updatesc6",scheduledto);
 			}
 		

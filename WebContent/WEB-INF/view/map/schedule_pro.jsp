@@ -200,17 +200,45 @@ div.right {
             </div>
         </div>
 		<c:forEach var="mylist" items="${mylist}" varStatus="status"> 
-		
+
         <ul id="placesList">   
-                 <div> <h6> ${mylist.HOME_NAME}</h6></div>
+                 <div > <h6> ${mylist.HOME_NAME}</h6></div>
 	                <div>  <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="70" height="70"></div>
 					<div>	${mylist.HOME_ADDRESS} </div>	
+					<c:if test="${day==1}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		</c:if>
+	        		<c:if test="${day ==2}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		</c:if>
+	        		<c:if test="${day ==3}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${day ==4}">
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
 	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
-	         		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
-	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
+	        		</c:if>
+	        		<c:if test="${day ==5}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		</c:if>
+	         		<c:if test="${day ==6}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>
+	        		</c:if>
+	        				        
         </ul>
         <div id="pagination"></div>
        </c:forEach>
@@ -219,12 +247,40 @@ div.right {
                  <div> <h6> ${mylist_t.name}</h6></div>
 	                <div>  <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="70" height="70"></div>
 					<div>	${mylist_t.address} </div>	
+					<c:if test="${day==1}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		</c:if>
+	        		<c:if test="${day==2}">
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
-	        	    <button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${day==3}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${day==4}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
-	         		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
-	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
+	        		</c:if>
+	        		<c:if test="${day==5}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		</c:if>
+	        		<c:if test="${day==6}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>
+	        		</c:if>
+	        	    		        
         </ul>
         <div id="pagination"></div>
        </c:forEach>
@@ -332,19 +388,61 @@ function createMarker(position, image) {
    
 // total 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
 function createtotalMarkers() {
+
 	<c:forEach var="maplist" items="${maplist}" varStatus="status">
-	 iwContent[${status.index}] = 
+	if(${day }==1){ 
+	iwContent[${status.index}] = 
 		  '          <div> &nbsp ${maplist.name}</div>' + 
 	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maplist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
+	         ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button><br><br>';
+	}else if(${day }==2){
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maplist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maplist.address} </div>' +
+				 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+	}else if(${day }==3){
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maplist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maplist.address} </div>' +
+		     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+	}else if(${day }==4){
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maplist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maplist.address} </div>' +
+		     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+	}else if(${day }==5){
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maplist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maplist.address} </div>' +
+		     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+	}else if(${day }==6){
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maplist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maplist.address} </div>' +
+		     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${maplist.name},${maplist.y},${maplist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+	}
+	    
 	     </c:forEach>	 
     for (var i = 0; i < totalPositions.length; i++) {  
     	//console.log('마커출력'+i);
@@ -362,7 +460,9 @@ function createtotalMarkers() {
         //console.log('iwContent'+iwContent[10]);
         totalMarkers.push(marker);
         //console.log('토탈마커'+"data: " + JSON.stringify(totalMarkers[1]));
-        
+     
+      
+
        //===================================================================
        
         iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
@@ -372,7 +472,10 @@ function createtotalMarkers() {
     	content : iwContent[i],
         removable : iwRemoveable
     });
+        
 
+     
+    	 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));      
     }  //for       
@@ -388,18 +491,58 @@ function settotalMarkers(map) {
 // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
 function createtourMarkers() {
 	<c:forEach var="maptourlist" items="${maptourlist}" varStatus="status">
-	 iwContent[${status.index}] = 
-		  '          <div> &nbsp ${maptourlist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maptourlist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
+	if(${day }==1){ 
+		iwContent[${status.index}] = 
+			  '          <div> &nbsp ${maptourlist.name}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	${maptourlist.address} </div>' +		
+		         ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button><br><br>';
+		}else if(${day }==2){
+			iwContent[${status.index}] = 
+				  '          <div> &nbsp ${maptourlist.name}</div>' + 
+			        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+					'				<div>&nbsp	${maptourlist.address} </div>' +
+					 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+			      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${day }==3){
+			iwContent[${status.index}] = 
+				  '          <div> &nbsp ${maptourlist.name}</div>' + 
+			        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+					'				<div>&nbsp	${maptourlist.address} </div>' +
+			     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+			      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${day }==4){
+			iwContent[${status.index}] = 
+				  '          <div> &nbsp ${maptourlist.name}</div>' + 
+			        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+					'				<div>&nbsp	${maptourlist.address} </div>' +
+			     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+			      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${day }==5){
+			iwContent[${status.index}] = 
+				  '          <div> &nbsp ${maptourlist.name}</div>' + 
+			        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+					'				<div>&nbsp	${maptourlist.address} </div>' +
+			     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+			      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${day }==6){
+			iwContent[${status.index}] = 
+				  '          <div> &nbsp ${maptourlist.name}</div>' + 
+			        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+					'				<div>&nbsp	${maptourlist.address} </div>' +
+			     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+			      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
+			        ' 				<button type="button" style="width:2% padding:0.5px" id="${maptourlist.name},${maptourlist.y},${maptourlist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 	     </c:forEach>	 
     for (var i = 0; i < tourPositions.length; i++) {
         
@@ -439,18 +582,58 @@ function settourMarkers(map) {
 // 주차장 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
 function createhomeMarkers() {
 	<c:forEach var="maphomelist" items="${maphomelist}" varStatus="status">
-	 iwContent[${status.index}] = 
-		  '          <div> &nbsp ${maphomelist.name}</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	${maphomelist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
+		 if(${day }==1){ 
+				iwContent[${status.index}] = 
+					  '          <div> &nbsp ${maphomelist.name}</div>' + 
+				        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+						'				<div>&nbsp	${maphomelist.address} </div>' +		
+				         ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button><br><br>';
+				}else if(${day }==2){
+					iwContent[${status.index}] = 
+						  '          <div> &nbsp ${maphomelist.name}</div>' + 
+					        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+							'				<div>&nbsp	${maphomelist.address} </div>' +
+							 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+					      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+				}else if(${day }==3){
+					iwContent[${status.index}] = 
+						  '          <div> &nbsp ${maphomelist.name}</div>' + 
+					        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+							'				<div>&nbsp	${maphomelist.address} </div>' +
+					     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+					      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+				}else if(${day }==4){
+					iwContent[${status.index}] = 
+						  '          <div> &nbsp ${maphomelist.name}</div>' + 
+					        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+							'				<div>&nbsp	${maphomelist.address} </div>' +
+					     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+					      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+				}else if(${day }==5){
+					iwContent[${status.index}] = 
+						  '          <div> &nbsp ${maphomelist.name}</div>' + 
+					        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+							'				<div>&nbsp	${maphomelist.address} </div>' +
+					     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+					      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+				}else if(${day }==6){
+					iwContent[${status.index}] = 
+						  '          <div> &nbsp ${maphomelist.name}</div>' + 
+					        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+							'				<div>&nbsp	${maphomelist.address} </div>' +
+					     	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>'+
+					      	 ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>'+
+					        ' 				<button type="button" style="width:2% padding:0.5px" id="${maphomelist.name},${maphomelist.y},${maphomelist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+				} 
 	     </c:forEach>
     for (var i = 0; i < homePositions.length; i++) {
         

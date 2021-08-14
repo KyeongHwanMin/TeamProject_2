@@ -124,16 +124,44 @@
             </div>
         </div>
 		<c:forEach var="mylist" items="${mylist}" varStatus="status"> 		
-        <ul id="placesList">   
+          <ul id="placesList">   
                  <div> <h6> ${mylist.HOME_NAME}</h6></div>
 	                <div>  <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="70" height="70"></div>
 					<div>	${mylist.HOME_ADDRESS} </div>	
+					<c:if test="${myscheduledto.getDay1()==1}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1() ==2}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1() ==3}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1() ==4}">
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
 	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
-	         		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
-	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1() ==5}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		</c:if>
+	         		<c:if test="${myscheduledto.getDay1() ==6}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        	    <button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist.HOME_NAME},${mylist.y},${mylist.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>
+	        		</c:if>
+	        				        
         </ul>
         <div id="pagination"></div>
        </c:forEach>
@@ -142,12 +170,40 @@
                  <div> <h6> ${mylist_t.name}</h6></div>
 	                <div>  <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="70" height="70"></div>
 					<div>	${mylist_t.address} </div>	
+					<c:if test="${myscheduledto.getDay1()==1}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1()==2}">
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
-	        	    <button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1()==3}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1()==4}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
 	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
-	         		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
-	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>		        
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1()==5}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		</c:if>
+	        		<c:if test="${myscheduledto.getDay1()==6}">
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-primary" onclick="add(this.id,1)" title="1일차 일정추가">1일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-danger" onclick="add(this.id,2)" title="2일차 일정추가">2일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-success" onclick="add(this.id,3)" title="3일차 일정추가">3일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-warning" onclick="add(this.id,4)" title="4일차 일정추가">4일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn btn-info" onclick="add(this.id,5)" title="5일차 일정추가">5일차</button>
+	        		<button type="button" style="width:30%; padding:2px" id="${mylist_t.name},${mylist_t.y},${mylist_t.x}"  class="btn  btn-dark" onclick="add(this.id,6)" title="6일차 일정추가">6일차</button>
+	        		</c:if>
+	        	    		        
         </ul>
         <div id="pagination"></div>
        </c:forEach>
@@ -185,19 +241,65 @@
 			});
 		
 		// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+		if(${myscheduledto.getDay1() }==1){  
 		var iwContent =
         '          <div> &nbsp ${place1[status.index]}</div>' + 
         '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 		'				<div>&nbsp	 </div>' +	
         '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-	    
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==2){  
+			var iwContent =
+		        '          <div> &nbsp ${place1[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place1[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place1[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place1[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place1[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place1[status.index] },${y_list1[status.index]}, ${x_list1[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
+		
 	    
 	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 	// 인포윈도우를 생성합니다
@@ -225,19 +327,65 @@
 			});
 		
 		// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+		 
+			if(${myscheduledto.getDay1() }==1){  
 		var iwContent =
         '          <div> &nbsp ${place2[status.index]}</div>' + 
         '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 		'				<div>&nbsp	 </div>' +	
         '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-	    
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>&nbsp&nbsp<br>';
+		}else if(${myscheduledto.getDay1() }==2){  
+			var iwContent =
+		        '          <div> &nbsp ${place2[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place2[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place2[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place2[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place2[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place2[status.index] },${y_list2[status.index]}, ${x_list2[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 	    
 	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 	// 인포윈도우를 생성합니다
@@ -265,20 +413,64 @@
 				});
 			
 			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			if(${myscheduledto.getDay1() }==1){  
+		var iwContent =
+        '          <div> &nbsp ${place3[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>&nbsp&nbsp<br>';
+		}else if(${myscheduledto.getDay1() }==2){  
 			var iwContent =
-	        '          <div> &nbsp ${place3[status.index] }</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	 </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
-		    
+		        '          <div> &nbsp ${place3[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place3[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place3[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place3[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place3[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place3[status.index] },${y_list3[status.index]}, ${x_list3[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
@@ -305,19 +497,64 @@
 				});
 			
 			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+			if(${myscheduledto.getDay1() }==1){  
+		var iwContent =
+        '          <div> &nbsp ${place4[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>&nbsp&nbsp<br>';
+		}else if(${myscheduledto.getDay1() }==2){  
 			var iwContent =
-	        '          <div> &nbsp ${place4[status.index] }</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	 </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
+		        '          <div> &nbsp ${place4[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place4[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place4[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place4[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place4[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place4[status.index] },${y_list4[status.index]}, ${x_list4[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 		    
 		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 		// 인포윈도우를 생성합니다
@@ -345,20 +582,64 @@
 				});
 			
 			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+	if(${myscheduledto.getDay1() }==1){  
+		var iwContent =
+        '          <div> &nbsp ${place5[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>&nbsp&nbsp<br>';
+		}else if(${myscheduledto.getDay1() }==2){  
 			var iwContent =
-	        '          <div> &nbsp ${place5[status.index] }</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	 </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
-		    
+		        '          <div> &nbsp ${place5[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place5[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place5[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place5[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place5[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place5[status.index] },${y_list5[status.index]}, ${x_list5[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
@@ -385,20 +666,64 @@
 				});
 			
 			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			//var iwContent = '<div style=padding:30px;>${maplist.address}<br><a href="http://localhost:8080/jejuguseok/index.do" style="color:blue" target="_blank">보기&nbsp</a> <a href="http://localhost:8080/jejuguseok/map.do" style="color:blue" target="_blank">&nbsp길찾기</a></div>'; 
+	if(${myscheduledto.getDay1() }==1){  
+		var iwContent =
+        '          <div> &nbsp ${place6[status.index]}</div>' + 
+        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+		'				<div>&nbsp	 </div>' +	
+        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>&nbsp&nbsp<br>';
+		}else if(${myscheduledto.getDay1() }==2){  
 			var iwContent =
-	        '          <div> &nbsp ${place6[status.index] }</div>' + 
-	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
-			'				<div>&nbsp	 </div>' +	
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-warning" onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
-	        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
-		    
-		    
+		        '          <div> &nbsp ${place6[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==3){  
+			var iwContent =
+		        '          <div> &nbsp ${place6[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==4){  
+			var iwContent =
+		        '          <div> &nbsp ${place6[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==5){  
+			var iwContent =
+		        '          <div> &nbsp ${place6[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button><br><br>';
+		}else if(${myscheduledto.getDay1() }==6){  
+			var iwContent =
+		        '          <div> &nbsp ${place6[status.index]}</div>' + 
+		        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
+				'				<div>&nbsp	 </div>' +	
+		        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">클릭</a></div> ' + 
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-primary" onclick="add1(this.id,1)" title="1일차 일정추가">1일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn btn-danger" onclick="add1(this.id,2)" title="2일차 일정추가">2일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-success" onclick="add1(this.id,3)" title="3일차 일정추가">3일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}" class="btn btn-warning"onclick="add1(this.id,4)" title="4일차 일정추가">4일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"   class="btn btn-info" onclick="add1(this.id,5)" title="5일차 일정추가">5일차</button>'+
+		        ' 				<button type="button" style="width:2% padding:0.5px" id="${place6[status.index] },${y_list6[status.index]}, ${x_list6[status.index]}"  class="btn  btn-dark" onclick="add1(this.id,6)" title="6일차 일정추가">6일차</button>&nbsp&nbsp<br>';
+		}
 		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
@@ -553,12 +878,13 @@ function add(id,n) {
         </c:if>
        
 	 </div><br>
+	 <input type="text" name="subject" id="subject" value="${myscheduledto.getSubject()}" size="45"style="display:none" answp ><br>
 	 <button type="button" class="btn btn-info" id="send_bt${dayCnt}" name="send_bt${dayCnt}"   onclick="clkBtn(${dayCnt})" style="float: right; width:40%" >  ${dayCnt}일차 수정 </button>
-	 <br><br><br><br><br>
+	 <br><br>
 	    </form>
 	  </div>	  
 	  </c:forEach>
-<br><br><br><br><br>
+<button type="button" class="btn btn-warning"  style="width:40%" onclick="table()"> 내 여행 일정표 보기 </button>
 	
 
   </div>
@@ -570,9 +896,12 @@ function add(id,n) {
   </script>
     
   <script>
+  function table(){
+	  window.location.href='schedule_table.do';
+  }
   function upload(){
-	  
-		 $(".left").load("map1.do");
+	  var day1=${myscheduledto.getDay1() };
+		 $(".left").load("map1.do?day="+day1);
 	 }
   function clkBtn(num){
 
