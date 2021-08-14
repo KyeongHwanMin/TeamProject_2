@@ -1,7 +1,11 @@
 package userpage.main;
 
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jejuguseok_map.locationDTO;
+
 
 
 @Controller  
 public class mainBean {
-	
-	
-	//@Autowired
-	//private userDAOInter userDAO = null;
-	
+
 	@Autowired
 	private SqlSessionTemplate sql = null;
 
@@ -33,6 +35,40 @@ public class mainBean {
 		
 		return "/userpage/index.jsp";
 	}
+	
+	
+	// 메인페이지 : 검색 기능 
+	@RequestMapping("searchItem.do") 
+	public String searchItem(Model model, HttpServletRequest request){
+		String col = request.getParameter("col");
+		String search = request.getParameter("search");
+		
+		//locationDTO dbPro = new locationDTO();
+		int count = 0; // 검색 장소 수
+		//count = sql.getProductCount(col, search);
+			
+		HashMap Row = new HashMap();  // sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
+		Row.put("search", search);	
+		Row.put("col", col);
+			
+			
+		   System.out.println("결과===="+col+"   /// rufrh===="+search);
+			count = sql.selectOne("attlist.SeCount", Row); 
+			System.out.println("count===="+count);
+		if (count > 0) { 
+			//sql.getProducts(col, search);
+
+			List myAccomList = sql.selectList("attlist.itemListSearch", Row); 
+			model.addAttribute("myAccomList",myAccomList);
+			
+		}
+		model.addAttribute("count",count);
+	
+	
+		return "/userpage/searchItem.jsp";
+	}
+	
+	
 	
 	// 회원가입
 	@RequestMapping("register.do") 
@@ -106,6 +142,9 @@ public class mainBean {
 		return "/userpage/login/confirmId.jsp";
 	
 	}
+	
+	
+	
 	
 }
 	

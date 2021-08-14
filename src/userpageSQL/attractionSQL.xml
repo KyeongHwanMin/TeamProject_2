@@ -4,6 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="attlist">
+  	
+  	<!--  검색 결과 카운트    -->
+  	 <select id="SeCount" resultType="int" parameterType="hashmap" > 
+  	   select * from(  select count(*) from (SELECT * FROM location  WHERE name LIKE<![CDATA[ '%'||#{search}||'%') where type = #{col}]]> )
+  	</select>
+  	 
+  	 
+  	  
+  	  	<!--  검색 결과  -->
+  	  	<!--                 select no, name, x, y, category,  address, content, location, img,  r 
+from(  select no, name, x, y, category,  address, content, location, img, rownum r 
+from(  select no, name, x, y, category,  address, content, location, img 
+from location where type='home' order by no desc)) <![CDATA[where r >= #{startRow} and r <= #{endRow}]]> -->
+  
+   <select id="itemListSearch" resultType="locationDTO" parameterType="hashmap" >
+			SELECT * FROM (SELECT * FROM location WHERE name LIKE <![CDATA[ '%'||#{search}||'%') where type = #{col}]]> 
+   </select>
+  
   
  	<select id="to20" resultType="locationDTO">
  	select * from (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
