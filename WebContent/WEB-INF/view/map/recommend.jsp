@@ -141,7 +141,17 @@
 												<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
 												<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
 											</ul>
-										</div>						
+										</div>	
+										
+											
+										<div class="button book_button"><a href="accomBookMK.do?no=${recommendCount.HOME_NO}" id="demo" >찜하기<span></span><span></span><span></span></a></div>
+										
+									<!-- 관리자  -->
+										<c:if test="${user_id == 'admin'}">      
+											<button type="button" class="btn btn-outline-secondary"><a href="homeUpdate.do?no=${recommendCount.HOME_NO}"> 수정 </a></button>
+											<button type="button" class="btn btn-outline-secondary"><a href="homeDelete.do?no=${recommendCount.HOME_NO}"> 삭제 </a></button> 
+										</c:if>
+									<!-- 관리자  -->						
 									</div>
 								</div>
 							</div>
