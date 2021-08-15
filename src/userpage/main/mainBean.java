@@ -43,11 +43,9 @@ public class mainBean {
 		String col = request.getParameter("col");
 		String search = request.getParameter("search");
 		
-		//locationDTO dbPro = new locationDTO();
 		int count = 0; // 검색 장소 수
-		//count = sql.getProductCount(col, search);
-			
-		HashMap Row = new HashMap();  // sql에 HashMap 사용해서 startRow / endRow 이름으로 값을 보낸다. 
+	
+		HashMap<String, String> Row = new HashMap();  
 		Row.put("search", search);	
 		Row.put("col", col);
 			
@@ -56,14 +54,10 @@ public class mainBean {
 			count = sql.selectOne("attlist.SeCount", Row); 
 			System.out.println("count===="+count);
 		if (count > 0) { 
-			//sql.getProducts(col, search);
-
 			List myAccomList = sql.selectList("attlist.itemListSearch", Row); 
 			model.addAttribute("myAccomList",myAccomList);
-			
 		}
 		model.addAttribute("count",count);
-	
 	
 		return "/userpage/searchItem.jsp";
 	}

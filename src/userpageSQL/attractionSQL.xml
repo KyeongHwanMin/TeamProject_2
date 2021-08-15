@@ -10,7 +10,7 @@
   	   select * from(  select count(*) from (SELECT * FROM location  WHERE name LIKE<![CDATA[ '%'||#{search}||'%') where type = #{col}]]> )
   	</select>
   	 
-  	 
+  	  
   	  
   	  	<!--  검색 결과  -->
   	  	<!--                 select no, name, x, y, category,  address, content, location, img,  r 
