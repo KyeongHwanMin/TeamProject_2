@@ -8,7 +8,7 @@
   	<!--  검색 결과 카운트    -->
   	 <select id="SeCount" resultType="int" parameterType="hashmap" > 
   	   select * from(  select count(*) from (SELECT * FROM location  WHERE name LIKE<![CDATA[ '%'||#{search}||'%') where type = #{col}]]> )
-  	</select> 
+  	</select>  
   	  
   	  
   	  
