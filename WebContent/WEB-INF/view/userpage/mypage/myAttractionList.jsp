@@ -60,7 +60,7 @@
 
 <!-- ﻿count를 확인하여 찜한 관광지가 없을 땐 찜한 관광지가 없습니다 노출 --> 
 
-			<c:if test="${count1 == 0}"> 
+			<c:if test="${count == 0}"> 
 				<div class="col-lg-12">
 					<div class="offers_grid">
 				 	
@@ -79,7 +79,7 @@
 
 					<!-- 관광지 리스트: ﻿myattlist가 null이 아닐 때(관광지가 있을 때) 아래 정보 노출-->
 					<!-- ﻿myattlist 불러오기(sql에서 location과 myattraciton DB에서 user_id와 no을 매칭시켜 불러오기) -->	
-				<c:if test="${count1 > 0}"> 
+				<c:if test="${count > 0}"> 
 					<c:forEach var="location" items="${myAttList}">
 									
 						<div class="offers_item ${location.category}"> 

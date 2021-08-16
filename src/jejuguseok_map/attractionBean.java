@@ -89,11 +89,11 @@ public class attractionBean {
          String id = (String) session.getAttribute("user_id");
          System.out.println("회원ID: "+id);
          
-         int count1 = 0;
-         count1 = dao.selectOne("att.Acount", id);
+         int count = 0;
+         count = dao.selectOne("att.Acount", id);
          
-         System.out.println("카운팅: "+count1);
-         model.addAttribute("count", count1);
+         System.out.println("카운팅: "+count);
+         model.addAttribute("count", count);
          List myAttList = dao.selectList("att.myAttList", id); 
         
          	model.addAttribute("myAttList",myAttList);
