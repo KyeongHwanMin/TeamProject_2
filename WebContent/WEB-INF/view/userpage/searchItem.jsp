@@ -95,6 +95,43 @@
 								<div class="col-lg-3 col-1680-4">
 									<div class="offers_image_container">
 										<!-- Image by https://unsplash.com/@kensuarez -->
+										<c:if test="${homeDTO.category == 'history'}">	
+										<div class="offers_image_background" style="background-image:url(images/history.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.category == 'leisure'}">	
+										<div class="offers_image_background" style="background-image:url(images/leisure.jpg)"></div>
+									</c:if>		
+									<c:if test="${homeDTO.category == 'nature'}">	
+										<div class="offers_image_background" style="background-image:url(images/nature.jpg)"></div>
+									</c:if>	
+									<c:if test="${homeDTO.category == 'healing'}">	
+										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
+									</c:if>	
+									
+									<c:if test="${homeDTO.location == 'jejusi'}">	
+										<div class="offer_name"><a href="attPro.do?search=1">제주시</a></div>
+									</c:if>
+									<c:if test="${homeDTO.location == 'seoquiposi'}">	  
+										<div class="offer_name"><a href="attPro.do?search=2">서귀포시</a></div>
+									</c:if>
+									<c:if test="${homeDTO.location == 'jungmun'}">	
+										<div class="offer_name"><a href="attPro.do?search=3">중문</a></div>
+									</c:if> 
+									<c:if test="${homeDTO.location == 'jejuairport'}">	
+										<div class="offer_name"><a href="attPro.do?search=4">제주국제공항</a></div>
+									</c:if>
+									<c:if test="${homeDTO.location == 'aweol'}">	
+										<div class="offer_name"><a href="attPro.do?search=5">애월/한림/협재</a></div>
+									</c:if>	
+									<c:if test="${homeDTO.location == 'pyoseon'}">	
+										<div class="offer_name"><a href="attPro.do?search=6">표선/성산</a></div>
+									</c:if>	
+									<c:if test="${homeDTO.location == 'hamduk'}">	
+										<div class="offer_name"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
+									</c:if>	
+										
+										
+										
 										<c:if test="${homeDTO.category == 'hotel'}">	
 										<div class="offers_image_background" style="background-image:url(images/offer_6.jpg)"></div>
 									</c:if>	
