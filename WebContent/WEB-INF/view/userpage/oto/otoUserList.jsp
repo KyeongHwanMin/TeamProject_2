@@ -81,8 +81,9 @@
                      <td align="center" width="50">${number}
                       <c:set var="number" value="${number-1}" />
                      </td>
-                     <td width="250"><c:if test="${article.re_level > 0 }">
-                           <img src="/images/re.gif">
+                     <td width="250">
+                     <c:if test="${article.re_level > 0 }">
+                           <img src="images/re.gif">
                         </c:if> <c:if test="${article.re_level == 0 }">
                         </c:if> <a href="/jejuguseok/content.do?num=${article.num}&pageNum=${currentPage}">
                            ${article.subject} </a></td>
