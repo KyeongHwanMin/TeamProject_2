@@ -36,6 +36,8 @@ public class accomBean {
 		//페이지 링크를 클릭한 번호 즉 현재 페이지 
 		String pageNum = request.getParameter("pageNum");	// 리스트에서 페이지 번호를 클릭 시 받을 수 있다.(페이지를 처음에 클릭하지 않는다.)
 		String category = request.getParameter("category");	// 리스트에서 페이지 번호를 클릭 시 받을 수 있다.(페이지를 처음에 클릭하지 않는다.)
+		String to = request.getParameter("top");
+		
 		
 		if(category==null) {
 			category="all";
@@ -65,16 +67,18 @@ public class accomBean {
 		Row.put("startRow", startRow);
 		Row.put("endRow", endRow);
 		Row.put("category", category);
-		
-		if (count > 0) {
-			if(category.equals("all")) {
-				articleList = dao.selectList("home.articleListAll", Row);
-			}else {
-				articleList = dao.selectList("home.articleList", Row);
+		if(to == null) {
+			if (count > 0) {
+				if(category.equals("all")) {
+					articleList = dao.selectList("home.articleListAll", Row);
+				}else {
+					articleList = dao.selectList("home.articleList", Row);
+				}
 			}
-			
+		}else{
+			articleList = dao.selectList("home.all_top");	
 		}
-		
+			
 		number=count-(currentPage-1)*pageSize;	// 전체 게시물 수 - (페이지 - 1) * 10  = 
 			
 		model.addAttribute("currentPage", currentPage);
@@ -85,7 +89,6 @@ public class accomBean {
 		model.addAttribute("number", number);
 		model.addAttribute("articleList", articleList); //list3 역할 
 		model.addAttribute("pageNum", pageNum);
-
 		
 		 //List list3 = dao.selectList("item.myHome"); 
 		
@@ -109,7 +112,6 @@ public class accomBean {
 		
 		
 		String search="제주시";
-		String top = null;
 		
 		model.addAttribute("se",se);
 		

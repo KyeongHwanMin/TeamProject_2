@@ -208,4 +208,13 @@ from location where type='home' order by no desc)) <![CDATA[where r >= #{startRo
 	    order by count(*) desc) where location = 'jejusi'
   </select>
   
+     <select id="all_top" resultType="locationDTO" parameterType="locationDTO">
+        select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc)
+  </select>
+  
   </mapper>
