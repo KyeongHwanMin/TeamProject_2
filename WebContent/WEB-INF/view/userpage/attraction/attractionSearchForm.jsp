@@ -43,7 +43,7 @@ function pageNext(pageNum){
 </script>
 	
 
-	<!-- 관광지 소개 페이지  --> 
+	<!-- 관광지 소개 --> 
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/jejuview.jpg"></div>
@@ -87,14 +87,21 @@ function pageNext(pageNum){
 								<span class="sorting_text">관광지 종류</span>
 								<i class="fa fa-chevron-down"></i>
 								<ul style="width: 170px">
-									<li class="filter_btn"><span> <a href='attForm.do'>관광지 전체</a></span></li>
+									<li class="filter_btn" data-filter="*"> 관광지 전체</a></span></li>
 									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=history'>역사/문화</a></span></li>
 									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=leisure'>레저/체험/학습</a></span></li>
 									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=nature'>자연/경치</a></span></li>
 									<li class="filter_btn"><span> <a href='attForm.do?pageNum=1&category=healing'>휴식/힐링</a></span></li>
 								</ul>
 							</li>
-							
+							<li>
+								<span class="sorting_text">최신/인기순</span>
+								<i class="fa fa-chevron-down"></i>
+								<ul style="width: 170px">
+									<li class="filter_btn"><span> <a href='attForm.do'>최신순</a></span></li>
+									<li class="filter_btn"><span> <a href='attForm.do?top=1'>인기순</a></span></li>
+								</ul>
+							</li>							
 						</ul><h6 align="right"> <a href="myAtt.do"> 내가 찜한 관광지</a> </h6>
 					</div>
 				</div>
@@ -131,26 +138,26 @@ function pageNext(pageNum){
 										<div class="offers_image_background" style="background-image:url(images/healing.png)"></div>
 									</c:if>	
 									
-									<c:if test="${locationDTO.location == 'jejusi'}">	
-										<div class="offer_name"><a href="attPro.do?search=1">제주시</a></div>
+										<c:if test="${locationDTO.location == 'jejusi'}">	
+										<div class="offer_name"><a href="#">제주시</a></div>
 									</c:if>
-									<c:if test="${locationDTO.location == 'seoquiposi'}">	  
-										<div class="offer_name"><a href="attPro.do?search=2">서귀포시</a></div>
+									<c:if test="${locationDTO.location == 'seoquiposi'}">	
+										<div class="offer_name"><a href="#">서귀포시</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'jungmun'}">	
-										<div class="offer_name"><a href="attPro.do?search=3">중문</a></div>
-									</c:if> 
+										<div class="offer_name"><a href="#">중문</a></div>
+									</c:if>
 									<c:if test="${locationDTO.location == 'jejuairport'}">	
-										<div class="offer_name"><a href="attPro.do?search=4">제주국제공항</a></div>
+										<div class="offer_name"><a href="#">제주국제공항</a></div>
 									</c:if>
 									<c:if test="${locationDTO.location == 'aweol'}">	
-										<div class="offer_name"><a href="attPro.do?search=5">애월/한림/협재</a></div>
+										<div class="offer_name"><a href="#">애월/한림/협재</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'pyoseon'}">	
-										<div class="offer_name"><a href="attPro.do?search=6">표선/성산</a></div>
+										<div class="offer_name"><a href="#">표선/성산</a></div>
 									</c:if>	
 									<c:if test="${locationDTO.location == 'hamduk'}">	
-										<div class="offer_name"><a href="attPro.do?search=7">함덕/김녕/세화</a></div>
+										<div class="offer_name"><a href="#">함덕/김녕/세화</a></div>
 									</c:if>	
 										
 									<!-- 관광지 정보 -->	
@@ -162,6 +169,7 @@ function pageNext(pageNum){
 										
 										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
 										</div>
+										<p class="offers_text"> 유형: ${locationDTO.category} </p>
 										<p class="offers_text"> 정보: ${locationDTO.content} </p>
 										<p class="offers_text"> 주소: ${locationDTO.address} </p>
 										<div class="offers_icons">
