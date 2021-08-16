@@ -60,8 +60,7 @@
 											<td width="250"><c:if test="${article.re_level > 0 }">
 													<img src="images/re.gif">
 												</c:if> <c:if test="${article.re_level == 0 }">
-												</c:if> <a
-												href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
+												</c:if> <a href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
 													${article.subject} </a></td>
 											<td align="center" width="100">${article.writer}</a>
 											</td>

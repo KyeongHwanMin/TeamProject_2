@@ -90,6 +90,15 @@
 									<li class="filter_btn" data-filter=".hotel"><span>호텔</span></li>
 								</ul>
 							</li>
+							
+							<li>
+								<span class="sorting_text">최신/인기순</span>
+								<i class="fa fa-chevron-down"></i>
+								<ul>
+									<li class="filter_btn"><span> <a href='accomLocal.do?search=${se}'>최신순</a></span></li>
+									<li class="filter_btn"><span> <a href='accomLocal.do?search=${se}&top=1'>인기순</a></span></li>
+								</ul>
+							</li>
 						</ul> <h6 align="right"> <a href="myAccom.do"> 내가 찜한 숙소 보러가기</a> </h6>
 					</div>
 				</div>

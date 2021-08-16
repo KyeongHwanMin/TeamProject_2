@@ -145,5 +145,67 @@ from location where type='home' order by no desc)) <![CDATA[where r >= #{startRo
   		delete from myaccomk where home_no= #{no}
   </delete>
   
+  <select id="jungmun_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'jungmun'
+  </select>
+  
+    <select id="seoquiposi_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'seoquiposi'
+  </select>
+  
+    <select id="aweol_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'aweol'
+  </select>
+  
+    <select id="hamduk_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'hamduk'
+  </select>
+  
+    <select id="jejuairport_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'jejuairport'
+  </select>
+  
+   <select id="pyoseon_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'pyoseon'
+  </select>
+  
+   <select id="jejusi_top" resultType="locationDTO" parameterType="locationDTO">
+	    select * from
+	    (select location.no, location.name, location.category, location.location, location.address, location.content , count(*) from location
+	    inner join myaccomk on location.no = myaccomk.home_no
+	    inner join member on myaccomk.user_id = member.user_id
+	    group by location.no, location.name, location.category, location.location, location.address, location.content
+	    order by count(*) desc) where location = 'jejusi'
+  </select>
   
   </mapper>

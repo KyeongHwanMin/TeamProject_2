@@ -101,56 +101,99 @@ public class accomBean {
 	public String accomLocal(Model model, HttpServletRequest request){
 		
 		int se= Integer.parseInt(request.getParameter("search"));
+		
+		String to = request.getParameter("top");
+		
 		System.out.println("출력!!"+se);
+		System.out.println("탑넘버---"+to);
+		
 		
 		String search="제주시";
+		String top = null;
 		
+		model.addAttribute("se",se);
 		
 		if(se == 2){
 			search="서귀포시";
-			List slist = dao.selectList("home.seoquiposi"); 
-			 model.addAttribute("slist",slist);
-			
+			if(to == null) {
+				List slist = dao.selectList("home.seoquiposi"); 
+				 model.addAttribute("slist",slist);
+			}else{
+				search="서귀포시";
+				List slist = dao.selectList("home.seoquiposi_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
 					 
 		}else if(se==3){
 			search="중문";
-			List slist = dao.selectList("home.jungmun"); 
-			 model.addAttribute("slist",slist);
-			
+			if(to == null) {
+				List slist = dao.selectList("home.jungmun"); 
+				 model.addAttribute("slist",slist);
+			}else {
+				search="중문";
+				List slist = dao.selectList("home.jungmun_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
+			 
 		}else if(se==4){
 			search="제주국제공항";
+			if(to == null) {
 			List slist = dao.selectList("home.jejuairport"); 
 			 model.addAttribute("slist",slist);
-			
+			}else {
+				search="제주국제공항";
+				List slist = dao.selectList("home.jejuairport_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
 			
 		}else if(se==5){
 			search="애월/한림/협재";
+			if(to == null) {
 			List slist = dao.selectList("home.aweol"); 
 			 model.addAttribute("slist",slist);
-			
+			}else {
+				search="애월/한림/협재";
+				List slist = dao.selectList("home.aweol_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
 			
 		}else if(se==6){
 			search="표선/상산";
+			if(to == null) {
 			List slist = dao.selectList("home.pyoseon"); 
 			 model.addAttribute("slist",slist);
-			
+			}else {
+				search="표선/상산";
+				List slist = dao.selectList("home.pyoseon_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
 			 
 		}else if(se==7){   //hamduk
 			search="함덕/김녕/세화";
+			if(to == null) {
 			List slist = dao.selectList("home.hamduk"); 
 			 model.addAttribute("slist",slist);
-			
+			}else {
+				search="함덕/김녕/세화";
+				List slist = dao.selectList("home.hamduk_top");
+				model.addAttribute("slist",slist);
+			}
 			 return "/userpage/home/accomLocal.jsp"; 
 		}
 		
-		
+		if(to == null) {
 		List slist = dao.selectList("home.jejusi"); 
 		 model.addAttribute("slist",slist);
+		}else {
+			search="제주시";
+			List slist = dao.selectList("home.jejusi_top");
+			model.addAttribute("slist",slist);
+		}
 		
 		return "/userpage/home/accomLocal.jsp"; 
 	}
