@@ -110,6 +110,13 @@
 <div class="fheader">
 <%@ include file="/WEB-INF/view/userpage/header.jsp"%>
 </div>
+
+
+	<br />
+	<c:if test="${user_id == 'admin'}">
+	<br /> <br /> 
+	</c:if>
+
 <div class="r">
       <div class="left">
 		
