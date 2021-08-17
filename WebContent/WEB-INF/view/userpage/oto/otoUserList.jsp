@@ -113,7 +113,7 @@
                integerOnly="true" />
             <c:set var="startPage" value="${result * 10 + 1}" />
             <c:set var="endPage" value="${startPage + pageBlock-1}" />
-            <c:if test="${endPage > pageCount}">
+            <c:if test="${endPage > pageCount}"> 
                <c:set var="endPage" value="${pageCount}" />
             </c:if>
 
