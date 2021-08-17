@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 
 
-
+ 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet"
@@ -133,7 +133,7 @@ div.right {
 	<div class="fheader">
 		<%@ include file="/WEB-INF/view/userpage/header.jsp"%>
 	</div>
-	
+	<br />
 	<br />
 	<c:if test="${user_id == 'admin'}">
 	<br /> <br /> 

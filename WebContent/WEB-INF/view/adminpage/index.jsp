@@ -60,7 +60,7 @@
                <i class="fas fa-chart-pie me-1"></i>
                    월별 가입자                         
                     </div>
-                      <div class="card-body"><canvas id="m" width="680" height="340"></canvas></div>              
+                      <div class="card-body"><canvas id="m" width="480" height="270"></canvas></div>              
                            
            </div>
       </div> 
