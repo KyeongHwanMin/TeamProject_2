@@ -182,7 +182,7 @@ public class otoAdDAO {
 		dto.setContent(dto.getContent());
 		dto.setNum(dto.getNum());
 		
-		return "/adminpage/oto/otoAdminUpdatePro.jsp";
+		return "/adminpage/oto/otoUpdatePro.jsp";
 	}
 	
 	@RequestMapping("/adminpage/write.do")

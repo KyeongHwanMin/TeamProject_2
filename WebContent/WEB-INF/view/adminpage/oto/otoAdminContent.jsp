@@ -67,8 +67,10 @@
 				<td align="left" width="375" colspan="3"><pre>${article.content}</pre></td>
 			</tr>
 			<tr height="30">
-				<td colspan="4" align="right"><input type="button" value="문의삭제"
-					onclick="document.location.href='/jejuguseok/adminpage/deleteForm.do?num=${num}&otonum=${article.otonum}&pageNum=${pageNum}&re_level=${article.re_level}'">
+					
+					<td colspan="4" align="right">
+					<input type="button" value="문의수정" onclick="document.location.href='/jejuguseok/adminpage/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+					<input type="button" value="문의삭제" onclick="document.location.href='/jejuguseok/adminpage/deleteForm.do?num=${num}&otonum=${article.otonum}&pageNum=${pageNum}&re_level=${article.re_level}'">
 					<input type="button" value="답변쓰기"
 					onclick="document.location.href='/jejuguseok/adminpage/write.do?num=${num}&ref=${ref}&re_step=${re_step}&re_level=${re_level}'">
 					<input type="button" value="문의목록"
