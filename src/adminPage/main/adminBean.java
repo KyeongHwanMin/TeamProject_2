@@ -193,4 +193,28 @@ public class adminBean {
 		return "/adminpage/Homechart.jsp";
 		}
 	
+	
+	
+	//회원 삭제 -------------- 
+	@RequestMapping("adminpage/memberDelete.do")
+	public String memberDelete(String user_id, Model model) {
+
+		//daosql.selectList("admin.memberDelete",user_id);
+
+		model.addAttribute("user_id", user_id);
+
+		return "/adminpage/memberDelete.jsp";
+	}
+	
+	//회원 삭제 22-------------- 
+	@RequestMapping("adminpage/memberDeletePro.do")
+	public String memberDeletePro(String user_id) {
+
+		daosql.selectList("admin.memberDelete",user_id);
+
+		//model.addAttribute("list2", list2);
+
+		return "/adminpage/memberDeletePro.jsp";
+	}
+	
 }
