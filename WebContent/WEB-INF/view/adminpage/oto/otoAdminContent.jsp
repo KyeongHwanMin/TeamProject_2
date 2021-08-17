@@ -27,7 +27,12 @@
 
 <body>
 	<center>
-		<b>문의내용 보기</b> <br>
+			<c:if test="${article.re_level > 0}">
+			<b>답변내용</b> <br>
+			</c:if>
+			<c:if test="${article.re_level == 0}">
+			<b>문의내용</b> <br>
+			</c:if>
 		<table class="table-bordered table-white table-hover" width="700">
 			<tr height="30">
 				<td align="center" width="1000">문의번호</td>

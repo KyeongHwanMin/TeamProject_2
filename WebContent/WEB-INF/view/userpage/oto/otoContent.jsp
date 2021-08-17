@@ -39,7 +39,12 @@
 <main>
 	<body>
 		<center>
-			<b>문의내용 보기</b> <br>
+			<c:if test="${article.re_level > 0}">
+			<b>답변내용</b> <br>
+			</c:if>
+			<c:if test="${article.re_level == 0}">
+			<b>문의내용</b> <br>
+			</c:if>
 			<table class="table-bordered" width="700" border="1" cellspacing="0" cellpadding="0"
 				align="center">
 				<tr height="30">
