@@ -57,8 +57,8 @@
 											<td align="center" width="50">${number}<c:set
 													var="number" value="${number-1}" />
 											</td>
-											<td width="250"><c:if test="${article.re_level > 0 }">
-													<img src="images/re.gif">
+											<td width="250" style="color:red;"><c:if test="${article.re_level > 0 }">
+												<img src="/jejuguseok/images/re.gif">
 												</c:if> <c:if test="${article.re_level == 0 }">
 												</c:if> <a href="/jejuguseok/adminpage/content.do?num=${article.num}&pageNum=${currentPage}">
 													${article.subject} </a></td>
@@ -66,8 +66,8 @@
 											</td>
 											<td align="center" width="150">${article.reg_date}</td>
 											<td align="center" width="50"><c:if
-													test="${article.readcount > 0 && article.re_level > 0}">
-													<b>문의답변</b>
+													test="${article.readcount >= 0 && article.re_level > 0}">
+													<b style="color:blue;">문의답변</b>
 												</c:if> <c:if
 													test="${article.readcount > 0 && article.re_level == 0}">
 													<b>문의확인</b>
@@ -110,6 +110,8 @@
 
 						</center>
 					</body>
+				</main>
+			</center>
 		</div>
 	</main>
 </div>

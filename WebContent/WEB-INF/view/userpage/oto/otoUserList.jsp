@@ -91,8 +91,8 @@
                      </td>
                      <td align="center" width="150">${article.reg_date}</td>
                      <td align="center" width="50">
-                        <c:if test="${article.readcount > 0 && article.re_level > 0}">
-                           <b>문의답변</b>
+                        <c:if test="${article.readcount >= 0 && article.re_level > 0}">
+                           <b style="color:blue;">문의답변</b>
                         </c:if> 
                         <c:if test="${article.readcount > 0 && article.re_level == 0}">
                            <b>문의확인</b>

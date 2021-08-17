@@ -48,7 +48,7 @@
 						type="hidden" name="otonum" value=${article.num } />${article.num}</td>
 					<td align="center" width="125">문의상태</td>
 					<td align="center" width="125" align="center">
-					<c:if test="${article.readcount > 0 && article.re_level > 0}">
+					<c:if test="${article.readcount >= 0 && article.re_level > 0}">
 						<b>문의답변</b>
 					</c:if> 
 					<c:if test="${article.readcount > 0 && article.re_level == 0}">
