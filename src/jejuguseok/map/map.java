@@ -43,7 +43,7 @@ public class map {
 	@RequestMapping("map.do")
 	public String map(Model model , HttpSession session) {		
 		List maplist = dao.selectList("map.location");
-		List maptourlist = dao.selectList("map.tour");
+		List maptourlist = dao.selectList("map.tour"); 
 		List maphomelist = dao.selectList("map.home");
 		model.addAttribute("maplist", maplist);
 		model.addAttribute("maptourlist", maptourlist);
