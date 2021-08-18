@@ -256,7 +256,7 @@ function createtotalMarkers() {
 		  '          <div> &nbsp ${maplist.name}</div>' + 
 	        '               <div> &nbsp <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" width="73" height="70"></div>' +
 			'				<div>&nbsp	${maplist.address} </div>' +		
-	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link">길찾기</a></div> &nbsp ' ;
+	        '         <div>&nbsp <a href="https://www.kakaocorp.com/main" target="_blank" class="link"> </a></div> &nbsp ' ;
 		    
 	     </c:forEach>	 
     for (var i = 0; i < totalPositions.length; i++) {  

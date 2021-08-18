@@ -23,10 +23,10 @@
 <div class="super_container">
 	
 
-	<!-- 숙소 소개 페이지  --> 
+	<!-- 관광지 추천 페이지   --> 
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/제주숙소.jpg"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/beach.jpg"></div>
 		<div class="home_content">
 			<div class="home_title">  </div>
 		</div>
