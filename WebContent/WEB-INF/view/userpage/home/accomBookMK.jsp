@@ -7,7 +7,7 @@
 
 	<script> 
 	  alert("내 찜하기에 넣었습니다! "); 
-	  window.location="myAccom.do";
+	  history.go(-1);
       	
 	</script>
 	

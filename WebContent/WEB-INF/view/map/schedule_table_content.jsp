@@ -5,7 +5,7 @@
 <%--
 	- http://localhost:8080/jejuguseok/schedule_table_content.do
 	- 여행 일정 제목을 클릭 했을 시 해당 내용을 지도에 마커로 출력
- --%>
+ --%> 
  <html>
 <html lang="en">
 <head>
@@ -112,7 +112,7 @@
 </div>
 
 
-	<br />
+	<br /><br />
 	<c:if test="${user_id == 'admin'}">
 	<br /> <br /> 
 	</c:if>
