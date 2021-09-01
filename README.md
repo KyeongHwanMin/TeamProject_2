@@ -10,7 +10,7 @@
 
 API & Library : Kakao Map API, Bootstrap
 
-Language : java 8 , javaScript, JSTL,Html, jsp, Ajax
+Language : java 8 , javaScript, JSTL,Html, jsp
 
 DataBase : Oracle DB
 
