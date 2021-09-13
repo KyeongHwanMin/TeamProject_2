@@ -21,7 +21,7 @@ Tool : Eclipse, Git, Github
 
 
 
-** 1. 여행일정 만들기
+**1. 여행일정 만들기
 ![image](https://user-images.githubusercontent.com/17818416/131691939-849f31a1-505e-4135-9225-3f7f78acd10e.png)
 
 **2. 일정 추가하기
