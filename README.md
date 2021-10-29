@@ -42,10 +42,10 @@ Tool : Eclipse, Git, Github
 7. 연령별 TOP10
 ![image](https://user-images.githubusercontent.com/17818416/131692853-0d2b014a-97b3-42d1-a411-903275a22d5b.png)
 
-8. 차트-1
+8. 차트
 ![image](https://user-images.githubusercontent.com/17818416/131692919-60b93cc8-0a70-4790-b73f-5312127fab21.png)
 
-9. 차트-2
+9. 차트
 ![image](https://user-images.githubusercontent.com/17818416/131693043-11fbd15f-26ca-4eba-86a9-c9c81f72f4c1.png)
 
 
