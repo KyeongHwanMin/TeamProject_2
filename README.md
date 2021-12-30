@@ -22,7 +22,6 @@ Tool : Eclipse, Git, Github
 [![Repository Card](https://widget.realdeveloper.pro/api/card?user=KyeongHwanMin&repo=jejuguseok)](https://github.com/KyeongHwanMin/jejuguseok)
 
 
-
 1. 여행일정 만들기
 ![image](https://user-images.githubusercontent.com/17818416/131691939-849f31a1-505e-4135-9225-3f7f78acd10e.png)
 
